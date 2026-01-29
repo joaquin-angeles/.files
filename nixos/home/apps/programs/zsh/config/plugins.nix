@@ -2,12 +2,11 @@
 
 {
     programs.zsh = {
-        # Plugins
         syntaxHighlighting.enable = true; # Colorize your shell
         autosuggestion.enable = true; # Autosuggestions
         enableCompletion = true; # Auto-completions
 
-        # Powerlevel10K
+        # Fast prompt
         plugins = [
             {
                 name = "powerlevel10k";
