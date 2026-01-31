@@ -33,7 +33,7 @@
             };
 
             colors.bright = {
-                black   = "#3f4243";
+                black   = "#4d5051";
                 red     = "#ef8e89";
                 green   = "#bec88c";
                 yellow  = "#e2bc81";
