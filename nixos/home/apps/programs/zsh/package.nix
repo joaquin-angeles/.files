@@ -1,21 +1,12 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
     imports = [
-        ./aliases.nix
-        ./config/init.nix
-        ./config/history.nix
-        ./config/plugins.nix
-
-        # zsh integrations
-        ./integrations/bat.nix          # Better cat
-        ./integrations/eza.nix          # Better ls
-        ./integrations/fd.nix           # Better find
-        ./integrations/fzf.nix          # Fuzzy finger
-        ./integrations/nom.nix          # Better Nix outputs
-        ./integrations/ripgrep.nix      # Better grep
-        ./integrations/yazi/package.nix # File manager
-        ./integrations/zoxide.nix       # Better cd
+        ./config/aliases.nix      # Shell aliases
+        ./config/init.nix         # Extra shell config
+        ./config/integrations.nix # Shell integrations
+        ./config/history.nix      # History config
+        ./config/plugins.nix      # Plugin config
     ];
 
     # Base zsh configuration
