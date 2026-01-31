@@ -8,5 +8,6 @@
         yatline = pkgs.yaziPlugins.yatline;
     };
 
+    # Plugin configuration
     programs.yazi.initLua = ./init.lua;
 }

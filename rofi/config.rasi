@@ -2,7 +2,7 @@
     /* Theme settings */
     highlight: bold italic;
     scrollbar: true;
-    font: "sans-serif 14";
+    font: "monospace 13.5";
 
     /* Gruvbox dark colors */
     gruvbox-dark-bg0-hard:     #1d2021;

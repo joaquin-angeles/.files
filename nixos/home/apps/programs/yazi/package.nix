@@ -2,9 +2,9 @@
 
 {
     imports = [
-        ./settings.nix
-        ./plugins.nix
-        ./theme.nix
+        ./config/settings.nix
+        ./config/plugins.nix
+        ./config/theme.nix
     ];
 
     programs.yazi = {
