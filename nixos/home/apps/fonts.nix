@@ -6,12 +6,12 @@
 
     # Font packages
     # home.packages = with pkgs; [
-    #   inter
-    #   nerd-fonts.jetbrains-mono
-    #   nerd-fonts.meslo-lg
-    #   noto-fonts
-    #   noto-fonts-cjk-sans
-    #   noto-fonts-emoji-blob-bin
+    #     inter
+    #     nerd-fonts.jetbrains-mono
+    #     nerd-fonts.meslo-lg
+    #     noto-fonts
+    #     noto-fonts-cjk-sans
+    #     noto-fonts-emoji-blob-bin
     # ];
 
     # Font configurations
@@ -19,7 +19,7 @@
         emoji = [ "Noto Color Emoji" ];
         monospace = [ "JetBrainsMono Nerd Font Mono" ];
         # monospace = [ "MesloLGM Nerd Font Mono" ];
-        sansSerif = [ "Rubik" ];
+        sansSerif = [ "Inter" ];
         serif = [ "Times New Roman" ];
     };
 }

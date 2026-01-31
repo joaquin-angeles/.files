@@ -14,7 +14,7 @@
 @import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
 body {
     /* font, change to '' for default discord font */
-    --font: 'Rubik'; /* change to '' for default discord font */
+    --font: 'Inter'; /* change to '' for default discord font */
     --code-font: ''; /* change to '' for default discord font */
     font-weight: 400 /* normal text font weight. DOES NOT AFFECT BOLD TEXT */;
 

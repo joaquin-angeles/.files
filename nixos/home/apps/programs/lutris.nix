@@ -21,6 +21,7 @@
             gamescope # Micro-compositor
             mangohud # FPS counter
             umu-launcher # Steam libraries
+            unstable.wineWowPackages.stagingFull
         ];
     };
 }

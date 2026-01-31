@@ -1,7 +1,7 @@
 @import url("./colors.css");
 
 window#waybar {
-    font-family: "Rubik", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 13.5pt;
     /* background-color: @bg; */
     background-color: rgba(30, 32, 33, 0.8);
