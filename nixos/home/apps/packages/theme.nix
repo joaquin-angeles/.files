@@ -74,7 +74,7 @@
     xdg.configFile."gtk-4.0/gtk-dark.css".source = "${pkgs.gruvbox-gtk-theme}/share/themes/Gruvbox-Dark/gtk-4.0/gtk-dark.css";
 
     # Flatpak theming
-    home.activation.flatpakFontInit = config.lib.dag.entryAfter ["writeBoundary"] ''
+    home.activation.flatpakFonts = config.lib.dag.entryAfter ["writeBoundary"] ''
         $DRY_RUN_CMD mkdir -p $HOME/.local/share/fonts
         $DRY_RUN_CMD ln -sfn /run/current-system/sw/share/X11/fonts/* $HOME/.local/share/fonts/
         $DRY_RUN_CMD ${pkgs.fontconfig}/bin/fc-cache -fv

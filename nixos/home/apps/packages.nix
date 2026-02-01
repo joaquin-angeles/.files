@@ -1,7 +1,13 @@
 { pkgs, ... }:
 
 {
-    imports = [ ./media.nix ];
+    imports = [
+        ./packages/flatpaks.nix
+        ./packages/fonts.nix
+        ./packages/media.nix
+        ./packages/scripts.nix
+        ./packages/theme.nix
+    ];
 
     # User packages
     home.packages = with pkgs; [

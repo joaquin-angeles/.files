@@ -13,7 +13,7 @@
     imports = [
         # Configurations
         ./home/dotfiles.nix
-        ./home/environment.nix # Environment variables
+        ./home/environment.nix
 
         # Apps
         ./home/apps.nix # Packages
