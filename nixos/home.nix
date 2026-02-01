@@ -17,7 +17,6 @@
 
         # Apps
         ./home/apps.nix # Packages
-        ./home/apps/theme.nix # Theming
     ];
 
     # User directories

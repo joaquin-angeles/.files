@@ -93,4 +93,54 @@
             ];
         };
     };
+
+    # Font correction
+    home.activation.flatpakFonts = config.lib.dag.entryAfter ["writeBoundary"] ''
+        $DRY_RUN_CMD mkdir -p $HOME/.local/share/fonts
+
+        # Define the font packages to link
+        FONT_PKGS=(
+            "${pkgs.corefonts}"
+            "${pkgs.inter}"
+            "${pkgs.nerd-fonts.jetbrains-mono}"
+            "${pkgs.nerd-fonts.meslo-lg}"
+            "${pkgs.noto-fonts}"
+            "${pkgs.noto-fonts-cjk-sans}"
+            "${pkgs.noto-fonts-emoji-blob-bin}"
+        )
+
+        for pkg in "''${FONT_PKGS[@]}"; do
+            # Most font packages put fonts in share/fonts/{truetype,opentype,woff,woff2,...}
+            for dir in "$pkg/share/fonts/"*; do
+                if [ -d "$dir" ]; then
+                    $DRY_RUN_CMD find "$dir" -type f \
+                        -exec ln -sfn {} "$HOME/.local/share/fonts/" \;
+                fi
+            done
+
+            if [ -d "$pkg/share/fonts" ]; then
+                $DRY_RUN_CMD find "$pkg/share/fonts" -maxdepth 1 -type f \
+                    -exec ln -sfn {} "$HOME/.local/share/fonts/" \;
+            fi
+        done
+
+        # Refresh font cache
+        $DRY_RUN_CMD fc-cache -fv || true
+    '';
+
+    # Flatpak GTK theme correction
+    home.activation.flatpakGtkThemes = config.lib.dag.entryAfter ["writeBoundary"] ''
+        $DRY_RUN_CMD mkdir -p $HOME/.local/share/themes
+
+        # Define the theme packages to link
+        THEME_PKGS=("${pkgs.gruvbox-gtk-theme}" "${pkgs.adw-gtk3}")
+
+        for pkg in "''${THEME_PKGS[@]}"; do
+            if [ -d "$pkg/share/themes" ]; then
+                for theme in "$pkg/share/themes/"*; do
+                    $DRY_RUN_CMD ln -sfn "$theme" "$HOME/.local/share/themes/"
+                done
+            fi
+        done
+    '';
 }
