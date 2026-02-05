@@ -2,11 +2,11 @@
 
 {
     xdg.configFile = {
-        "hypr".source = ../../hypr;
-        "Kvantum".source = ../../qt;
-        "mako".source = ../../mako;
+        "hypr".source = ~/.files/hypr;
+        "Kvantum".source = ~/.files/qt;
+        "mako".source = ~/.files/mako;
         "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/neovim";
-        "waybar".source = ../../waybar;
-        "zellij".source = ../../zellij;
+        "waybar".source = ~/.files/waybar;
+        "zellij".source = ~/.files/zellij;
     };
 }

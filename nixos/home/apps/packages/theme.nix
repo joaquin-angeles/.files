@@ -24,11 +24,11 @@
     };
 
     # Vencord theme
-    # home.file.".config/vesktop/themes/midnight-gruvbox.css".source = ../../../vencord/themes/midnight-gruvbox.css; # Native theming
-    home.file.".var/app/dev.vencord.Vesktop/config/vesktop/themes/midnight-gruvbox.css".source = ../../../../vencord/themes/midnight-gruvbox.css;
+    # home.file.".config/vesktop/themes/midnight-gruvbox.css".source ~/.files/vencord/themes/midnight-gruvbox.css; # Native theming
+    home.file.".var/app/dev.vencord.Vesktop/config/vesktop/themes/midnight-gruvbox.css".source = ~/.files/vencord/themes/midnight-gruvbox.css;
 
     # Wallpaper
-    home.file."Pictures/backgrounds".source = ../../../../backgrounds;
+    home.file."Pictures/backgrounds".source = ~/.files/backgrounds;
 
     # GTK theming
     gtk = {
