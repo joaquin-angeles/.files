@@ -15,7 +15,7 @@ window#waybar {
     border-radius: 12pt;
 }
 
-#clock { padding: 1pt 5.5pt 0 10pt; }
+#clock { padding: 0pt 5.5pt 0 10pt; }
 
 #custom-menu {
     margin: 0 5pt 0 8pt;
@@ -52,8 +52,6 @@ window#waybar {
 #battery.critical { color: @red; }
 
 #tray { padding: 0 5pt 0 2pt; }
-
-#window { padding-top: 1pt; }
 
 #workspaces {
     background-color: @bright-bg;
