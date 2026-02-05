@@ -8,6 +8,7 @@
         ./programs/lutris.nix            # Game launcher
         ./programs/rofi.nix              # App launcher
         ./programs/yazi/package.nix      # Terminal file manager
+        ./programs/zellij/package.nix    # Terminal multiplexer
         ./programs/zsh/package.nix       # Shell configuration
     ];
 

@@ -7,6 +7,6 @@
         "mako".source = ~/.files/mako;
         "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/neovim";
         "waybar".source = ~/.files/waybar;
-        "zellij".source = ~/.files/zellij;
+        # "zellij".source = ~/.files/zellij;
     };
 }
