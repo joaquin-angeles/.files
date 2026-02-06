@@ -5,10 +5,10 @@ cat <<EOF
 SUPER + Return        → Open terminal (Alacritty)
 SUPER + Space         → App launcher (Rofi)
 SUPER + B             → Browser (Zen)
-SUPER + E             → File manager (Nemo)
+SUPER + E             → File manager (Nautilus)
 SUPER + .             → Emoji picker
 SUPER + V             → Clipboard manager (Cliphist)
-SUPER + R             → Reload Hyprland config
+SUPER + R             → Reload WM config
 SUPER + W             → Toggle Waybar
 SUPER + S             → Screenshot output to clipboard
 SUPER + Shift + S     → Screenshot region to clipboard
