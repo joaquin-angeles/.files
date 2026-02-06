@@ -21,15 +21,17 @@
             specialArgs = { inherit inputs; };
             modules = [
                 # System configuration
-                /etc/nixos/hardware-configuration.nix
-                ./configuration.nix
+                ./core.nix
 
                 # Program configs
                 ./core/apps.nix
                 ./core/hardware.nix
                 ./core/services.nix
 
-                # User configuration
+                # Automated hardware config
+                /etc/nixos/hardware-configuration.nix
+
+                # User config
                 home-manager.nixosModules.home-manager
                 {
                     nixpkgs.config.allowUnfree = true; # Allow proprietary

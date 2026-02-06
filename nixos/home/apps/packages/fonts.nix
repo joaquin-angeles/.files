@@ -17,7 +17,7 @@
 
     # Font configurations
     fonts.fontconfig.defaultFonts = {
-        emoji = [ "Noto Color Emoji" ];
+        emoji = [ "Blobmoji" ];
         monospace = [ "JetBrainsMono Nerd Font Mono" ];
         # monospace = [ "MesloLGM Nerd Font Mono" ];
         sansSerif = [ "Inter" ];
