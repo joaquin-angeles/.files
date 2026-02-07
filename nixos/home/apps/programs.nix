@@ -7,6 +7,7 @@
         ./programs/neovim.nix            # Text editor
         ./programs/lutris.nix            # Game launcher
         ./programs/rofi.nix              # App launcher
+        ./programs/waybar/package.nix    # Hyprland panel
         ./programs/yazi/package.nix      # Terminal file manager
         ./programs/zellij/package.nix    # Terminal multiplexer
         ./programs/zsh/package.nix       # Shell configuration

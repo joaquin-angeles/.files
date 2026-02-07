@@ -1,0 +1,140 @@
+@import url("./colors.css");
+
+/* Base Window */
+window#waybar {
+    font-family: "Inter", sans-serif;
+    font-size: 13.5pt;
+    background-color: rgba(30, 32, 33, 0.8);
+    color: @fg;
+}
+
+/* Common Module Styles */
+.module {
+    transition: all 0.2s ease-in-out;
+}
+
+/* System Info Group */
+#sys-info {
+    background-color: @bright-bg;
+    margin: 3pt 0;
+    border-radius: 12pt;
+}
+
+#clock { 
+    padding: 0 5.5pt 0 10pt; 
+}
+
+/* Menu & Power Controls */
+#custom-menu {
+    margin: 0 5pt 0 8pt;
+    font-size: 16pt;
+    color: @blue;
+    transition: color 0.2s ease;
+}
+
+#custom-menu:hover {
+    color: lighten(@blue, 10%);
+}
+
+#custom-power {
+    color: @red;
+    background-color: rgba(117, 52, 49, 0.8);
+    margin: 3pt 8pt 3pt 5pt;
+    border-radius: 12pt;
+    padding: 0 7pt 0 6pt;
+    transition: background-color 0.2s ease;
+}
+
+#custom-power:hover {
+    background-color: rgba(117, 52, 49, 1);
+}
+
+/* Status Modules */
+#network {
+    color: @blue;
+    padding: 0 15pt 0 8pt;
+}
+
+#network.disconnected {
+    color: @yellow;
+}
+
+#pulseaudio {
+    color: @magenta;
+    font-size: 15pt;
+    margin-right: 13pt;
+}
+
+#pulseaudio.muted {
+    color: @fg;
+    opacity: 0.5;
+}
+
+#battery {
+    color: @green;
+    padding-right: 9pt;
+}
+
+#battery.charging {
+    color: @cyan;
+}
+
+#battery.low { 
+    color: @yellow; 
+}
+
+#battery.critical { 
+    color: @red;
+    animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* System Tray */
+#tray { 
+    padding: 0 5pt 0 2pt; 
+}
+
+#tray > .passive {
+    opacity: 0.7;
+}
+
+#tray > .needs-attention {
+    color: @red;
+}
+
+/* Workspaces */
+#workspaces {
+    background-color: @bright-bg;
+    margin: 3pt 0 3pt 10pt;
+    padding: 0 5.5pt 0 2pt;
+    border-radius: 12pt;
+}
+
+#workspaces button {
+    padding: 0 5pt;
+    color: @fg;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    border-radius: 8pt;
+}
+
+#workspaces button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#workspaces button.empty { 
+    color: #4d5051; 
+}
+
+#workspaces button.active { 
+    color: @cyan;
+    background-color: rgba(0, 255, 255, 0.1);
+}
+
+#workspaces button.urgent {
+    color: @red;
+    background-color: rgba(255, 0, 0, 0.15);
+}
