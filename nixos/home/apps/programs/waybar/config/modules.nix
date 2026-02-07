@@ -94,7 +94,7 @@
         };
 
         "custom/menu" = {
-            format = "";
+            format = "";
             tooltip = true;
             tooltip-format = "drun";
             on-click = "rofi -show drun";

@@ -25,10 +25,10 @@
 
     # Vencord theme
     # home.file.".config/vesktop/themes/midnight-gruvbox.css".source ~/.files/vencord/themes/midnight-gruvbox.css; # Native theming
-    home.file.".var/app/dev.vencord.Vesktop/config/vesktop/themes/midnight-gruvbox.css".source = ~/.files/vencord/themes/midnight-gruvbox.css;
+    home.file.".var/app/dev.vencord.Vesktop/config/vesktop/themes/midnight-gruvbox.css".source = "${config.home.homeDirectory}/.files/vencord/themes/midnight-gruvbox.css";
 
     # Wallpaper
-    home.file."Pictures/backgrounds".source = ~/.files/backgrounds;
+    home.file."Pictures/backgrounds".source = "${config.home.homeDirectory}/.files/backgrounds";
 
     # GTK theming
     gtk = {
