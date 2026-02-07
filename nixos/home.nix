@@ -17,6 +17,7 @@
 
         # Apps
         ./home/apps.nix # Packages
+        ./home/services.nix # Services
     ];
 
     # User directories

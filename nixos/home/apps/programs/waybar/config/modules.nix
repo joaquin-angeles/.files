@@ -100,5 +100,4 @@
             on-click = "rofi -show drun";
         };
     };
-};
-    }
+}
