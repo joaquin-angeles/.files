@@ -8,6 +8,7 @@
 
     # System correction
     systemd.user.systemctlPath = "/run/current-system/sw/bin/systemctl";
+    systemd.user.startServices = "sd-switch";
 
     # Modules
     imports = [

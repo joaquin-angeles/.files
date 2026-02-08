@@ -2,7 +2,6 @@
 
 {
     networking = {
-        nftables.checkRuleset = true;
         nftables.enable = true;
         nftables.ruleset = ''
             table inet filter {
@@ -18,5 +17,6 @@
                 chain forward { type filter hook forward priority 0; policy drop; }
             }
         '';
+        nftables.checkRuleset = false;
     };
 }
