@@ -10,11 +10,11 @@
             margin = "6";
             width = 500;
             height = 125;
-            defaultTimeout = 3000;
-            textColor = "#d4be98";
-            backgroundColor = "#1d2021";
-            borderColor = "#2d3031";
-            borderRadius = 5;
+            default-timeout = 3000;
+            text-color = "#d4be98";
+            background-color = "#1d2021";
+            border-color = "#2d3031";
+            border-radius = 5;
             font = "sans-serif 14";
         };
     };
