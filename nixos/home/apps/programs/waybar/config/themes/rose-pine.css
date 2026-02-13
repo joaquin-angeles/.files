@@ -1,0 +1,19 @@
+/* Colors */
+@define-color bg                     #191724;
+@define-color fg                     #e0def4;
+@define-color red                    #eb6f92;
+@define-color green                  #31748f;
+@define-color yellow                 #f6c177;
+@define-color blue                   #9ccfd8;
+@define-color magenta                #c4a7e7;
+@define-color cyan                   #ebbcba;
+
+/* Bright colors */
+@define-color bright-bg              #1f1d2e;
+@define-color bright-fg              #e0def4;
+@define-color bright-red             #eb6f92;
+@define-color bright-green           #31748f;
+@define-color bright-yellow          #f6c177;
+@define-color bright-blue            #9ccfd8;
+@define-color bright-magenta         #c4a7e7;
+@define-color bright-cyan            #ebbcba;
