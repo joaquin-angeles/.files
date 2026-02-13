@@ -3,17 +3,19 @@
     "layer": "top",
     "position": "top",
     // "position": "bottom",
-    "height": 0,
+    "margin-right": 54,
+    "margin-left": 54,
+    "margin-top": 6,
+    "height": 35,
     "spacing": 0,
     "modules-left": [
         "custom/menu",
-        "hyprland/workspaces",
+        "hyprland/window",
     ],
-    "modules-center": [ "hyprland/window", ],
+    "modules-center": [ "hyprland/workspaces", ],
     "modules-right": [
         "group/sys-info",
         "clock",
         "custom/power",
-        "tray",
     ],
 }

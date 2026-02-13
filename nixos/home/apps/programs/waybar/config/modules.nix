@@ -4,15 +4,25 @@
     programs.waybar.settings.mainBar = {
         # Module definitions
         "hyprland/window" = {
-            max-length = 64;
-            format = "{}";
+            max-length = 40;
+            separate-outputs = false;
+            format = "󰣆   {title}";
+            rewrite = {
+                "(.*) " = "   Empty";
+            };
         };
 
         "hyprland/workspaces" = {
             format = "{icon}";
             format-icons = {
-                active = "";
-                default = "";
+                # active = "";
+                # default = "";
+                "1" = "";
+                "2" = "";
+                "3" = "";
+                "4" = "";
+                "5" = "";
+                "6" = "6";
                 "7" = "7";
                 "8" = "8";
                 "9" = "9";
@@ -23,7 +33,7 @@
             active-only = false;
             on-click = "activate";
             persistent-workspaces = {
-                "*" = 6;
+                "*" = 5;
             };
         };
 
@@ -80,6 +90,7 @@
         "group/sys-info" = {
             orientation = "horizontal";
             modules = [
+                "tray"
                 "network"
                 "pulseaudio"
                 "battery"
@@ -94,7 +105,7 @@
         };
 
         "custom/menu" = {
-            format = "";
+            format = "";
             tooltip = true;
             tooltip-format = "drun";
             on-click = "rofi -show drun";

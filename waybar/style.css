@@ -1,21 +1,25 @@
+@import url("./themes/gruvbox_dark.css");
+
 window#waybar {
-    font-family: "Inter", sans-serif;
+    font-family: sans-serif;
     font-size: 13.5pt;
     /* background-color: @bg; */
-    background-color: rgba(30, 32, 33, 0.8);
+    /* background-color: rgba(30, 32, 33, 0.8); */
+    border: 1px solid lighter(@bright-bg);
+    border-radius: 7pt;
     color: @fg;
 }
 
 #sys-info {
     background-color: @bright-bg;
     margin: 3pt 3pt 3pt 3pt;
-    border-radius: 12pt;
+    border-radius: 7pt;
 }
 
-#clock { padding: 0pt 5.5pt 0 10pt; }
+#clock { padding: 0pt 8pt 0 10pt; }
 
 #custom-menu {
-    margin: 0 5pt 0 8pt;
+    margin: 0 1pt 0 10pt;
     font-size: 16pt;
     color: @blue;
 }
@@ -25,7 +29,7 @@ window#waybar {
     background-color: darker(#753431);
     margin: 3pt 8pt 3pt 5pt;
     padding: 0 7pt 0 6pt;
-    border-radius: 12pt;
+    border-radius: 7pt;
 }
 
 #network {
@@ -48,17 +52,32 @@ window#waybar {
 
 #battery.critical { color: @red; }
 
-#tray { padding: 0 5pt 0 2pt; }
+#tray {
+    margin-left: 4pt;
+    margin-top: 2pt;
+    margin-bottom: 2pt;
+    background-color: lighter(@bright-bg);
+    border-radius: 7pt;
+    padding: 0 5pt 0 5pt;
+
+}
+
+#window {
+    background-color: @bright-bg;
+    margin: 3pt 0 3pt 10pt;
+    padding: 0 12pt 0 12pt;
+    border-radius: 7pt;
+}
 
 #workspaces {
     background-color: @bright-bg;
     margin: 3pt 0 3pt 10pt;
     padding: 0 5.5pt 0 2pt;
-    border-radius: 12pt;
+    border-radius: 7pt;
 }
 
 #workspaces button {
-    padding: 0 5pt;
+    padding: 0 8pt;
     color: @fg;
 }
 
