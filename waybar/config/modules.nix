@@ -6,9 +6,9 @@
         "hyprland/window" = {
             max-length = 40;
             separate-outputs = false;
-            format = "󰣆   {title}";
+            format = "–   󰣆   {title}";
             rewrite = {
-                "(.*) " = "   Empty";
+                "(.*) " = "–      Empty";
             };
         };
 
@@ -17,16 +17,15 @@
             format-icons = {
                 # active = "";
                 # default = "";
-                "1" = "";
-                "2" = "";
-                "3" = "";
-                "4" = "";
-                "5" = "";
+                "1" = "";
+                "2" = "";
+                "3" = "";
+                "4" = "";
+                "5" = "󱤙";
                 "6" = "6";
                 "7" = "7";
                 "8" = "8";
                 "9" = "9";
-                "10" = "10";
             };
             disable-scroll = true;
             all-outputs = true;

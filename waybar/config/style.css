@@ -3,13 +3,13 @@ window#waybar {
     font-size: 13.5pt;
     /* background-color: @bg; */
     background-color: rgba(30, 32, 33, 0.8);
-    /* border: 1px solid lighter(@bright-bg); */
-    border-radius: 5pt;
+    border-bottom: 1px solid darker(@bright-bg);
+    /* border-radius: 5pt; */
     color: @fg;
 }
 
 #sys-info {
-    background-color: rgba(47, 50, 52, 0.9);
+    background-color: rgba(47, 50, 52, 0.8);
     margin: 3pt 3pt 3pt 3pt;
     border-radius: 5pt;
 }
@@ -22,7 +22,7 @@ window#waybar {
 }
 
 #custom-power {
-    background-color: rgba(47, 50, 52, 0.9);
+    background-color: rgba(47, 50, 52, 0.8);
     margin: 3pt 8pt 3pt 5pt;
     padding: 0 8pt 0 7pt;
     border-radius: 5pt;
@@ -49,23 +49,19 @@ window#waybar {
     margin-left: 3px;
     margin-top: 3px;
     margin-bottom: 3px;
-    background-color: lighter(@bright-bg);
+    background-color: rgba(70, 73, 74, 0.8);
     border-radius: 5pt;
     padding: 0 5pt 0 5pt;
 
 }
 
 #window {
-    background-color: rgba(47, 50, 52, 0.9);
-    margin: 3pt 0 3pt 10pt;
-    padding: 0 12pt 0 12pt;
-    border-radius: 5pt;
+    margin: 0 0 0 3pt;
 }
 
 #workspaces {
-    /* background-color: rgba(47, 50, 52, 0.9); */
-    margin: 3pt 0 3pt 10pt;
-    padding: 0 5.5pt 0 2pt;
+    /* background-color: rgba(47, 50, 52, 0.8); */
+    margin: 0pt 3pt 0pt 0pt;
     border-radius: 5pt;
 }
 

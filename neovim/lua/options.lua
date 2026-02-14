@@ -13,7 +13,7 @@ vim.o.swapfile = false -- Disable swap file
 -- vim.o.guicursor = "i:block-blinkon500-blinkoff500" -- Cursor configuration
 
 -- Transparent background
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 
 -- Indent config
 vim.o.shiftwidth = 4
