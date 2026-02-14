@@ -3,7 +3,7 @@ window#waybar {
     font-size: 13.5pt;
     /* background-color: @bg; */
     background-color: rgba(30, 32, 33, 0.8);
-    border-bottom: 1px solid #1e1e1d;
+    /* border-bottom: 1px solid #1e1e1d; */
     /* border-radius: 5pt; */
     color: @fg;
 }
