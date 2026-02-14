@@ -1,6 +1,6 @@
 window#waybar {
     font-family: sans-serif;
-    font-size: 13pt;
+    font-size: 13.5pt;
     /* background-color: @bg; */
     background-color: rgba(30, 32, 33, 0.8);
     /* border: 1px solid lighter(@bright-bg); */
@@ -33,7 +33,7 @@ window#waybar {
 }
 
 #pulseaudio {
-    font-size: 14.5pt;
+    font-size: 15pt;
     margin: 0 13pt 0 9pt;
 }
 
@@ -46,9 +46,9 @@ window#waybar {
 #battery.critical { color: @red; }
 
 #tray {
-    margin-left: 3pt;
-    margin-top: 3pt;
-    margin-bottom: 3pt;
+    margin-left: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
     background-color: lighter(@bright-bg);
     border-radius: 5pt;
     padding: 0 5pt 0 5pt;
