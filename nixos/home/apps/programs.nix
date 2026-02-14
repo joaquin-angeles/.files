@@ -2,11 +2,17 @@
 
 {
     imports = [
-        "${config.home.homeDirectory}/.files/alacritty/package.nix"
-        "${config.home.homeDirectory}/.files/waybar/package.nix"
-        "${config.home.homeDirectory}/.files/yazi/package.nix"
-        "${config.home.homeDirectory}/.files/zellij/package.nix"
-        "${config.home.homeDirectory}/.files/zsh/package.nix"
+        ./programs/btop.nix              # System monitor
+        ./programs/neovim.nix            # Text editor
+        ./programs/lutris.nix            # Game launcher
+        ./programs/rofi.nix              # App launcher
+
+        # Full configurations:
+        ~/.files/alacritty/package.nix
+        ~/.files/waybar/package.nix
+        ~/.files/yazi/package.nix
+        ~/.files/zellij/package.nix
+        ~/.files/zsh/package.nix
     ];
 
     programs.home-manager.enable = true; # Home Manager

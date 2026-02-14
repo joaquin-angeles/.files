@@ -1,29 +1,28 @@
 { config, pkgs, ... }:
 
 {
-# Boot options
+    # Boot options
     boot.kernelModules = [ "zram" ];
     boot.loader = {
         efi.canTouchEfiVariables = true;
         systemd-boot.enable = true;
     };
 
-# Display Manager
+    # Display Manager
     services.displayManager.ly.enable = true;
 
-# Enable XDG portals
+    # Enable XDG portals
     xdg.portal = {
         enable = true;
         xdgOpenUsePortal = true;
         extraPortals = with pkgs; [
-            xdg-desktop-portal-hyprland
-                xdg-desktop-portal-gtk
+            xdg-desktop-portal-gtk
         ];
 
         config = {
             common.default = [ "gtk" ];
 
-# Hyprland desktop portal configuration
+            # Hyprland desktop portal configuration
             hyprland = { 
                 preferred = [ "hyprland" "gtk" ];
                 "org.freedesktop.portal.FileChooser" = [ "gtk" ];
@@ -32,7 +31,7 @@
     };
     environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
 
-# Nix package manager
+    # Nix package manager
     nix.optimise.automatic = true;
     nix.settings = {
         auto-optimise-store = true;
@@ -40,10 +39,10 @@
     };
     nixpkgs.config.allowUnfree = true;
 
-# System version
+    # System version
     system.stateVersion = "25.05";
 
-# Timezone
+    # Timezone
     time.timeZone = "Asia/Manila";
     i18n = {
         defaultLocale = "en_US.UTF-8";
@@ -53,11 +52,11 @@
         };
     };
 
-# sudo-rs
+    # sudo-rs
     security.sudo.enable = false;
     security.sudo-rs.enable = true;
 
-# User configuration
+    # User configuration
     users.users.joaquin = {
         extraGroups = [ "wheel" "input" ];
         isNormalUser = true;

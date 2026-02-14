@@ -19,6 +19,7 @@
         hyprshot
         mako
         nautilus 
+        networkmanagerapplet
         ripgrep
         stow
         sunsetr
