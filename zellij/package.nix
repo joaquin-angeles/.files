@@ -3,7 +3,6 @@
 {
     # Modules
     imports = [
-        ./config/binds.nix
         ./config/settings.nix
     ];
 
