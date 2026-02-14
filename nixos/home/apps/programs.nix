@@ -2,15 +2,11 @@
 
 {
     imports = [
-        ./programs/alacritty/package.nix # Terminal
-        ./programs/btop.nix              # System monitor
-        ./programs/neovim.nix            # Text editor
-        ./programs/lutris.nix            # Game launcher
-        ./programs/rofi.nix              # App launcher
-        ./programs/waybar/package.nix    # Hyprland panel
-        ./programs/yazi/package.nix      # Terminal file manager
-        ./programs/zellij/package.nix    # Terminal multiplexer
-        ./programs/zsh/package.nix       # Shell configuration
+        "${config.home.homeDirectory}/.files/alacritty/package.nix"
+        "${config.home.homeDirectory}/.files/waybar/package.nix"
+        "${config.home.homeDirectory}/.files/yazi/package.nix"
+        "${config.home.homeDirectory}/.files/zellij/package.nix"
+        "${config.home.homeDirectory}/.files/zsh/package.nix"
     ];
 
     programs.home-manager.enable = true; # Home Manager

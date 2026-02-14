@@ -11,10 +11,12 @@
             url = "github:nix-community/home-manager/release-25.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # Wayland compositor
     };
 
     # Main integrations
-    outputs = inputs@{ self, nixpkgs, nix-flatpak, unstable, home-manager, ... }: {
+    outputs = inputs@{ self, nixpkgs, nix-flatpak, unstable, home-manager, hyprland, ... }: {
         # Imported configurations
         nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
@@ -30,6 +32,9 @@
 
                 # Automated hardware config
                 /etc/nixos/hardware-configuration.nix
+
+                # Hyprland
+                hyprland.nixosModules.default
 
                 # User config
                 home-manager.nixosModules.home-manager

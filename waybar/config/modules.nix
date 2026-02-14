@@ -84,14 +84,14 @@
 
         tray = {
             icon-size = 18;
-            spacing = 10;
+            spacing = 9;
+            reverse-direction = true;
         };
 
         "group/sys-info" = {
             orientation = "horizontal";
             modules = [
                 "tray"
-                "network"
                 "pulseaudio"
                 "battery"
             ];
