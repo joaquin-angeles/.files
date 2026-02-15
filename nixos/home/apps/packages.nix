@@ -13,10 +13,10 @@
     home.packages = with pkgs; [
         cliphist
         file-roller
+        unstable.grimblast
         hypridle
         hyprlock
         hyprpicker
-        hyprshot
         mako
         nautilus 
         networkmanagerapplet
