@@ -1,6 +1,6 @@
 window#waybar {
     font-family: sans-serif;
-    font-size: 13.5pt;
+    font-size: 12pt;
     /* background-color: @bg; */
     background-color: rgba(30, 32, 33, 0.8);
     /* border-bottom: 1px solid #1e1e1d; */
@@ -33,7 +33,7 @@ window#waybar {
 }
 
 #pulseaudio {
-    font-size: 15pt;
+    font-size: 13.5pt;
     margin: 0 13pt 0 9pt;
 }
 
@@ -59,14 +59,8 @@ window#waybar {
     margin: 0 0 0 3pt;
 }
 
-#workspaces {
-    /* background-color: rgba(47, 50, 52, 0.8); */
-    margin: 0pt 3pt 0pt 0pt;
-    border-radius: 5pt;
-}
-
 #workspaces button {
-    padding: 0 8pt;
+    padding: 0 7pt;
     color: #4b5153;
 }
 
