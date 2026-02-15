@@ -1,0 +1,35 @@
+{ pkgs, ... }:
+
+{
+    # Better cat
+    programs.bat = {
+        enable = true;
+        config.theme = "gruvbox-dark";
+        config.style = "numbers";
+    };
+
+    # Better cd
+    programs.zoxide = {
+        enable = true;
+        enableZshIntegration = true;
+    };
+
+    # eza
+    programs.eza = {
+        enable = true;
+        enableZshIntegration = true;
+        icons = "always"; # Always show icons
+        extraOptions = [
+            "--git"
+            "--git-ignore"
+            "--group-directories-first"
+            "--header"
+        ];
+    };
+
+    # Grep
+    programs.ripgrep = {
+        enable = true;
+        arguments = [ "--hidden" "--glob" "!.git/*" ];
+    };
+}

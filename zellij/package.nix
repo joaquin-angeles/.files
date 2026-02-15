@@ -1,7 +1,7 @@
 { ... }:
 
 {
-    # Modules
+    # Configuration
     imports = [
         ./config/settings.nix
     ];
