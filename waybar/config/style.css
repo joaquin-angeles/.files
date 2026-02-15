@@ -23,9 +23,9 @@ window#waybar {
 
 #custom-power {
     background-color: rgba(47, 50, 52, 0.8);
-    margin: 3pt 8pt 3pt 5pt;
-    padding: 0 8pt 0 7pt;
-    border-radius: 5pt;
+    margin: 3pt 5pt 3pt 5pt;
+    padding: 0 7.25pt 0 7pt;
+    border-radius: 24px;
 }
 
 #network {
@@ -34,11 +34,11 @@ window#waybar {
 
 #pulseaudio {
     font-size: 13.5pt;
-    margin: 0 13pt 0 9pt;
+    margin: 0 9pt 0 9pt;
 }
 
 #battery {
-    padding: 0 9pt 0 0;
+    padding: 0 8pt 0 4pt;
 }
 
 #battery.low { color: @yellow; }
@@ -56,7 +56,8 @@ window#waybar {
 }
 
 #window {
-    margin: 0 0 0 3pt;
+    margin: 0 0 0 8pt;
+    /* color: darker(@fg); */
 }
 
 #workspaces button {

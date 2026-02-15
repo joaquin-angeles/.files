@@ -4,11 +4,11 @@
     programs.waybar.settings.mainBar = {
         # Module definitions
         "hyprland/window" = {
-            max-length = 40;
+            max-length = 64;
             separate-outputs = false;
-            format = "–   󰣆   {class}";
+            format = "󰣆   {title}";
             rewrite = {
-                "(.*) " = "–      Empty";
+                "(.*) " = "   Empty";
             };
         };
 
@@ -18,10 +18,10 @@
                 # active = "";
                 # default = "";
                 "1" = "";
-                "2" = "";
-                "3" = "";
-                "4" = "";
-                "5" = "󱤙";
+                "2" = "";
+                "3" = "";
+                "4" = "";
+                "5" = "";
                 "6" = "";
                 "7" = "7";
                 "8" = "8";
