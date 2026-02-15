@@ -13,7 +13,7 @@
     home.packages = with pkgs; [
         cliphist
         file-roller
-        unstable.grimblast
+        grim
         hypridle
         hyprlock
         hyprpicker
@@ -21,6 +21,7 @@
         nautilus 
         networkmanagerapplet
         ripgrep
+        slurp
         stow
         sunsetr
         swayosd

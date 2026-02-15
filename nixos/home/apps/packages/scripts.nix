@@ -1,11 +1,11 @@
-{ config, ... }:
+{ config, lib, ... }:
 
-{
-    home.file = { 
-        ".local/bin/bluelight.sh".source = "${config.home.homeDirectory}/.files/scripts/bluelight.sh";
-        ".local/bin/cheatsheet.sh".source = "${config.home.homeDirectory}/.files/scripts/cheatsheet.sh";
-        ".local/bin/cliphist.sh".source = "${config.home.homeDirectory}/.files/scripts/cliphist.sh";
-        ".local/bin/power-menu.sh".source = "${config.home.homeDirectory}/.files/scripts/power-menu.sh";
-        ".local/bin/power-saver.sh".source = "${config.home.homeDirectory}/.files/scripts/power-saver.sh";
-    };
+let
+    scriptsDir = "${config.home.homeDirectory}/.files/scripts";
+    scriptEntries = lib.mapAttrs' (name: _: 
+        lib.nameValuePair ".local/bin/${name}" { source = "${scriptsDir}/${name}"; }
+    ) (builtins.readDir scriptsDir);
+in
+    {
+    home.file = scriptEntries;
 }

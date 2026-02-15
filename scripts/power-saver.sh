@@ -26,14 +26,18 @@ if [ "$new_state" != "$current_state" ]; then
     current_state="$new_state"
     if [ "$new_state" = "discharging" ]; then
         brightnessctl --device="$KBD_DEVICE" set 0
+        brightnessctl set 40%
         hyprctl keyword monitor $MONITOR,1920x1080@60,auto,1.0
         hyprctl keyword decoration:blur:enabled 0
-        hyprctl keyword decoration:shadow:enabled 0
+        # hyprctl keyword animations:enabled 0
+        # hyprctl keyword decoration:shadow:enabled 0
     else
         brightnessctl --device="$KBD_DEVICE" set 100%
+        brightnessctl set 50%
         hyprctl keyword monitor $MONITOR,1920x1080@120,auto,1.0
         hyprctl keyword decoration:blur:enabled 1
-        hyprctl keyword decoration:shadow:enabled 1
+        # hyprctl keyword animations:enabled 0
+        # hyprctl keyword decoration:shadow:enabled 1
     fi
 fi
 done &
