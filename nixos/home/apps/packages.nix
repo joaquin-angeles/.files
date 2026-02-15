@@ -27,6 +27,7 @@
         swayosd
         unstable.impala
         waybar
+        wayfreeze
         wbg
         zellij
     ];
