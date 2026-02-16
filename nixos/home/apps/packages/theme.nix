@@ -1,6 +1,9 @@
 { inputs, config, pkgs,  ... }:
 
 {
+    imports = [
+        ./icons.nix
+    ];
 
     # Theme packages
     home.packages = with pkgs; [
@@ -36,11 +39,6 @@
         theme = {
             name = "Gruvbox-Dark";
             package = pkgs.gruvbox-gtk-theme;
-        };
-
-        iconTheme = {
-            name = "Gruvbox-Plus-Dark";
-            package = pkgs.gruvbox-plus-icons;
         };
 
         # Enable dark theme
