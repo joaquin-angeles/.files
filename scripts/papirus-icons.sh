@@ -12,16 +12,20 @@ mkdir -p "$HOME/.bin"
 
 # Clone or update Papirus icon theme repository
 if [ -d "$PAPIRUS_REPO" ]; then
-    echo "Updating Papirus icon theme..."
-    cd "$PAPIRUS_REPO" && git pull
+    echo "The Papirus icon theme is already cloned"
 else
     echo "Cloning Papirus icon theme..."
     git clone --depth=1 https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git "$PAPIRUS_REPO"
+    rm -rf "$PAPIRUS_REPO"
 fi
 
 # Copy Papirus themes to icons directory
-echo "Installing Papirus icon themes..."
-cp -rf "$PAPIRUS_REPO"/Papirus* "$ICONS_DIR/"
+if [ -d "$ICONS_DIR/Papirus" ]; then
+    echo "The Papirus icon theme is already installed"
+else
+    echo "Installing Papirus icon themes..."
+    cp -rf "$PAPIRUS_REPO"/Papirus* "$ICONS_DIR/"
+fi
 
 # Clone or update Gruvbox Papirus Folders repository
 if [ -d "$GRUVBOX_REPO" ]; then
