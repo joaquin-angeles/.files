@@ -8,11 +8,11 @@
         ./programs/rofi.nix              # App launcher
 
         # Full configurations:
-        ~/.files/alacritty/package.nix
-        ~/.files/waybar/package.nix
-        ~/.files/yazi/package.nix
-        ~/.files/zellij/package.nix
-        ~/.files/zsh/package.nix
+        /home/joaquin/.files/alacritty/package.nix
+        /home/joaquin/.files/waybar/package.nix
+        /home/joaquin/.files/yazi/package.nix
+        /home/joaquin/.files/zellij/package.nix
+        /home/joaquin/.files/zsh/package.nix
     ];
 
     programs.home-manager.enable = true; # Home Manager
