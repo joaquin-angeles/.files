@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
     systemd.user.services.gruvbox-papirus = {
