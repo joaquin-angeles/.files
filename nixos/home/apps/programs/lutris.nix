@@ -7,7 +7,7 @@
         protonPackages = with pkgs; [ unstable.proton-ge-bin ]; # Windows games
 
         # Patches
-        package = pkgs.lutris.override {
+        package = pkgs.unstable.lutris.override {
             extraPkgs =  with pkgs; [
                 # Tray support
                 libayatana-appindicator

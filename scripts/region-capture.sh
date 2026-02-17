@@ -9,4 +9,4 @@ grim -g "$(slurp)" - | wl-copy
 
 # Unfreeze and notify
 pkill wayfreeze
-notify-send "Screenshot saved" "Screenshot copied to clipboard"
+notify-send "Screenshot saved" "Image copied to clipboard"

@@ -19,7 +19,6 @@
         hyprpicker
         mako
         nautilus 
-        networkmanagerapplet
         ripgrep
         slurp
         stow

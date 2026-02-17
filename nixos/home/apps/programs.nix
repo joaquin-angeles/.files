@@ -4,7 +4,7 @@
     imports = [
         ./programs/btop.nix              # System monitor
         ./programs/neovim.nix            # Text editor
-        ./programs/lutris.nix            # Game launcher
+        # ./programs/lutris.nix            # Game launcher
         ./programs/rofi.nix              # App launcher
 
         # Full configurations:

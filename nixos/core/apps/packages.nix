@@ -12,6 +12,7 @@
         brightnessctl
         gtk3
         gtk4
+        networkmanagerapplet
         polkit_gnome
         usbutils
         wl-clipboard

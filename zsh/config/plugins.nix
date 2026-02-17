@@ -5,14 +5,10 @@
         syntaxHighlighting.enable = true; # Colorize your shell
         autosuggestion.enable = true;     # Autosuggestions
         enableCompletion = true;          # Auto-completions
-
-        # Fast prompt
-        plugins = [
-            {
-                name = "powerlevel10k";
-                src  = pkgs.zsh-powerlevel10k;
-                file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-            }
-        ];
     };
+
+    # Extra plugins
+    home.packages = with pkgs; [
+        zsh-powerlevel10k # Fast prompt
+    ];
 }
