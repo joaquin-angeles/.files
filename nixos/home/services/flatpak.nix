@@ -10,7 +10,7 @@
             { name = "flathub-beta"; location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo"; } # Unstable branch
         ];
 
-        uninstallUnmanaged = false; # True declarative
+        uninstallUnmanaged = true; # True declarative
         update.onActivation = false; # Update every rebuild
 
         # Scheduled updating
@@ -75,6 +75,14 @@
             Context.filesystems = [
                 "home:ro"
             ];
+        };
+
+        "org.vinegarhq.Sober" = {
+            Environment = {
+                "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
+                "__NV_PRIME_RENDER_OFFLOAD" = "1";
+                "__VK_LAYER_NV_optimus" = "NVIDIA_only";
+            };
         };
     };
 }
