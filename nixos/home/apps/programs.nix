@@ -9,6 +9,7 @@
 
         # Full configurations:
         ./config/alacritty/package.nix
+        ./config/waybar/package.nix
         ./config/yazi/package.nix
         ./config/zellij/package.nix
         ./config/zsh/package.nix
