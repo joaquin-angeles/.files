@@ -68,3 +68,8 @@ window#waybar {
 #workspaces button.active {
     color: @fg;
 }
+
+#workspaces button.hover {
+    background-color: transparent;
+    color: darker(@fg);
+}
