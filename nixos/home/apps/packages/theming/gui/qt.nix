@@ -21,4 +21,20 @@
             ExecStart = "${pkgs.bash}/bin/bash ${config.home.homeDirectory}/.files/scripts/gruvbox-kvantum.sh";
         };
     };
+
+    systemd.user.timers.gruvbox-kvantum = {
+        Unit = {
+            Description = "Update Gruvbox Kvantum theme every Saturday";
+        };
+
+        Timer = {
+            OnCalendar = "Sat *-*-* 10:00:00";  # Every Saturday at 10 AM
+            Persistent = true;                   # Run missed timers on next boot
+            RandomizedDelaySec = "30min";       # Random delay up to 30 minutes
+        };
+
+        Install = {
+            WantedBy = [ "timers.target" ];
+        };
+    };
 }

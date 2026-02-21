@@ -3,7 +3,7 @@
 set -e  # Exit on error
 
 ICONS_DIR="$HOME/.local/share/icons"
-PAPIRUS_REPO="/tmp/papirus-icon-theme"
+PAPIRUS_REPO="~/.local/share/papirus-icon-theme"
 GRUVBOX_REPO="$HOME/.local/share/papirus-folders"
 
 # Create directories if they don't exist
@@ -12,7 +12,8 @@ mkdir -p "$HOME/.bin"
 
 # Clone or update Papirus icon theme repository
 if [ -d "$PAPIRUS_REPO" ]; then
-    echo "The Papirus icon theme is already installed."
+    echo "Updating Papirus icon theme..."
+    cd $PAPIRUS_REPO && git pull
 else
     echo "Cloning Papirus icon theme..."
     git clone --depth=1 https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git "$PAPIRUS_REPO"
@@ -20,7 +21,9 @@ fi
 
 # Copy Papirus themes to icons directory
 if [ -d "$ICONS_DIR/Papirus" ]; then
-    echo "The Papirus icon theme is already installed"
+    echo "Updating icon themes..."
+    rm -rf "$ICONS_DIR/Papirus*"
+    cp -rf "$PAPIRUS_REPO/Papirus*" "$ICONS_DIR/"
 else
     echo "Installing Papirus icon themes..."
     cp -rf "$PAPIRUS_REPO/Papirus*" "$ICONS_DIR/"
