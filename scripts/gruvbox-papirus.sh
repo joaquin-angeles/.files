@@ -3,7 +3,7 @@
 set -e  # Exit on error
 
 ICONS_DIR="$HOME/.local/share/icons"
-PAPIRUS_REPO="~/.local/share/papirus-icon-theme"
+PAPIRUS_REPO="$HOME/.local/share/papirus-icon-theme"
 GRUVBOX_REPO="$HOME/.local/share/papirus-folders"
 
 # Create directories if they don't exist

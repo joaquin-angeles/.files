@@ -3,7 +3,7 @@
 set -e  # Exit on error
 
 KVANTUM_DIR="$HOME/.config/Kvantum"
-GRUVBOX_REPO="~/.local/share/gruvbox-kvantum"
+GRUVBOX_REPO="$HOME/.local/share/gruvbox-kvantum"
 THEME_NAME="Gruvbox-Dark-Blue"
 
 # Create Kvantum config directory if it doesn't exist
