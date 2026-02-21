@@ -8,7 +8,6 @@ GRUVBOX_REPO="$HOME/.local/share/papirus-folders"
 
 # Create directories if they don't exist
 mkdir -p "$ICONS_DIR"
-mkdir -p "$HOME/.bin"
 
 # Clone or update Papirus icon theme repository
 if [ -d "$PAPIRUS_REPO" ]; then
