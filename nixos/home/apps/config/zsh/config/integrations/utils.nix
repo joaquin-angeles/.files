@@ -4,7 +4,7 @@
     # Better cat
     programs.bat = {
         enable = true;
-        config.theme = "gruvbox-dark";
+        config.theme = "ansi";
         config.style = "numbers";
     };
 
