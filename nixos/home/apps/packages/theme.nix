@@ -1,10 +1,10 @@
-{ inputs, config, pkgs,  ... }:
+{ config, pkgs,  ... }:
 
 {
     imports = [
-        ../config/gui/gtk.nix
-        ../config/gui/icons.nix
-        ../config/gui/qt.nix
+        ./theming/gui/gtk.nix
+        ./theming/gui/icons.nix
+        ./theming/gui/qt.nix
     ];
 
     # Theme packages
@@ -29,10 +29,10 @@
 
     # Vencord theme
     home.file = {
-        # ".config/vesktop/themes/midnight-gruvbox.css".source "${config.home.homeDirectory}/.files/vencord/themes/midnight-gruvbox.css"; 
-        ".var/app/dev.vencord.Vesktop/config/vesktop/themes/midnight-gruvbox.css".source = "${config.home.homeDirectory}/.files/vencord/themes/midnight-gruvbox.css";
+        # ".config/vesktop/themes/midnight-gruvbox.css".source "./vencord/themes/midnight-gruvbox.css"; 
+        ".var/app/dev.vencord.Vesktop/config/vesktop/themes/midnight-gruvbox.css".source = "./theming/vencord/midnight-gruvbox.css";
     };
 
     # Wallpapers
-    home.file."Pictures/Wallpapers".source = "${config.home.homeDirectory}/.files/backgrounds";
+    home.file."Pictures/Wallpapers".source = "./theming/backgrounds";
 }
