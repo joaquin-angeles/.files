@@ -1,4 +1,4 @@
-{ pkgs,  ... }:
+{ config, pkgs,  ... }:
 
 {
     # Qt theming
