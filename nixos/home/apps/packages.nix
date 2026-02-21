@@ -24,7 +24,6 @@
         stow
         sunsetr
         swayosd
-        unstable.impala
         waybar
         wayfreeze
         wbg
