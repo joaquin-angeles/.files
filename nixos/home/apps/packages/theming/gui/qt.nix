@@ -4,10 +4,8 @@
     # Qt theming
     qt = {
         enable = true;
-        platformTheme.name = "qtct";
-        style = {
-            name = "kvantum-dark";
-        };
+        platformTheme.name = "kvantum";
+        style.name = "kvantum-dark";
     };
 
 
