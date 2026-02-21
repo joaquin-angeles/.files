@@ -21,12 +21,12 @@
             specialArgs = { inherit inputs; };
             modules = [
                 # System configuration
-                ./core.nix
+                ./host.nix
 
                 # Program configs
-                ./core/apps.nix
-                ./core/hardware.nix
-                ./core/services.nix
+                ./host/apps.nix
+                ./host/hardware.nix
+                ./host/services.nix
 
                 # Automated hardware config
                 /etc/nixos/hardware-configuration.nix

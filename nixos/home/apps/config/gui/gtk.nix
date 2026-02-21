@@ -1,39 +1,6 @@
-{ inputs, config, pkgs,  ... }:
+{ config, pkgs,  ... }:
 
 {
-    imports = [
-        ../config/gui/gtk.nix
-        ../config/gui/icons.nix
-        ../config/gui/qt.nix
-    ];
-
-    # Theme packages
-    home.packages = with pkgs; [
-        adw-gtk3
-        kdePackages.qt6ct
-        kdePackages.qtstyleplugin-kvantum
-        libnotify
-        libsForQt5.qt5ct
-        libsForQt5.qtstyleplugin-kvantum
-        nwg-look
-    ];
-     
-    # Cursor theming
-    home.pointerCursor = {
-        gtk.enable = true;
-        x11.enable = true; # XWayland cursor theming
-        package = pkgs.bibata-cursors; # Cursor package
-        name = "Bibata-Modern-Ice"; # Cursor theme
-        size = 24;
-    };
-
-    # Vencord theme
-    # home.file.".config/vesktop/themes/midnight-gruvbox.css".source "${config.home.homeDirectory}/.files/vencord/themes/midnight-gruvbox.css"; # Native theming
-    home.file.".var/app/dev.vencord.Vesktop/config/vesktop/themes/midnight-gruvbox.css".source = "${config.home.homeDirectory}/.files/vencord/themes/midnight-gruvbox.css";
-
-    # Wallpapers
-    home.file."Pictures/Wallpapers".source = "${config.home.homeDirectory}/.files/backgrounds";
-
     # GTK theming
     gtk = {
         enable = true;
@@ -54,15 +21,6 @@
             "org/gnome/desktop/interface" = {
                 "color-scheme" = "prefer-dark";
             };
-        };
-    };
-
-    # Qt theming
-    qt = {
-        enable = true;
-        platformTheme.name = "qtct";
-        style = {
-            name = "kvantum-dark";
         };
     };
 

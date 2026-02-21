@@ -17,6 +17,7 @@
         hypridle
         hyprlock
         hyprpicker
+        lazygit
         mako
         nautilus 
         ripgrep
