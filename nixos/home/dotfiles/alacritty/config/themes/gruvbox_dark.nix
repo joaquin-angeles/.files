@@ -1,9 +1,8 @@
 { ... }:
 
 {
-    programs.alacritty = {
-        # Define colors
-        settings.colors = {
+    programs.alacritty.settings = {
+        colors = {
             primary = {
                 background = "#1d2021";
                 foreground = "#d4be98";

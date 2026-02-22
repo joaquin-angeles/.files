@@ -2,13 +2,6 @@
 
 {
     imports = [
-        # Full configurations:
-        ./programs/alacritty/package.nix
-        ./programs/waybar/package.nix
-        ./programs/yazi/package.nix
-        ./programs/zellij/package.nix
-        ./programs/zsh/package.nix
-
         ./programs/fastfetch.nix
         ./programs/btop.nix              # System monitor
         ./programs/neovim.nix            # Text editor
