@@ -21,11 +21,11 @@ fi
 # Copy Papirus themes to icons directory
 if [ -d "$ICONS_DIR/Papirus" ]; then
     echo "Updating icon themes..."
-    rm -rf "$ICONS_DIR/Papirus*"
-    cp -rf "$PAPIRUS_REPO/Papirus*" "$ICONS_DIR/"
+    rm -rf "$ICONS_DIR"/Papirus*
+    cp -rf "$PAPIRUS_REPO"/Papirus* "$ICONS_DIR/"
 else
     echo "Installing Papirus icon themes..."
-    cp -rf "$PAPIRUS_REPO/Papirus*" "$ICONS_DIR/"
+    cp -rf "$PAPIRUS_REPO"/Papirus* "$ICONS_DIR/"
 fi
 
 # Clone or update Gruvbox Papirus Folders repository
@@ -39,10 +39,10 @@ fi
 
 # Copy Gruvbox folder icons to Papirus themes
 echo "Installing Gruvbox folder icons..."
-cp -r "$GRUVBOX_REPO/src/"* "$ICONS_DIR/Papirus/"
+cp -r "$GRUVBOX_REPO"/src/* "$ICONS_DIR"/Papirus/
 
 # Apply color scheme using the gruvbox-papirus-folders script
 echo "Applying Gruvbox Material Yellow..."
-"$GRUVBOX_REPO/papirus-folders" -C gruvbox-material-yellow --theme Papirus-Dark
+"$GRUVBOX_REPO"/papirus-folders -C gruvbox-material-yellow --theme Papirus-Dark
 
 echo "Gruvbox Papirus Folders setup complete!"
