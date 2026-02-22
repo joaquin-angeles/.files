@@ -6,7 +6,6 @@
         ./packages/fonts.nix
         ./packages/media.nix
         ./packages/scripts.nix
-        ./packages/theme.nix
     ];
 
     # User packages
