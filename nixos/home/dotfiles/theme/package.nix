@@ -2,9 +2,9 @@
 
 {
     imports = [
-        ./theming/gui/gtk.nix
-        ./theming/gui/icons.nix
-        ./theming/gui/qt.nix
+        ./gui/icons.nix
+        ./gui/gtk.nix
+        ./gui/qt.nix
     ];
 
     # Theme packages
@@ -29,8 +29,8 @@
 
     # Vencord theme
     home.file = {
-        # ".config/vesktop/themes/midnight-gruvbox.css".source "./theming/vencord/midnight-gruvbox.css"; 
-        ".var/app/dev.vencord.Vesktop/config/vesktop/themes/midnight-gruvbox.css".source = ./theming/vencord/midnight-gruvbox.css;
+        # ".config/vesktop/themes/midnight-gruvbox.css".source "./vencord/midnight-gruvbox.css"; 
+        ".var/app/dev.vencord.Vesktop/config/vesktop/themes/midnight-gruvbox.css".source = ./vencord/midnight-gruvbox.css;
     };
 
     # Wallpapers
