@@ -1,55 +1,58 @@
-# Joaquin's Gruvvy NixOS dotfiles
-(Run Super, shift + SPC to open the cheatsheet)
+# Joaquin's Nix Dotfiles
 
-A *modern, extensible* **Hyprland/Wayland** configuration for NixOS that utilizes the **Gruvbox** colorscheme.
+> Press `Super + Shift + Space` to open the cheatsheet.
 
-These configurations work to deliver a sleek, performant desktop environment built entirely with Nix flakes and Home Manager—fully declarative, reproducible, and easy to customize.
+A modern, extensible **Hyprland/Wayland** configuration for Linux powered by the **Nix** package manager and the **Gruvbox** colorscheme. Fully declarative, reproducible, and easy to customize.
 
-# Features
-- Lightweight & Performant
+---
 
-Hyprland is tuned to near-maximum efficiency, ensuring the environment stays out of the way of demanding workloads.
+## Features
 
-- Near-Complete Daily Driver
+**Lightweight & Performant** — Hyprland is tuned for near-maximum efficiency, staying out of the way of demanding workloads.
 
-Includes everything needed for a functional desktop without bloat:
-  - Minimal yet powerful Waybar panel
-  - Fast app launcher (Rofi/Wofi)
-  - Essential utilities
-  - Default browser and core apps
+**Near-Complete Daily Driver** — Everything you need for a functional desktop without the bloat: a minimal yet powerful Waybar panel, a fast app launcher (Rofi), essential utilities, and sensible app defaults.
 
-- Outstanding Developer Experience
+**Outstanding Developer Experience** — A fully configured dev environment via Home Manager, including Neovim with NvChad, a batteries-included Zsh setup, and the Zellij terminal multiplexer.
 
-A fully configured dev setup via Home Manager:
-  - Neovim with sensible defaults (NvChad)
-  - Batteries included shell (Zsh) configuration
-  - Zellij terminal multiplexer
-  - And more productivity tools out of the box
+**Coherent & Declarative** — Almost everything is managed in pure Nix via Home Manager. No scattered config files, no imperative scripts.
 
-- Coherent & Declarative Configuration
+---
 
-Almost everything is managed in pure Nix via Home Manager—no scattered config files in multiple languages.
+## Installation
 
-# Installation
+> Requires NixOS with flakes enabled.
+```bash
+git clone https://github.com/joaquin-angeles/.files.git && cd .files
+sudo nixos-rebuild switch --flake --impure ./nixos#nixos-btw
+```
 
-Clone the repository: `git clone https://github.com/joaquin-angeles/.files.git && cd .files`
+The flake also exposes a standalone `homeConfigurations.joaquin` output, so it can be used on any Linux system with Nix installed (not just NixOS):
+```bash
+home-manager switch --flake .#joaquin
+```
 
-Build and switch to the configuration: `sudo nixos-rebuild switch --flake --impure ./nixos#nixos-btw`
+---
 
-# Customization
+## Customization
 
-All system and user configurations are located in flake.nix, system/core, and system/home directories. Extending or overriding modules is straightforward thanks to Nix's declarative nature.
+All configuration lives under three entrypoints:
 
-# Preview Gallery
+| Path | Purpose |
+|---|---|
+| `nixos/flake.nix` | Flake inputs, outputs, and top-level wiring |
+| `nixos/host/` | System-level config (hardware, services, apps) |
+| `nixos/home/` | User environment via Home Manager |
 
-### Tiled Layout
-![Tiled windows](./previews/tiled.png)
+Extending or overriding modules is straightforward thanks to Nix's declarative nature.
 
-### Wallpaper & Aesthetic
-![Background](./previews/background.png)
+---
 
-### App Launcher
-![Rofi launcher](./previews/rofi.png)
+## Preview
 
-### GUI applications
-![GUI](./previews/gui.png)
+| Tiled Layout | Wallpaper & Aesthetic |
+|---|---|
+| ![Tiled windows](./previews/tiled.png) | ![Background](./previews/background.png) |
+
+| App Launcher | GUI Applications |
+|---|---|
+| ![Rofi launcher](./previews/rofi.png) | ![GUI](./previews/gui.png) |

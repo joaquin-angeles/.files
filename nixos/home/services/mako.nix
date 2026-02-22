@@ -13,7 +13,7 @@
             default-timeout = 3000;
             text-color = "#d4be98";
             background-color = "#1d2021";
-            border-color = "#2d3031";
+            border-color = "#303334";
             border-radius = 5;
             font = "sans-serif 14";
         };

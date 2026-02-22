@@ -20,7 +20,7 @@
             };
 
             bright = {
-                black   = "#4b5153";
+                black   = "#404344";
                 red     = "#ff837a";
                 green   = "#d3e37e";
                 yellow  = "#ffcf6c";
