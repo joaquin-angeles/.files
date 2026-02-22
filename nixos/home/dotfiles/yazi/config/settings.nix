@@ -14,5 +14,10 @@
             title_format = "joaquin@nixos-btw: {cwd}";
             show_symlink = true;
         };
+
+        # Image previewer
+        preview = {
+            image_protocol = "iterm2";
+        };
     };
 }

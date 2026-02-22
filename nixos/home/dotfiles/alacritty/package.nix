@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
     imports = [
@@ -6,5 +6,9 @@
         ./config/settings.nix
     ];
 
-    programs.alacritty.enable = true; # Install
+    programs.alacritty = {
+        # Install
+        enable = true;
+        package = pkgs.unstable.alacritty-graphics;
+    };
 }

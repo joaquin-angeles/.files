@@ -16,7 +16,7 @@
         # Previewers
         extraPackages = with pkgs; [
             ffmpegthumbnailer
-            ueberzugpp
+            # ueberzugpp
             file
             poppler
         ];
