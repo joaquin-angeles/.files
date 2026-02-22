@@ -6,9 +6,9 @@
         "hyprland/window" = {
             max-length = 64;
             separate-outputs = false;
-            format = "󰣆   {title}";
+            format = "󰗴  {title}";
             rewrite = {
-                "(.*) " = "   Empty";
+                "(.*) " = "  Empty";
             };
         };
 
