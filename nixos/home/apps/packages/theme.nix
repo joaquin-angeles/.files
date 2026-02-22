@@ -29,10 +29,10 @@
 
     # Vencord theme
     home.file = {
-        # ".config/vesktop/themes/midnight-gruvbox.css".source "./vencord/themes/midnight-gruvbox.css"; 
+        # ".config/vesktop/themes/midnight-gruvbox.css".source "./theming/vencord/midnight-gruvbox.css"; 
         ".var/app/dev.vencord.Vesktop/config/vesktop/themes/midnight-gruvbox.css".source = ./theming/vencord/midnight-gruvbox.css;
     };
 
     # Wallpapers
-    home.file."Pictures/Wallpapers".source = ./theming/backgrounds;
+    home.file."Pictures/Wallpapers".source = "${config.home.homeDirectory}/.files/backgrounds";
 }

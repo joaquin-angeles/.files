@@ -15,14 +15,14 @@ Hyprland is tuned to near-maximum efficiency, ensuring the environment stays out
 Includes everything needed for a functional desktop without bloat:
   - Minimal yet powerful Waybar panel
   - Fast app launcher (Rofi/Wofi)
-  - Essential utilities (network: impala/wiremix, Bluetooth: bluetui, etc.)
+  - Essential utilities
   - Default browser and core apps
 
 - Outstanding Developer Experience
 
 A fully configured dev setup via Home Manager:
-  - Neovim with sensible defaults
-  - Zsh + fzf + zoxide + useful aliases
+  - Neovim with sensible defaults (NvChad)
+  - Batteries included shell (Zsh) configuration
   - Zellij terminal multiplexer
   - And more productivity tools out of the box
 
@@ -34,7 +34,7 @@ Almost everything is managed in pure Nix via Home Manager—no scattered config 
 
 Clone the repository: `git clone https://github.com/joaquin-angeles/.files.git && cd .files`
 
-Build and switch to the configuration: `sudo nixos-rebuild switch --flake --impure ./system#nixos-btw`
+Build and switch to the configuration: `sudo nixos-rebuild switch --flake --impure ./nixos#nixos-btw`
 
 # Customization
 
