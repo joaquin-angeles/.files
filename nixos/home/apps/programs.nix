@@ -9,6 +9,5 @@
         ./programs/rofi.nix              # App launcher
     ];
 
-    programs.home-manager.enable = true; # Home Manager
     programs.nh.enable = true;           # Nix helper
 }

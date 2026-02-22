@@ -1,63 +1,91 @@
 {
-    description = "Gruvvy NixOS";
+    description = "Phanes' NixOS configuration";
 
     inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11"; # Stable nixpkgs
-        nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest"; # Flatpaks
-        unstable.url = "github:NixOS/nixpkgs/nixos-unstable"; # Rolling nixpkgs
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";           # Stable
+        nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable"; # Rolling
+        nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";  # Flatpak support
 
-        # Home manager
         home-manager = {
             url = "github:nix-community/home-manager/release-25.11";
-            inputs.nixpkgs.follows = "nixpkgs";
+            inputs.nixpkgs.follows = "nixpkgs"; # Use stable nixpkgs
         };
     };
 
-    # Main integrations
-    outputs = inputs@{ self, nixpkgs, nix-flatpak, unstable, home-manager, ... }: {
-        # Imported configurations
-        nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
+    outputs = { self, nixpkgs, nixpkgs-unstable, nix-flatpak, home-manager, ... }@inputs:
+        let
             system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-                # System configuration
-                ./host.nix
+            pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+            nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
+                inherit system;
+                specialArgs = { inherit inputs; };
+                modules = [
+                    # Host configuration
+                    ./host.nix
+                    ./host/apps.nix
+                    ./host/hardware.nix
+                    ./host/services.nix
+                    /etc/nixos/hardware-configuration.nix # Auto-generated
 
-                # Program configs
-                ./host/apps.nix
-                ./host/hardware.nix
-                ./host/services.nix
+                    home-manager.nixosModules.home-manager
 
-                # Automated hardware config
-                /etc/nixos/hardware-configuration.nix
+                    {
+                        nixpkgs = {
+                            config.allowUnfree = true; # Allow proprietary packages
+                            overlays = [
+                                # Expose unstable packages as pkgs.unstable
+                                (final: prev: {
+                                    unstable = import nixpkgs-unstable {
+                                        inherit system;
+                                        config.allowUnfree = true;
+                                    };
+                                })
+                            ];
+                        };
 
-                # User config
-                home-manager.nixosModules.home-manager
-                {
-                    nixpkgs.config.allowUnfree = true; # Allow proprietary
-                    home-manager = {
-                        backupFileExtension = "bak";            # Fallback for existing files
-                        users.joaquin = import ./home.nix;      # Main configuration file
-                        useGlobalPkgs = true;                   # Merge into packages
-                        useUserPackages = true;                 # Utilize per-user package installation
-                        extraSpecialArgs = { inherit inputs; }; # Accept inputs 
-                        sharedModules = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
-                    };
-                }
+                        home-manager = {
+                            backupFileExtension = "bak";       # Back up conflicting files
+                            useGlobalPkgs = true;              # Share system nixpkgs
+                            useUserPackages = true;            # Install to user profile
+                            extraSpecialArgs = { inherit inputs; };
+                            sharedModules = [ nix-flatpak.homeManagerModules.nix-flatpak ];
+                            users.joaquin = import ./home.nix; # User config
+                        };
+                    }
+                ];
+            };
 
-                # Package overlays
-                {
-                    nixpkgs.overlays = [
-                        (final: prev: {
-                            # Overlay the unstable input
-                            unstable = import inputs.unstable {
-                                inherit (prev.stdenv.hostPlatform) system;
-                                config = prev.config;
-                            };
-                        })
-                    ];
-                }
-            ];
+            # Home Manager configuration
+            homeConfigurations.joaquin = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                extraSpecialArgs = { inherit inputs; };
+                modules = [
+                    ./home.nix
+
+                    nix-flatpak.homeManagerModules.nix-flatpak
+                    {
+                        nixpkgs = {
+                            config.allowUnfree = true;
+                            overlays = [
+                                # Same unstable overlay as NixOS config
+                                (final: prev: {
+                                    unstable = import nixpkgs-unstable {
+                                        inherit system;
+                                        config.allowUnfree = true;
+                                    };
+                                })
+                            ];
+                        };
+
+                        # Required for standalone mode
+                        home = {
+                            username = "joaquin";
+                            homeDirectory = "/home/joaquin";
+                        };
+                    }
+                ];
+            };
         };
-    };
 }

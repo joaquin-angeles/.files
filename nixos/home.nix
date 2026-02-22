@@ -1,9 +1,13 @@
 { ... }:
 
 {
-    # User configuration
-    home.username = "joaquin";
-    home.homeDirectory = "/home/joaquin";
+    imports = [
+        ./home/apps.nix
+        ./home/dotfiles.nix
+        ./home/environment.nix
+        ./home/services.nix
+    ];
+
     home.stateVersion = "25.05";
 
     # System correction
@@ -17,17 +21,6 @@
             TimeoutStartSec = "15min";  # Increase from default 5min
         };
     };
-
-    # Modules
-    imports = [
-        # Configurations
-        ./home/dotfiles.nix
-        ./home/environment.nix
-
-        # Apps
-        ./home/apps.nix # Packages
-        ./home/services.nix # Services
-    ];
 
     # User directories
     xdg.userDirs = {

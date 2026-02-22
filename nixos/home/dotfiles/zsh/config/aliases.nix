@@ -2,7 +2,7 @@
 
 {
     programs.zsh.shellAliases = {
-        cat = "bat --style=plain";
+        cat = "bat";
         cd = "z";
         fzf = "ff";
         grep = "rg";
