@@ -2,6 +2,7 @@
 
 {
     imports = [
+        ./gui/fonts.nix
         ./gui/icons.nix
         ./gui/gtk.nix
         ./gui/qt.nix

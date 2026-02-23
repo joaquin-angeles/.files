@@ -1,36 +1,43 @@
 #!/usr/bin/env bash
 
-set -e  # Exit on error
+set -euo pipefail
 
-KVANTUM_DIR="$HOME/.config/Kvantum"
-GRUVBOX_REPO="$HOME/.local/share/gruvbox-kvantum"
+KVANTUM_DIR="${HOME}/.config/Kvantum"
+GRUVBOX_REPO="${HOME}/.local/share/gruvbox-kvantum"
 THEME_NAME="Gruvbox-Dark-Blue"
 
-# Create Kvantum config directory if it doesn't exist
+log() { echo "[$(date +%T)] $*"; }
+die() { echo "ERROR: $*" >&2; exit 1; }
+
+command -v git &>/dev/null || die "git is not installed"
+
 mkdir -p "$KVANTUM_DIR"
 
-# Clone the Gruvbox Kvantum themes repository
-if [ -d "$GRUVBOX_REPO" ]; then
-    echo "Updating Gruvbox Kvantum themes..."
-    cd "$GRUVBOX_REPO" && git pull
-else
-    echo "Cloning Gruvbox Kvantum themes..."
-    git clone --depth=1 https://github.com/sachnr/gruvbox-kvantum-themes.git "$GRUVBOX_REPO"
-fi
+clone_or_update() {
+    local url="$1" dest="$2"; shift 2
+    if [ -d "$dest/.git" ]; then
+        log "Updating $(basename "$dest")..."
+        git -C "$dest" pull --ff-only || die "Failed to update $dest"
+    else
+        log "Cloning $(basename "$dest")..."
+        git clone "$@" "$url" "$dest" || die "Failed to clone $url"
+    fi
+}
 
-# Copy the Blue theme to Kvantum config
-if [ -d "$KVANTUM_DIR/$THEME_NAME" ]; then
-    echo "Gruvbox-Dark-Blue is already installed."
-else
-    echo "Installing $THEME_NAME..."
-    cp -r "$GRUVBOX_REPO/$THEME_NAME" "$KVANTUM_DIR/"
-fi
+clone_or_update \
+    "https://github.com/sachnr/gruvbox-kvantum-themes.git" \
+    "$GRUVBOX_REPO" \
+    --depth=1
+
+# Always sync theme directory to pick up updates
+log "Installing $THEME_NAME..."
+cp -r "${GRUVBOX_REPO}/${THEME_NAME}" "$KVANTUM_DIR/"
 
 # Set it as the active theme
-echo "Applying $THEME_NAME..."
-cat > "$KVANTUM_DIR/kvantum.kvconfig" <<EOF
+log "Applying $THEME_NAME..."
+cat > "${KVANTUM_DIR}/kvantum.kvconfig" <<EOF
 [General]
 theme=$THEME_NAME
 EOF
 
-echo "Gruvbox-Dark-Blue Kvantum theme setup complete!"
+log "Gruvbox-Dark-Blue Kvantum theme setup complete!"
