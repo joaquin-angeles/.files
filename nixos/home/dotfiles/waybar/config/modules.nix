@@ -8,7 +8,7 @@
             separate-outputs = false;
             format = "󰗴  {title}";
             rewrite = {
-                "(.*) " = "  Empty";
+                "(.*) " = "󰋖  Empty";
             };
         };
 
