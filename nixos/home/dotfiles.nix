@@ -11,7 +11,7 @@
     ];
 
     xdg.configFile = {
-        "hypr".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/hyprland";
+        "hypr".source = "${config.home.homeDirectory}/.files/hyprland";
         "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/neovim";
     };
 }
