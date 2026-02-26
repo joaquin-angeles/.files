@@ -6,9 +6,5 @@
         ./config/settings.nix
     ];
 
-    programs.alacritty = {
-        # Install
-        enable = true;
-        package = pkgs.unstable.alacritty-graphics;
-    };
+    programs.alacritty.enable = true; # Installation
 }

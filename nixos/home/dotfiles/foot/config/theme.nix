@@ -6,8 +6,13 @@
     ];
 
     programs.foot.settings = {
-        main.pad = "10x10 center";
-        mouse.hide-when-typing = true;
+        main = {
+            gamma-correct-blending = "no";
+            pad = "10x10 center";
+        };
+
+        colors.alpha = "0.8";
+        mouse.hide-when-typing = "yes";
         scrollback.indicator-position = "none";
     };
 }

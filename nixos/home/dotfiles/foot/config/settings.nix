@@ -3,9 +3,11 @@
 {
     programs.foot.settings = {
         main = {
-            term = "xterm-256color";
             font = "monospace:size=13.5";
-            dpi-aware = "yes";
+            resize-by-cells = "no";
+            resize-delay-ms = "500";
+            term = "xterm-256color";
+            # dpi-aware = "yes";
         };
     };
 }

@@ -3,7 +3,8 @@
 {
     imports = [
         # ./dotfiles/alacritty/package.nix
-        ./dotfiles/foot/package.nix
+        # ./dotfiles/foot/package.nix
+        ./dotfiles/ghostty/package.nix
         ./dotfiles/theme/package.nix
         ./dotfiles/waybar/package.nix
         ./dotfiles/yazi/package.nix
