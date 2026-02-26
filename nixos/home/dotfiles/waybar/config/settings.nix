@@ -11,6 +11,7 @@
             # Workspace numbers
             modules-left = [
                 "hyprland/workspaces"
+                "custom/separator"
                 "hyprland/window"
             ];
 

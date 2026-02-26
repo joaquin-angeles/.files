@@ -6,9 +6,9 @@
         "hyprland/window" = {
             max-length = 64;
             separate-outputs = false;
-            format = "󰗴 {title}";
+            format = "󰗴  {title}";
             rewrite = {
-                "(.*) " = "󰋖 Empty";
+                "(.*) " = "󰋖  Empty";
             };
         };
 
@@ -17,22 +17,22 @@
             format-icons = {
                 # active = "";
                 # default = "";
-                "1" = "";
-                "2" = "";
-                "3" = "";
-                "4" = "";
-                "5" = "";
-                "6" = "";
-                "7" = "";
-                "8" = "";
-                "9" = "";
+                "1" = "";
+                "2" = "󰨞";
+                "3" = "";
+                "4" = "";
+                "5" = "";
+                "6" = "";
+                "7" = "7";
+                "8" = "8";
+                "9" = "9";
             };
             disable-scroll = true;
             all-outputs = true;
             active-only = false;
             on-click = "activate";
             persistent-workspaces = {
-                "*" = 9;
+                "*" = 6;
             };
         };
 
@@ -101,6 +101,11 @@
             tooltip = true;
             tooltip-format = "Power menu";
             on-click = "power-menu.sh";
+        };
+
+        "custom/separator" = {
+            format = "|";
+            tooltip = false;
         };
 
         "custom/menu" = {
