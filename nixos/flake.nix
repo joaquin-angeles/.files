@@ -1,5 +1,5 @@
 {
-    description = "Phanes' NixOS configuration";
+    description = "Gruvforest: An environment of organic minimalism";
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";

@@ -77,7 +77,7 @@
         clock = {
             format = "{:%H:%M}";
             tooltip = true;
-            tooltip-format = "{:%b %d, %Y on a %A}";
+            tooltip-format = "{:%d - %A}";
             interval = 1;
         };
 
@@ -106,13 +106,6 @@
         "custom/separator" = {
             format = "|";
             tooltip = false;
-        };
-
-        "custom/menu" = {
-            format = "";
-            tooltip = true;
-            tooltip-format = "drun";
-            on-click = "rofi -show drun";
         };
     };
 }
