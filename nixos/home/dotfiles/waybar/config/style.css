@@ -1,5 +1,5 @@
 window#waybar {
-    font-family: sans-serif;
+    font-family: JetBrainsMono Nerd Font Propo;
     font-size: 12pt;
     /* background-color: @bg; */
     background-color: rgba(30, 32, 33, 0.8);
@@ -73,3 +73,4 @@ window#waybar {
     background-color: transparent;
     color: darker(@fg);
 }
+

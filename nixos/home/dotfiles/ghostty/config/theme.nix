@@ -1,6 +1,10 @@
 { ... }:
 
 {
+    imports = [
+        ./themes/gruvbox_dark.nix
+    ];
+
     programs.ghostty.settings = {
         background-opacity = 0.8;
 
