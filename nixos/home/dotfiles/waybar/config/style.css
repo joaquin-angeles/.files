@@ -17,8 +17,9 @@ window#waybar {
 #clock { padding: 0pt 8pt 0 10pt; }
 
 #custom-separator {
-    padding-left: 2pt;
-    color: lighter(@bright-bg);
+    padding-left: 5pt;
+    padding-right: 4pt;
+    color: #6f7273;
 }
 
 #custom-menu {
