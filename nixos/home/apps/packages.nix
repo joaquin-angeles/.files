@@ -18,7 +18,7 @@
         hyprpicker
         lazygit
         mako
-        nautilus 
+        nautilus
         ripgrep
         slurp
         stow
