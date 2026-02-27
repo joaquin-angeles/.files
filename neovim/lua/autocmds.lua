@@ -1,6 +1,6 @@
 require "nvchad.autocmds"
 
--- Absolute line numbers in Insert
+-- Absolute line numbers on Insert mode
 vim.api.nvim_create_autocmd("InsertEnter", {
     callback = function()
         vim.o.relativenumber = false

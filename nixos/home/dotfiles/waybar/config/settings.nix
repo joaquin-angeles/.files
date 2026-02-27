@@ -5,8 +5,11 @@
         mainBar = {
             layer = "top";
             position = "top";
-            height = 0;
+            height = 35;
             spacing = 0;
+            # margin-top = 12;
+            # margin-left = 12;
+            # margin-right = 12;
 
             # Workspace numbers
             modules-left = [
