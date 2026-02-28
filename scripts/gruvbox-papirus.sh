@@ -39,7 +39,7 @@ clone_or_update \
 # Install/update Papirus themes (always sync to keep things clean)
 log "Syncing Papirus icon themes..."
 rm -rf "${ICONS_DIR}"/Papirus*
-cp -rf "${PAPIRUS_REPO}"/Papirus* "${ICONS_DIR}/"
+ln -sfn "${PAPIRUS_REPO}"/Papirus* "${ICONS_DIR}/"
 
 # Copy Gruvbox folder icons into Papirus theme
 log "Installing Gruvbox folder icons..."

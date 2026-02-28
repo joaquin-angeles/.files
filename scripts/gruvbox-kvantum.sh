@@ -31,7 +31,7 @@ clone_or_update \
 
 # Always sync theme directory to pick up updates
 log "Installing $THEME_NAME..."
-cp -r "${GRUVBOX_REPO}/${THEME_NAME}" "$KVANTUM_DIR/"
+ln -sfn "${GRUVBOX_REPO}/${THEME_NAME}" "$KVANTUM_DIR/"
 
 # Set it as the active theme
 log "Applying $THEME_NAME..."
