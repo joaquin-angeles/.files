@@ -37,9 +37,16 @@ clone_or_update \
     "$GRUVBOX_REPO"
 
 # Install/update Papirus themes (always sync to keep things clean)
-log "Syncing Papirus icon themes..."
-rm -rf "${ICONS_DIR}"/Papirus*
-ln -sfn "${PAPIRUS_REPO}"/Papirus* "${ICONS_DIR}/"
+log "Checking Papirus icon theme symlinks..."
+for src in "${PAPIRUS_REPO}"/Papirus*/; do
+    dest="${ICONS_DIR}/$(basename "$src")"
+    if [ ! -L "$dest" ]; then
+        log "Linking $(basename "$src")..."
+        ln -sfn "$src" "$dest"
+    else
+        log "Symlink already exists for $(basename "$src"), skipping..."
+    fi
+done
 
 # Copy Gruvbox folder icons into Papirus theme
 log "Installing Gruvbox folder icons..."

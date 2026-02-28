@@ -30,8 +30,13 @@ clone_or_update \
     --depth=1
 
 # Always sync theme directory to pick up updates
-log "Installing $THEME_NAME..."
-ln -sfn "${GRUVBOX_REPO}/${THEME_NAME}" "$KVANTUM_DIR/"
+THEME_DEST="${KVANTUM_DIR}/${THEME_NAME}"
+if [ ! -L "$THEME_DEST" ] || [ ! -e "$THEME_DEST" ]; then
+    log "Linking $THEME_NAME..."
+    ln -sfn "${GRUVBOX_REPO}/${THEME_NAME}" "$KVANTUM_DIR/"
+else
+    log "Symlink already exists for $THEME_NAME, skipping..."
+fi
 
 # Set it as the active theme
 log "Applying $THEME_NAME..."
