@@ -67,7 +67,7 @@ window#waybar {
     font-family: "JetBrainsMono Nerd Font Propo";
     font-size: 13.5pt;
     color: lighter(lighter(@bright-bg));
-    padding: 0 8pt;
+    padding: 0 7pt;
     min-width: 14pt;
 }
 
@@ -78,8 +78,12 @@ window#waybar {
 
 
 /* Workspace specific rules */
-#workspaces button:nth-child(1) { font-size: 15.5pt; }
+#workspaces button:nth-child(1) {
+    font-size: 16pt;
+    padding-right: 4pt;
+}
+
 #workspaces button:nth-child(2) { font-size: 14pt; }
-#workspaces button:nth-child(6) { font-size: 15.5pt; }
+#workspaces button:nth-child(6) { font-size: 16pt; }
 #workspaces button.empty { color: alpha(@bright-bg, 0.8); }
 #workspaces button.active { color: @fg; }
