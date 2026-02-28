@@ -1,6 +1,11 @@
 { ... }:
 
 {
+    imports = [
+        ./modules.nix
+        ./theme.nix
+    ];
+
     programs.waybar.settings = {
         mainBar = {
             layer = "top";
