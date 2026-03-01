@@ -3,7 +3,34 @@ return {
         "folke/noice.nvim",
         event = "VeryLazy",
         opts = {
+
+            -- Disable obstructive notifications
+            routes = {
+                {
+                    filter = {
+                        event = "notify",
+                        find = "No information available",
+                    },
+                    opts = { skip = true },
+                },
+                {
+                    filter = {
+                        event = "notify",
+                        find = "No signature help available",
+                    },
+                    opts = { skip = true },
+                },
+                {
+                    filter = {
+                        find = "NotifyBackground",
+                    },
+                    opts = { skip = true },
+                },
+            },
+
+            -- LSP configuration
             lsp = {
+
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
                 override = {
                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,

@@ -15,4 +15,5 @@ return {
 
     { import = "nvchad.blink.lazyspec" }, -- test new blink
     { "mbbill/undotree", lazy = false, }, -- Undo history
+    { "williamboam/mason.nvim", enabled = false, },
 }
