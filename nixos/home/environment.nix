@@ -9,7 +9,7 @@
         GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules";
         NIXOS_OZONE_WL = "1";
         NIXPKGS_ALLOW_UNFREE = "1";
-        MANPAGER = "bat -l man";
+        MANPAGER = "bat --style=plain -l man";
         WLR_NO_HARDWARE_URSORS = "1";
     };
 
