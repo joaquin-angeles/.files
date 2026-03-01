@@ -77,8 +77,9 @@ window#waybar {
 
 /* Workspace specific rules */
 #workspaces button:nth-child(1) {
-    font-size: 16pt;
-    padding-right: 4pt;
+    font-size: 15pt;
+    padding-bottom: 0.5px;
+    padding-right: 5pt;
 }
 
 #workspaces button:nth-child(2) { font-size: 14pt; }
