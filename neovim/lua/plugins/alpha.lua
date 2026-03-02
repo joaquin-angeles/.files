@@ -88,7 +88,7 @@ return {
             dashboard.section.footer.val = footer()
 
             dashboard.opts.layout = {
-                { type = "padding", val = 8 },
+                { type = "padding", val = 6 },
                 dashboard.section.header,
                 { type = "padding", val = 2 },
                 dashboard.section.buttons,
@@ -107,7 +107,6 @@ return {
                 end,
             })
 
-            -- Add this to your alpha-nvim config file
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = "alpha",
                 callback = function()
