@@ -8,7 +8,6 @@
         vimAlias = true; # Fast alias
         extraPackages = with pkgs; [
             alejandra
-            hyprls
             lua-language-server
             nixd
             tree-sitter

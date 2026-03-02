@@ -1,9 +1,7 @@
 return {
     {
         "goolord/alpha-nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
         lazy = false,
-        priority = 1000, 
         config = function()
             local status_ok, alpha = pcall(require, "alpha")
             if not status_ok then
@@ -65,7 +63,12 @@ return {
                     return b
                 end)(),
                 (function()
-                    local b = dashboard.button("L", "󰒲  Lazy", "<cmd>lazy<cr>")
+                    local b = dashboard.button("M", "󰚥  Mason", "<cmd>Mason<cr>")
+                    b.opts.hl_shortcut = "alphashortcut"
+                    return b
+                end)(),
+                (function()
+                    local b = dashboard.button("L", "󰒲  Lazy", "<cmd>Lazy<cr>")
                     b.opts.hl_shortcut = "alphashortcut"
                     return b
                 end)(),
