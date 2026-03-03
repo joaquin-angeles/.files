@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
+exec 9>/tmp/power-saver.lock
+if ! flock -n 9; then
+    echo "Script is already running."
+    exit 1
+fi
+
 BATTERY_DEVICE=$(upower -e | grep BAT)
 KBD_DEVICE=$(brightnessctl --list | grep 'kbd_backlight' | awk -F"'" '{print $2}')
-PIDFILE="/tmp/power-saver.pid"
 current_state=""
 
 # Ensure Hyprland is running
@@ -11,42 +16,32 @@ if [ -z "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
     exit 1
 fi
 
+# Get the connected monitor name
+MONITOR=$(hyprctl monitors | awk '/Monitor/ {print $2}' | head -n 1)
+
 # Ensure upower is working
 if [ -z "$BATTERY_DEVICE" ]; then
     echo "Battery device not found. Is upower enabled?"
     exit 1
 fi
 
-# Prevent duplicate instances
-if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
-    echo "Power saver is already running (PID $(cat "$PIDFILE")). Exiting."
-    exit 1
+# Start monitoring battery state
+upower --monitor | grep --line-buffered "$BATTERY_DEVICE" | while read -r _; do
+new_state=$(upower -i "$BATTERY_DEVICE" | grep -m1 "state:" | awk '{print $2}')
+if [ "$new_state" != "$current_state" ]; then
+    current_state="$new_state"
+    if [ "$new_state" = "discharging" ]; then
+        brightnessctl --device="$KBD_DEVICE" set 0
+        hyprctl keyword monitor $MONITOR,1920x1080@60,auto,1.0
+        hyprctl keyword animations:enabled 0
+        hyprctl keyword decoration:blur:enabled 0
+        hyprctl keyword decoration:shadow:enabled 0
+    else
+        brightnessctl --device="$KBD_DEVICE" set 100%
+        hyprctl keyword monitor $MONITOR,1920x1080@120,auto,1.0
+        hyprctl keyword animations:enabled 1
+        hyprctl keyword decoration:blur:enabled 1
+        hyprctl keyword decoration:shadow:enabled 1
+    fi
 fi
-
-# Get all connected monitor names
-MONITORS=$(hyprctl monitors | awk '/Monitor/ {print $2}')
-
-# Write PID and clean up on exit
-echo $$ > "$PIDFILE"
-trap 'rm -f "$PIDFILE"' EXIT
-
-# Then replace the single hyprctl monitor keyword calls with a loop:
-if [ "$new_state" = "discharging" ]; then
-    echo "Switched to battery — applying power saving settings."
-    brightnessctl --device="$KBD_DEVICE" set 0
-    brightnessctl set 40%
-    while IFS= read -r MONITOR; do
-        hyprctl keyword monitor "$MONITOR",preferred,auto,1.0,bitdepth,8
-    done <<< "$MONITORS"
-    hyprctl keyword decoration:blur:enabled 0
-    hyprctl keyword decoration:shadow:enabled 0
-else
-    echo "Switched to AC — restoring normal settings."
-    brightnessctl --device="$KBD_DEVICE" set 100%
-    brightnessctl set 50%
-    while IFS= read -r MONITOR; do
-        hyprctl keyword monitor "$MONITOR",preferred,auto,1.0
-    done <<< "$MONITORS"
-    hyprctl keyword decoration:blur:enabled 1
-    hyprctl keyword decoration:shadow:enabled 1
-fi
+done &

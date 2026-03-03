@@ -26,8 +26,7 @@
                 config.allowUnfree = true;
                 overlays = [ unstableOverlay ];
             };
-        in
-            {
+        in {
             nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
                 inherit system;
                 specialArgs = { inherit inputs; };

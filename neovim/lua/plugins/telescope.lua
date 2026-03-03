@@ -1,20 +1,9 @@
 return {
-    -- Treesitter installation
     {
-        "nvim-treesitter/nvim-treesitter",
-        opts = {
-            ensure_installed = {
-                "vim", "lua", "vimdoc",
-                "html", "css", "nix",
-                "bash", "hyprlang", "json",
-                "jsonc", "toml", "yaml",
-            },
-        },
-        -- Fzf integration
+        'nvim-telescope/telescope.nvim', version = '*',
         dependencies = {
-            'nvim-telescope/telescope-fzf-native.nvim',
-            build = 'make',
-            lazy = false,
-        },
-    },
+            'nvim-lua/plenary.nvim',
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        }
+    }
 }

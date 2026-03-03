@@ -21,4 +21,4 @@ o.shiftwidth = 4
 o.tabstop = 4
 o.softtabstop = 4
 o.expandtab = true
-vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+-- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
