@@ -8,6 +8,7 @@
 
     # System packages
     environment.systemPackages = with pkgs; [
+        android-tools
         blueman
         brightnessctl
         gtk3
@@ -15,6 +16,7 @@
         home-manager
         networkmanagerapplet
         polkit_gnome
+        qdl
         usbutils
         wl-clipboard
         zenity

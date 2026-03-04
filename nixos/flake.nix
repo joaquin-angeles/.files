@@ -12,7 +12,7 @@
         };
     };
 
-    outputs = { self, nixpkgs, nixpkgs-unstable, nix-flatpak, home-manager, ... }@inputs:
+    outputs = { nixpkgs, nixpkgs-unstable, nix-flatpak, home-manager, ... }@inputs:
         let
             system = "x86_64-linux";
             unstableOverlay = final: prev: {
@@ -26,7 +26,8 @@
                 config.allowUnfree = true;
                 overlays = [ unstableOverlay ];
             };
-        in {
+        in
+            {
             nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
                 inherit system;
                 specialArgs = { inherit inputs; };
