@@ -2,7 +2,7 @@ window#waybar {
     font-family: sans-serif;
     font-size: 12pt;
     background-color: alpha(@bg, 0.8);
-    /* border-bottom: 1px solid darker(@bright-bg); */
+    /* border-bottom: 1px solid alpha(@bright-bg, 0.8); */
     color: @fg;
 }
 
@@ -21,9 +21,10 @@ window#waybar {
 }
 
 #custom-power {
+    color: @red;
     background-color: alpha(darker(@bright-bg), 0.8);
-    margin: 3pt 5pt 3pt 5pt;
-    padding: 0 7.25pt 0 7pt;
+    margin: 3pt 7pt 3pt 5pt;
+    padding: 0 8.25pt 0 8pt;
     border-radius: 24px;
 }
 
@@ -61,6 +62,10 @@ window#waybar {
     /* color: darker(@fg); */
 }
 
+#workspaces {
+    margin-left: 2pt;
+}
+
 #workspaces button {
     font-family: "JetBrainsMono Nerd Font Propo";
     font-size: 13.5pt;
@@ -76,13 +81,8 @@ window#waybar {
 
 
 /* Workspace specific rules */
-#workspaces button:nth-child(1) {
-    font-size: 15pt;
-    padding-bottom: 0.5px;
-    padding-right: 5pt;
-}
-
-#workspaces button:nth-child(2) { font-size: 14pt; }
+#workspaces button:nth-child(1) { padding-right: 5pt; }
+#workspaces button:nth-child(2) { font-size: 15pt; }
 #workspaces button:nth-child(6) { font-size: 16pt; }
 #workspaces button.empty { color: alpha(@bright-bg, 0.8); }
 #workspaces button.active { color: @fg; }

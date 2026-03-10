@@ -1,9 +1,6 @@
 { pkgs, ... }:
 
 {
-    programs.adb.enable = true;
-    services.udev.packages = with pkgs; [ android-udev-rules ];
-
     # Boot options
     boot.kernelModules = [ "zram" ];
     boot.loader = {
@@ -61,7 +58,7 @@
 
     # User configuration
     users.users.joaquin = {
-        extraGroups = [ "wheel" "input" "adbusers" "dialout" ];
+        extraGroups = [ "wheel" "input" ];
         isNormalUser = true;
         shell = pkgs.zsh;
     };
