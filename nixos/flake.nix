@@ -6,6 +6,7 @@
         nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
         nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
+        # Home config
         home-manager = {
             url = "github:nix-community/home-manager/release-25.11";
             inputs.nixpkgs.follows = "nixpkgs";
