@@ -70,7 +70,7 @@ window#waybar {
 #workspaces button {
     font-family: "JetBrainsMono Nerd Font Propo";
     font-size: 13.5pt;
-    color: lighter(lighter(@bright-bg));
+    color: lighter(@bright-bg);
     padding: 0 7pt;
     min-width: 14pt;
 }

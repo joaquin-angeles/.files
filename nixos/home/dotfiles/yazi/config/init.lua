@@ -97,35 +97,15 @@ require("yatline"):setup({
     },
 })
 
--- Show user and hostname in top bar
-function Header:host()
-    if ya.target_family() ~= "unix" then
-        return ui.Line {}
-    end
-    return ui.Line { ui.Span(ya.user_name() .. "@" .. ya.host_name()):fg("Lightgreen"):bold(true), ui.Span(":") }
-end
-
--- Remove filesize from status bar
-function Status:render(area)
-    self.area = area
-    local left = ui.Line { self:permissions(), self:name() }
-    local right = ui.Line { self:position() }
-    return {
-        ui.Paragraph(area, { left }),
-        ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
-        table.unpack(Progress:render(area, right:width())),
-    }
-end
-
 -- Symlink in status bar
-function Status:name()
-    local h = cx.active.current.hovered
-    if not h then
-        return ui.Span("")
-    end
-    local linked = ""
-    if h.link_to ~= nil then
-        linked = " -> " .. tostring(h.link_to)
-    end
-    return ui.Span(" " .. h.name .. linked)
-end
+-- function Status:name()
+--     local h = cx.active.current.hovered
+--     if not h then
+--         return ui.Span("")
+--     end
+--     local linked = ""
+--     if h.link_to ~= nil then
+--         linked = " -> " .. tostring(h.link_to)
+--     end
+--     return ui.Span(" " .. h.name .. linked)
+-- end
