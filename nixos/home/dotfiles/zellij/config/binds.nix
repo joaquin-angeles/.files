@@ -5,6 +5,9 @@
     # syntax exactly as you have it, which is much easier to maintain.
     programs.zellij.extraConfig = ''
         keybinds clear-defaults=true {
+            locked {
+                bind "Ctrl Space" { SwitchToMode "normal"; }
+            }
             pane {
                 bind "Left" { MoveFocus "left"; }
                 bind "Down" { MoveFocus "down"; }
@@ -26,7 +29,6 @@
                 bind "z" { TogglePaneFrames; SwitchToMode "locked"; }
                 bind "Tab" { SwitchFocus; }
             }
-
             tab {
                 bind "Left" { GoToPreviousTab; }
                 bind "Down" { GoToNextTab; }
@@ -56,7 +58,6 @@
                 bind "Tab" { ToggleTab; }
                 bind "Ctrl t" { NewTab; SwitchToMode "locked"; }
             }
-
             resize {
                 bind "Left" { Resize "Increase left"; }
                 bind "Down" { Resize "Increase down"; }
@@ -75,7 +76,6 @@
                 bind "l" { Resize "Increase right"; }
                 bind "r" { SwitchToMode "normal"; }
             }
-
             move {
                 bind "Left" { MovePane "left"; }
                 bind "Down" { MovePane "down"; }
@@ -90,7 +90,6 @@
                 bind "p" { MovePaneBackwards; }
                 bind "Tab" { MovePane; }
             }
-
             scroll {
                 bind "Alt Left" { MoveFocusOrTab "left"; SwitchToMode "locked"; }
                 bind "Alt Down" { MoveFocus "down"; SwitchToMode "locked"; }
@@ -104,7 +103,6 @@
                 bind "Alt l" { MoveFocusOrTab "right"; SwitchToMode "locked"; }
                 bind "s" { SwitchToMode "normal"; }
             }
-
             search {
                 bind "c" { SearchToggleOption "CaseSensitivity"; }
                 bind "n" { Search "down"; }
@@ -112,7 +110,6 @@
                 bind "p" { Search "up"; }
                 bind "w" { SearchToggleOption "Wrap"; }
             }
-
             session {
                 bind "c" {
                     LaunchOrFocusPlugin "configuration" {
@@ -138,7 +135,6 @@
                     SwitchToMode "locked"
                 }
             }
-
             shared_among "normal" "locked" {
                 bind "Alt Left" { MoveFocusOrTab "left"; }
                 bind "Alt Down" { MoveFocus "down"; }
@@ -155,44 +151,34 @@
                 bind "Alt n" { NewPane; }
                 bind "Alt o" { MoveTab "right"; }
             }
-
             shared_except "locked" "renametab" "renamepane" {
                 bind "Ctrl space" { SwitchToMode "locked"; }
                 bind "Ctrl q" { Quit; }
             }
-
             shared_except "locked" "entersearch" {
                 bind "Enter" { SwitchToMode "locked"; }
             }
-
             shared_except "locked" "entersearch" "renametab" "renamepane" {
                 bind "Esc" { SwitchToMode "locked"; }
             }
-
             shared_except "locked" "entersearch" "renametab" "renamepane" "move" {
                 bind "m" { SwitchToMode "move"; }
             }
-
             shared_except "locked" "entersearch" "search" "renametab" "renamepane" "session" {
                 bind "o" { SwitchToMode "session"; }
             }
-
             shared_except "locked" "tab" "entersearch" "renametab" "renamepane" {
                 bind "t" { SwitchToMode "tab"; }
             }
-
             shared_except "locked" "tab" "scroll" "entersearch" "renametab" "renamepane" {
                 bind "s" { SwitchToMode "scroll"; }
             }
-
             shared_among "normal" "resize" "tab" "scroll" "prompt" "tmux" {
                 bind "p" { SwitchToMode "pane"; }
             }
-
             shared_except "locked" "resize" "pane" "tab" "entersearch" "renametab" "renamepane" {
                 bind "r" { SwitchToMode "resize"; }
             }
-
             shared_among "scroll" "search" {
                 bind "PageDown" { PageScrollDown; }
                 bind "PageUp" { PageScrollUp; }
@@ -210,21 +196,17 @@
                 bind "l" { PageScrollDown; }
                 bind "u" { HalfPageScrollUp; }
             }
-
             entersearch {
                 bind "Ctrl c" { SwitchToMode "scroll"; }
                 bind "Esc" { SwitchToMode "scroll"; }
                 bind "Enter" { SwitchToMode "search"; }
             }
-
             renametab {
                 bind "Esc" { UndoRenameTab; SwitchToMode "tab"; }
             }
-
             shared_among "renametab" "renamepane" {
                 bind "Ctrl c" { SwitchToMode "locked"; }
             }
-
             renamepane {
                 bind "Esc" { UndoRenamePane; SwitchToMode "pane"; }
             }
