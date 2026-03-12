@@ -39,5 +39,12 @@ return {
 
     { import = "nvchad.blink.lazyspec" }, -- test new blink
     { "mbbill/undotree", event = "VeryLazy", }, -- Undo history
+
+    {
+        "nvzone/typr",
+        dependencies = "nvzone/volt",
+        opts = {},
+        cmd = { "Typr", "TyprStats" },
+    },
     -- { "williamboam/mason.nvim", enabled = false, },
 }
