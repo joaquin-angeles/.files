@@ -3,15 +3,12 @@
 {
     programs.neovim = {
         enable = true;
-        package = pkgs.unstable.neovim-unwrapped; # Use custom wrapper
+        package = pkgs.unstable.neovim-unwrapped;
         defaultEditor = true; # Set as default
         vimAlias = true; # Fast alias
         extraPackages = with pkgs.unstable; [
-            alejandra
-            lua-language-server
-            nixd
             tree-sitter
-            vscode-langservers-extracted
+            nixd
         ];
     };
 }

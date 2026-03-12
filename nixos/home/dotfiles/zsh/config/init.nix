@@ -15,6 +15,9 @@
 
             # Functions and integrations
             ''
+                export ZCOMPDUMP="$HOME/.cache/zsh/compdump"
+                mkdir -p "$HOME/.cache/zsh"
+
                 # P10K configuration
                 source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
                 [[ ! -f ${config.home.homeDirectory}/.p10k.zsh ]] || source ${config.home.homeDirectory}/.p10k.zsh

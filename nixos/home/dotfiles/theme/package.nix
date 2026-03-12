@@ -3,29 +3,31 @@
 {
     imports = [
         ./gui/fonts.nix
-        ./gui/icons.nix
-        ./gui/gtk.nix
-        ./gui/qt.nix
+            ./gui/icons.nix
+            ./gui/gtk.nix
+            ./gui/qt.nix
     ];
 
     # Theme packages
     home.packages = with pkgs; [
         adw-gtk3
-        kdePackages.qt6ct
-        kdePackages.qtstyleplugin-kvantum
-        libnotify
-        libsForQt5.qt5ct
-        libsForQt5.qtstyleplugin-kvantum
-        nwg-look
+            kdePackages.qt6ct
+            kdePackages.qtstyleplugin-kvantum
+            libnotify
+            libsForQt5.qt5ct
+            libsForQt5.qtstyleplugin-kvantum
+            nwg-look
     ];
 
     # Cursor theming
     home.pointerCursor = {
         gtk.enable = true;
-        x11.enable = true; # XWayland cursor theming
+        # XWayland cursor theming
+        x11.enable = true;
+        x11.defaultCursor = "Bibata-Modern-Ice";
         package = pkgs.bibata-cursors; # Cursor package
-        name = "Bibata-Modern-Ice"; # Cursor theme
-        size = 24;
+            name = "Bibata-Modern-Ice"; # Cursor theme
+            size = 24;
     };
 
     # Vencord theme

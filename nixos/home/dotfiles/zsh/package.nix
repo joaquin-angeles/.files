@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
     imports = [
@@ -14,5 +14,6 @@
         enable = true;
         completionInit = "autoload -Uz compinit && compinit -C";
         defaultKeymap = "emacs"; # Emacs binds
+        dotDir = "${config.home.homeDirectory}/.zsh";
     };
 }

@@ -22,7 +22,8 @@ A modern, extensible **Hyprland/Wayland** configuration for Linux powered by the
 
 > Requires NixOS with flakes enabled.
 ```bash
-git clone https://github.com/joaquin-angeles/.files.git && cd .files
+git clone https://github.com/joaquin-angeles/.files.git
+cd .files
 sudo nixos-rebuild switch --flake --impure ./nixos#nixos-btw
 ```
 

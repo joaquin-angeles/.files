@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ config, ... }:
 
 {
     # Base zsh configuration
     programs.zsh.history = {
+        path = "${config.xdg.cacheHome}/zsh/history";
         size = 5000; # HISTSIZE
         save = 5000;
         share = true;
