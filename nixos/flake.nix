@@ -6,7 +6,7 @@
         nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
         nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
-        # Home config
+        # Follows stable nixpkgs to avoid duplicate instances
         home-manager = {
             url = "github:nix-community/home-manager/release-25.11";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -15,22 +15,29 @@
 
     outputs = { nixpkgs, nixpkgs-unstable, nix-flatpak, home-manager, ... }@inputs:
         let
-            system = "x86_64-linux";
-            unstableOverlay = final: prev: {
+            systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+
+            # Helper to generate attrs for each system
+            forAllSystems = nixpkgs.lib.genAttrs systems;
+
+            # Exposes pkgs.unstable throughout the config
+            unstableOverlay = system: final: prev: {
                 unstable = import nixpkgs-unstable {
                     inherit system;
                     config.allowUnfree = true;
                 };
             };
-            pkgs = import nixpkgs {
+
+            # Used by the standalone homeConfigurations output
+            pkgsFor = system: import nixpkgs {
                 inherit system;
                 config.allowUnfree = true;
-                overlays = [ unstableOverlay ];
+                overlays = [ (unstableOverlay system) ];
             };
-        in
-            {
+        in {
+            # NixOS system config (Linux only)
             nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
-                inherit system;
+                system = "x86_64-linux";
                 specialArgs = { inherit inputs; };
                 modules = [
                     ./host.nix
@@ -38,14 +45,10 @@
                     ./host/hardware.nix
                     ./host/services.nix
                     /etc/nixos/hardware-configuration.nix
-
                     home-manager.nixosModules.home-manager
-
                     {
-                        nixpkgs = {
-                            config.allowUnfree = true;
-                            overlays = [ unstableOverlay ]; # Shared overlay
-                        };
+                        nixpkgs.config.allowUnfree = true;
+                        nixpkgs.overlays = [ (unstableOverlay "x86_64-linux") ];
 
                         home-manager = {
                             backupFileExtension = "bak";
@@ -59,19 +62,22 @@
                 ];
             };
 
-            homeConfigurations.joaquin = home-manager.lib.homeManagerConfiguration {
-                inherit pkgs; # Now includes unstableOverlay
-                extraSpecialArgs = { inherit inputs; };
-                modules = [
-                    ./home.nix
-                    nix-flatpak.homeManagerModules.nix-flatpak
-                    {
-                        home = {
-                            username = "joaquin";
-                            homeDirectory = "/home/joaquin";
-                        };
-                    }
-                ];
-            };
+            # Standalone config for non-NixOS systems (e.g. Fedora Silverblue, macOS)
+            homeConfigurations = forAllSystems (system: 
+                home-manager.lib.homeManagerConfiguration {
+                    pkgs = pkgsFor system;
+                    extraSpecialArgs = { inherit inputs; };
+                    modules = [
+                        ./home.nix
+                        nix-flatpak.homeManagerModules.nix-flatpak
+                        {
+                            home = {
+                                username = "joaquin";
+                                homeDirectory = "/home/joaquin";
+                            };
+                        }
+                    ];
+                }
+            );
         };
 }
