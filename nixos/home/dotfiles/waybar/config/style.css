@@ -2,44 +2,41 @@ window#waybar {
     font-family: sans-serif;
     font-size: 12pt;
     background-color: alpha(@bg, 0.8);
-    /* border-bottom: 1px solid alpha(@bright-bg, 0.8); */
+    border-radius: 5pt;
+    border: 1px solid alpha(@bright-bg, 0.8);
     color: @fg;
 }
 
 #sys-info {
     font-family: "JetBrainsMono Nerd Font Propo";
-    background-color: alpha(darker(@bright-bg), 0.8);
-    margin: 3pt 3pt 3pt 3pt;
-    border-radius: 5pt;
+    font-size: 13.5pt;
+    margin-right: 6pt;
 }
 
-#clock { padding: 0pt 6pt 0 8pt; }
+#clock { padding: 0pt 10pt 0 9pt; }
 
 #custom-separator {
-    padding-left: 5pt;
-    padding-right: 4pt;
     color: lighter(@bright-bg);
 }
 
 #custom-power {
     color: @red;
-    background-color: alpha(darker(@bright-bg), 0.8);
-    margin: 3pt 7pt 3pt 5pt;
-    padding: 0 7.5pt 0 7.25pt;
-    border-radius: 24px;
+    font-size: 14.5pt;
+    margin: 0pt 7pt 0pt 5pt;
+    padding: 0 5pt 0 5pt;
 }
 
 #network { padding: 0 15pt 0 8pt; }
 
 #pulseaudio {
-    font-size: 15pt;
+    font-size: 16pt;
     font-family: "JetBrainsMono Nerd Font Propo";
-    margin: 0 8pt 0 8pt;
+    margin: 0.5pt 8pt 0 8pt;
 }
 
 #battery {
     font-family: "JetBrainsMonO Nerd Font Propo";
-    font-size: 13.5pt;
+    font-size: 14pt;
     padding: 0 6.5pt 0 4.5pt;
 }
 
@@ -48,23 +45,20 @@ window#waybar {
 #battery.critical { color: @red; }
 
 #tray {
-    margin-left: 3px;
-    margin-right: 3px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    background-color: alpha(#414445, 0.75);
+    margin: 5pt 3pt 5pt 3pt;
+    background-color: alpha(#353839, 0.8);
     border-radius: 5pt;
     padding: 0 5pt 0 5pt;
-
 }
 
 #window {
-    margin: 0 0 0 8pt;
+    margin: 0 0 0 11pt;
     /* color: darker(@fg); */
 }
 
 #workspaces {
     margin-left: 2pt;
+    margin-right: 3pt;
 }
 
 #workspaces button {

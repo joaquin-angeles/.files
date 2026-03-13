@@ -13,38 +13,18 @@ return {
         end,
     },
 
+    { import = "nvchad.blink.lazyspec" }, -- test new blink
+
     {
         "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
         opts = {
             ensure_installed = {
-                "help",
-                "hyprlang",
-                "lua",
-                "nix",
-                "man",
-                "vimdoc",
-                "vim",
-            },
-            auto_install = true,
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-            },
-            indent = {
-                enable = true
+                "nix", "lua", "bash",
+                "hyprlang", "toml", "css",
+                "json"
             },
         },
     },
 
-    { import = "nvchad.blink.lazyspec" }, -- test new blink
-    { "mbbill/undotree", event = "VeryLazy", }, -- Undo history
-
-    {
-        "nvzone/typr",
-        dependencies = "nvzone/volt",
-        opts = {},
-        cmd = { "Typr", "TyprStats" },
-    },
-    -- { "williamboam/mason.nvim", enabled = false, },
+    { "mbbill/undotree", event = "VeryLazy", } -- Undo history
 }

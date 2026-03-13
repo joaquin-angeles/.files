@@ -10,11 +10,11 @@
         mainBar = {
             layer = "top";
             position = "top";
-            height = 36;
+            height = 40;
             spacing = 0;
-            # margin-top = 12;
-            # margin-left = 12;
-            # margin-right = 12;
+            margin-top = 12;
+            margin-left = 12;
+            margin-right = 12;
 
             # Workspace numbers
             modules-left = [
@@ -26,7 +26,9 @@
             # System information and clock
             modules-right = [
                 "group/sys-info"
+                "custom/separator"
                 "clock"
+                "custom/separator"
                 "custom/power"
             ];
         };
