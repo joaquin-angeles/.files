@@ -24,7 +24,7 @@ A modern, extensible **Hyprland/Wayland** configuration for Linux powered by the
 ```bash
 git clone https://github.com/joaquin-angeles/.files.git
 cd .files
-sudo nixos-rebuild switch --flake --impure ./nixos#nixos-btw
+sudo nixos-rebuild switch --flake --impure ./nix#nixos-btw
 ```
 
 The flake also exposes a standalone `homeConfigurations.joaquin` output, so it can be used on any Linux system with Nix installed (not just NixOS):
