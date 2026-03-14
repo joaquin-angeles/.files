@@ -2,13 +2,12 @@ require("chmod")
 require("full-border"):setup({})
 require("smart-enter")
 require("yatline"):setup({
-    --theme = my_theme,
     section_separator = { open = "", close = "" },
     part_separator = { open = "", close = "" },
     inverse_separator = { open = "", close = "" },
 
     style_a = {
-        fg = "white",
+        fg = "cyan",
         bg_mode = {
             normal = nil,
             select = nil,
@@ -16,7 +15,7 @@ require("yatline"):setup({
         },
     },
     style_b = {
-        fg = "grey",
+        fg = "white",
         bg_mode = {
             normal = nil,
             select = nil,
@@ -24,7 +23,7 @@ require("yatline"):setup({
         }
     },
     style_c = {
-        fg = "cyan",
+        fg = "blue",
         bg_mode = {
             normal = nil,
             select = nil,
@@ -58,10 +57,11 @@ require("yatline"):setup({
 
     header_line = {
         left = {
-            section_a = { },
+            section_a = {
+                {type = "string", custom = false, name = "hovered_path"},
+            },
             section_b = { },
             section_c = {
-                {type = "string", custom = false, name = "hovered_path"},
             }
         },
         right = {
@@ -78,6 +78,7 @@ require("yatline"):setup({
     status_line = {
         left = {
             section_a = {
+                { type = "string", name = "tab_mode", },
                 {type = "coloreds", custom = false, name = "permissions"},
             },
             section_b = {
