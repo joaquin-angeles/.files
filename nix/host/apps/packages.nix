@@ -14,7 +14,6 @@
         gtk3
         gtk4
         home-manager
-        networkmanagerapplet
         polkit_gnome
         qdl
         usbutils

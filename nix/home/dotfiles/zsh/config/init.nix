@@ -12,6 +12,7 @@
                     source "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh"
                 fi
 
+                export ZCOMPDUMP=${config.home.homeDirectory}/.cache/zsh/compdump;
                 mkdir -p "$HOME/.cache/zsh"
             '')
 
@@ -31,9 +32,9 @@
                 function ff() {
                     command fzf --preview '
                         if [ -d {} ]; then
-                            command -v eza >/dev/null && eza --icons always --group-directories-first --git --color=always {} || ls -lh {}
+                            command -v eza >/dev/null && eza --icons always --group-directories-first --git --color=always -la {} || ls -lha --color=always group-directories-first {}
                         else
-                            command -v bat >/dev/null && bat --color=always {} || cat {}
+                            command -v bat >/dev/null && bat {} || cat {}
                         fi
                     '
                 }

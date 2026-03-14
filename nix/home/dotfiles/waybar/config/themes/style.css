@@ -12,11 +12,9 @@ window#waybar {
     margin-right: 6pt;
 }
 
-#clock { padding: 0pt 10pt 0 9pt; }
+#clock { padding: 0pt 10pt 0 10pt; }
 
-#custom-separator {
-    color: lighter(@bright-bg);
-}
+#custom-separator { color: lighter(@bright-bg); }
 
 #custom-power {
     color: @red;
@@ -25,12 +23,14 @@ window#waybar {
     padding: 0 5pt 0 5pt;
 }
 
-#network { padding: 0 15pt 0 8pt; }
+#network {
+    padding: 0 6pt 0 8pt;
+}
 
 #pulseaudio {
     font-size: 16pt;
     font-family: "JetBrainsMono Nerd Font Propo";
-    margin: 0.5pt 8pt 0 8pt;
+    margin: 0.5pt 10pt 0 8pt;
 }
 
 #battery {
@@ -43,12 +43,7 @@ window#waybar {
 
 #battery.critical { color: @red; }
 
-#tray {
-    margin: 3pt 4pt 3pt 4pt;
-    background-color: alpha(#353839, 0.8);
-    border-radius: 5pt;
-    padding: 0 6pt 0 6pt;
-}
+#tray { padding: 0 3pt 0 3pt; }
 
 #window {
     margin: 0 0 0 11pt;

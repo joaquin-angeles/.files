@@ -28,8 +28,6 @@
                 "group/sys-info"
                 "custom/separator"
                 "clock"
-                "custom/separator"
-                "custom/power"
             ];
         };
     };

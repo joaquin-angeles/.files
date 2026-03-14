@@ -91,6 +91,7 @@
             orientation = "horizontal";
             modules = [
                 "tray"
+                "network"
                 "pulseaudio"
                 "battery"
             ];

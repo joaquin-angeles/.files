@@ -16,6 +16,7 @@
         hypridle
         hyprlock
         hyprpicker
+        impala
         lazygit
         mako
         nautilus
