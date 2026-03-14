@@ -5,7 +5,6 @@
         ANDROID_USER_HOME = "${config.home.homeDirectory}/.local/share/android";
         CARGO_HOME = "${config.home.homeDirectory}/.local/share/cargo";
         EDITOR = "nvim";
-        PATH = "${config.home.homeDirectory}/.local/bin:${config.home.homeDirectory}/.cargo/bin:${pkgs.stdenv.cc}/bin:$PATH";
         VISUAL = "nvim";
         GTK_DECORATION_LAYOUT = ":";
         GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules";
@@ -13,13 +12,19 @@
         NIXOS_OZONE_WL = "1";
         NIXPKGS_ALLOW_UNFREE = "1";
         NPM_CONFIG_USERCONFIG = "${config.home.homeDirectory}/.config/npm/npmrc";
-        MANPAGER = "bat --style=plain -l man";
+        MANPAGER = "sh -c 'col -bx | bat -l man --style=plain'";
         RUSTUP_HOME = "${config.home.homeDirectory}/.local/share/rustup";
         WGETRC = "${config.home.homeDirectory}/.config/wgetrc";
-        WLR_NO_HARDWARE_URSORS = "1";
+        WLR_NO_HARDWARE_CURSORS = "1";
+        ZCOMPDUMP = "${config.home.homeDirectory}/.cache/zsh/compdump";
         ZDOTDIR = "${config.home.homeDirectory}/.zsh";
     };
-    home.file.".config/wgetrc".text = "hsts-file = ${config.home.homeDirectory}/.cache/wget-hsts";
+
+    home.sessionPath = [
+        "${config.home.homeDirectory}/.local/bin"
+        "${config.home.homeDirectory}/.cargo/bin"
+        "${pkgs.stdenv.cc}/bin"
+    ];
 
     # Default applications
     xdg.enable = true;

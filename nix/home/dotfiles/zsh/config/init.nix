@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
 
 {
     programs.zsh = {
@@ -11,15 +11,13 @@
                 if [[ -r "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh" ]]; then
                     source "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh"
                 fi
+
+                mkdir -p "$HOME/.cache/zsh"
             '')
 
             # Functions and integrations
             ''
-                export ZCOMPDUMP="$HOME/.cache/zsh/compdump"
-                mkdir -p "$HOME/.cache/zsh"
-
                 # P10K configuration
-                source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
                 [[ ! -f ${config.home.homeDirectory}/.p10k.zsh ]] || source ${config.home.homeDirectory}/.p10k.zsh
 
                 # Cursor and title configuration

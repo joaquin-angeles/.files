@@ -2,6 +2,16 @@
 
 {
     programs.alacritty.settings = {
+        # fzf theming
+        env = {
+            FZF_DEFAULT_OPTS = "
+              --color=spinner:#88C0D0,hl:#81A1C1
+              --color=fg:#D8DEE9,header:#81A1C1,info:#EBCB8B,pointer:#B48EAD
+              --color=marker:#A3BE8C,fg+:#ECEFF4,prompt:#EBCB8B,hl+:#8FBCBB
+              --color=border:#4C566A,label:#D8DEE9,query:#D8DEE9
+            ";
+        };
+
         colors.primary = {
             background = "#2E3440";
             foreground = "#D8DEE9";
@@ -29,4 +39,12 @@
             white   = "#ECEFF4";
         };
     };
+
+    programs.zsh.initContent = ''
+        zstyle ':fzf-tab:*' fzf-flags \
+            --color=spinner:#88C0D0,hl:#81A1C1 \
+            --color=fg:#D8DEE9,header:#81A1C1,info:#EBCB8B,pointer:#B48EAD \
+            --color=marker:#A3BE8C,fg+:#ECEFF4,prompt:#EBCB8B,hl+:#8FBCBB \
+            --color=border:#4C566A,label:#D8DEE9,query:#D8DEE9
+    '';
 }

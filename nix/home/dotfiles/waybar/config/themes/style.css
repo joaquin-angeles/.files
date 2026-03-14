@@ -2,7 +2,7 @@ window#waybar {
     font-family: sans-serif;
     font-size: 12pt;
     background-color: alpha(@bg, 0.8);
-    border-bottom: 0.5px solid alpha(@bright-bg, 0.8);
+    border-bottom: 1px solid alpha(darker(@bright-bg), 0.8);
     color: @fg;
 }
 
