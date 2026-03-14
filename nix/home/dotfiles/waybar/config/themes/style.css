@@ -2,7 +2,7 @@ window#waybar {
     font-family: sans-serif;
     font-size: 12pt;
     background-color: alpha(@bg, 0.8);
-    border-bottom: 1px solid alpha(@bright-bg, 0.8);
+    border-bottom: 0.5px solid alpha(@bright-bg, 0.8);
     color: @fg;
 }
 
@@ -44,10 +44,10 @@ window#waybar {
 #battery.critical { color: @red; }
 
 #tray {
-    margin: 5pt 3pt 5pt 3pt;
+    margin: 3pt 4pt 3pt 4pt;
     background-color: alpha(#353839, 0.8);
     border-radius: 5pt;
-    padding: 0 5pt 0 5pt;
+    padding: 0 6pt 0 6pt;
 }
 
 #window {

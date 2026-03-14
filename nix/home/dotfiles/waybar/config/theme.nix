@@ -2,7 +2,7 @@
 
 {
     programs.waybar.style = ''
-        ${builtins.readFile ./themes/gruvbox_dark.css}
-        ${builtins.readFile ./style.css}
+        ${builtins.readFile ./themes/colors/gruvbox_dark.css}
+        ${builtins.readFile ./themes/style.css}
     '';
 }

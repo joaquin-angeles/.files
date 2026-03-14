@@ -2,8 +2,8 @@
 
 {
     imports = [
-        ./integrations/utils.nix
         ./integrations/search.nix
+        ./integrations/utils.nix
     ];
 
     # Nix output monitor
