@@ -70,12 +70,12 @@ return {
                     return b
                 end)(),
                 (function()
-                    local b = dashboard.button("M", "󰚥  Mason", "<cmd>Mason<cr>")
+                    local b = dashboard.button("m", "󰚥  Mason", "<cmd>Mason<cr>")
                     b.opts.hl_shortcut = "alphashortcut"
                     return b
                 end)(),
                 (function()
-                    local b = dashboard.button("L", "󰒲  Lazy", "<cmd>Lazy<cr>")
+                    local b = dashboard.button("l", "󰒲  Lazy", "<cmd>Lazy<cr>")
                     b.opts.hl_shortcut = "alphashortcut"
                     return b
                 end)(),
@@ -95,9 +95,9 @@ return {
             dashboard.section.footer.val = footer()
 
             dashboard.opts.layout = {
-                { type = "padding", val = 2 },
-                dashboard.section.header,
                 { type = "padding", val = 1 },
+                dashboard.section.header,
+                { type = "padding", val = 2 },
                 dashboard.section.buttons,
                 { type = "padding", val = 1 },
                 dashboard.section.footer,
