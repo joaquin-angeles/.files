@@ -1,23 +1,21 @@
-{ pkgs, ... }:
+{pkgs, ...}: {
+  imports = [
+    ./packages/development-tools.nix
+    # ./packages/fonts.nix
+  ];
 
-{
-    imports = [
-        ./packages/development-tools.nix
-        # ./packages/fonts.nix
-    ];
-
-    # System packages
-    environment.systemPackages = with pkgs; [
-        android-tools
-        blueman
-        brightnessctl
-        gtk3
-        gtk4
-        home-manager
-        polkit_gnome
-        qdl
-        usbutils
-        wl-clipboard
-        zenity
-    ];
+  # System packages
+  environment.systemPackages = with pkgs; [
+    android-tools
+    blueman
+    brightnessctl
+    gtk3
+    gtk4
+    home-manager
+    polkit_gnome
+    qdl
+    usbutils
+    wl-clipboard
+    zenity
+  ];
 }

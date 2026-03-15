@@ -9,6 +9,7 @@ SUPER + E             → File manager (Nautilus)
 SUPER + .             → Emoji picker
 SUPER + V             → Clipboard manager (Cliphist)
 SUPER + R             → Reload WM config
+SUPER + G             → Toggle group layout
 SUPER + W             → Toggle Waybar
 SUPER + S             → Screenshot output to clipboard
 SUPER + Shift + S     → Screenshot region to clipboard

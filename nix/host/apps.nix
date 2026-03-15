@@ -1,8 +1,6 @@
-{ ... }:
-
-{
-    imports = [
-        ./apps/packages.nix
-        ./apps/programs.nix
-    ];
+{...}: {
+  imports = [
+    ./apps/packages.nix
+    ./apps/programs.nix
+  ];
 }

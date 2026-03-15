@@ -1,10 +1,8 @@
-{ pkgs, ... }:
+{pkgs, ...}: {
+  imports = [
+    ./config/theme.nix
+    ./config/settings.nix
+  ];
 
-{
-    imports = [
-        ./config/theme.nix
-        ./config/settings.nix
-    ];
-
-    programs.alacritty.enable = true; # Installation
+  programs.alacritty.enable = true; # Installation
 }

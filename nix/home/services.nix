@@ -1,8 +1,6 @@
-{ ... }:
-
-{
-    imports = [
-        ./services/flatpak.nix
-        ./services/mako.nix
-    ];
+{...}: {
+  imports = [
+    ./services/flatpak.nix
+    ./services/mako.nix
+  ];
 }

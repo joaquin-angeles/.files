@@ -1,9 +1,9 @@
-require "nvchad.options"
+require("nvchad.options")
 
 -- add yours here!
 
 local o = vim.o
-o.cursorlineopt ='both' -- to enable cursorline!
+o.cursorlineopt = "both" -- to enable cursorline!
 
 -- Line numbers
 o.number = true
@@ -24,15 +24,17 @@ o.expandtab = true
 
 -- Treesitter fixes
 vim.api.nvim_create_autocmd("FileType", {
-    callback = function()
-        local ft = vim.bo.filetype
-        if ft == "" then return end
-        local lang = vim.treesitter.language.get_lang(ft) or ft
-        local ok, _ = pcall(vim.treesitter.get_parser, 0, lang)
-        if ok then
-            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-            -- Ensure highlighting is also active
-            pcall(vim.treesitter.start)
-        end
-    end,
+	callback = function()
+		local ft = vim.bo.filetype
+		if ft == "" then
+			return
+		end
+		local lang = vim.treesitter.language.get_lang(ft) or ft
+		local ok, _ = pcall(vim.treesitter.get_parser, 0, lang)
+		if ok then
+			vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			-- Ensure highlighting is also active
+			pcall(vim.treesitter.start)
+		end
+	end,
 })

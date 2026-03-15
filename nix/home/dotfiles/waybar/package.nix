@@ -1,9 +1,7 @@
-{ ... }:
+{...}: {
+  imports = [
+    ./config/settings.nix
+  ];
 
-{
-    imports = [
-        ./config/settings.nix
-    ];
-
-    programs.waybar.enable = true;
+  programs.waybar.enable = true;
 }

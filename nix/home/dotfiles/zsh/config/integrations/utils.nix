@@ -1,35 +1,33 @@
-{ pkgs, ... }:
+{pkgs, ...}: {
+  # Better cat
+  programs.bat = {
+    enable = true;
+    config.theme = "ansi";
+    config.style = "numbers";
+  };
 
-{
-    # Better cat
-    programs.bat = {
-        enable = true;
-        config.theme = "ansi";
-        config.style = "numbers";
-    };
+  # Better cd
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
-    # Better cd
-    programs.zoxide = {
-        enable = true;
-        enableZshIntegration = true;
-    };
+  # eza
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+    icons = "always"; # Always show icons
+    extraOptions = [
+      "--git"
+      "--git-ignore"
+      "--group-directories-first"
+      "--header"
+    ];
+  };
 
-    # eza
-    programs.eza = {
-        enable = true;
-        enableZshIntegration = true;
-        icons = "always"; # Always show icons
-        extraOptions = [
-            "--git"
-            "--git-ignore"
-            "--group-directories-first"
-            "--header"
-        ];
-    };
-
-    # Grep
-    programs.ripgrep = {
-        enable = true;
-        arguments = [ "--hidden" "--glob" "!.git/*" ];
-    };
+  # Grep
+  programs.ripgrep = {
+    enable = true;
+    arguments = ["--hidden" "--glob" "!.git/*"];
+  };
 }
