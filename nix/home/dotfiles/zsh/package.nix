@@ -1,8 +1,9 @@
-{ config, ... }:
+{ ... }:
 
 {
     imports = [
         ./config/aliases.nix      # Shell aliases
+        ./config/binds.nix        # Keybindings
         ./config/init.nix         # Extra shell config
         ./config/integrations.nix # Shell integrations
         ./config/history.nix      # History config
@@ -14,6 +15,5 @@
         enable = true;
         completionInit = "autoload -Uz compinit && compinit -C";
         defaultKeymap = "emacs"; # Emacs binds
-        dotDir = "${config.home.homeDirectory}/.zsh";
     };
 }

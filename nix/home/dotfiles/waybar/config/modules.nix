@@ -48,9 +48,9 @@
 
         pulseaudio = {
             format = "{icon}";
-            format-muted = "󰖁";
+            format-muted = "󰝟";
             format-icons = {
-                default = [ "󰝟" "󰕿" "󰖀" "󰕾" ];
+                default = [ "" "" "" "" ];
             };
             on-click = "alacritty --title='Volume Control' -e wiremix";
             tooltip-format = "Device: {desc}\nVolume: {volume}%";
@@ -90,7 +90,6 @@
         "group/sys-info" = {
             orientation = "horizontal";
             modules = [
-                "tray"
                 "network"
                 "pulseaudio"
                 "battery"

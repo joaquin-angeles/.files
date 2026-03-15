@@ -1,6 +1,9 @@
 require("chmod")
 require("full-border"):setup({})
 require("smart-enter")
+require("session"):setup {
+    sync_yanked = true,
+}
 require("yatline"):setup({
     section_separator = { open = "", close = "" },
     part_separator = { open = "", close = "" },

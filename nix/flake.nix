@@ -51,7 +51,7 @@
                         nixpkgs.overlays = [ (unstableOverlay "x86_64-linux") ];
 
                         home-manager = {
-                            backupFileExtension = "bak";
+                            backupFileExtension = "ancient";
                             useGlobalPkgs = true;
                             useUserPackages = true;
                             extraSpecialArgs = { inherit inputs; };

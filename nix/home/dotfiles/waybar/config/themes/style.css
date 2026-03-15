@@ -10,9 +10,15 @@ window#waybar {
     font-family: "JetBrainsMono Nerd Font Propo";
     font-size: 13.5pt;
     margin-right: 6pt;
+    min-width: 12pt;
 }
 
 #clock { padding: 0pt 10pt 0 10pt; }
+
+#tray {
+    background-color: alpha(darker(@bright-bg), 0.8);
+    padding: 0 6pt 0 6pt;
+}
 
 #custom-separator { color: lighter(@bright-bg); }
 
@@ -28,7 +34,7 @@ window#waybar {
 }
 
 #pulseaudio {
-    font-size: 16pt;
+    font-size: 12pt;
     font-family: "JetBrainsMono Nerd Font Propo";
     margin: 0.5pt 10pt 0 8pt;
 }
@@ -42,8 +48,6 @@ window#waybar {
 #battery.low { color: @yellow; }
 
 #battery.critical { color: @red; }
-
-#tray { padding: 0 3pt 0 3pt; }
 
 #window {
     margin: 0 0 0 11pt;
@@ -75,3 +79,4 @@ window#waybar {
 #workspaces button:nth-child(6) { font-size: 16pt; }
 #workspaces button.empty { color: alpha(@bright-bg, 0.8); }
 #workspaces button.active { color: @fg; }
+

@@ -28,6 +28,7 @@
                 "group/sys-info"
                 "custom/separator"
                 "clock"
+                "tray"
             ];
         };
     };
