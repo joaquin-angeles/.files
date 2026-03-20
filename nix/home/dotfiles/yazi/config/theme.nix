@@ -15,29 +15,29 @@
     filetype.rules = [
       (lib.mkOrder 100 {
         name = "*/";
-        is = "link";
-        fg = "cyan";
-        bold = true;
+        is = "orphan";
+        fg = "red";
       })
       (lib.mkOrder 200 {
         name = "*";
-        is = "link";
-        fg = "cyan";
+        is = "orphan";
+        fg = "red";
       })
       (lib.mkOrder 300 {
         name = "*/";
+        is = "link";
+        fg = "cyan";
         bold = true;
-        fg = "blue";
       })
       (lib.mkOrder 400 {
-        name = "*/";
-        is = "orphan";
-        fg = "red";
+        name = "*";
+        is = "link";
+        fg = "cyan";
       })
       (lib.mkOrder 500 {
-        name = "*";
-        is = "orphan";
-        fg = "red";
+        name = "*/";
+        bold = true;
+        fg = "blue";
       })
     ];
   };

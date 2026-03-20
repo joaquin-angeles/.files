@@ -28,7 +28,7 @@ Yatline.string.get.hovered_mtime = function(self)
 	end
 end
 
-Yatline.coloreds.get.user_host_dir = function(self)
+Yatline.coloreds.get.hovered_path = function(self)
 	local username = ya.user_name() or "unknown"
 	local hostname = ya.host_name() or "unknown"
 	local cwd = tostring(cx.active.current.cwd)
@@ -73,7 +73,7 @@ Yatline.coloreds.get.user_host_dir = function(self)
 	}
 end
 
-Yatline.coloreds.get.selection_status = function(self)
+Yatline.coloreds.get.count = function(self)
 	local selected = #cx.active.selected
 	local yanked = #cx.yanked
 	if selected == 0 and yanked == 0 then
@@ -83,14 +83,14 @@ Yatline.coloreds.get.selection_status = function(self)
 	local result = {}
 
 	if selected > 0 then
-		result[#result + 1] = { "󰒆 " .. selected .. "  ", "yellow" }
+		result[#result + 1] = { "󰒆 " .. selected .. " ", "yellow" }
 	end
 
 	if yanked > 0 then
 		if cx.yanked.is_cut then
-			result[#result + 1] = { "󰆐 " .. yanked .. "  ", "red" }
+			result[#result + 1] = { "󰆐 " .. yanked .. " ", "red" }
 		else
-			result[#result + 1] = { "󰆏 " .. yanked .. "  ", "green" }
+			result[#result + 1] = { "󰆏 " .. yanked .. " ", "green" }
 		end
 	end
 
@@ -115,7 +115,7 @@ yatline:setup({
 	inverse_separator = { open = "", close = "" },
 
 	style_a = {
-		fg = "cyan",
+		fg = "blue",
 		bg_mode = {
 			normal = nil,
 			select = nil,
@@ -123,7 +123,7 @@ yatline:setup({
 		},
 	},
 	style_b = {
-		fg = "blue",
+		fg = "yellow",
 		bg_mode = {
 			normal = nil,
 			select = nil,
@@ -166,7 +166,7 @@ yatline:setup({
 	header_line = {
 		left = {
 			section_a = {
-				{ type = "coloreds", custom = false, name = "user_host_dir" },
+				{ type = "coloreds", custom = false, name = "hovered_path" },
 			},
 			section_b = {},
 			section_c = {},
@@ -183,9 +183,10 @@ yatline:setup({
 			section_a = {
 				{ type = "coloreds", custom = false, name = "permissions" },
 			},
-			section_b = {},
-			section_c = {
+			section_b = {
 				{ type = "string", custom = false, name = "hovered_ownership" },
+			},
+			section_c = {
 				{ type = "string", custom = false, name = "hovered_size" },
 				{ type = "string", custom = false, name = "hovered_mtime" },
 				{ type = "string", custom = false, name = "hovered_symlink" },
@@ -196,7 +197,7 @@ yatline:setup({
 			section_b = {},
 			section_c = {
 				{ type = "string", custom = false, name = "cursor_position" },
-				{ type = "coloreds", custom = false, name = "selection_status" },
+				{ type = "coloreds", custom = false, name = "count" },
 			},
 		},
 	},
