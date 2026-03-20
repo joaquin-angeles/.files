@@ -52,8 +52,8 @@ Extending or overriding modules is straightforward thanks to Nix's declarative n
 
 | Tiled Layout | Wallpaper & Aesthetic |
 |---|---|
-| ![Tiled windows](./previews/tiled.png) | ![Background](./previews/background.png) |
+| ![Tiled windows](./png/tiled.png) | ![Background](./png/background.png) |
 
 | App Launcher | GUI Applications |
 |---|---|
-| ![Rofi launcher](./previews/rofi.png) | ![GUI](./previews/gui.png) |
+| ![Rofi launcher](./png/rofi.png) | ![GUI](./png/gui.png) |

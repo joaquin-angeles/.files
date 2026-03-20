@@ -20,7 +20,7 @@
     Service = {
       Type = "oneshot";
       TimeoutStartSec = "15min";
-      ExecStart = "${pkgs.bash}/bin/bash ${config.home.homeDirectory}/.files/scripts/gruvbox-kvantum.sh";
+      ExecStart = "${pkgs.bash}/bin/bash ${config.home.homeDirectory}/.files/bash/gruvbox-kvantum.sh";
     };
   };
 

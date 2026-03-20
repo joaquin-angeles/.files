@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -12,7 +12,9 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    package = pkgs.unstable.hyprland;
 
+    # Basic variable configuration
     settings = {
       "$browser" = "bash -c 'zen || flatpak run app.zen_browser.zen'";
       "$fileManager" = "nautilus";

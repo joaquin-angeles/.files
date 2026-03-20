@@ -13,7 +13,7 @@
     Service = {
       Type = "oneshot";
       TimeoutStartSec = "5min";
-      ExecStart = "${pkgs.bash}/bin/bash ${config.home.homeDirectory}/.files/scripts/gruvbox-papirus.sh";
+      ExecStart = "${pkgs.bash}/bin/bash ${config.home.homeDirectory}/.files/bash/gruvbox-papirus.sh";
     };
   };
 

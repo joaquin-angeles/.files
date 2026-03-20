@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 {
   # Rofi
   programs.rofi = {
