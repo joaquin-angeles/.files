@@ -1,8 +1,9 @@
-{ ... }:
+{ lib, ... }:
 
 {
   programs.yazi.theme = {
     mgr.border_style.fg = "brightblack";
+
     icon = {
       globs = [ ];
       dirs = [ ];
@@ -10,35 +11,34 @@
       exts = [ ];
       conds = [ ];
     };
-    filetype = {
-      rules = [
-        {
-          mime = "inode/directory";
-          fg = "blue";
-          bold = true;
-        }
-        {
-          name = "*/";
-          is = "orphan";
-          fg = "red";
-        }
-        {
-          name = "*";
-          is = "orphan";
-          fg = "red";
-        }
-        {
-          name = "*/";
-          is = "link";
-          fg = "cyan";
-          bold = true;
-        }
-        {
-          name = "*";
-          is = "link";
-          fg = "cyan";
-        }
-      ];
-    };
+
+    filetype.rules = [
+      (lib.mkOrder 100 {
+        name = "*/";
+        is = "link";
+        fg = "cyan";
+        bold = true;
+      })
+      (lib.mkOrder 200 {
+        name = "*";
+        is = "link";
+        fg = "cyan";
+      })
+      (lib.mkOrder 300 {
+        name = "*/";
+        bold = true;
+        fg = "blue";
+      })
+      (lib.mkOrder 400 {
+        name = "*/";
+        is = "orphan";
+        fg = "red";
+      })
+      (lib.mkOrder 500 {
+        name = "*";
+        is = "orphan";
+        fg = "red";
+      })
+    ];
   };
 }

@@ -28,10 +28,73 @@ Yatline.string.get.hovered_mtime = function(self)
 	end
 end
 
-Yatline.coloreds.get.user_host = function(self)
+Yatline.coloreds.get.user_host_dir = function(self)
 	local username = ya.user_name() or "unknown"
 	local hostname = ya.host_name() or "unknown"
-	return { { username .. "@" .. hostname .. ":", "green" } }
+	local cwd = tostring(cx.active.current.cwd)
+	local home = os.getenv("HOME") or ""
+
+	-- Replace home prefix with ~
+	if cwd:sub(1, #home) == home then
+		cwd = "~" .. cwd:sub(#home + 1)
+	end
+
+	local parent, child
+	if cwd == "~" then
+		parent = "~"
+		child = ""
+	else
+		parent = cwd:match("^(.*)/[^/]+$") or cwd
+		child = cwd:match("[^/]+$") or ""
+		if parent ~= "/" then
+			parent = parent .. "/"
+		end
+	end
+
+	-- Get hovered entry name safely
+	local hovered_name = ""
+	local hovered = cx.active.current.hovered
+	if hovered then
+		local ok, name = pcall(function()
+			return tostring(hovered.name)
+		end)
+		if ok and name then
+			hovered_name = name
+		end
+	end
+
+	return {
+		{ username .. "@" .. hostname, "green" },
+		{ ":", "white" },
+		{ parent, "blue" },
+		{ child, "blue" },
+		{ hovered_name ~= "" and "/" or "", "blue" },
+		{ hovered_name, "white" },
+	}
+end
+
+Yatline.coloreds.get.selection_status = function(self)
+	local selected = #cx.active.selected
+	local yanked = #cx.yanked
+	if selected == 0 and yanked == 0 then
+		return {}
+	end
+
+	local result = {}
+
+	if selected > 0 then
+		result[#result + 1] = { "󰒆 " .. selected .. "  ", "yellow" }
+	end
+
+	if yanked > 0 then
+		if cx.yanked.is_cut then
+			result[#result + 1] = { "󰆐 " .. yanked .. "  ", "red" }
+		else
+			result[#result + 1] = { "󰆏 " .. yanked .. "  ", "green" }
+		end
+	end
+
+	return result
 end
 
 Yatline.string.get.hovered_symlink = function(self)
@@ -52,7 +115,7 @@ yatline:setup({
 	inverse_separator = { open = "", close = "" },
 
 	style_a = {
-		fg = "blue",
+		fg = "cyan",
 		bg_mode = {
 			normal = nil,
 			select = nil,
@@ -60,7 +123,7 @@ yatline:setup({
 		},
 	},
 	style_b = {
-		fg = "grey",
+		fg = "blue",
 		bg_mode = {
 			normal = nil,
 			select = nil,
@@ -68,7 +131,7 @@ yatline:setup({
 		},
 	},
 	style_c = {
-		fg = "cyan",
+		fg = "grey",
 		bg_mode = {
 			normal = nil,
 			select = nil,
@@ -103,16 +166,13 @@ yatline:setup({
 	header_line = {
 		left = {
 			section_a = {
-				{ type = "coloreds", custom = false, name = "user_host" },
-				{ type = "string", custom = false, name = "hovered_path" },
+				{ type = "coloreds", custom = false, name = "user_host_dir" },
 			},
 			section_b = {},
 			section_c = {},
 		},
 		right = {
-			section_a = {
-				{ type = "coloreds", custom = false, name = "count" },
-			},
+			section_a = {},
 			section_b = {},
 			section_c = {},
 		},
@@ -122,21 +182,22 @@ yatline:setup({
 		left = {
 			section_a = {
 				{ type = "coloreds", custom = false, name = "permissions" },
-				{ type = "string", custom = false, name = "hovered_ownership" },
 			},
-			section_b = {
+			section_b = {},
+			section_c = {
+				{ type = "string", custom = false, name = "hovered_ownership" },
 				{ type = "string", custom = false, name = "hovered_size" },
 				{ type = "string", custom = false, name = "hovered_mtime" },
 				{ type = "string", custom = false, name = "hovered_symlink" },
 			},
-			section_c = {},
 		},
 		right = {
 			section_a = {},
-			section_b = {
+			section_b = {},
+			section_c = {
 				{ type = "string", custom = false, name = "cursor_position" },
+				{ type = "coloreds", custom = false, name = "selection_status" },
 			},
-			section_c = {},
 		},
 	},
 })

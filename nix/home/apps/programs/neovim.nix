@@ -13,6 +13,7 @@
       prettier
       stylua
       tree-sitter
+      treefmt
       vscode-langservers-extracted
     ];
   };
