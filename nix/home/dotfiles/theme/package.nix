@@ -41,5 +41,5 @@
   };
 
   # Wallpapers
-  home.file."Pictures/Wallpapers".source = "${config.home.homeDirectory}/.files/wallpapers";
+  home.file."Pictures/Wallpapers".source = "${config.home.homeDirectory}/.files/walls";
 }
