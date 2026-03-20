@@ -110,7 +110,9 @@ yatline:setup({
 			section_c = {},
 		},
 		right = {
-			section_a = {},
+			section_a = {
+				{ type = "coloreds", custom = false, name = "count" },
+			},
 			section_b = {},
 			section_c = {},
 		},
@@ -133,7 +135,6 @@ yatline:setup({
 			section_a = {},
 			section_b = {
 				{ type = "string", custom = false, name = "cursor_position" },
-				{ type = "coloreds", custom = false, name = "count" },
 			},
 			section_c = {},
 		},

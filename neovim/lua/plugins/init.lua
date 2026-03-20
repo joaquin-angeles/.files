@@ -2,7 +2,7 @@ return {
 	{
 		"stevearc/conform.nvim",
 		event = "BufWritePre", -- uncomment for format on save
-		opts = require("configs.conform"),
+		opts = require("config.conform"),
 	},
 
 	{ "nvim-tree/nvim-tree.lua", enabled = false },
@@ -11,7 +11,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			require("configs.lspconfig")
+			require("config.lspconfig")
 		end,
 	},
 

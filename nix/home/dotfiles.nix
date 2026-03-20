@@ -1,9 +1,9 @@
 { config, ... }:
+
 {
   imports = [
     ./dotfiles/alacritty/package.nix
-    # ./dotfiles/foot/package.nix
-    # ./dotfiles/ghostty/package.nix
+    ./dotfiles/hyprland/package.nix
     ./dotfiles/theme/package.nix
     ./dotfiles/waybar/package.nix
     ./dotfiles/yazi/package.nix
@@ -12,7 +12,7 @@
   ];
 
   xdg.configFile = {
-    "hypr".source = "${config.home.homeDirectory}/.files/hypr";
+    # "hypr".source = "${config.home.homeDirectory}/.files/hypr";
     "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/neovim";
   };
 }
