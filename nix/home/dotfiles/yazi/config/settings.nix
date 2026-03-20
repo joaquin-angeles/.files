@@ -1,4 +1,5 @@
 { config, ... }:
+
 let
   hostname = builtins.replaceStrings [ "\n" ] [ "" ] (builtins.readFile /etc/hostname);
 in

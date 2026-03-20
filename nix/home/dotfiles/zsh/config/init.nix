@@ -1,8 +1,5 @@
-{
-  config,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
+
 {
   programs.zsh = {
     initContent = lib.mkMerge [

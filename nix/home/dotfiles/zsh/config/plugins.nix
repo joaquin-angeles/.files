@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 {
   programs.zsh = {
     syntaxHighlighting.enable = true; # Colorize your shell

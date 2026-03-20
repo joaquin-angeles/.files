@@ -1,4 +1,5 @@
 { ... }:
+
 {
   # Better cat
   programs.bat = {

@@ -1,8 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
+
 {
   # Font packages
   home.packages = with pkgs; [

@@ -1,4 +1,5 @@
 { config, ... }:
+
 {
   # Base zsh configuration
   programs.zsh.history = {

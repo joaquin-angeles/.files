@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 {
   # Boot options
   boot.kernelModules = [ "zram" ];

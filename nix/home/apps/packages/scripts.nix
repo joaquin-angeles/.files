@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 let
   scriptsDir = "${config.home.homeDirectory}/.files/bash";
   scriptEntries = lib.mapAttrs' (

@@ -1,8 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ ... }:
+
 {
   imports = [
     ./apps/packages.nix

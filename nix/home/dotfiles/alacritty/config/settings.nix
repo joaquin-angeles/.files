@@ -1,4 +1,5 @@
 { ... }:
+
 {
   programs.alacritty.settings = {
     font.size = 13.5; # Fonts' config

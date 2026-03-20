@@ -1,8 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
+
 {
   # GTK theming
   gtk = {

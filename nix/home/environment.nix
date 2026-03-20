@@ -4,6 +4,7 @@
   lib,
   ...
 }:
+
 let
   browser = "app.zen_browser.zen.desktop";
   editor = "nvim.desktop";

@@ -1,8 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
+
 {
   # Enable font configuration
   fonts.fontconfig.enable = true;

@@ -1,8 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
+
 {
   systemd.user.services.gruvbox-papirus = {
     Unit = {

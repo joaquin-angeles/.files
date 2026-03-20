@@ -1,4 +1,5 @@
 { ... }:
+
 {
   programs.yazi.theme = {
     mgr.border_style.fg = "brightblack";

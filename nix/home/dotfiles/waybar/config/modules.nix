@@ -1,4 +1,5 @@
 { ... }:
+
 {
   programs.waybar.settings.mainBar = {
     # Module definitions
