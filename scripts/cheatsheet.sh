@@ -38,9 +38,7 @@ SUPER + Shift + J     → Move window down
 SUPER + Shift + K     → Move window up
 SUPER + Shift + L     → Move window right
 SUPER + 1–9           → Switch to workspace 1–9
-SUPER + 0             → Switch to workspace 10
 SUPER + Tab           → Next workspace
 SUPER + Shift + 1–9   → Move window to workspace 1–9
-SUPER + Shift + 0     → Move window to workspace 10
 SUPER + Shift + Tab   → Previous workspace
 EOF

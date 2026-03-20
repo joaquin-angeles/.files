@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./packages/flatpaks.nix
     ./packages/fonts.nix

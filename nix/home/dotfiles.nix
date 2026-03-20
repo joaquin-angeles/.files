@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   imports = [
     ./dotfiles/alacritty/package.nix
     # ./dotfiles/foot/package.nix

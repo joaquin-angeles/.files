@@ -1,8 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Rofi
   programs.rofi = {
     enable = true; # Installation
-    plugins = [pkgs.rofi-emoji]; # Emoji picker
+    plugins = [ pkgs.rofi-emoji ]; # Emoji picker
     font = "JetBrainsMono Nerd Font Mono 13.5"; # Font
     terminal = "${pkgs.alacritty}/bin/alacritty"; # $TERM
     theme = "gruvbox-dark-hard"; # Theme setting

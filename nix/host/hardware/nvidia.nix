@@ -1,7 +1,8 @@
-{config, ...}: {
-  boot.blacklistedKernelModules = ["nouveau"]; # ❌ nouveau
+{ config, ... }:
+{
+  boot.blacklistedKernelModules = [ "nouveau" ]; # ❌ nouveau
 
-  services.xserver.videoDrivers = ["nvidia"]; # Load Nvidia drivers for WL and X11
+  services.xserver.videoDrivers = [ "nvidia" ]; # Load Nvidia drivers for WL and X11
 
   # NVidia configuration
   hardware.nvidia = {

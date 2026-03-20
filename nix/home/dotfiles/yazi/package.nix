@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./config/settings.nix
     ./config/plugins.nix
@@ -13,7 +14,6 @@
     # Previewers
     extraPackages = with pkgs; [
       ffmpegthumbnailer
-      ueberzugpp
       file
       poppler
     ];

@@ -71,12 +71,12 @@ return {
 					return b
 				end)(),
 				(function()
-					local b = dashboard.button("m", "󰚥  Mason", "<cmd>Mason<cr>")
+					local b = dashboard.button("ls", "󰅩  Language Servers", "<cmd>Mason<cr>")
 					b.opts.hl_shortcut = "alphashortcut"
 					return b
 				end)(),
 				(function()
-					local b = dashboard.button("l", "󰒲  Lazy", "<cmd>Lazy<cr>")
+					local b = dashboard.button("pl", "󰚥  Plugins", "<cmd>Lazy<cr>")
 					b.opts.hl_shortcut = "alphashortcut"
 					return b
 				end)(),

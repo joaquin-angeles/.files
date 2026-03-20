@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./packages/development-tools.nix
     # ./packages/fonts.nix

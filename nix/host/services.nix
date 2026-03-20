@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./services/f2b.nix
     ./services/flatpak.nix

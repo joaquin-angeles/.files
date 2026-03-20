@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./themes/gruvbox_dark.nix
   ];

@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # Hardware configurations
   imports = [
     ./hardware/laptop.nix # Laptop configurations

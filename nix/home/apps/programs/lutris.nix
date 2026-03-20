@@ -1,8 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Lutris
   programs.lutris = {
     enable = true;
-    protonPackages = with pkgs; [unstable.proton-ge-bin]; # Windows games
+    protonPackages = with pkgs; [ unstable.proton-ge-bin ]; # Windows games
 
     # Patches
     package = pkgs.unstable.lutris.override {

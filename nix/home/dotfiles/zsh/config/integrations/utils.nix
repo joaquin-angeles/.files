@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ ... }:
+{
   # Better cat
   programs.bat = {
     enable = true;
@@ -16,7 +17,6 @@
   programs.eza = {
     enable = true;
     enableZshIntegration = true;
-    icons = "always"; # Always show icons
     extraOptions = [
       "--git"
       "--git-ignore"
@@ -28,6 +28,10 @@
   # Grep
   programs.ripgrep = {
     enable = true;
-    arguments = ["--hidden" "--glob" "!.git/*"];
+    arguments = [
+      "--hidden"
+      "--glob"
+      "!.git/*"
+    ];
   };
 }

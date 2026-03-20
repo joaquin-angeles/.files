@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./home/apps.nix
     ./home/dotfiles.nix

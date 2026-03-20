@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # Configuration
   imports = [
     ./config/settings.nix

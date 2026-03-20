@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   # Base zsh configuration
   programs.zsh.history = {
     path = "${config.xdg.cacheHome}/zsh/history";
@@ -7,7 +8,11 @@
     share = true;
     ignoreSpace = true; # Ignore commands that start with a space
     extended = true;
-    ignorePatterns = ["ls *" "cd *" "pwd *"]; # Ignore frequent/redundant commands
+    ignorePatterns = [
+      "ls *"
+      "cd *"
+      "pwd *"
+    ]; # Ignore frequent/redundant commands
 
     # Ignore duplicate commands
     ignoreDups = true;

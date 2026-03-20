@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./modules.nix
     ./theme.nix
@@ -24,6 +25,7 @@
       # System information and clock
       modules-right = [
         "group/sys-info"
+        "battery"
         "custom/separator"
         "clock"
         "tray"

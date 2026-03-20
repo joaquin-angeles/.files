@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   services.flatpak = {
     enable = true;
 
@@ -36,7 +37,7 @@
 
       # Device access
       Context = {
-        devices = ["dri"]; # GPU access
+        devices = [ "dri" ]; # GPU access
       };
 
       # File access

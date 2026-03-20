@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./programs/fastfetch.nix
     ./programs/btop.nix # System monitor

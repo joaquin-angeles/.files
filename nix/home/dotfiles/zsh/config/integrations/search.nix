@@ -1,9 +1,10 @@
-{pkgs, ...}: {
+{ ... }:
+{
   # Find
   programs.fd = {
     enable = true;
     hidden = true;
-    extraOptions = ["--color=always"];
+    extraOptions = [ "--color=always" ];
   };
 
   # fzf integration

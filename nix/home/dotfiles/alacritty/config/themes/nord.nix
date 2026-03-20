@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.alacritty.settings = {
     # fzf theming
     env = {

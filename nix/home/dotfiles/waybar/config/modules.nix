@@ -1,12 +1,13 @@
-{...}: {
+{ ... }:
+{
   programs.waybar.settings.mainBar = {
     # Module definitions
     "hyprland/window" = {
       max-length = 64;
       separate-outputs = false;
-      format = "󰗴  {title}";
+      format = " {title}";
       rewrite = {
-        "(.*) " = "󰋖  Empty";
+        "(.*) " = " Empty";
       };
     };
 
@@ -37,29 +38,62 @@
     network = {
       interface = "wlan0";
       format = "{icon}";
-      format-icons = ["󰤟" "󰤢" "󰤥" "󰤨"];
+      format-icons = [
+        "󰤟"
+        "󰤢"
+        "󰤥"
+        "󰤨"
+      ];
       format-disconnected = "󰤭";
       format-ethernet = "󰈀";
       tooltip-format = "Connected to {essid}\nNetwork speed: {signalStrength}%";
       on-click = "alacritty --title='Network Manager' -e impala";
     };
 
+    bluetooth = {
+      format = "󰂯";
+      format-disabled = "󰂳";
+      format-off = "󰂲";
+      format-connected = "󰂱";
+      tooltip-format = "Bluetooth: {status}";
+      tooltip-format-connected = "{controller_alias}\n\n{device_enumerate}";
+      tooltip-format-enumerate-connected = "  {device_alias}";
+      on-click = "alacritty --title='Bluetooth Manager' -e bluetui";
+    };
+
     pulseaudio = {
       format = "{icon}";
       format-muted = "󰝟";
       format-icons = {
-        default = ["" "" "" ""];
+        default = [
+          ""
+          ""
+          ""
+          ""
+        ];
       };
       on-click = "alacritty --title='Volume Control' -e wiremix";
       tooltip-format = "Device: {desc}\nVolume: {volume}%";
     };
 
     battery = {
-      format = "{icon}";
-      format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-      format-full = "󱈑";
-      format-charging = "󰂄";
-      format-warning = "󰂃";
+      format = "{icon} {capacity}%";
+      format-icons = [
+        "󰂎"
+        "󰁺"
+        "󰁻"
+        "󰁼"
+        "󰁽"
+        "󰁾"
+        "󰁿"
+        "󰂀"
+        "󰂁"
+        "󰂂"
+        "󰁹"
+      ];
+      format-full = "󱟢 {capacity}%";
+      format-charging = "󰂄 {capacity}%";
+      format-warning = "󰂃 {capacity}%";
       tooltip = true;
       tooltip-format = "Status: Discharging\nBattery: {capacity}%";
       tooltip-format-charging = "Status: Charging\nBattery: {capacity}%";
@@ -86,12 +120,26 @@
     };
 
     "group/sys-info" = {
-      orientation = "horizontal";
+      orientation = "inherit";
+      drawer = {
+        transition-duration = 600;
+        children-class = "tray-group-item";
+      };
       modules = [
+        "custom/expand-icon"
         "network"
+        "bluetooth"
         "pulseaudio"
-        "battery"
       ];
+    };
+
+    "custom/expand-icon" = {
+      format = "";
+      tooltip = false;
+      "on-scroll-up" = "";
+      "on-scroll-down" = "";
+      "on-scroll-left" = "";
+      "on-scroll-right" = "";
     };
 
     "custom/power" = {

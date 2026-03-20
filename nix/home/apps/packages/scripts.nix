@@ -2,12 +2,13 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   scriptsDir = "${config.home.homeDirectory}/.files/scripts";
   scriptEntries = lib.mapAttrs' (
-    name: _:
-      lib.nameValuePair ".local/bin/${name}" {source = "${scriptsDir}/${name}";}
+    name: _: lib.nameValuePair ".local/bin/${name}" { source = "${scriptsDir}/${name}"; }
   ) (builtins.readDir scriptsDir);
-in {
+in
+{
   home.file = scriptEntries;
 }

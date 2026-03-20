@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # Font packages
   home.packages = with pkgs; [
     corefonts

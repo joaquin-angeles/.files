@@ -1,11 +1,18 @@
-{pkgs, ...}: {
-  programs.yazi.plugins = {
-    chmod = pkgs.yaziPlugins.chmod;
-    full-border = pkgs.yaziPlugins.full-border;
-    smart-enter = pkgs.yaziPlugins.smart-enter;
-    yatline = pkgs.yaziPlugins.yatline;
-  };
+{ pkgs, ... }:
+{
+  programs.yazi = {
+    # Plugin installation
+    plugins = {
+      inherit (pkgs.yaziPlugins)
+        chmod
+        full-border
+        git
+        lazygit
+        smart-enter
+        yatline
+        ;
+    };
 
-  # Plugin configuration
-  programs.yazi.initLua = ./init.lua;
+    initLua = ./init.lua; # Plugin configuration
+  };
 }

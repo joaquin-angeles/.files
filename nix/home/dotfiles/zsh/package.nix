@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./config/aliases.nix # Shell aliases
     ./config/binds.nix # Keybindings

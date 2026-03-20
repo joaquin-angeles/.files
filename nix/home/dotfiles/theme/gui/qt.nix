@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # Qt theming
   qt = {
     enable = true;
@@ -13,7 +14,7 @@
   systemd.user.services.gruvbox-kvantum = {
     Unit = {
       Description = "Install and configure Gruvbox Papirus icon theme";
-      After = ["network-online.target"];
+      After = [ "network-online.target" ];
     };
 
     Service = {
@@ -35,7 +36,7 @@
     };
 
     Install = {
-      WantedBy = ["timers.target"];
+      WantedBy = [ "timers.target" ];
     };
   };
 }

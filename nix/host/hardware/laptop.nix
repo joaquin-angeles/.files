@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # Auto CPU frequency
   services.auto-cpufreq = {
     enable = true;

@@ -1,5 +1,14 @@
-{...}: {
+{ ... }:
+{
   programs.yazi.theme = {
+    mgr.border_style.fg = "brightblack";
+    icon = {
+      globs = [ ];
+      dirs = [ ];
+      files = [ ];
+      exts = [ ];
+      conds = [ ];
+    };
     filetype = {
       rules = [
         {
@@ -8,22 +17,23 @@
           bold = true;
         }
         {
-          name = "*";
+          name = "*/";
           is = "orphan";
           fg = "red";
         }
         {
           name = "*";
+          is = "orphan";
+          fg = "red";
+        }
+        {
+          name = "*/";
           is = "link";
           fg = "cyan";
+          bold = true;
         }
         {
-          name = "*/";
-          is = "orphan";
-          fg = "red";
-        }
-        {
-          name = "*/";
+          name = "*";
           is = "link";
           fg = "cyan";
         }

@@ -3,21 +3,23 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   browser = "app.zen_browser.zen.desktop";
   editor = "nvim.desktop";
   archive = "org.gnome.FileRoller.desktop";
   files = "org.gnome.Nautilus.desktop";
 
   mkMime = app: types: lib.listToAttrs (map (t: lib.nameValuePair t app) types);
-in {
+in
+{
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
     GTK_DECORATION_LAYOUT = ":";
     GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules";
     NIXOS_OZONE_WL = "1";
-    MANPAGER = "sh -c 'col -bx | bat -l man --style=plain'";
+    MANPAGER = "bat -l man --style=plain'";
     RUSTUP_HOME = "${config.home.homeDirectory}/.local/share/rustup";
     WLR_NO_HARDWARE_CURSORS = "1";
   };

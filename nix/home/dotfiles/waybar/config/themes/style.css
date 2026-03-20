@@ -1,82 +1,106 @@
 window#waybar {
-    font-family: sans-serif;
-    font-size: 12pt;
-    background-color: alpha(@bg, 0.8);
-    border-bottom: 1px solid alpha(darker(@bright-bg), 0.8);
-    color: @fg;
+  font-family: sans-serif;
+  font-size: 12pt;
+  background-color: alpha(@bg, 0.8);
+  border-bottom: 1px solid alpha(darker(@bright-bg), 0.8);
+  color: @fg;
 }
 
 #sys-info {
-    font-family: "JetBrainsMono Nerd Font Propo";
-    font-size: 13.5pt;
-    margin-right: 6pt;
-    min-width: 12pt;
+  font-family: "JetBrainsMono Nerd Font Propo";
+  font-size: 13.5pt;
+  margin-right: 6pt;
+  min-width: 12pt;
 }
 
-#clock { padding: 0pt 10pt 0 10pt; }
+#clock {
+  padding: 0pt 10pt 0 10pt;
+}
+
+#bluetooth {
+  padding: 0 5pt 0 6pt;
+}
 
 #tray {
-    background-color: alpha(darker(@bright-bg), 0.8);
-    padding: 0 6pt 0 6pt;
+  padding: 0 3pt 0 0;
 }
 
-#custom-separator { color: lighter(@bright-bg); }
+#custom-expand-icon {
+  padding-right: 6pt;
+}
+
+#custom-separator {
+  color: alpha(@bright-bg, 0.8);
+}
 
 #custom-power {
-    color: @red;
-    font-size: 14.5pt;
-    margin: 0pt 7pt 0pt 5pt;
-    padding: 0 5pt 0 5pt;
+  color: @red;
+  font-size: 15pt;
+  padding: 0.5px 5pt 0 5pt;
 }
 
 #network {
-    padding: 0 6pt 0 8pt;
+  padding: 0 6pt 0 8pt;
 }
 
 #pulseaudio {
-    font-size: 12pt;
-    font-family: "JetBrainsMono Nerd Font Propo";
-    margin: 0.5pt 10pt 0 8pt;
+  font-size: 12pt;
+  font-family: "JetBrainsMono Nerd Font Propo";
+  margin: 0.5px 5pt 0 8pt;
 }
 
 #battery {
-    font-family: "JetBrainsMonO Nerd Font Propo";
-    font-size: 14pt;
-    padding: 0 6.5pt 0 4.5pt;
+  padding: 0 8pt 0 4pt;
 }
 
-#battery.low { color: @yellow; }
+#battery span.icon {
+  font-size: 13.5pt;
+}
 
-#battery.critical { color: @red; }
+#battery.low {
+  color: @yellow;
+}
+
+#battery.critical {
+  color: @red;
+}
 
 #window {
-    margin: 0 0 0 11pt;
-    /* color: darker(@fg); */
+  margin: 0 0 0 6pt;
+  /* color: darker(@fg); */
 }
 
 #workspaces {
-    margin-left: 2pt;
-    margin-right: 3pt;
+  margin-left: 2pt;
+  margin-right: 2pt;
 }
 
 #workspaces button {
-    font-family: "JetBrainsMono Nerd Font Propo";
-    font-size: 13.5pt;
-    color: lighter(@bright-bg);
-    padding: 0 7pt;
-    min-width: 14pt;
+  font-family: "JetBrainsMono Nerd Font Propo";
+  font-size: 13.5pt;
+  color: @bright-bg;
+  padding: 0 7pt;
+  min-width: 14pt;
 }
 
 #workspaces button.hover {
-    background-color: transparent;
-    color: darker(@fg);
+  background-color: transparent;
+  color: darker(@fg);
 }
 
-
 /* Workspace specific rules */
-#workspaces button:nth-child(1) { padding-right: 5pt; }
-#workspaces button:nth-child(2) { font-size: 15pt; }
-#workspaces button:nth-child(6) { font-size: 16pt; }
-#workspaces button.empty { color: alpha(@bright-bg, 0.8); }
-#workspaces button.active { color: @fg; }
-
+#workspaces button:nth-child(1) {
+  padding-right: 5pt;
+}
+#workspaces button:nth-child(2) {
+  font-size: 15pt;
+}
+#workspaces button:nth-child(6) {
+  font-size: 16pt;
+}
+#workspaces button.empty {
+  color: darker(@bright-bg);
+}
+#workspaces button.active {
+  color: @fg;
+}
