@@ -17,7 +17,7 @@
     # Basic variable configuration
     settings = {
       "$browser" = "bash -c 'zen || flatpak run app.zen_browser.zen'";
-      "$fileManager" = "nautilus";
+      "$fileManager" = "alacritty -e yazi";
       "$menu" = "rofi -show drun";
       "$mod" = "SUPER";
       "$term" = "alacritty";

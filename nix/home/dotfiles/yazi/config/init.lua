@@ -56,7 +56,7 @@ Yatline.coloreds.get.hovered_path = function(self)
 		{ ": ", "white" },
 		{ parent_str, "blue" },
 		{ child_str, "blue" },
-		{ hovered, "white" },
+		{ hovered, "grey" },
 	}
 end
 

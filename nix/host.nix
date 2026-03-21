@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # Boot options
@@ -18,24 +22,29 @@
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
     ];
-
     config = {
       common.default = [ "gtk" ];
-
-      # Hyprland desktop portal configuration
       hyprland = {
-        preferred = [
+        default = [
           "hyprland"
           "gtk"
         ];
         "org.freedesktop.portal.FileChooser" = [ "gtk" ];
+        "org.freedesktop.impl.portal.Settings" = [ "gtk" ];
       };
     };
   };
   environment.pathsToLink = [
     "/share/xdg-desktop-portal"
+    "/share/xdg-desktop-portal/portals"
     "/share/applications"
   ];
+  environment.etc."xdg/xdg-desktop-portal/portals.conf".text = lib.mkForce ''
+    [preferred]
+    default=hyprland;gtk
+    org.freedesktop.impl.portal.Settings=gtk
+    org.freedesktop.impl.portal.FileChooser=gtk
+  '';
 
   # Nix package manager
   nix.optimise.automatic = true;

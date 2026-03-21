@@ -4,11 +4,19 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
-    # Follows stable nixpkgs to avoid duplicate instances
+    # Dotfile configurations
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Declarative Flatpaks
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+
+    # Browser app
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -17,8 +25,9 @@
     {
       nixpkgs,
       nixpkgs-unstable,
-      nix-flatpak,
       home-manager,
+      nix-flatpak,
+      zen-browser,
       ...
     }@inputs:
     let
@@ -40,13 +49,23 @@
         };
       };
 
+      # Exposes pkgs.zen-browser throughout the config
+      zenOverlay =
+        system: final: prev:
+        nixpkgs.lib.optionalAttrs (builtins.hasAttr system zen-browser.packages) {
+          zen-browser = zen-browser.packages.${system}.default;
+        };
+
       # Used by the standalone homeConfigurations output
       pkgsFor =
         system:
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          overlays = [ (unstableOverlay system) ];
+          overlays = [
+            (unstableOverlay system)
+            (zenOverlay system)
+          ];
         };
     in
     {
@@ -63,7 +82,10 @@
           home-manager.nixosModules.home-manager
           {
             nixpkgs.config.allowUnfree = true;
-            nixpkgs.overlays = [ (unstableOverlay "x86_64-linux") ];
+            nixpkgs.overlays = [
+              (unstableOverlay "x86_64-linux")
+              (zenOverlay "x86_64-linux")
+            ];
 
             home-manager = {
               backupFileExtension = "bak";

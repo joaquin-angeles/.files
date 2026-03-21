@@ -31,8 +31,9 @@
     global = {
       # Environmental variables
       Environment = {
-        "GTK_THEME" = "Gruvbox-Dark"; # Set GTK theme
-        "GTK_APPLICATION_PREFER_DARK_THEME" = "1"; # Enable dark mode
+        "GTK_THEME" = "Gruvbox-Dark:dark";
+        "GTK_APPLICATION_PREFER_DARK_THEME" = "1";
+        "DCONF_USER_CONFIG_DIR" = ".config/dconf";
       };
 
       # Device access
@@ -43,17 +44,24 @@
       # File access
       Context.filesystems = [
         "/nix/store:ro"
-        "~/.local/share/icons" # Access to themes
-        "~/.local/share/applications" # Access to themes
-        "~/.local/share/fonts:ro" # Access to fonts
-        "~/.local/share/themes:ro" # Access to themes
+        "~/.local/share/icons:ro"
+        "~/.local/share/applications:ro"
+        "~/.local/share/fonts:ro"
+        "~/.cache/fontconfig:ro"
 
         # GTK Theming and icon access
+        "~/.local/share/themes:ro"
         "xdg-config/gtk-3.0:ro"
         "xdg-config/gtk-4.0:ro"
         "xdg-data/themes:ro"
         "xdg-data/icons:ro"
+        "~/.config/dconf:ro"
+        "xdg-run/dconf"
       ];
+
+      "Session Bus Policy" = {
+        "ca.desrt.dconf" = "talk";
+      };
     };
 
     # Libadwaita themes for badly themed packages

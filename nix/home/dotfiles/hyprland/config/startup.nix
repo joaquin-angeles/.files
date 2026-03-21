@@ -11,7 +11,7 @@
       "rm ~/.cache/cliphist/db && cliphist.sh" # Clipboard history; wipe stale db on start
       "~/.local/bin/power-saver.sh"
       "waybar"
-      "nm-applet"
+      # "nm-applet"
       "wbg ~/Pictures/Wallpapers/gruvbox/trees.png"
       "mako"
       "hypridle"

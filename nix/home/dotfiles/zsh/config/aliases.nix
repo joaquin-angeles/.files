@@ -4,7 +4,7 @@
   programs.zsh.shellAliases = {
     cat = "bat";
     cd = "z";
-    fzf = "ff";
+    # fzf = "ff";
     grep = "rg";
     ls = "eza";
     yazi = "yy";

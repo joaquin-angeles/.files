@@ -8,6 +8,7 @@
       "$mod, SPACE, exec, $menu"
       "$mod, b, exec, $browser"
       "$mod, e, exec, $fileManager"
+      "$mod SHIFT, e, exec, nautilus"
 
       # Utilities
       "CTRL ALT, B, exec, pgrep sunsetr >/dev/null && pkill sunsetr || sunsetr test 4000 100"
@@ -17,7 +18,7 @@
       "$mod SHIFT, s, exec, bash -c 'wayfreeze & sleep 0.1 && grim -g \"$(slurp)\" - | wl-copy; pkill wayfreeze; notify-send \"Screenshot saved\" \"Image copied to clipboard\"'"
       "$mod, w, exec, pgrep waybar >/dev/null && pkill waybar || waybar &"
       "$mod, n, exec, bash -c 'if makoctl mode | grep -q do-not-disturb; then makoctl mode -r do-not-disturb && notify-send \"DND Off\" \"Notifications enabled\"; else notify-send \"DND On\" \"Notifications silenced\" && makoctl mode -a do-not-disturb; fi'"
-      "$mod SHIFT, e, exec, power-menu.sh"
+      "$mod SHIFT, q, exec, power-menu.sh"
       "$mod SHIFT, p, exec, hyprpicker -a"
       "$mod, V, exec, cliphist list | rofi -dmenu -p 'clipboard' | cliphist decode | wl-copy"
 

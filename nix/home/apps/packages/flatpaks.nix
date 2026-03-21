@@ -2,7 +2,7 @@
 
 {
   services.flatpak.packages = [
-    "app.zen_browser.zen" # Default browser
+    # "app.zen_browser.zen" # Default browser
     "com.github.tchx84.Flatseal"
     "com.obsproject.Studio" # Screen recording software
     "com.usebottles.bottles" # Windows applications

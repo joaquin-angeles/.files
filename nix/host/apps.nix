@@ -1,4 +1,6 @@
-{ ... }:
+{
+  ...
+}:
 {
   imports = [
     ./apps/packages.nix

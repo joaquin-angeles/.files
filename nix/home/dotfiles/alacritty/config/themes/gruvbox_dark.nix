@@ -8,7 +8,7 @@
         --color=spinner:#89b482,hl:#7daea3
         --color=fg:#d4be98,header:#7daea3,info:#d8a657,pointer:#d3869b
         --color=marker:#a9b665,fg+:#d4be98,prompt:#d8a657,hl+:#9cd9cb
-        --color=border:#555859,label:#d4be98,query:#d4be98
+        --color=border:#575A5B,label:#d4be98,query:#d4be98
       ";
     };
 
@@ -30,7 +30,7 @@
       };
 
       bright = {
-        black = "#555859";
+        black = "#575A5B";
         red = "#ff837a";
         green = "#d3e37e";
         yellow = "#ffcf6c";
@@ -47,6 +47,6 @@
         --color=spinner:#89b482,hl:#7daea3 \
         --color=fg:#d4be98,header:#7daea3,info:#d8a657,pointer:#d3869b \
         --color=marker:#a9b665,fg+:#d4be98,prompt:#d8a657,hl+:#9cd9cb \
-        --color=border:#555859,label:#d4be98,query:#d4be98
+        --color=border:#575A5B,label:#d4be98,query:#d4be98
   '';
 }

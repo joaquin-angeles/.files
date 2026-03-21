@@ -29,6 +29,7 @@
     wayfreeze
     wbg
     zellij
+    zen-browser
   ];
 
   # Facebook Messenger

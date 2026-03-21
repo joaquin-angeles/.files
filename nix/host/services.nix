@@ -8,6 +8,7 @@
     ./services/polkit.nix
   ];
 
+  programs.dconf.enable = true; # GTK settings
   services.dbus.enable = true; # DBus support
   services.gvfs.enable = true; # Trash implementation on FS
   # services.zerotierone.enable = true; # Virtual network manager
