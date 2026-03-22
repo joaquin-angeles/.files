@@ -10,7 +10,10 @@
     "com.spotify.Client" # Music streaming
     "dev.vencord.Vesktop" # Discord
     "com.modrinth.ModrinthApp"
-    "io.mrarm.mcpelauncher" # Minecraft Bedrock
+    {
+      appId = "io.mrarm.mcpelauncher";
+      origin = "flathub-beta";
+    }
     # "net.lutris.Lutris"               # Game launcher
     "org.chromium.Chromium" # Progressive web apps
     # "org.libreoffice.LibreOffice"     # Office suite

@@ -1,18 +1,22 @@
-{ ... }:
+{ lib, ... }:
+
 {
   services.flatpak = {
     enable = true;
 
     # Repositories
-    remotes = [
+    remotes = lib.mkOptionDefault [
+      # Explicitly set
       {
         name = "flathub";
         location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-      } # Explicitly set
+      }
+
+      # Unstable branch
       {
         name = "flathub-beta";
         location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
-      } # Unstable branch
+      }
     ];
 
     uninstallUnmanaged = true; # True declarative

@@ -30,14 +30,14 @@
       };
 
       bright = {
-        black = "#575A5B";
-        red = "#ff837a";
-        green = "#d3e37e";
-        yellow = "#ffcf6c";
-        blue = "#9cd9cb";
-        magenta = "#ffa7c1";
-        cyan = "#abe1a2";
-        white = "#ffedbe";
+        black = "#575a5b";
+        red = "#f4827a";
+        green = "#bece7a";
+        yellow = "#f0bb6e";
+        blue = "#96c4bc";
+        magenta = "#e89db2";
+        cyan = "#9fcc96";
+        white = "#ede0be";
       };
     };
   };

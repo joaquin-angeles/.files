@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./config/keymaps.nix
     ./config/settings.nix
     ./config/plugins.nix
     ./config/theme.nix
