@@ -2,7 +2,7 @@
 
 {
   programs.yazi.keymap = {
-    manager.prepend_keymap = [
+    mgr.prepend_keymap = [
       {
         on = [
           "g"
@@ -35,27 +35,14 @@
         desc = "Edit in $EDITOR";
       }
       {
-        on = [
-          "z"
-          "h"
-        ];
-        run = "hidden toggle";
-        desc = "Toggle hidden files";
+        on = [ "l" ];
+        run = "plugin smart-enter";
+        desc = "Enter dir or open file (smart)";
       }
       {
-        on = [ ":" ];
-        run = "shell --interactive";
-        desc = "Open shell prompt";
-      }
-      {
-        on = [ "!" ];
-        run = "shell --interactive --cwd=current";
-        desc = "Open shell in current dir";
-      }
-      {
-        on = [ "q" ];
-        run = "quit";
-        desc = "Quit";
+        on = [ "L" ];
+        run = ''shell 'if [ -f "$1" ]; then alacritty -e "$EDITOR" "$@" & disown; fi' --confirm'';
+        desc = "Open file in new terminal ($EDITOR)";
       }
     ];
   };
