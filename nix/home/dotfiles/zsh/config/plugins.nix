@@ -2,12 +2,18 @@
 
 {
   programs.zsh = {
-    syntaxHighlighting.enable = true; # Colorize your shell
     autosuggestion.enable = true; # Autosuggestions
     enableCompletion = true; # Auto-completions
 
     # Extra plugins
     plugins = [
+      # Colorize your shell
+      {
+        name = "zsh-syntax-highlighting";
+        src = pkgs.zsh-fast-syntax-highlighting;
+        file = "share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh";
+      }
+
       # History searching
       {
         name = "zsh-history-substring-search";

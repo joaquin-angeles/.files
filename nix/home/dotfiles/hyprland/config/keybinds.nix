@@ -40,17 +40,20 @@
       "$mod SHIFT, j, movewindow, d"
       "$mod SHIFT, k, movewindow, u"
       "$mod SHIFT, l, movewindow, r"
-      "$mod CTRL, h, moveintogroup, l"
-      "$mod CTRL, j, moveintogroup, d"
-      "$mod CTRL, k, moveintogroup, u"
-      "$mod CTRL, l, moveintogroup, r"
+
+      # Window resizing
+      "$mod ALT, h, resizeactive, -10 0"
+      "$mod ALT, j, resizeactive, 0 10"
+      "$mod ALT, k, resizeactive, 0 -10"
+      "$mod ALT, l, resizeactive, 10 0"
 
       # Window navigation
       "$mod, h, movefocus, l"
       "$mod, j, movefocus, d"
       "$mod, k, movefocus, u"
       "$mod, l, movefocus, r"
-      "$mod, G, exec, hyprctl --batch \"dispatch togglegroup ; dispatch forcerendererreload\""
+      "$mod, g, togglegroup"
+      "$mod SHIFT, g, moveoutofgroup"
       "$mod, TAB, changegroupactive, f"
       "$mod SHIFT, TAB, changegroupactive, b"
 

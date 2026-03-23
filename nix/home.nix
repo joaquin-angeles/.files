@@ -11,8 +11,12 @@
   home.stateVersion = "25.05";
 
   # System correction
-  systemd.user.systemctlPath = "/run/current-system/sw/bin/systemctl";
-  systemd.user.startServices = "sd-switch";
+  systemd = {
+    user = {
+      systemctlPath = "/run/current-system/sw/bin/systemctl";
+      startServices = "sd-switch";
+    };
+  };
 
   # User directories
   xdg.userDirs = {

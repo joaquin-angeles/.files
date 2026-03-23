@@ -2,22 +2,19 @@
   description = "Gruvforest: An environment of organic minimalism";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11"; # stable
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable"; # unstable
 
-    # Dotfile configurations
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager/release-25.11"; # user dotfiles/packages
+      inputs.nixpkgs.follows = "nixpkgs"; # pin to stable
     };
 
-    # Declarative Flatpaks
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest"; # declarative flatpaks
 
-    # Browser app
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs"; # pin to stable
     };
   };
 
@@ -31,33 +28,30 @@
       ...
     }@inputs:
     let
+      hostSystem = "x86_64-linux"; # this machine
+
       systems = [
+        # all supported systems
         "x86_64-linux"
         "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
       ];
 
-      # Helper to generate attrs for each system
-      forAllSystems = nixpkgs.lib.genAttrs systems;
+      forAllSystems = nixpkgs.lib.genAttrs systems; # map over systems
 
-      # Exposes pkgs.unstable throughout the config
       unstableOverlay = system: final: prev: {
+        # pkgs.unstable.*
         unstable = import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
         };
       };
 
-      # Exposes pkgs.zen-browser throughout the config
-      zenOverlay =
-        system: final: prev:
-        nixpkgs.lib.optionalAttrs (builtins.hasAttr system zen-browser.packages) {
-          zen-browser = zen-browser.packages.${system}.default;
-        };
+      zenOverlay = system: final: prev: {
+        # injects zen-browser into pkgs
+        zen-browser = zen-browser.packages.${system}.default;
+      };
 
-      # Used by the standalone homeConfigurations output
-      pkgsFor =
+      pkgsFor = # stable pkgs + overlays for a given system
         system:
         import nixpkgs {
           inherit system;
@@ -69,28 +63,28 @@
         };
     in
     {
-      # NixOS system config (Linux only)
       nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        # system config
+        system = hostSystem;
+        specialArgs = { inherit inputs; }; # pass flake inputs to modules
         modules = [
           ./host.nix
           ./host/apps.nix
           ./host/hardware.nix
           ./host/services.nix
-          /etc/nixos/hardware-configuration.nix
+          /etc/nixos/hardware-configuration.nix # machine-generated
           home-manager.nixosModules.home-manager
           {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [
-              (unstableOverlay "x86_64-linux")
-              (zenOverlay "x86_64-linux")
+              (unstableOverlay hostSystem)
+              (zenOverlay hostSystem)
             ];
 
             home-manager = {
-              backupFileExtension = "bak";
-              useGlobalPkgs = true;
-              useUserPackages = true;
+              backupFileExtension = "bak"; # back up conflicting files
+              useGlobalPkgs = true; # share system pkgs
+              useUserPackages = true; # install into /etc/profiles
               extraSpecialArgs = { inherit inputs; };
               sharedModules = [ nix-flatpak.homeManagerModules.nix-flatpak ];
               users.joaquin = import ./home.nix;
@@ -99,8 +93,8 @@
         ];
       };
 
-      # Standalone config for non-NixOS systems (e.g. Fedora Silverblue, macOS)
       homeConfigurations = forAllSystems (
+        # standalone, non-NixOS
         system:
         home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor system;

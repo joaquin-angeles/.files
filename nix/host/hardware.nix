@@ -1,17 +1,18 @@
 { ... }:
 {
-  # Hardware configurations
   imports = [
-    ./hardware/laptop.nix # Laptop configurations
-    ./hardware/nvidia.nix # Proprietary Nvidia drivers
+    ./hardware/laptop.nix
+    ./hardware/nvidia.nix
   ];
 
-  # Audio server configuration
+  # Audio
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
     pulse.enable = true;
     extraConfig.pipewire."92-low-latency" = {
       "context.properties" = {
@@ -23,15 +24,17 @@
     };
   };
 
-  # Connectivity configurations
-  hardware.bluetooth.enable = true; # Bluetooth
-  services.libinput.enable = true; # Mouse/trackpad management
-
-  # Graphics settings
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  # Hardware
+  hardware = {
+    bluetooth.enable = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
   };
+
+  # Input
+  services.libinput.enable = true;
 
   # Zram
   zramSwap = {

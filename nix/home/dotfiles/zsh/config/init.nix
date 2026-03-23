@@ -5,8 +5,6 @@
     initContent = lib.mkMerge [
       # P10K instant prompt
       (lib.mkBefore ''
-        # stty intr "^G"
-
         # P10K instant prompt
         if [[ -r "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh" ]]; then
           source "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh"
@@ -46,17 +44,6 @@
         }
         precmd_functions+=(_directory_title)
         preexec_functions+=(_command_title)
-
-        # Better FZF (faster preview)
-        function ff() {
-          command fzf --preview '
-            if [ -d {} ]; then
-              command -v eza >/dev/null && eza --icons always --group-directories-first --git --color=always -la {} || ls -lha --color=always group-directories-first {}
-            else
-              command -v bat >/dev/null && bat {} || cat {}
-            fi
-            '
-        }
       '')
     ];
   };

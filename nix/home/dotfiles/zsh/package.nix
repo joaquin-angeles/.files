@@ -3,7 +3,6 @@
 {
   imports = [
     ./config/aliases.nix # Shell aliases
-    ./config/binds.nix # Keybindings
     ./config/init.nix # Extra shell config
     ./config/integrations.nix # Shell integrations
     ./config/history.nix # History config

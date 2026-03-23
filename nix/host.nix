@@ -1,12 +1,7 @@
-{
-  lib,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 
 {
   # Boot options
-  boot.kernelModules = [ "zram" ];
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
@@ -19,9 +14,7 @@
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
     config = {
       common.default = [ "gtk" ];
       hyprland = {
@@ -34,20 +27,8 @@
       };
     };
   };
-  environment.pathsToLink = [
-    "/share/xdg-desktop-portal"
-    "/share/xdg-desktop-portal/portals"
-    "/share/applications"
-  ];
-  environment.etc."xdg/xdg-desktop-portal/portals.conf".text = lib.mkForce ''
-    [preferred]
-    default=hyprland;gtk
-    org.freedesktop.impl.portal.Settings=gtk
-    org.freedesktop.impl.portal.FileChooser=gtk
-  '';
 
   # Nix package manager
-  nix.optimise.automatic = true;
   nix.settings = {
     auto-optimise-store = true;
     experimental-features = [
@@ -65,14 +46,14 @@
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocales = [ "en_GB.UTF-8/UTF-8" ];
-    extraLocaleSettings = {
-      LC_TIME = "en_GB.UTF-8";
-    };
+    extraLocaleSettings.LC_TIME = "en_GB.UTF-8";
   };
 
   # sudo-rs
-  security.sudo.enable = false;
-  security.sudo-rs.enable = true;
+  security = {
+    sudo.enable = false;
+    sudo-rs.enable = true;
+  };
 
   # User configuration
   users.users.joaquin = {

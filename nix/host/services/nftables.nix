@@ -1,4 +1,5 @@
 { ... }:
+
 {
   networking = {
     nftables.enable = true;

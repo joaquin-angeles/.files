@@ -6,7 +6,7 @@ require("session"):setup({ sync_yanked = true })
 
 local yatline = require("yatline")
 
--- Extended style support for coloreds
+-- Allow table-based styles in coloreds components
 local orig_colored = Yatline.coloreds.render
 Yatline.coloreds.render = function(self, component)
 	local text, style = component[1], component[2]
@@ -22,21 +22,23 @@ Yatline.coloreds.render = function(self, component)
 	return span
 end
 
+-- Hovered file modification time
 Yatline.coloreds.get.hovered_mtime = function(self)
-	local hovered = cx.active.current.hovered
-	local time = hovered and math.floor(hovered.cha.mtime or 0) or 0
-	if time == 0 then
+	local h = cx.active.current.hovered
+	local t = h and math.floor(h.cha.mtime or 0) or 0
+	if t == 0 then
 		return {}
 	end
-	local fmt = os.date("%Y", time) == os.date("%Y") and "%d %b %H:%M" or "%d %b %Y"
-	return { { os.date(fmt, time), "blue" } }
+	return { { os.date(os.date("%Y", t) == os.date("%Y") and "%d %b %H:%M" or "%d %b %Y", t), "blue" } }
 end
 
+-- Hovered file size
 Yatline.coloreds.get.hovered_size = function(self)
 	local size = cx.active.current.hovered and cx.active.current.hovered:size()
 	return size and { { " " .. ya.readable_size(size) .. "  ", "green" } } or { { " -  ", "brightblack" } }
 end
 
+-- Hovered file path (user@host: parent/child/file)
 Yatline.coloreds.get.hovered_path = function(self)
 	local cwd = tostring(cx.active.current.cwd)
 	local home = (os.getenv("HOME") or ""):gsub("/$", "")
@@ -46,7 +48,6 @@ Yatline.coloreds.get.hovered_path = function(self)
 
 	local child = cwd:match("^[/~]$") and "" or cwd:match("[^/]+$") or ""
 	local parent = cwd:match("^[/~]$") and cwd or cwd:sub(1, #cwd - #child - 1):gsub("^$", "/")
-
 	local hovered = (cx.active.current.hovered or {}).name or ""
 	local child_str = child ~= "" and (parent ~= "/" and "/" or "") .. child .. "/" or ""
 	local parent_str = parent .. (parent == "~" and child == "" and hovered ~= "" and "/" or "")
@@ -60,6 +61,7 @@ Yatline.coloreds.get.hovered_path = function(self)
 	}
 end
 
+-- Selected / yanked file counts
 Yatline.coloreds.get.count = function(self)
 	local selected, yanked = #cx.active.selected, #cx.yanked
 	if selected == 0 and yanked == 0 then
@@ -76,6 +78,7 @@ Yatline.coloreds.get.count = function(self)
 	return result
 end
 
+-- Symlink target with colored extension
 Yatline.line.get.hovered_symlink = function(self)
 	local hovered = cx.active.current.hovered
 	if not hovered or not hovered.link_to then
@@ -87,10 +90,8 @@ Yatline.line.get.hovered_symlink = function(self)
 		return ui.Line({ ui.Span("  -> "):fg("red"), ui.Span(path):fg("red") })
 	end
 
-	local name = path:match("[^/]+$") or ""
-	local trail = path:sub(1, #path - #name)
-
 	local EXT = {
+		-- images / video
 		png = "magenta",
 		jpg = "magenta",
 		jpeg = "magenta",
@@ -107,20 +108,24 @@ Yatline.line.get.hovered_symlink = function(self)
 		wmv = "magenta",
 		m2ts = "magenta",
 		webm = "magenta",
+		-- lossy audio
 		mp3 = "blue",
 		ogg = "blue",
 		m4a = "blue",
 		aac = "blue",
+		-- lossless audio
 		flac = "brightblue",
 		wav = "brightblue",
 		alac = "brightblue",
 		aiff = "brightblue",
+		-- documents
 		pdf = "cyan",
 		doc = "cyan",
 		docx = "cyan",
 		dvi = "cyan",
 		odt = "cyan",
 		rtf = "cyan",
+		-- archives
 		zip = "red",
 		tar = "red",
 		gz = "red",
@@ -131,11 +136,13 @@ Yatline.line.get.hovered_symlink = function(self)
 		rar = "red",
 		["7z"] = "red",
 		lz4 = "red",
+		-- crypto / keys
 		asc = "brightgreen",
 		enc = "brightgreen",
 		p12 = "brightgreen",
 		pem = "brightgreen",
 		gpg = "brightgreen",
+		-- source code
 		lua = "brightyellow",
 		js = "brightyellow",
 		ts = "brightyellow",
@@ -151,6 +158,7 @@ Yatline.line.get.hovered_symlink = function(self)
 		sh = "brightyellow",
 		fish = "brightyellow",
 		zsh = "brightyellow",
+		-- config / build
 		toml = "yellow",
 		json = "yellow",
 		yaml = "yellow",
@@ -160,18 +168,17 @@ Yatline.line.get.hovered_symlink = function(self)
 		o = "yellow",
 		pyc = "yellow",
 		class = "yellow",
+		-- junk
 		tmp = "darkgray",
 		swp = "darkgray",
 		bak = "darkgray",
 	}
 
-	local name_span
-	if cha.is_dir then
-		name_span = ui.Span(name):fg("blue"):bold()
-	else
-		local ext = name:match("%.([^%.]+)$")
-		name_span = ui.Span(name):fg((ext and EXT[ext:lower()]) or "grey")
-	end
+	local name = path:match("[^/]+$") or ""
+	local trail = path:sub(1, #path - #name)
+	local ext = name:match("%.([^%.]+)$")
+	local name_span = cha.is_dir and ui.Span(name):fg("blue"):bold()
+		or ui.Span(name):fg((ext and EXT[ext:lower()]) or "grey")
 
 	return ui.Line({ ui.Span("  -> "):fg("brightblack"), ui.Span(trail):fg("cyan"), name_span })
 end

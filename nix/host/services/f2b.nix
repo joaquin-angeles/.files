@@ -1,4 +1,5 @@
 { ... }:
+
 {
   # Fail2Ban
   services.fail2ban = {

@@ -13,6 +13,7 @@ vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 o.termguicolors = true
 
 -- Indent config
+o.autoindent = true
 o.shiftwidth = 4
 o.tabstop = 4
 o.softtabstop = 4

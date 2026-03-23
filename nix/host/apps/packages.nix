@@ -7,7 +7,6 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
-    android-tools
     blueman
     brightnessctl
     gtk3

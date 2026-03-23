@@ -5,7 +5,6 @@
     # Module definitions
     "hyprland/window" = {
       max-length = 64;
-      separate-outputs = false;
       format = " {title}";
       rewrite = {
         "(.*) " = " Empty";
@@ -111,7 +110,6 @@
       format = "{:%H:%M}";
       tooltip = true;
       tooltip-format = "{:%d - %A}";
-      interval = 1;
     };
 
     tray = {

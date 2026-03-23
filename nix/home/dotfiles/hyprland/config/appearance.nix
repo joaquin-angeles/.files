@@ -4,7 +4,7 @@
   wayland.windowManager.hyprland.settings = {
     env = [
       "HYPRCURSOR_THEME, Bibata-Modern-Ice"
-      "HYPRCURSOR_SIZE,  24"
+      "HYPRCURSOR_SIZE, 24"
     ];
 
     cursor = {
@@ -38,21 +38,18 @@
       gaps_in = 6;
       gaps_out = 12;
       border_size = 1;
-      "col.active_border" = "rgb(404344)";
+      "col.active_border" = "rgba(575a5bcc)";
       "col.inactive_border" = "rgba(1d2021cc)";
     };
 
     group = {
-      "col.border_active" = "rgba(7daea3bf)";
-      "col.border_inactive" = "rgba(40434480)";
-
       groupbar = {
         render_titles = false;
         indicator_height = 3;
         font_size = 15;
         text_color = "rgb(d4be98)";
-        "col.active" = "rgb(404344)";
-        "col.inactive" = "rgba(1d2021cc)";
+        "col.active" = "rgba(575a5bcc)";
+        "col.inactive" = "rgba(00000000)";
       };
     };
 
@@ -61,11 +58,11 @@
 
       # Smart borders — single tiled window
       "border_size 0, match:float 0, match:workspace w[tv1]"
-      "rounding 0,    match:float 0, match:workspace w[tv1]"
+      "rounding 0, match:float 0, match:workspace w[tv1]"
 
       # Smart borders — fullscreen
       "border_size 0, match:float 0, match:workspace f[1]"
-      "rounding 0,    match:float 0, match:workspace f[1]"
+      "rounding 0, match:float 0, match:workspace f[1]"
     ];
   };
 }

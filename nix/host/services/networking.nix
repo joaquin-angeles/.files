@@ -1,4 +1,5 @@
 { ... }:
+
 {
   networking = {
     hostName = "nixos-btw"; # Define a hostname
