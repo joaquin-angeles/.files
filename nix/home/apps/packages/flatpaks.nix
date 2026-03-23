@@ -10,15 +10,17 @@
     "com.spotify.Client" # Music streaming
     "dev.vencord.Vesktop" # Discord
     "com.modrinth.ModrinthApp"
-    {
-      appId = "io.mrarm.mcpelauncher";
-      origin = "flathub-beta";
-    }
     # "net.lutris.Lutris"               # Game launcher
     "org.chromium.Chromium" # Progressive web apps
     # "org.libreoffice.LibreOffice"     # Office suite
     "org.onlyoffice.desktopeditors" # Office suite
     "org.gimp.GIMP" # Photo editing software
     "org.vinegarhq.Sober" # Roblox
+
+    # Minecraft Bedrock
+    {
+      appId = "io.mrarm.mcpelauncher";
+      origin = "flathub-beta";
+    }
   ];
 }

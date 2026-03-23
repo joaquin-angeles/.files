@@ -12,6 +12,11 @@
         location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
       }
 
+      {
+        name = "trinity";
+        location = "https://github.com/Trinity-LA/Trinity-Launcher/releases/download/flatpak/com.trench.trinity.launcher.flatpakrepo";
+      }
+
       # Unstable branch
       {
         name = "flathub-beta";

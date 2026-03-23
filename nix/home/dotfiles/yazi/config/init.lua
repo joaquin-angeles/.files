@@ -90,95 +90,9 @@ Yatline.line.get.hovered_symlink = function(self)
 		return ui.Line({ ui.Span("  -> "):fg("red"), ui.Span(path):fg("red") })
 	end
 
-	local EXT = {
-		-- images / video
-		png = "magenta",
-		jpg = "magenta",
-		jpeg = "magenta",
-		gif = "magenta",
-		webp = "magenta",
-		bmp = "magenta",
-		tiff = "magenta",
-		svg = "magenta",
-		mp4 = "magenta",
-		mkv = "magenta",
-		ogv = "magenta",
-		avi = "magenta",
-		mov = "magenta",
-		wmv = "magenta",
-		m2ts = "magenta",
-		webm = "magenta",
-		-- lossy audio
-		mp3 = "blue",
-		ogg = "blue",
-		m4a = "blue",
-		aac = "blue",
-		-- lossless audio
-		flac = "brightblue",
-		wav = "brightblue",
-		alac = "brightblue",
-		aiff = "brightblue",
-		-- documents
-		pdf = "cyan",
-		doc = "cyan",
-		docx = "cyan",
-		dvi = "cyan",
-		odt = "cyan",
-		rtf = "cyan",
-		-- archives
-		zip = "red",
-		tar = "red",
-		gz = "red",
-		tgz = "red",
-		zst = "red",
-		xz = "red",
-		bz2 = "red",
-		rar = "red",
-		["7z"] = "red",
-		lz4 = "red",
-		-- crypto / keys
-		asc = "brightgreen",
-		enc = "brightgreen",
-		p12 = "brightgreen",
-		pem = "brightgreen",
-		gpg = "brightgreen",
-		-- source code
-		lua = "brightyellow",
-		js = "brightyellow",
-		ts = "brightyellow",
-		py = "brightyellow",
-		c = "brightyellow",
-		cpp = "brightyellow",
-		rs = "brightyellow",
-		go = "brightyellow",
-		rb = "brightyellow",
-		java = "brightyellow",
-		cs = "brightyellow",
-		hs = "brightyellow",
-		sh = "brightyellow",
-		fish = "brightyellow",
-		zsh = "brightyellow",
-		-- config / build
-		toml = "yellow",
-		json = "yellow",
-		yaml = "yellow",
-		yml = "yellow",
-		xml = "yellow",
-		cmake = "yellow",
-		o = "yellow",
-		pyc = "yellow",
-		class = "yellow",
-		-- junk
-		tmp = "darkgray",
-		swp = "darkgray",
-		bak = "darkgray",
-	}
-
 	local name = path:match("[^/]+$") or ""
 	local trail = path:sub(1, #path - #name)
-	local ext = name:match("%.([^%.]+)$")
-	local name_span = cha.is_dir and ui.Span(name):fg("blue"):bold()
-		or ui.Span(name):fg((ext and EXT[ext:lower()]) or "grey")
+	local name_span = cha.is_dir and ui.Span(name):fg("blue"):bold() or ui.Span(name):fg("grey")
 
 	return ui.Line({ ui.Span("  -> "):fg("brightblack"), ui.Span(trail):fg("cyan"), name_span })
 end

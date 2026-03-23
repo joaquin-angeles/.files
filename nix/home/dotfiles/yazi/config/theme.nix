@@ -14,23 +14,23 @@
 
     filetype.rules = [
       (lib.mkOrder 100 {
-        name = "*/";
-        is = "orphan";
-        fg = "red";
-      })
-      (lib.mkOrder 200 {
         name = "*";
         is = "orphan";
         fg = "red";
       })
-      (lib.mkOrder 300 {
+      (lib.mkOrder 200 {
         name = "*/";
+        is = "orphan";
+        fg = "red";
+      })
+      (lib.mkOrder 300 {
+        name = "*";
         is = "link";
         fg = "cyan";
         bold = true;
       })
       (lib.mkOrder 400 {
-        name = "*";
+        name = "*/";
         is = "link";
         fg = "cyan";
         bold = true;

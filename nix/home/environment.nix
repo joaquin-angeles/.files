@@ -6,7 +6,7 @@
 }:
 
 let
-  browser = "app.zen_browser.zen.desktop";
+  browser = "zen.desktop";
   editor = "nvim.desktop";
   archive = "org.gnome.FileRoller.desktop";
   files = "org.gnome.Nautilus.desktop";
