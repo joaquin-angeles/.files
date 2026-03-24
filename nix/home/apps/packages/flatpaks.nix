@@ -7,7 +7,6 @@
     "com.obsproject.Studio" # Screen recording software
     "com.usebottles.bottles" # Windows applications
     "com.vysp3r.ProtonPlus" # Games compatibility tool
-    "com.spotify.Client" # Music streaming
     "dev.vencord.Vesktop" # Discord
     "com.modrinth.ModrinthApp"
     # "net.lutris.Lutris"               # Game launcher

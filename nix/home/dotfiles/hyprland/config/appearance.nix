@@ -15,6 +15,7 @@
     decoration = {
       rounding = 0;
       rounding_power = 2;
+      inactive_opacity = 0.8;
 
       blur = {
         enabled = true;
@@ -37,8 +38,8 @@
       allow_tearing = false;
       gaps_in = 6;
       gaps_out = 12;
-      border_size = 1;
-      "col.active_border" = "rgba(575a5bcc)";
+      border_size = 0;
+      "col.active_border" = "rgba(404344cc)";
       "col.inactive_border" = "rgba(1d2021cc)";
     };
 

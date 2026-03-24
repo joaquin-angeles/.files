@@ -35,6 +35,12 @@
       };
     };
 
+    mpris = {
+      format = "{title} — {artist}";
+      max-length = 32;
+      ignored-players = [ "firefox" ];
+    };
+
     network = {
       interface = "wlan0";
       format = "{icon}";

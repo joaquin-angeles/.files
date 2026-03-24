@@ -1,5 +1,5 @@
 window#waybar {
-  font-family: sans-serif;
+  font-family: sans-serif, "JetBrainsMono Nerd Font Propo";
   font-size: 12pt;
   background-color: alpha(@bg, 0.8);
   border-bottom: 1px solid alpha(darker(@bright-bg), 0.8);
@@ -7,7 +7,6 @@ window#waybar {
 }
 
 #sys-info {
-  font-family: "JetBrainsMono Nerd Font Propo";
   font-size: 13.5pt;
   margin-right: 6pt;
   min-width: 12pt;
@@ -45,7 +44,6 @@ window#waybar {
 
 #pulseaudio {
   font-size: 12pt;
-  font-family: "JetBrainsMono Nerd Font Propo";
   margin: 0.5px 5pt 0 8pt;
 }
 
@@ -76,7 +74,6 @@ window#waybar {
 }
 
 #workspaces button {
-  font-family: "JetBrainsMono Nerd Font Propo";
   font-size: 13.5pt;
   color: @bright-bg;
   padding: 0 7pt;
@@ -92,15 +89,19 @@ window#waybar {
 #workspaces button:nth-child(1) {
   padding-right: 5pt;
 }
+
 #workspaces button:nth-child(2) {
   font-size: 15pt;
 }
+
 #workspaces button:nth-child(6) {
   font-size: 16pt;
 }
+
 #workspaces button.empty {
   color: darker(@bright-bg);
 }
+
 #workspaces button.active {
   color: @fg;
 }

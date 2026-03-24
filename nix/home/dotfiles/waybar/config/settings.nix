@@ -23,6 +23,10 @@
         "hyprland/window"
       ];
 
+      modules-center = [
+        "mpris"
+      ];
+
       # System information and clock
       modules-right = [
         "group/sys-info"
