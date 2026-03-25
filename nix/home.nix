@@ -25,9 +25,9 @@
   };
 
   sops = {
-    defaultSopsFile = "${config.home.homeDirectory}/.files/nix/secrets/secrets.yaml";
+    defaultSopsFile = ./home/secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
-    age.sshKeyPaths = [ "${config.home.homeDirectory}/.ssh/id_ed25519" ];
+    age.keyFile = "${config.home.homeDirectory}/.secrets/age.key";
 
     secrets = {
       "mopidy-spotify-username" = { };
@@ -36,4 +36,6 @@
       "mopidy-spotify-client-secret" = { };
     };
   };
+
+  systemd.user.services.sops-nix.after = [ "default.target" ];
 }

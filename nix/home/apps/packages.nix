@@ -3,7 +3,6 @@
 {
   imports = [
     ./packages/flatpaks.nix
-    ./packages/fonts.nix
     ./packages/media.nix
     ./packages/scripts.nix
   ];

@@ -20,7 +20,6 @@
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-emoji-blob-bin
-      rubik
     ];
   };
 }

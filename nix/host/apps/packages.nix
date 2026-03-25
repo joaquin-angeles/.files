@@ -2,7 +2,7 @@
 {
   imports = [
     ./packages/development-tools.nix
-    # ./packages/fonts.nix
+    ./packages/fonts.nix
   ];
 
   # System packages
