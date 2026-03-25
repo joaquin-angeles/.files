@@ -36,9 +36,16 @@
     };
 
     mpris = {
-      format = "{title} — {artist}";
+      format = "{player_icon} {title} — {artist}";
+      format-paused = "  {title} — {artist}";
       max-length = 32;
-      ignored-players = [ "firefox" ];
+      ignored-players = [
+        "firefox"
+        "zen"
+      ];
+      player-icons = {
+        ncspot = "󰓇 ";
+      };
     };
 
     network = {
@@ -69,13 +76,13 @@
 
     pulseaudio = {
       format = "{icon}";
-      format-muted = "󰝟";
+      format-muted = "󰖁";
       format-icons = {
         default = [
-          ""
-          ""
-          ""
-          ""
+          "󰝟"
+          "󰖀"
+          "󰖀"
+          "󰕾"
         ];
       };
       on-click = "alacritty --title='Volume Control' -e wiremix";

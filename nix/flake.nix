@@ -12,6 +12,12 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest"; # declarative flatpaks
 
+    # Secrets
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs"; # pin to stable
+    };
+
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs"; # pin to stable
@@ -86,7 +92,10 @@
               useGlobalPkgs = true; # share system pkgs
               useUserPackages = true; # install into /etc/profiles
               extraSpecialArgs = { inherit inputs; };
-              sharedModules = [ nix-flatpak.homeManagerModules.nix-flatpak ];
+              sharedModules = [
+                nix-flatpak.homeManagerModules.nix-flatpak
+                inputs.sops-nix.homeManagerModules.sops
+              ];
               users.joaquin = import ./home.nix;
             };
           }
@@ -102,6 +111,7 @@
           modules = [
             ./home.nix
             nix-flatpak.homeManagerModules.nix-flatpak
+            inputs.sops-nix.homeManagerModules.sops
             {
               home = {
                 username = "joaquin";

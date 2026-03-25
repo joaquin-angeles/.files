@@ -24,7 +24,7 @@
       ];
 
       modules-center = [
-        "mpris"
+        # "mpris"
       ];
 
       # System information and clock
