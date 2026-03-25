@@ -6,7 +6,7 @@
     ./programs/btop.nix # System monitor
     ./programs/neovim.nix # Text editor
     # ./programs/lutris.nix            # Game launcher
-    ./programs/spotify.nix
+    ./programs/rmpc.nix
     ./programs/rofi.nix # App launcher
   ];
 

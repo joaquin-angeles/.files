@@ -28,14 +28,5 @@
     defaultSopsFile = ./home/secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
     age.keyFile = "${config.home.homeDirectory}/.secrets/age.key";
-
-    secrets = {
-      "mopidy-spotify-username" = { };
-      "mopidy-spotify-password" = { };
-      "mopidy-spotify-client-id" = { };
-      "mopidy-spotify-client-secret" = { };
-    };
   };
-
-  systemd.user.services.sops-nix.after = [ "default.target" ];
 }
