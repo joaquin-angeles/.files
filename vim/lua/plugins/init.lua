@@ -5,7 +5,7 @@ return {
 		opts = require("config.conform"),
 	},
 
-	{ "mikavilpas/yazi.nvim", enabled = false },
+	-- Disable filetree for Yazi
 	{ "nvim-tree/nvim-tree.lua", enabled = false },
 
 	-- These are some examples, uncomment them if you want to see them work!

@@ -12,12 +12,12 @@ return {
 				b = { fg = base16.base07, bg = base30.lightbg },
 				c = { fg = base16.base07 },
 			},
-			command = { a = { fg = base16.base00, bg = base16.base0D, gui = "bold" } },
-			inactive = { a = { fg = base16.base05, bg = base30.lightbg } },
-			insert = { a = { fg = base16.base00, bg = base16.base0B, gui = "bold" } },
+			command = { a = { fg = base16.base0D, bg = base30.one_bg3, gui = "bold" } },
+			insert = { a = { fg = base16.base0B, bg = base30.one_bg3, gui = "bold" } },
 			replace = { a = { fg = base16.base00, bg = base16.base0A, gui = "bold" } },
-			terminal = { a = { fg = base16.base00, bg = base16.base0E, gui = "bold" } },
-			visual = { a = { fg = base16.base00, bg = base16.base08, gui = "bold" } },
+			terminal = { a = { fg = base16.base0E, bg = base30.one_bg3, gui = "bold" } },
+			visual = { a = { fg = base16.base08, bg = base30.one_bg3, gui = "bold" } },
+			inactive = { a = { fg = base16.base05, bg = base30.lightbg } },
 		}
 
 		local lsp_name = {
@@ -57,7 +57,7 @@ return {
 				lualine_x = { lsp_name },
 				lualine_y = { "progress" },
 				lualine_z = {
-					{ "location", separator = { right = "" }, left_padding = 2 },
+					{ "location", separator = { left = "", right = "" }, left_padding = 2 },
 				},
 			},
 			inactive_sections = {
