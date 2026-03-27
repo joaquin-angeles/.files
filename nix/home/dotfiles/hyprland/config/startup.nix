@@ -7,7 +7,6 @@
     ];
 
     exec-once = [
-      "brightnessctl set 50%"
       "rm ~/.cache/cliphist/db && cliphist.sh" # Clipboard history; wipe stale db on start
       "~/.local/bin/power-saver.sh"
       "waybar"

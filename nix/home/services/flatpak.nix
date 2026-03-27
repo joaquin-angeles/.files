@@ -54,7 +54,7 @@
       Context.filesystems = [
         "/nix/store:ro"
         "~/.local/share/icons:ro"
-        "~/.local/share/applications:ro"
+        "~/.local/share/applications"
         "~/.local/share/fonts:ro"
         "~/.cache/fontconfig:ro"
 
@@ -62,8 +62,6 @@
         "~/.local/share/themes:ro"
         "xdg-config/gtk-3.0:ro"
         "xdg-config/gtk-4.0:ro"
-        "xdg-data/themes:ro"
-        "xdg-data/icons:ro"
         "~/.config/dconf:ro"
         "xdg-run/dconf"
       ];

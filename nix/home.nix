@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 
 {
   imports = [
@@ -22,11 +22,5 @@
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
-  };
-
-  sops = {
-    defaultSopsFile = ./home/secrets/secrets.yaml;
-    defaultSopsFormat = "yaml";
-    age.keyFile = "${config.home.homeDirectory}/.secrets/age.key";
   };
 }

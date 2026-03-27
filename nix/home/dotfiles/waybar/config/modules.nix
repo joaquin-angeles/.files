@@ -7,7 +7,7 @@
       max-length = 64;
       format = " {title}";
       rewrite = {
-        "(.*) " = " Empty";
+        "(.*) " = " Wallpaper";
       };
     };
 
@@ -22,30 +22,25 @@
         "4" = "";
         "5" = "";
         "6" = "󰏆";
-        "7" = "7";
-        "8" = "8";
-        "9" = "9";
       };
       disable-scroll = true;
       all-outputs = true;
       active-only = false;
-      on-click = "activate";
+      on-click = "";
       persistent-workspaces = {
         "*" = 6;
       };
     };
 
     mpris = {
-      format = "{player_icon} {title} — {artist}";
-      format-paused = "  {title} — {artist}";
+      format = "󰏤  {title} – {artist}";
+      format-paused = "󰐊  {title} – {artist}";
       max-length = 32;
+      tooltip = false;
       ignored-players = [
         "firefox"
         "zen"
       ];
-      player-icons = {
-        ncspot = "󰓇 ";
-      };
     };
 
     network = {
