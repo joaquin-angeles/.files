@@ -5,8 +5,8 @@ return {
 		opts = require("config.conform"),
 	},
 
-	-- Disable filetree for Yazi
-	{ "nvim-tree/nvim-tree.lua", enabled = false },
+	-- Disable default fuzzy finder for fzf-lua
+	{ "nvim-telescope/telescope.nvim", enabled = false },
 
 	-- These are some examples, uncomment them if you want to see them work!
 	{
