@@ -1,4 +1,3 @@
--- lua/fzf_themes.lua
 local M = {}
 
 local SAMPLE = [[-- NvChad theme preview
@@ -87,7 +86,9 @@ local function save_theme(name)
 	vim.fn.writefile(lines, path)
 end
 
-local function make_previewer()
+-- target_file is captured before fzf opens, so it reliably points to the
+-- buffer that was active when the picker was invoked.
+local function make_previewer(target_file)
 	local builtin = require("fzf-lua.previewer.builtin")
 
 	local ThemePreviewer = setmetatable({}, { __index = builtin.buffer_or_file })
@@ -100,7 +101,7 @@ local function make_previewer()
 
 	function ThemePreviewer:populate_preview_buf(entry_str)
 		pcall(apply_theme, entry_str)
-		builtin.buffer_or_file.populate_preview_buf(self, preview_file)
+		builtin.buffer_or_file.populate_preview_buf(self, target_file)
 	end
 
 	function ThemePreviewer:preview_buf_post(_entry, _min_winopts)
@@ -133,6 +134,10 @@ function M.open()
 	local themes = get_themes()
 	local original = vim.g.nvchad_theme or vim.g.colors_name or "onedark"
 
+	-- Snapshot the active file now, before fzf steals focus and buf 0 changes.
+	local current_file = vim.api.nvim_buf_get_name(0)
+	local target_file = (current_file ~= "" and vim.fn.filereadable(current_file) == 1) and current_file or preview_file
+
 	require("fzf-lua").fzf_exec(themes, {
 		prompt = "  Theme › ",
 
@@ -150,7 +155,7 @@ function M.open()
 			},
 		},
 
-		previewer = make_previewer(),
+		previewer = make_previewer(target_file),
 
 		actions = {
 			["default"] = function(selected)

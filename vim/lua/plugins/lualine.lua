@@ -42,10 +42,11 @@ return {
 				globalstatus = true,
 			},
 			sections = {
+				-- Left modules
 				lualine_a = {
 					{
 						"mode",
-						separator = { left = "", right = "" },
+						separator = { left = "", right = "" },
 						right_padding = 2,
 						fmt = function(s)
 							return s:sub(1, 3)
@@ -53,11 +54,31 @@ return {
 					},
 				},
 				lualine_b = { "filename", { "branch", icon = "", padding = { left = 0, right = 1 } } },
-				lualine_c = { "diff", "diagnostics" },
+				lualine_c = {
+					{
+						"diff",
+						diff_color = {
+							added = { fg = base16.base0B }, -- green
+							modified = { fg = base16.base0A }, -- yellow
+							removed = { fg = base16.base08 }, -- red
+						},
+					},
+					{
+						"diagnostics",
+						diagnostics_color = {
+							error = { fg = base16.base08 },
+							warn = { fg = base16.base0A },
+							info = { fg = base16.base0D },
+							hint = { fg = base16.base0C },
+						},
+					},
+				},
+
+				-- Right modules
 				lualine_x = { lsp_name },
 				lualine_y = { "progress" },
 				lualine_z = {
-					{ "location", separator = { left = "", right = "" }, left_padding = 2 },
+					{ "location", separator = { left = "", right = "" }, left_padding = 2 },
 				},
 			},
 			inactive_sections = {
