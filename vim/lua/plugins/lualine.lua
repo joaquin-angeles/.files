@@ -37,7 +37,8 @@ return {
 		require("lualine").setup({
 			options = {
 				theme = theme,
-				component_separators = { left = "|", right = "|" },
+				-- component_separators = { left = "", right = "" },
+				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 				globalstatus = true,
 			},
@@ -53,8 +54,9 @@ return {
 						end,
 					},
 				},
-				lualine_b = { "filename", { "branch", icon = "", padding = { left = 0, right = 1 } } },
+				lualine_b = { "filename" },
 				lualine_c = {
+					{ "branch", icon = "", padding = { left = 0, right = 1 } },
 					{
 						"diff",
 						diff_color = {
