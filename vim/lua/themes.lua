@@ -132,14 +132,23 @@ function M.open()
 	ensure_preview_file()
 
 	local themes = get_themes()
-	local original = vim.g.nvchad_theme or vim.g.colors_name or "onedark"
+	local original = (function()
+		local path = vim.fn.stdpath("config") .. "/lua/chadrc.lua"
+		for _, line in ipairs(vim.fn.readfile(path)) do
+			local name = line:match('^%s*theme%s*=%s*"([^"]*)"')
+			if name then
+				return name
+			end
+		end
+		return "onedark"
+	end)()
 
 	-- Snapshot the active file now, before fzf steals focus and buf 0 changes.
 	local current_file = vim.api.nvim_buf_get_name(0)
 	local target_file = (current_file ~= "" and vim.fn.filereadable(current_file) == 1) and current_file or preview_file
 
 	require("fzf-lua").fzf_exec(themes, {
-		prompt = "  Theme › ",
+		prompt = " " .. original .. " › ",
 
 		winopts = {
 			title = "  NvChad Themes ",

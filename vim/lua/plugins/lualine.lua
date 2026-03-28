@@ -11,13 +11,32 @@ return {
 				a = { fg = base16.base07, bg = base30.one_bg3, gui = "bold" },
 				b = { fg = base16.base07, bg = base30.lightbg },
 				c = { fg = base16.base07 },
+				z = { fg = base16.base07, bg = base30.one_bg3 },
 			},
-			command = { a = { fg = base16.base0D, bg = base30.one_bg3, gui = "bold" } },
-			insert = { a = { fg = base16.base0B, bg = base30.one_bg3, gui = "bold" } },
-			replace = { a = { fg = base16.base00, bg = base16.base0A, gui = "bold" } },
-			terminal = { a = { fg = base16.base0E, bg = base30.one_bg3, gui = "bold" } },
-			visual = { a = { fg = base16.base08, bg = base30.one_bg3, gui = "bold" } },
-			inactive = { a = { fg = base16.base05, bg = base30.lightbg } },
+			command = {
+				a = { fg = base16.base0D, bg = base30.one_bg3, gui = "bold" },
+				z = { fg = base16.base07, bg = base30.one_bg3 },
+			},
+			insert = {
+				a = { fg = base16.base0B, bg = base30.one_bg3, gui = "bold" },
+				z = { fg = base16.base07, bg = base30.one_bg3 },
+			},
+			replace = {
+				a = { fg = base16.base00, bg = base16.base0A, gui = "bold" },
+				z = { fg = base16.base07, bg = base30.one_bg3 },
+			},
+			terminal = {
+				a = { fg = base16.base0E, bg = base30.one_bg3, gui = "bold" },
+				z = { fg = base16.base07, bg = base30.one_bg3 },
+			},
+			visual = {
+				a = { fg = base16.base08, bg = base30.one_bg3, gui = "bold" },
+				z = { fg = base16.base07, bg = base30.one_bg3 },
+			},
+			inactive = {
+				a = { fg = base16.base05, bg = base30.lightbg },
+				z = { fg = base16.base07, bg = base30.one_bg3 },
+			},
 		}
 
 		local lsp_name = {
@@ -56,7 +75,7 @@ return {
 				},
 				lualine_b = { "filename" },
 				lualine_c = {
-					{ "branch", icon = "", padding = { left = 0, right = 1 } },
+					{ "branch", icon = "" },
 					{
 						"diff",
 						diff_color = {
