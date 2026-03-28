@@ -48,7 +48,7 @@ return {
 			require("base46").load_all_highlights()
 			vim.schedule(function()
 				vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-				vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+				vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 			end)
 		end,
 	},

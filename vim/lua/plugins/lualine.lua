@@ -77,7 +77,7 @@ return {
 							elseif vim.bo.readonly then
 								icon = "󰌾"
 							elseif filename == "" then
-								return " [No Name]"
+								return "󰋖 No Name"
 							else
 								icon = require("nvim-web-devicons").get_icon(filename, ext, { default = true })
 							end
@@ -85,10 +85,23 @@ return {
 							local display = filename ~= "" and filename or "[No Name]"
 							return icon .. " " .. display
 						end,
+						color = function()
+							local base30 = require("base46").get_theme_tb("base_30")
+
+							if vim.bo.modified then
+								return { fg = base30.yellow }
+							elseif vim.bo.readonly then
+								return { fg = base30.red }
+							elseif vim.fn.expand("%:t") == "" then
+								return { fg = base30.light_grey }
+							else
+								return { fg = base30.white }
+							end
+						end,
 					},
 				},
 				lualine_c = {
-					{ "branch", icon = "󰘬", color = { fg = base30.purple } },
+					{ "branch", icon = "󰘬" },
 					{
 						"diff",
 						diff_color = {
@@ -115,7 +128,7 @@ return {
 				lualine_y = {
 					{
 						function()
-							return "󰉋 " .. vim.fn.expand("%:p:h:t")
+							return " " .. vim.fn.expand("%:p:h:t")
 						end,
 					},
 				},

@@ -38,17 +38,7 @@ end
 return M
 ]]
 
-local preview_file = vim.fn.stdpath("cache") .. "/nvchad_theme_preview.lua"
-
-local function ensure_preview_file()
-	if vim.fn.filereadable(preview_file) == 0 then
-		local f = io.open(preview_file, "w")
-		if f then
-			f:write(SAMPLE)
-			f:close()
-		end
-	end
-end
+local preview_file = vim.fn.stdpath("cache") .. "/theme_preview.lua"
 
 local function get_themes()
 	local dir = vim.fn.stdpath("data") .. "/lazy/base46/lua/base46/themes"
@@ -72,6 +62,8 @@ local function apply_theme(name)
 	end
 	vim.g.nvchad_theme = name
 	require("base46").load_all_highlights()
+	vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+	vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
 end
 
 local function save_theme(name)
@@ -86,17 +78,13 @@ local function save_theme(name)
 	vim.fn.writefile(lines, path)
 end
 
--- target_file is captured before fzf opens, so it reliably points to the
--- buffer that was active when the picker was invoked.
 local function make_previewer(target_file)
 	local builtin = require("fzf-lua.previewer.builtin")
-
 	local ThemePreviewer = setmetatable({}, { __index = builtin.buffer_or_file })
 	ThemePreviewer.__index = ThemePreviewer
 
 	function ThemePreviewer.new(o, opts, fzf_win)
-		local self = builtin.buffer_or_file.new(o, opts, fzf_win)
-		return setmetatable(self, ThemePreviewer)
+		return setmetatable(builtin.buffer_or_file.new(o, opts, fzf_win), ThemePreviewer)
 	end
 
 	function ThemePreviewer:populate_preview_buf(entry_str)
@@ -104,21 +92,18 @@ local function make_previewer(target_file)
 		builtin.buffer_or_file.populate_preview_buf(self, target_file)
 	end
 
-	function ThemePreviewer:preview_buf_post(_entry, _min_winopts)
+	function ThemePreviewer:preview_buf_post()
 		local buf = self.preview_bufnr
 		if not buf or not vim.api.nvim_buf_is_valid(buf) then
 			return
 		end
-
 		vim.bo[buf].filetype = "lua"
-
 		local ok, ts = pcall(require, "nvim-treesitter.highlight")
 		if ok then
 			ts.attach(buf, "lua")
 		else
 			pcall(vim.treesitter.start, buf, "lua")
 		end
-
 		if self.win and self.win:validate_preview() then
 			vim.wo[self.win.preview_winid].number = true
 			vim.wo[self.win.preview_winid].cursorline = false
@@ -129,12 +114,19 @@ local function make_previewer(target_file)
 end
 
 function M.open()
-	ensure_preview_file()
+	-- Write preview file if missing
+	if vim.fn.filereadable(preview_file) == 0 then
+		local f = io.open(preview_file, "w")
+		if f then
+			f:write(SAMPLE)
+			f:close()
+		end
+	end
 
 	local themes = get_themes()
+	local cfg_path = vim.fn.stdpath("config") .. "/lua/chadrc.lua"
 	local original = (function()
-		local path = vim.fn.stdpath("config") .. "/lua/chadrc.lua"
-		for _, line in ipairs(vim.fn.readfile(path)) do
+		for _, line in ipairs(vim.fn.readfile(cfg_path)) do
 			local name = line:match('^%s*theme%s*=%s*"([^"]*)"')
 			if name then
 				return name
@@ -143,29 +135,12 @@ function M.open()
 		return "onedark"
 	end)()
 
-	-- Snapshot the active file now, before fzf steals focus and buf 0 changes.
-	local current_file = vim.api.nvim_buf_get_name(0)
-	local target_file = (current_file ~= "" and vim.fn.filereadable(current_file) == 1) and current_file or preview_file
+	local buf_name = vim.api.nvim_buf_get_name(0)
+	local target = (buf_name ~= "" and vim.fn.filereadable(buf_name) == 1) and buf_name or preview_file
 
 	require("fzf-lua").fzf_exec(themes, {
 		prompt = " " .. original .. " › ",
-
-		winopts = {
-			title = "  NvChad Themes ",
-			title_pos = "center",
-			height = 0.80,
-			width = 0.85,
-			row = 0.50,
-			col = 0.50,
-			border = "rounded",
-			preview = {
-				horizontal = "right:55%",
-				border = "rounded",
-			},
-		},
-
-		previewer = make_previewer(target_file),
-
+		previewer = make_previewer(target),
 		actions = {
 			["default"] = function(selected)
 				if selected and selected[1] then

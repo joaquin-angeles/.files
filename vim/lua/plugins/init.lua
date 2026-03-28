@@ -5,9 +5,6 @@ return {
 		opts = require("config.conform"),
 	},
 
-	-- Disable default fuzzy finder for fzf-lua
-	{ "nvim-telescope/telescope.nvim", enabled = false },
-
 	-- These are some examples, uncomment them if you want to see them work!
 	{
 		"neovim/nvim-lspconfig",
@@ -18,6 +15,10 @@ return {
 
 	{ import = "nvchad.blink.lazyspec" }, -- test new blink
 
+	-- Disable default fuzzy finder for fzf-lua
+	{ "nvim-telescope/telescope.nvim", enabled = false },
+
+	-- Treesitter parsers
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
@@ -35,5 +36,6 @@ return {
 		},
 	},
 
-	{ "mbbill/undotree", event = "VeryLazy" }, -- Undo history
+	-- Undo history
+	{ "mbbill/undotree", event = "VeryLazy" },
 }
