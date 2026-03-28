@@ -70,8 +70,20 @@ return {
 						function()
 							local filename = vim.fn.expand("%:t")
 							local ext = vim.fn.expand("%:e")
-							local icon = require("nvim-web-devicons").get_icon(filename, ext, { default = true })
-							return icon .. " " .. filename
+
+							local icon
+							if vim.bo.modified then
+								icon = "󰎂"
+							elseif vim.bo.readonly then
+								icon = "󰌾"
+							elseif filename == "" then
+								return " [No Name]"
+							else
+								icon = require("nvim-web-devicons").get_icon(filename, ext, { default = true })
+							end
+
+							local display = filename ~= "" and filename or "[No Name]"
+							return icon .. " " .. display
 						end,
 					},
 				},
