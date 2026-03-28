@@ -7,6 +7,7 @@ local M = {}
 
 M.base46 = {
 	theme = "gruvchad",
+	-- transparency = true,
 
 	hl_override = {
 		Comment = { italic = true },
@@ -17,7 +18,7 @@ M.base46 = {
 -- M.nvdash = { load_on_startup = true }
 M.ui = {
 	statusline = {
-		enabled = false,
+		enabled = true,
 	},
 	--       tabufline = {
 	--          lazyload = false
