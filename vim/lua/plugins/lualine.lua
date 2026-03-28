@@ -1,7 +1,7 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	lazy = false,
+	event = { "BufReadPost", "BufNewFile" },
 	config = function()
 		local base16 = require("base46").get_theme_tb("base_16")
 		local base30 = require("base46").get_theme_tb("base_30")
