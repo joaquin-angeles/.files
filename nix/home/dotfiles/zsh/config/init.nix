@@ -10,12 +10,16 @@
           source "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh"
         fi
 
-        export ZCOMPDUMP=${config.home.homeDirectory}/.cache/zsh/compdump;
         mkdir -p "$HOME/.cache/zsh"
+        export ZCOMPDUMP=${config.home.homeDirectory}/.cache/zsh/compdump;
       '')
 
       # Functions and integrations
       (lib.mkAfter ''
+        # Faster syntax highlighting
+        FAST_HIGHLIGHT[chroma-make]=0
+        FAST_HIGHLIGHT[use_async]=1
+
         # P10K configuration
         [[ ! -f ${config.home.homeDirectory}/.p10k.zsh ]] || source ${config.home.homeDirectory}/.p10k.zsh
 

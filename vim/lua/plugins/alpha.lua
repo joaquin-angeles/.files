@@ -48,7 +48,7 @@ return {
 					return b
 				end)(),
 				(function()
-					local b = dashboard.button("ff", "  Find File", "<cmd>FzfLua files<CR>)")
+					local b = dashboard.button("ff", "  Find File", "<cmd>FzfLua files<CR>")
 					b.opts.hl_shortcut = "AlphaShortcut"
 					return b
 				end)(),
@@ -63,9 +63,7 @@ return {
 					return b
 				end)(),
 				(function()
-					local b = dashboard.button("th", "󱥚  Themes", function()
-						require("themes").open()
-					end)
+					local b = dashboard.button("th", "󱥚  Themes", "<cmd>lua require('themes').open()<CR>")
 					b.opts.hl_shortcut = "AlphaShortcut"
 					return b
 				end)(),

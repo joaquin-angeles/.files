@@ -9,4 +9,7 @@
     networkmanager.enable = true;
     networkmanager.wifi.backend = "iwd"; # Use iwd
   };
+
+  # Virtual network manager
+  services.zerotierone.enable = true;
 }

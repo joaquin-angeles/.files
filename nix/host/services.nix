@@ -13,6 +13,5 @@
     dbus.enable = true;
     flatpak.enable = true;
     gvfs.enable = true;
-    # zerotierone.enable = true;
   };
 }
