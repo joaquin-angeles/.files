@@ -19,7 +19,7 @@
 
   programs.rmpc = {
     enable = true;
-
+    package = pkgs.unstable.rmpc;
     config = ''
       #![enable(implicit_some)]
       #![enable(unwrap_newtypes)]

@@ -62,8 +62,12 @@ local function apply_theme(name)
 	end
 	vim.g.nvchad_theme = name
 	require("base46").load_all_highlights()
-	vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
-	vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+
+	local normal_hl = vim.api.nvim_get_hl(0, { name = "Normal" })
+	if normal_hl.bg == nil then
+		vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+		vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+	end
 end
 
 local function save_theme(name)

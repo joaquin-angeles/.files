@@ -16,12 +16,12 @@
 
       # Functions and integrations
       (lib.mkAfter ''
+        # P10K configuration
+        [[ ! -f ${config.home.homeDirectory}/.p10k.zsh ]] || source ${config.home.homeDirectory}/.p10k.zsh
+            
         # Faster syntax highlighting
         FAST_HIGHLIGHT[chroma-make]=0
         FAST_HIGHLIGHT[use_async]=1
-
-        # P10K configuration
-        [[ ! -f ${config.home.homeDirectory}/.p10k.zsh ]] || source ${config.home.homeDirectory}/.p10k.zsh
 
         # Cursor and title configuration
         _directory_title() {
