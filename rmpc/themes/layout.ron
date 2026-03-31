@@ -1,0 +1,57 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+    layout: Split(
+        direction: Vertical,
+        panes: [
+        (
+                size: "8",
+                pane: Split(
+                    direction: Horizontal,
+                    panes: [
+                    (
+                            size: "21",
+                            borders: "ALL",
+                            pane: Pane(AlbumArt),
+                        ),
+                    (
+                            size: "100%",
+                            pane: Split(
+                                direction: Vertical,
+                                panes: [
+                                (
+                                        size: "5",
+                                        borders: "ALL",
+                                        pane: Pane(Header),
+                                    ),
+
+                                (
+                                        size: "1",
+                                        pane: Pane(ProgressBar),
+                                    ),
+                                (
+                                        size: "3",
+                                        borders: "ALL",
+                                        pane: Pane(Tabs),
+                                    ),
+                                ]
+                            )
+                        ),
+                    ]
+                ),
+            ),
+        (
+                size: "100%",
+                borders: "ALL",
+                pane: Pane(TabContent),
+            ),
+        ],
+    ),
+    progress_bar: (
+        symbols: ["", "─", "󰮯 󰊠", "", ""],
+        track_style: (fg: "dark_gray"),
+        elapsed_style: (fg: "blue"),
+        thumb_style: (fg: "blue"),
+    ),
+)

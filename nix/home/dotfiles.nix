@@ -11,6 +11,8 @@
     ./dotfiles/zsh/package.nix
   ];
 
-  xdg.configFile."nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/vim";
+  xdg.configFile = {
+    "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/vim";
+    "rmpc".source = "${config.home.homeDirectory}/.files/rmpc";
+  };
 }
