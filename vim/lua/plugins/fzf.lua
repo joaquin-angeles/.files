@@ -2,7 +2,11 @@ local base30 = require("base46").get_theme_tb("base_30")
 vim.api.nvim_set_hl(0, "FzfLuaBorder", { fg = base30.grey })
 
 return {
+	-- Disable default fuzzy finder for fzf-lua
+	{ "nvim-telescope/telescope.nvim", enabled = false },
+
 	{
+
 		"ibhagwan/fzf-lua",
 		event = "VeryLazy",
 		dependencies = { "nvim-tree/nvim-web-devicons" },

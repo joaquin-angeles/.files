@@ -15,9 +15,6 @@ return {
 
 	{ import = "nvchad.blink.lazyspec" }, -- test new blink
 
-	-- Disable default fuzzy finder for fzf-lua
-	{ "nvim-telescope/telescope.nvim", enabled = false },
-
 	-- Treesitter parsers
 	{
 		"nvim-treesitter/nvim-treesitter",
