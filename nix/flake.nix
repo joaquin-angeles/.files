@@ -4,16 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11"; # stable
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable"; # unstable
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest"; # declarative flatpaks
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11"; # user dotfiles/packages
-      inputs.nixpkgs.follows = "nixpkgs"; # pin to stable
-    };
-
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest"; # declarative flatpaks
-
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs"; # pin to stable
     };
   };
@@ -24,7 +18,6 @@
       nixpkgs-unstable,
       home-manager,
       nix-flatpak,
-      zen-browser,
       ...
     }@inputs:
     let
@@ -46,11 +39,6 @@
         };
       };
 
-      zenOverlay = system: final: prev: {
-        # injects zen-browser into pkgs
-        zen-browser = zen-browser.packages.${system}.default;
-      };
-
       pkgsFor = # stable pkgs + overlays for a given system
         system:
         import nixpkgs {
@@ -58,7 +46,6 @@
           config.allowUnfree = true;
           overlays = [
             (unstableOverlay system)
-            (zenOverlay system)
           ];
         };
     in
@@ -78,7 +65,6 @@
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [
               (unstableOverlay hostSystem)
-              (zenOverlay hostSystem)
             ];
 
             home-manager = {

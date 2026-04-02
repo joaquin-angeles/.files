@@ -10,6 +10,7 @@
   # User packages
   home.packages = with pkgs; [
     cliphist
+    ffmpegthumbnailer
     file-roller
     grim
     hypridle
@@ -18,7 +19,7 @@
     impala
     lazygit
     mako
-    nautilus
+    poppler-utils
     ripgrep
     slurp
     stow
@@ -27,8 +28,14 @@
     waybar
     wayfreeze
     wbg
+    xfce.tumbler
     zellij
-    zen-browser
+
+    # Nemo file manager
+    (nemo-with-extensions.override {
+      useDefaultExtensions = false;
+      extensions = [ nemo-fileroller ];
+    })
   ];
 
   # Facebook Messenger

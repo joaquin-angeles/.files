@@ -9,6 +9,6 @@
   programs.alacritty = {
     # Installation
     enable = true;
-    package = pkgs.unstable.alacritty-graphics; # Image preview support in yazi
+    package = pkgs.alacritty-graphics; # Image preview support in yazi
   };
 }

@@ -7,21 +7,21 @@
       max-length = 64;
       format = " {title}";
       rewrite = {
-        "(.*) " = " Wallpaper";
+        "(.*) " = " wbg";
       };
     };
 
     "hyprland/workspaces" = {
       format = "{icon}";
       format-icons = {
-        # active = "";
+        # active = "◈";
         # default = "";
-        "1" = "";
-        "2" = "󰨞";
-        "3" = "";
-        "4" = "";
-        "5" = "";
-        "6" = "󰏆";
+        "1" = "󰇧";
+        "2" = "";
+        "3" = "󱆖";
+        "4" = "󰝚";
+        "5" = "󰊴";
+        "6" = "󰈙";
       };
       disable-scroll = true;
       all-outputs = true;

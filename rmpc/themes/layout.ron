@@ -2,35 +2,68 @@
 #![enable(unwrap_newtypes)]
 #![enable(unwrap_variant_newtypes)]
 (
+    text_color: "white",
+    background_color: None,
+    header_background_color: None,
+    modal_background_color: None,
+
+    preview_label_style: (fg: "yellow"),
+    preview_metadata_group_style: (fg: "yellow", modifiers: "Bold"),
+
+    tab_bar: (
+        active_style: (fg: "black", bg: "blue", modifiers: "Bold"),
+        inactive_style: (fg: "white"),
+    ),
+
+    highlighted_item_style: (fg: "yellow", modifiers: "Bold"),
+    current_item_style: (fg: "black", bg: "white"),
+
+    borders_style: (fg: "dark_gray"),
+    highlight_border_style: (fg: "red"),
+
+    scrollbar: (
+        symbols: ["", "▐", "", ""],
+        track_style: (),
+        ends_style: (),
+        thumb_style: (fg: "dark_gray"),
+    ),
+
+    level_styles: (
+        info: (fg: "green"),
+        warn: (fg: "yellow"),
+        error: (fg: "red"),
+        debug: (fg: "green"),
+        trace: (fg: "magenta"),
+    ),
+
     layout: Split(
         direction: Vertical,
         panes: [
-        (
+            (
                 size: "8",
                 pane: Split(
                     direction: Horizontal,
                     panes: [
-                    (
+                        (
                             size: "21",
                             borders: "ALL",
                             pane: Pane(AlbumArt),
                         ),
-                    (
+                        (
                             size: "100%",
                             pane: Split(
                                 direction: Vertical,
                                 panes: [
-                                (
+                                    (
                                         size: "5",
                                         borders: "ALL",
                                         pane: Pane(Header),
                                     ),
-
-                                (
+                                    (
                                         size: "1",
                                         pane: Pane(ProgressBar),
                                     ),
-                                (
+                                    (
                                         size: "3",
                                         borders: "ALL",
                                         pane: Pane(Tabs),
@@ -41,17 +74,18 @@
                     ]
                 ),
             ),
-        (
+            (
                 size: "100%",
                 borders: "ALL",
                 pane: Pane(TabContent),
             ),
         ],
     ),
+
     progress_bar: (
         symbols: ["", "─", "󰮯 󰊠", "", ""],
         track_style: (fg: "dark_gray"),
-        elapsed_style: (fg: "blue"),
-        thumb_style: (fg: "blue"),
+        elapsed_style: (fg: "cyan"),
+        thumb_style: (fg: "yellow"),
     ),
 )
