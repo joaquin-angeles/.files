@@ -70,11 +70,6 @@ window#waybar {
   /* color: darker(@fg); */
 }
 
-#tags {
-  margin-left: 2pt;
-  margin-right: 2pt;
-}
-
 #tags button {
   font-size: 13.5pt;
   color: alpha(@bright-bg, 0.5);

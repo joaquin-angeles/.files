@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
-systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-
 riverctl spawn 'rivertile -view-padding 5 -outer-padding 5'
 riverctl output-layout rivertile
 riverctl default-layout rivertile
@@ -125,14 +122,10 @@ riverctl border-color-unfocused 0x56595a79
 # Input
 riverctl keyboard-layout -options 'caps:escape' '' # Caps Lock → Escape
 
-for input in $(riverctl list-inputs 2>/dev/null | grep -i touchpad); do
+for input in $(riverctl list-inputs 2>/dev/null | grep -Ei "touchpad|pointer"); do
     riverctl input "$input" natural-scroll enabled
     riverctl input "$input" accel-profile flat
     riverctl input "$input" pointer-accel 0
-done
-
-for input in $(riverctl list-inputs 2>/dev/null); do
-    riverctl input "$input" accel-profile flat
 done
 
 riverctl set-cursor-warp on-output-change
@@ -140,3 +133,6 @@ riverctl focus-follows-cursor disabled
 riverctl xcursor-theme Bibata-Modern-Ice 24
 riverctl hide-cursor timeout 30000 # 30s
 riverctl spawn 'wlr-randr --output eDP-1 --mode 1920x1080@120 --scale 1'
+
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP

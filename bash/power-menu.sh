@@ -36,6 +36,10 @@ case "$choice" in
         systemctl suspend
         ;;
     "󰍃 Logout")
-        pkill -KILL -u "$USER"
+        if command -v riverctl >/dev/null; then
+            riverctl exit 
+        else
+            pkill -u $USER
+        fi
         ;;
 esac

@@ -35,7 +35,7 @@ if [[ -z "$BATTERY_DEVICE" ]]; then
 fi
 
 KBD_DEVICE=$(brightnessctl --list | awk -F"'" '/kbd_backlight/{print $2; exit}')
-MONITOR=$(wlr-randr | awk '/^[A-Z]/{print $1; exit}')
+MONITOR=$(wlr-randr | grep -o '^[^ ]*')
 
 log "Started. Battery: $BATTERY_DEVICE | Monitor: $MONITOR | KBD: $KBD_DEVICE"
 
@@ -46,10 +46,10 @@ apply_state() {
 
     if [[ "$state" == "discharging" ]]; then
         [[ -n "$KBD_DEVICE" ]] && brightnessctl --device="$KBD_DEVICE" set 0
-        wlr-randr --output "$MONITOR" --mode 1920x1080@60
+        wlr-randr --output "$MONITOR" --mode 1920x1080@60.01999
     else
         [[ -n "$KBD_DEVICE" ]] && brightnessctl --device="$KBD_DEVICE" set 100%
-        wlr-randr --output "$MONITOR" --mode 1920x1080@120
+        wlr-randr --output "$MONITOR" --mode preferred
     fi
 }
 

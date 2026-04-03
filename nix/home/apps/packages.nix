@@ -27,6 +27,7 @@
     waybar
     wayfreeze
     wbg
+    wlr-randr
     xfce.tumbler
     zellij
 
