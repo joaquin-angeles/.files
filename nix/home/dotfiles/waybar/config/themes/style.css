@@ -66,48 +66,89 @@ window#waybar {
 }
 
 #window {
-  margin: 0 0 0 2pt;
+  margin: 0 0 0 10pt;
   /* color: darker(@fg); */
 }
 
-#workspaces {
+#tags {
   margin-left: 2pt;
   margin-right: 2pt;
 }
 
-#workspaces button {
+#tags button {
   font-size: 13.5pt;
-  color: @bright-bg;
-  padding: 0 7pt;
-  min-width: 14pt;
+  color: alpha(@bright-bg, 0.5);
+  padding: 0 8pt;
+  min-width: 16pt;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
-#workspaces button.hover {
+#tags button:hover {
   background-color: transparent;
-  color: darker(@fg);
+  color: @bright-bg;
 }
 
-/* Workspace specific rules */
-#workspaces button:nth-child(1) {
+#tags button.occupied {
+  color: @bright-bg;
+}
+
+#tags button.focused {
+  color: @fg;
+}
+
+#tags button.urgent {
+  color: @red;
+}
+
+#tags button:nth-child(1) {
   font-size: 14pt;
 }
-
-#workspaces button:nth-child(3) {
+#tags button:nth-child(3) {
   font-size: 14pt;
 }
-
-#workspaces button:nth-child(4) {
+#tags button:nth-child(4) {
   font-size: 15pt;
 }
-
-#workspaces button:nth-child(5) {
+#tags button:nth-child(5) {
   font-size: 16.5pt;
 }
 
-#workspaces button.empty {
-  color: darker(@bright-bg);
+#tags button:nth-child(7),
+#tags button:nth-child(8),
+#tags button:nth-child(9) {
+  color: transparent;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  min-width: 0;
+  transition: none;
+  animation: none;
+  box-shadow: none;
+  text-shadow: none;
 }
 
-#workspaces button.active {
+#tags button:nth-child(7).occupied,
+#tags button:nth-child(8).occupied,
+#tags button:nth-child(9).occupied {
+  color: @bright-bg;
+  font-size: 13.5pt;
+  padding: 0 8pt;
+  min-width: 16pt;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+#tags button:nth-child(7).focused,
+#tags button:nth-child(8).focused,
+#tags button:nth-child(9).focused {
   color: @fg;
+  font-size: 13.5pt;
+  padding: 0 8pt;
+  min-width: 16pt;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }

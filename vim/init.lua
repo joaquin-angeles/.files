@@ -9,16 +9,25 @@ vim.pack.add({
 local lazy_config = require("config.lazy")
 
 -- load plugins
-require("lazy").setup({
+require("lazy").setup(
 	{
-		"NvChad/NvChad",
-		lazy = false,
-		branch = "v2.5",
-		import = "nvchad.plugins",
+		{
+			"NvChad/NvChad",
+			lazy = false,
+			branch = "v2.5",
+			import = "nvchad.plugins",
+		},
+		{ import = "plugins" },
 	},
-
-	{ import = "plugins" },
-}, lazy_config)
+	vim.tbl_deep_extend("force", lazy_config, {
+		pkg = {
+			sources = {
+				"lazy",
+				"rockspec",
+			},
+		},
+	})
+)
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")

@@ -14,11 +14,20 @@
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
+    wlr.enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
     ];
     config = {
       common.default = [ "gtk" ];
+      river = {
+        default = [
+          "wlr"
+          "gtk"
+        ];
+        "org.freedesktop.portal.FileChooser" = [ "gtk" ];
+        "org.freedesktop.impl.portal.Settings" = [ "gtk" ];
+      };
       hyprland = {
         default = [
           "hyprland"

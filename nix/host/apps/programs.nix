@@ -1,11 +1,8 @@
 { pkgs, ... }:
 
 {
-  # Hyprland
-  programs.hyprland = {
-    enable = true;
-    package = pkgs.unstable.hyprland;
-  };
+  # River
+  programs.river-classic.enable = true;
 
   # Steam
   programs.steam = {

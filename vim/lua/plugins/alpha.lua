@@ -48,22 +48,24 @@ return {
 					return b
 				end)(),
 				(function()
-					local b = dashboard.button("ff", "  Find File", "<cmd>FzfLua files<CR>")
+					local b = dashboard.button("ff", "  Find File", "<cmd>Telescope find_files<CR>")
 					b.opts.hl_shortcut = "AlphaShortcut"
 					return b
 				end)(),
 				(function()
-					local b = dashboard.button("fo", "󱋡  Recent Files", "<cmd>FzfLua oldfiles<CR>")
+					local b = dashboard.button("fo", "󱋡  Recent Files", "<cmd>Telescope oldfiles<CR>")
 					b.opts.hl_shortcut = "AlphaShortcut"
 					return b
 				end)(),
 				(function()
-					local b = dashboard.button("fw", "󱎸  Find Text", "<cmd>FzfLua live_grep<CR>")
+					local b = dashboard.button("fw", "󱎸  Find Text", "<cmd>Telescope live_grep<CR>")
 					b.opts.hl_shortcut = "AlphaShortcut"
 					return b
 				end)(),
 				(function()
-					local b = dashboard.button("th", "󱥚  Themes", "<cmd>lua require('themes').open()<CR>")
+					local b = dashboard.button("th", "󱥚  Themes", function()
+						require("nvchad.themes").open()
+					end)
 					b.opts.hl_shortcut = "AlphaShortcut"
 					return b
 				end)(),

@@ -13,7 +13,6 @@
     ffmpegthumbnailer
     file-roller
     grim
-    hypridle
     hyprlock
     hyprpicker
     impala

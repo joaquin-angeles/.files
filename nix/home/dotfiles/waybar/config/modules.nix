@@ -3,7 +3,7 @@
 {
   programs.waybar.settings.mainBar = {
     # Module definitions
-    "hyprland/window" = {
+    "river/window" = {
       max-length = 64;
       format = " {title}";
       rewrite = {
@@ -11,25 +11,21 @@
       };
     };
 
-    "hyprland/workspaces" = {
-      format = "{icon}";
-      format-icons = {
-        # active = "◈";
-        # default = "";
-        "1" = "󰇧";
-        "2" = "";
-        "3" = "󱆖";
-        "4" = "󰝚";
-        "5" = "󰊴";
-        "6" = "󰈙";
-      };
+    "river/tags" = {
+      num-tags = 9;
+      tag-labels = [
+        "󰇧"
+        ""
+        "󱆖"
+        "󰝚"
+        "󰊴"
+        "󰈙"
+        "7"
+        "8"
+        "9"
+      ];
       disable-scroll = true;
       all-outputs = true;
-      active-only = false;
-      on-click = "";
-      persistent-workspaces = {
-        "*" = 6;
-      };
     };
 
     mpris = {

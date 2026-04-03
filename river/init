@@ -1,0 +1,142 @@
+#!/usr/bin/env bash
+
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+riverctl spawn 'rivertile -view-padding 5 -outer-padding 5'
+riverctl output-layout rivertile
+riverctl default-layout rivertile
+riverctl send-layout-cmd rivertile "main-location left"
+riverctl send-layout-cmd rivertile "main-count 1"
+riverctl send-layout-cmd rivertile "main-ratio 0.55"
+riverctl rule-add ssd
+
+# Startup
+riverctl spawn 'wbg ~/Pictures/Wallpapers/gruvbox/trees.png'
+riverctl spawn 'waybar'
+riverctl spawn 'mako'
+riverctl spawn 'hypridle'
+riverctl spawn 'swayosd-server'
+riverctl spawn 'sh -c "rm -f ~/.cache/cliphist/db && cliphist.sh"'
+riverctl spawn "$HOME/.local/bin/power-saver.sh"
+# riverctl spawn 'sunsetr'
+riverctl spawn 'brightnessctl set 50%'
+
+
+# Modifier key
+mod="Super"
+
+
+# Apps
+browser='sh -c "zen || flatpak run app.zen_browser.zen"'
+filemanager='alacritty -e yazi'
+menu='rofi -show drun'
+term='alacritty'
+
+riverctl map normal $mod Return spawn "$term"
+riverctl map normal $mod Space spawn "$menu"
+riverctl map normal $mod B spawn "$browser"
+riverctl map normal $mod E spawn "$filemanager"
+riverctl map normal $mod+Shift E spawn 'nemo'
+riverctl map normal $mod Period spawn 'rofi -show emoji'
+riverctl map normal $mod S spawn 'grim - | wl-copy && notify-send "Screenshot saved" "Image copied to clipboard"'
+riverctl map normal $mod+Shift S spawn 'sh -c "wayfreeze & sleep 0.1 && grim -g \"$(slurp)\" - | wl-copy; pkill wayfreeze; notify-send \"Screenshot saved\" \"Image copied to clipboard\""'
+riverctl map normal $mod W spawn 'sh -c "pgrep waybar >/dev/null && pkill waybar || waybar &"'
+riverctl map normal $mod N spawn 'sh -c "if makoctl mode | grep -q do-not-disturb; then makoctl mode -r do-not-disturb && notify-send \"DND Off\" \"Notifications enabled\"; else notify-send \"DND On\" \"Notifications silenced\" && makoctl mode -a do-not-disturb; fi"'
+riverctl map normal $mod+Shift Q spawn 'power-menu.sh'
+riverctl map normal $mod+Shift P spawn 'hyprpicker -a'
+riverctl map normal $mod V spawn 'sh -c "cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy"'
+riverctl map normal Control+Alt B spawn 'sh -c "pgrep sunsetr >/dev/null && pkill sunsetr || sunsetr test 4000 100"'
+riverctl map normal $mod+Shift Space spawn 'sh -c "cheatsheet.sh | rofi -dmenu -p keybinds"'
+
+
+# Volume & brightness
+riverctl map normal $mod F9 spawn 'swayosd-client --brightness lower'
+riverctl map normal $mod F10 spawn 'swayosd-client --brightness raise'
+riverctl map normal $mod F11 spawn 'swayosd-client --output-volume lower'
+riverctl map normal $mod F12 spawn 'swayosd-client --output-volume raise'
+riverctl map normal $mod+Shift F12 spawn 'swayosd-client --output-volume mute-toggle'
+
+# Media keys
+riverctl map-pointer normal None XF86AudioLowerVolume spawn 'swayosd-client --output-volume lower' 2>/dev/null || true
+riverctl map normal None XF86AudioLowerVolume spawn 'swayosd-client --output-volume lower'
+riverctl map normal None XF86AudioMute spawn 'swayosd-client --output-volume mute-toggle'
+riverctl map normal None XF86AudioRaiseVolume spawn 'swayosd-client --output-volume raise'
+# Note: brightness keys are intentionally swapped — flip if needed
+riverctl map normal None XF86MonBrightnessUp spawn 'swayosd-client --brightness lower'
+riverctl map normal None XF86MonBrightnessDown spawn 'swayosd-client --brightness raise'
+
+
+# Window management
+riverctl map normal $mod Q close
+riverctl map normal $mod F toggle-fullscreen
+riverctl map normal $mod+Shift F toggle-float
+
+# Focus (hjkl)
+riverctl map normal $mod H focus-view left
+riverctl map normal $mod J focus-view down
+riverctl map normal $mod K focus-view up
+riverctl map normal $mod L focus-view right
+
+# Move (Shift+hjkl)
+riverctl map normal $mod+Shift H swap left
+riverctl map normal $mod+Shift J swap down
+riverctl map normal $mod+Shift K swap up
+riverctl map normal $mod+Shift L swap right
+
+# Resize (Alt+hjkl)
+riverctl map normal $mod+Alt H resize horizontal -40
+riverctl map normal $mod+Alt J resize vertical 40
+riverctl map normal $mod+Alt K resize vertical -40
+riverctl map normal $mod+Alt L resize horizontal 40
+
+
+# Mouse
+riverctl map-pointer normal $mod BTN_LEFT move-view
+riverctl map-pointer normal $mod BTN_RIGHT resize-view
+
+
+# Tags (workspaces)
+for i in $(seq 1 9); do
+    tags=$((1 << (i - 1)))
+    riverctl map normal $mod "$i" set-focused-tags $tags # switch
+    riverctl map normal $mod+Shift "$i" set-view-tags $tags # move window
+    riverctl map normal $mod+Control "$i" toggle-focused-tags $tags # toggle visibility
+    riverctl map normal $mod+Control+Shift "$i" toggle-view-tags $tags # toggle window membership
+done
+
+# Show all tags
+all_tags=$(((1 << 32) - 1))
+riverctl map normal $mod 0 set-focused-tags $all_tags
+riverctl map normal $mod+Shift 0 set-view-tags $all_tags
+
+
+# Adjust layout ratio (Alt+Shift+hjkl to avoid conflict with swap)
+riverctl map normal $mod+Alt+Shift H send-layout-cmd rivertile 'main-ratio -0.05'
+riverctl map normal $mod+Alt+Shift L send-layout-cmd rivertile 'main-ratio +0.05'
+riverctl map normal $mod+Alt+Shift K send-layout-cmd rivertile 'main-count +1'
+riverctl map normal $mod+Alt+Shift J send-layout-cmd rivertile 'main-count -1'
+
+# Borders (gruvbox aqua)
+riverctl border-width 2
+riverctl border-color-focused 0x7daea379
+riverctl border-color-unfocused 0x56595a79
+
+# Input
+riverctl keyboard-layout -options 'caps:escape' '' # Caps Lock → Escape
+
+for input in $(riverctl list-inputs 2>/dev/null | grep -i touchpad); do
+    riverctl input "$input" natural-scroll enabled
+    riverctl input "$input" accel-profile flat
+    riverctl input "$input" pointer-accel 0
+done
+
+for input in $(riverctl list-inputs 2>/dev/null); do
+    riverctl input "$input" accel-profile flat
+done
+
+riverctl set-cursor-warp on-output-change
+riverctl focus-follows-cursor disabled
+riverctl xcursor-theme Bibata-Modern-Ice 24
+riverctl hide-cursor timeout 30000 # 30s
+riverctl spawn 'wlr-randr --output eDP-1 --mode 1920x1080@120 --scale 1'

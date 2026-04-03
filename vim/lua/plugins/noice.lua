@@ -7,38 +7,28 @@ return {
 			"rcarriga/nvim-notify",
 		},
 		config = function()
+			require("notify").setup({
+				background_color = "#000000",
+			})
 			require("noice").setup({
-				routes = {
-					{
-						filter = {
-							event = "notify",
-							find = "No information available",
-						},
-						opts = { skip = true },
-					},
-					{
-						filter = {
-							event = "notify",
-							find = "No signature help available",
-						},
-						opts = { skip = true },
-					},
-					{
-						filter = {
-							find = "NotifyBackground",
-						},
-						opts = { skip = true },
-					},
-				},
 				lsp = {
 					override = {
 						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-						["vim.lsp.util.stylize_markdown"] = true,
+						["vim.lsp.util.styled_shadow"] = true,
 						["cmp.entry.get_documentation"] = true,
+					},
+					progress = {
+						enabled = false,
+					},
+					hover = {
+						enabled = false,
+					},
+					signature = {
+						enabled = false,
 					},
 				},
 				presets = {
-					bottom_search = true,
+					bottom_search = false,
 					command_palette = true,
 					long_message_to_split = true,
 					inc_rename = false,
