@@ -13,6 +13,7 @@ riverctl spawn 'sh -c "sleep 0.5 && wlr-randr --output eDP-1 --scale 1"'
 riverctl rule-add ssd
 riverctl default-layout rivertile
 riverctl output-layout rivertile
+riverctl output-layout-cmd rivertile "adaptive-sync on"
 riverctl send-layout-cmd rivertile "main-location left"
 riverctl send-layout-cmd rivertile "main-count 1"
 riverctl spawn 'rivertile \
@@ -135,13 +136,16 @@ riverctl keyboard-layout -options 'caps:escape' ''  # Caps Lock → Escape
 
 # Pipe into a subshell since dash has no process substitution
 riverctl list-inputs 2>/dev/null | while IFS= read -r input; do
-    if echo "$input" | grep -qi touchpad; then
-        riverctl input "$input" accel-profile adaptive
-        riverctl input "$input" pointer-accel 0.3
-        riverctl input "$input" natural-scroll enabled
-    else
-        riverctl input "$input" accel-profile flat
-    fi
+    case "$input" in
+        *[Tt]ouchpad*)
+            riverctl input "$input" accel-profile adaptive
+            riverctl input "$input" pointer-accel 0.3
+            riverctl input "$input" natural-scroll enabled
+            ;;
+        *)
+            riverctl input "$input" accel-profile flat
+            ;;
+    esac
 done
 
 riverctl set-cursor-warp on-output-change

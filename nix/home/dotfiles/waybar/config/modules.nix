@@ -51,7 +51,7 @@
       format-disconnected = "󰤭";
       format-ethernet = "󰈀";
       tooltip-format = "Connected to {essid}\nNetwork speed: {signalStrength}%";
-      on-click = "alacritty --title='Network Manager' -e impala";
+      on-click = "footclient --title='Network Manager' -e impala";
     };
 
     bluetooth = {
@@ -62,7 +62,7 @@
       tooltip-format = "Bluetooth: {status}";
       tooltip-format-connected = "{controller_alias}\n\n{device_enumerate}";
       tooltip-format-enumerate-connected = "  {device_alias}";
-      on-click = "alacritty --title='Bluetooth Manager' -e bluetui";
+      on-click = "footclient --title='Bluetooth Manager' -e bluetui";
     };
 
     pulseaudio = {
@@ -76,7 +76,7 @@
           "󰕾"
         ];
       };
-      on-click = "alacritty --title='Volume Control' -e wiremix";
+      on-click = "footclient --title='Volume Control' -e wiremix";
       tooltip-format = "Device: {desc}\nVolume: {volume}%";
     };
 
