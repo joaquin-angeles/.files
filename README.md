@@ -2,13 +2,13 @@
 
 > Press `Super + Shift + Space` to open the cheatsheet.
 
-A modern, extensible **Hyprland/Wayland** configuration for Linux powered by the **Nix** package manager and the **Gruvbox** colorscheme. Fully declarative, reproducible, and easy to customize.
+A modern, extensible **Wayland** configuration for Linux powered by the **Nix** package manager and the **Gruvbox** colorscheme. Fully declarative, reproducible, and easy to customize.
 
 ---
 
 ## Features
 
-**Lightweight & Performant** — Hyprland is tuned for near-maximum efficiency, staying out of the way of demanding workloads.
+**Lightweight & Performant** — RiverWM is tuned for near-maximum efficiency, staying out of the way of demanding workloads.
 
 **Near-Complete Daily Driver** — Everything you need for a functional desktop without the bloat: a minimal yet powerful Waybar panel, a fast app launcher (Rofi), essential utilities, and sensible app defaults.
 

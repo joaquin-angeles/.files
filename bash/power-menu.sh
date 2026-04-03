@@ -37,7 +37,7 @@ case "$choice" in
         ;;
     "󰍃 Logout")
         if command -v riverctl >/dev/null; then
-            riverctl exit 
+            riverctl exit && pkill -u $USER
         else
             pkill -u $USER
         fi

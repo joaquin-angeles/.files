@@ -6,6 +6,7 @@
     binutils
     bison
     cmake
+    dash
     debugedit
     fakeroot
     file

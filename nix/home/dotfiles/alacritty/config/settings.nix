@@ -1,9 +1,14 @@
 { ... }:
 
 {
-  programs.alacritty.settings = {
-    font.size = 13.5; # Fonts' config
-    env.TERM = "xterm-256color"; # Environment variables
-    scrolling.history = 1000; # Scrollback
+  programs.foot.settings = {
+    main = {
+      font = "monospace:size=13.5";
+      term = "xterm-256color";
+    };
+
+    scrollback = {
+      lines = 1000;
+    };
   };
 }
