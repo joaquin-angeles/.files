@@ -4,19 +4,21 @@ export XDG_CURRENT_DESKTOP=river
 
 # Portal fixes
 dbus-update-activation-environment --systemd \
-    XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY
+XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY
 systemctl --user import-environment \
-    XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY
+XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY
 
 # Output & layout
-riverctl spawn 'sh -c "sleep 0.5 && wlr-randr --output eDP-1 --mode 1920x1080@144Hz --scale 1"'
+riverctl spawn 'sh -c "sleep 0.5 && wlr-randr --output eDP-1 --scale 1"'
+riverctl rule-add ssd
 riverctl default-layout rivertile
 riverctl output-layout rivertile
 riverctl send-layout-cmd rivertile "main-location left"
 riverctl send-layout-cmd rivertile "main-count 1"
-riverctl send-layout-cmd rivertile "main-ratio 0.55"
-riverctl rule-add ssd
-riverctl spawn 'rivertile -view-padding 5 -outer-padding 5'
+riverctl spawn 'rivertile \
+-main-ratio 0.55 \
+-view-padding 5 \
+-outer-padding 5'
 
 
 # Startup
@@ -34,9 +36,9 @@ mod="Super"
 
 # App shortcuts
 browser='sh -c "zen || flatpak run app.zen_browser.zen"'
-filemanager='foot -e yazi'
+filemanager='footclient -e yazi'
 menu='rofi -show drun'
-term='foot'
+term='footclient'
 
 riverctl map normal "$mod" Return spawn "$term"
 riverctl map normal "$mod" Space spawn "$menu"
@@ -123,9 +125,9 @@ riverctl map normal "$mod+Shift" 0 set-view-tags "$all_tags" # assign window to 
 
 
 # Borders
-riverctl border-width 2
-riverctl border-color-focused 0x7daea379
-riverctl border-color-unfocused 0x56595a79
+riverctl border-width 1
+riverctl border-color-focused 0x56595acc
+riverctl border-color-unfocused 0x232629
 
 
 # Input
@@ -133,10 +135,12 @@ riverctl keyboard-layout -options 'caps:escape' ''  # Caps Lock → Escape
 
 # Pipe into a subshell since dash has no process substitution
 riverctl list-inputs 2>/dev/null | while IFS= read -r input; do
-    riverctl input "$input" accel-profile flat
     if echo "$input" | grep -qi touchpad; then
+        riverctl input "$input" accel-profile adaptive
+        riverctl input "$input" pointer-accel 0.3
         riverctl input "$input" natural-scroll enabled
-        riverctl input "$input" pointer-accel 0
+    else
+        riverctl input "$input" accel-profile flat
     fi
 done
 

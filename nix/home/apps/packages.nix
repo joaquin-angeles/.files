@@ -20,6 +20,7 @@
     mako
     poppler-utils
     ripgrep
+    rivercarro
     slurp
     stow
     sunsetr
