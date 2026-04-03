@@ -5,14 +5,15 @@
     ./themes/gruvbox_dark.nix
   ];
 
-  programs.foot.settings = {
-    main = {
-      pad = "10x10 center";
-      gamma-correct-blending = false;
-    };
-
-    colors = {
-      alpha = 0.8;
+  programs.alacritty.settings = {
+    # Window padding
+    window = {
+      opacity = 0.8; # Transparency
+      padding = {
+        x = 10;
+        y = 10;
+      };
+      dynamic_padding = true;
     };
   };
 }

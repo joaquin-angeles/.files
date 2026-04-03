@@ -34,9 +34,9 @@ mod="Super"
 
 # App shortcuts
 browser='sh -c "zen || flatpak run app.zen_browser.zen"'
-filemanager='alacritty -e yazi'
+filemanager='foot -e yazi'
 menu='rofi -show drun'
-term='alacritty'
+term='foot'
 
 riverctl map normal "$mod" Return spawn "$term"
 riverctl map normal "$mod" Space spawn "$menu"
