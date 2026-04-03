@@ -132,7 +132,7 @@ riverctl set-cursor-warp on-output-change
 riverctl focus-follows-cursor disabled
 riverctl xcursor-theme Bibata-Modern-Ice 24
 riverctl hide-cursor timeout 30000 # 30s
-riverctl spawn 'wlr-randr --output eDP-1 --mode 1920x1080@120 --scale 1'
+riverctl spawn 'wlr-randr --output eDP-1 --mode 1920x1080@144Hz --scale 1'
 
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP

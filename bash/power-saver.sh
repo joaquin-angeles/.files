@@ -46,10 +46,10 @@ apply_state() {
 
     if [[ "$state" == "discharging" ]]; then
         [[ -n "$KBD_DEVICE" ]] && brightnessctl --device="$KBD_DEVICE" set 0
-        wlr-randr --output "$MONITOR" --mode 1920x1080@60.01999
+        wlr-randr --output eDP-1 --mode 1920x1080@60.001999Hz --scale 1
     else
         [[ -n "$KBD_DEVICE" ]] && brightnessctl --device="$KBD_DEVICE" set 100%
-        wlr-randr --output "$MONITOR" --mode preferred
+        wlr-randr --output eDP-1 --mode 1920x1080@144Hz --scale 1
     fi
 }
 
