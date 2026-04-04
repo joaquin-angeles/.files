@@ -12,7 +12,14 @@
   # Base zsh configuration
   programs.zsh = {
     enable = true;
-    completionInit = "autoload -Uz compinit && compinit -C";
     defaultKeymap = "emacs"; # Emacs binds
+    enableCompletion = true; # Auto-completions
+    autosuggestion = {
+      enable = true;
+      strategy = [
+        "history"
+        "completion"
+      ];
+    };
   };
 }

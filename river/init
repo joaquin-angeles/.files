@@ -112,17 +112,18 @@ riverctl map normal "$mod+Shift" 0 set-view-tags "$all_tags"
 
 # Borders
 riverctl border-width 2
-riverctl border-color-focused 0x56595a99
-riverctl border-color-unfocused 0x40434480
+riverctl border-color-focused 0x56595a80
+riverctl border-color-unfocused 0x56595a40
 
 # Input
 riverctl keyboard-layout -options 'caps:escape' ''
-riverctl set-cursor-warp on-output-change
-riverctl focus-follows-cursor disabled
 
 # Pointer configuration
 riverctl xcursor-theme Bibata-Modern-Ice 24
-riverctl hide-cursor timeout 30000
+riverctl set-cursor-warp on-output-change
+riverctl focus-follows-cursor normal
+riverctl hide-cursor timeout 5000
+riverctl hide-cursor when-typing enabled
 riverctl list-inputs 2>/dev/null | while IFS= read -r input; do
     case "$input" in
         *[Tt]ouchpad*)

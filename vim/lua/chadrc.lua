@@ -15,6 +15,11 @@ M.base46 = {
 		CursorLine = {
 			bg = "black2",
 		},
+		NormalFloat = { bg = "black" },
+		FloatBorder = { bg = "black" },
+		CmpDoc = { bg = "black" },
+		CmpPmenu = { bg = "black" },
+		Pmenu = { bg = "black" },
 	},
 }
 

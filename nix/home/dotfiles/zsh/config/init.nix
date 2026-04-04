@@ -2,6 +2,14 @@
 
 {
   programs.zsh = {
+    # zcompdump
+    completionInit = ''
+      mkdir -p "''${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+      autoload -Uz compinit
+      compinit -d "''${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump-''${ZSH_VERSION}"
+    '';
+
+    # .zshrc
     initContent = lib.mkMerge [
       # P10K instant prompt
       (lib.mkBefore ''
@@ -11,7 +19,6 @@
         fi
 
         mkdir -p "$HOME/.cache/zsh"
-        export ZCOMPDUMP=${config.home.homeDirectory}/.cache/zsh/compdump;
       '')
 
       # Functions and integrations

@@ -2,16 +2,6 @@
 
 {
   programs.zsh = {
-    autosuggestion = {
-      enable = true;
-      strategy = [
-        "history"
-        "completion"
-      ];
-    };
-    enableCompletion = true; # Auto-completions
-
-    # Extra plugins
     plugins = [
       # Prompt
       {

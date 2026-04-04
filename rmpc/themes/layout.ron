@@ -2,7 +2,7 @@
 #![enable(unwrap_newtypes)]
 #![enable(unwrap_variant_newtypes)]
 (
-    text_color: "white",
+    text_color: "dark_gray",
     background_color: None,
     header_background_color: None,
     modal_background_color: None,
@@ -12,11 +12,11 @@
 
     tab_bar: (
         active_style: (fg: "black", bg: "blue", modifiers: "Bold"),
-        inactive_style: (fg: "white"),
+        inactive_style: (fg: "gray"),
     ),
 
-    highlighted_item_style: (fg: "yellow", modifiers: "Bold"),
-    current_item_style: (fg: "black", bg: "white"),
+    highlighted_item_style: (fg: "green", modifiers: "Bold"),
+    current_item_style: (fg: "gray"),
 
     borders_style: (fg: "dark_gray"),
     highlight_border_style: (fg: "red"),
@@ -35,6 +35,34 @@
         debug: (fg: "green"),
         trace: (fg: "magenta"),
     ),
+
+    song_table_format: [
+    (
+            prop: (kind: Property(Artist), style: (fg: "dark_gray"),
+                default: (kind: Text("Unknown"), style: (fg: "dark_gray"))
+            ),
+            width: "20%",
+        ),
+    (
+            prop: (kind: Property(Title), style: (fg: "dark_gray"),
+                default: (kind: Text("Unknown"), style: (fg: "dark_gray"))
+            ),
+            width: "35%",
+        ),
+    (
+            prop: (kind: Property(Album), style: (fg: "dark_gray"),
+                default: (kind: Text("Unknown Album"), style: (fg: "dark_gray"))
+            ),
+            width: "30%",
+        ),
+    (
+            prop: (kind: Property(Duration), style: (fg: "dark_gray"),
+                default: (kind: Text("-"), style: (fg: "dark_gray"))
+            ),
+            width: "15%",
+            alignment: Right,
+        ),
+    ],
 
     layout: Split(
         direction: Vertical,
