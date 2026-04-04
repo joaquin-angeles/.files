@@ -7,13 +7,11 @@ window#waybar {
 }
 
 #sys-info {
-  font-size: 13.5pt;
   margin-right: 6pt;
   min-width: 12pt;
 }
 
 #clock {
-  font-size: 12pt;
   padding: 0pt 10pt 0 10pt;
 }
 
@@ -36,7 +34,7 @@ window#waybar {
 
 #custom-power {
   color: @red;
-  font-size: 15pt;
+  font-size: 13.5pt;
   padding: 0.5px 5pt 0 5pt;
 }
 
@@ -45,12 +43,11 @@ window#waybar {
 }
 
 #pulseaudio {
-  font-size: 15.5pt;
+  font-size: 13.5pt;
   margin: 0.5px 5pt 0 8pt;
 }
 
 #battery {
-  font-size: 12pt;
   padding: 0 10pt 0 4pt;
 }
 
@@ -73,8 +70,7 @@ window#waybar {
 }
 
 #tags button {
-  font-size: 13.5pt;
-  color: alpha(@bright-bg, 0.5);
+  color: alpha(@bright-bg, 0.6);
   padding: 0 8pt;
   min-width: 16pt;
   background: transparent;
@@ -99,17 +95,16 @@ window#waybar {
   color: @red;
 }
 
-#tags button:nth-child(1) {
-  font-size: 14pt;
-}
+#tags button:nth-child(1),
+#tags button:nth-child(2),
 #tags button:nth-child(3) {
-  font-size: 14pt;
+  font-size: 12.5pt;
 }
 #tags button:nth-child(4) {
-  font-size: 15pt;
+  font-size: 13pt;
 }
 #tags button:nth-child(5) {
-  font-size: 16.5pt;
+  font-size: 14.5pt;
 }
 
 #tags button:nth-child(7),

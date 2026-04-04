@@ -12,8 +12,8 @@ riverctl rule-add ssd
 riverctl default-layout rivertile
 riverctl spawn 'rivertile \
 -main-ratio 0.55 \
--view-padding 6 \
--outer-padding 6'
+-view-padding 5 \
+-outer-padding 5'
 
 # Startup
 riverctl spawn 'waybar'
