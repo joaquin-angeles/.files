@@ -3,8 +3,8 @@
 {
   # Media tools
   home.packages = with pkgs; [
-    celluloid
     imv
+    mpv
     playerctl
     unstable.bluetui
     unstable.wiremix
