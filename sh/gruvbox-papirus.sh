@@ -1,23 +1,22 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-set -euo pipefail  # Added -u (undefined vars) and -o pipefail (catch pipe failures)
+set -e
 
 ICONS_DIR="${HOME}/.local/share/icons"
 PAPIRUS_REPO="${HOME}/.local/share/papirus-icon-theme"
 GRUVBOX_REPO="${HOME}/.local/share/papirus-folders"
 
-# Helper for consistent logging
 log() { echo "[$(date +%T)] $*"; }
 die() { echo "ERROR: $*" >&2; exit 1; }
 
-# Verify git is available
-command -v git &>/dev/null || die "git is not installed"
+command -v git >/dev/null 2>&1 || die "git is not installed"
 
 mkdir -p "$ICONS_DIR"
 
-# Clone or update a git repo: clone_or_update <url> <dest> [extra clone flags]
 clone_or_update() {
-    local url="$1" dest="$2"; shift 2
+    url="$1"
+    dest="$2"
+    shift 2
     if [ -d "$dest/.git" ]; then
         log "Updating $(basename "$dest")..."
         git -C "$dest" pull --ff-only || die "Failed to update $dest"
@@ -28,15 +27,14 @@ clone_or_update() {
 }
 
 clone_or_update \
-    "https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git" \
-    "$PAPIRUS_REPO" \
-    --depth=1
+"https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git" \
+"$PAPIRUS_REPO" \
+--depth=1
 
 clone_or_update \
-    "https://github.com/xelser/gruvbox-papirus-folders.git" \
-    "$GRUVBOX_REPO"
+"https://github.com/xelser/gruvbox-papirus-folders.git" \
+"$GRUVBOX_REPO"
 
-# Install/update Papirus themes (always sync to keep things clean)
 log "Checking Papirus icon theme symlinks..."
 for src in "${PAPIRUS_REPO}"/Papirus*/; do
     dest="${ICONS_DIR}/$(basename "$src")"
@@ -48,11 +46,9 @@ for src in "${PAPIRUS_REPO}"/Papirus*/; do
     fi
 done
 
-# Copy Gruvbox folder icons into Papirus theme
 log "Installing Gruvbox folder icons..."
 cp -r "${GRUVBOX_REPO}/src/"* "${ICONS_DIR}/Papirus/"
 
-# Apply colour scheme
 log "Applying Gruvbox Material Yellow..."
 "${GRUVBOX_REPO}/papirus-folders" -C gruvbox-material-yellow --theme Papirus-Dark
 

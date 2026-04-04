@@ -9,17 +9,79 @@
       package = pkgs.gruvbox-gtk-theme;
     };
 
-    # Enable dark theme
-    gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
-    gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
+    gtk3 = {
+      extraConfig = {
+        gtk-application-prefer-dark-theme = true;
+        gtk-decoration-layout = ":";
+      };
+
+      extraCss = ''
+        /* No (default) titlebar on wayland */
+        headerbar.titlebar.default-decoration {
+          background: transparent;
+          padding: 0;
+          margin: 0 0 -17px 0;
+          border: 0;
+          min-height: 0;
+          font-size: 0;
+          box-shadow: none;
+        }
+
+        /* rm -rf window shadows */
+        window.csd,
+        window.csd decoration {
+          box-shadow: none;
+        }
+      '';
+    };
+
+    gtk4 = {
+      extraConfig = {
+        gtk-application-prefer-dark-theme = true;
+        gtk-decoration-layout = ":";
+      };
+
+      extraCss = ''
+        /* No (default) titlebar on wayland */
+        headerbar.titlebar.default-decoration {
+          background: transparent;
+          padding: 0;
+          margin: 0 0 -17px 0;
+          border: 0;
+          min-height: 0;
+          font-size: 0;
+          box-shadow: none;
+        }
+
+        /* rm -rf window shadows */
+        window.csd {
+          box-shadow: none;
+        }
+      '';
+    };
   };
+  xfconf.settings = {
+    thunar = {
+      misc-terminal-emulator = "foot";
+      misc-use-csd = false;
+      misc-window-decorations = false;
+    };
+    exo = {
+      ExoHelper-1-TerminalEmulator = "foot";
+    };
+  };
+  home.file.".config/xfce4/helpers.rc".text = ''
+    [Default Applications]
+    TerminalEmulator=foot
+  '';
 
   # GTK4 dark theme
   dconf = {
     enable = true;
     settings = {
       "org/gnome/desktop/interface" = {
-        "color-scheme" = "prefer-dark";
+        color-scheme = "prefer-dark";
+        gtk-decoration-layout = ":";
       };
     };
   };
@@ -32,19 +94,4 @@
     "${pkgs.gruvbox-gtk-theme}/share/themes/Gruvbox-Dark/gtk-4.0/gtk.css";
   xdg.configFile."gtk-4.0/gtk-dark.css".source =
     "${pkgs.gruvbox-gtk-theme}/share/themes/Gruvbox-Dark/gtk-4.0/gtk-dark.css";
-
-  # Flatpak GTK theme correction
-  home.activation.flatpakGtkThemes = config.lib.dag.entryAfter [ "writeBoundary" ] ''
-    # Correct directory
-    $DRY_RUN_CMD mkdir -p "$HOME/.local/share/themes"
-
-    # Theme packages
-    for pkg in \
-        ${pkgs.gruvbox-gtk-theme} \
-        ${pkgs.adw-gtk3}
-    do
-        $DRY_RUN_CMD find "$pkg/share/themes" -mindepth 1 -maxdepth 1 -type d \
-            -exec ln -sfn {} "$HOME/.local/share/themes/" \;
-    done
-  '';
 }

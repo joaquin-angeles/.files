@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-set -euo pipefail
+set -e
 
 KVANTUM_DIR="${HOME}/.config/Kvantum"
 GRUVBOX_REPO="${HOME}/.local/share/gruvbox-kvantum"
@@ -9,12 +9,14 @@ THEME_NAME="Gruvbox-Dark-Blue"
 log() { echo "[$(date +%T)] $*"; }
 die() { echo "ERROR: $*" >&2; exit 1; }
 
-command -v git &>/dev/null || die "git is not installed"
+command -v git >/dev/null 2>&1 || die "git is not installed"
 
 mkdir -p "$KVANTUM_DIR"
 
 clone_or_update() {
-    local url="$1" dest="$2"; shift 2
+    url="$1"
+    dest="$2"
+    shift 2
     if [ -d "$dest/.git" ]; then
         log "Updating $(basename "$dest")..."
         git -C "$dest" pull --ff-only || die "Failed to update $dest"
@@ -29,7 +31,6 @@ clone_or_update \
     "$GRUVBOX_REPO" \
     --depth=1
 
-# Always sync theme directory to pick up updates
 THEME_DEST="${KVANTUM_DIR}/${THEME_NAME}"
 if [ ! -L "$THEME_DEST" ] || [ ! -e "$THEME_DEST" ]; then
     log "Linking $THEME_NAME..."
@@ -38,7 +39,6 @@ else
     log "Symlink already exists for $THEME_NAME, skipping..."
 fi
 
-# Set it as the active theme
 log "Applying $THEME_NAME..."
 cat > "${KVANTUM_DIR}/kvantum.kvconfig" <<EOF
 [General]

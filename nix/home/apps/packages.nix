@@ -18,7 +18,7 @@
     impala
     lazygit
     mako
-    poppler-utils
+    poppler
     ripgrep
     rivercarro
     slurp
@@ -29,14 +29,9 @@
     wayfreeze
     wbg
     wlr-randr
+    xfce.exo
     xfce.tumbler
     zellij
-
-    # Nemo file manager
-    (nemo-with-extensions.override {
-      useDefaultExtensions = false;
-      extensions = [ nemo-fileroller ];
-    })
   ];
 
   # Facebook Messenger

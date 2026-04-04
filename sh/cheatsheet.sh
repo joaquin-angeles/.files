@@ -2,7 +2,7 @@
 
 # Show keybinds in Rofi and copy selected line to clipboard
 cat <<EOF
-SUPER + Return        → Open terminal (Alacritty)
+SUPER + Return        → Open terminal (Foot)
 SUPER + Space         → App launcher (Rofi)
 SUPER + B             → Browser (Zen)
 SUPER + E             → File manager (Nautilus)

@@ -8,13 +8,13 @@ return {
 		},
 		config = function()
 			require("notify").setup({
-				background_color = "#000000",
+				background_colour = "#00000000", -- fully transparent
 			})
 			require("noice").setup({
 				lsp = {
 					override = {
 						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-						["vim.lsp.util.styled_shadow"] = true,
+						["vim.lsp.util.stylize_markdown"] = true,
 						["cmp.entry.get_documentation"] = true,
 					},
 					progress = {
@@ -36,10 +36,6 @@ return {
 				},
 			})
 			require("base46").load_all_highlights()
-			vim.schedule(function()
-				vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-				vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-			end)
 		end,
 	},
 }

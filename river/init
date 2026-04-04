@@ -1,5 +1,4 @@
 #!/usr/bin/env dash
-
 export XDG_CURRENT_DESKTOP=river
 
 # Portal fixes
@@ -9,27 +8,21 @@ systemctl --user import-environment \
 XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY
 
 # Output & layout
-riverctl spawn 'sh -c "sleep 0.5 && wlr-randr --output eDP-1 --scale 1"'
 riverctl rule-add ssd
 riverctl default-layout rivertile
-riverctl output-layout rivertile
-riverctl output-layout-cmd rivertile "adaptive-sync on"
-riverctl send-layout-cmd rivertile "main-location left"
-riverctl send-layout-cmd rivertile "main-count 1"
 riverctl spawn 'rivertile \
 -main-ratio 0.55 \
 -view-padding 5 \
 -outer-padding 5'
 
-
 # Startup
-riverctl spawn 'wbg ~/Pictures/Wallpapers/gruvbox/trees.png'
 riverctl spawn 'waybar'
-riverctl spawn 'mako'
-riverctl spawn 'hypridle'
-riverctl spawn 'swayosd-server'
-riverctl spawn 'sh -c "pkill cliphist; rm -f ~/.cache/cliphist/db && cliphist.sh"'
+riverctl spawn 'wbg ~/Pictures/Wallpapers/gruvbox/trees.png'
 riverctl spawn "$HOME/.local/bin/power-saver.sh"
+riverctl spawn 'swayosd-server'
+riverctl spawn 'mako'
+riverctl spawn 'foot --server'
+riverctl spawn 'sh -c "rm -f ~/.cache/cliphist/db && cliphist.sh"'
 riverctl spawn 'sh -c "[ -f /sys/class/backlight/*/brightness ] || brightnessctl set 50%"'
 
 # Modifier key
@@ -37,15 +30,14 @@ mod="Super"
 
 # App shortcuts
 browser='sh -c "zen || flatpak run app.zen_browser.zen"'
-filemanager='footclient -e yazi'
+filemanager='foot -e yazi'
 menu='rofi -show drun'
 term='footclient'
-
 riverctl map normal "$mod" Return spawn "$term"
 riverctl map normal "$mod" Space spawn "$menu"
 riverctl map normal "$mod" B spawn "$browser"
 riverctl map normal "$mod" E spawn "$filemanager"
-riverctl map normal "$mod+Shift" E spawn 'nemo'
+riverctl map normal "$mod+Shift" E spawn 'thunar'
 riverctl map normal "$mod" Period spawn 'rofi -show emoji'
 riverctl map normal "$mod" V spawn 'sh -c "cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy"'
 
@@ -56,13 +48,12 @@ riverctl map normal "$mod+Shift" S spawn 'sh -c "wayfreeze & sleep 0.1 && grim -
 # Toggles
 riverctl map normal "$mod" W spawn 'sh -c "pgrep waybar >/dev/null && pkill waybar || waybar &"'
 riverctl map normal "$mod" N spawn 'sh -c "if makoctl mode | grep -q do-not-disturb; then makoctl mode -r do-not-disturb && notify-send \"DND Off\" \"Notifications enabled\"; else notify-send \"DND On\" \"Notifications silenced\" && makoctl mode -a do-not-disturb; fi"'
-riverctl map normal Control+Alt B spawn 'sh -c "pgrep sunsetr >/dev/null && pkill sunsetr || sunsetr test 4000 100"' # blue light filter
+riverctl map normal Control+Alt B spawn 'sh -c "pgrep sunsetr >/dev/null && pkill sunsetr || sunsetr test 4000 100"'
 
 # Misc
 riverctl map normal "$mod+Shift" Q spawn 'power-menu.sh'
-riverctl map normal "$mod+Shift" P spawn 'hyprpicker -a' # color picker
+riverctl map normal "$mod+Shift" P spawn 'hyprpicker -a'
 riverctl map normal "$mod+Shift" Space spawn 'sh -c "cheatsheet.sh | rofi -dmenu -p keybinds"'
-
 
 # Volume & brightness (Super+Fn)
 riverctl map normal "$mod" F9 spawn 'swayosd-client --brightness lower'
@@ -103,38 +94,35 @@ riverctl map normal "$mod+Alt" J send-layout-cmd rivertile 'main-count -1'
 riverctl map normal "$mod+Alt" K send-layout-cmd rivertile 'main-count +1'
 riverctl map normal "$mod+Alt" L send-layout-cmd rivertile 'main-ratio +0.025'
 
-
 # Mouse
 riverctl map-pointer normal "$mod" BTN_LEFT move-view
 riverctl map-pointer normal "$mod" BTN_RIGHT resize-view
-
 
 # Tags (workspaces)
 i=1
 while [ "$i" -le 9 ]; do
     tags=$(( 1 << (i - 1) ))
-    riverctl map normal "$mod" "$i" set-focused-tags "$tags"              # switch to tag
-    riverctl map normal "$mod+Shift" "$i" set-view-tags "$tags"           # move window to tag
-    riverctl map normal "$mod+Control" "$i" toggle-focused-tags "$tags"   # toggle tag visibility
-    riverctl map normal "$mod+Control+Shift" "$i" toggle-view-tags "$tags" # toggle window membership
+    riverctl map normal "$mod" "$i" set-focused-tags "$tags"
+    riverctl map normal "$mod+Shift" "$i" set-view-tags "$tags"
     i=$(( i + 1 ))
 done
-
 all_tags=$(( (1 << 32) - 1 ))
-riverctl map normal "$mod" 0 set-focused-tags "$all_tags"   # show all tags
-riverctl map normal "$mod+Shift" 0 set-view-tags "$all_tags" # assign window to all tags
-
+riverctl map normal "$mod" 0 set-focused-tags "$all_tags"
+riverctl map normal "$mod+Shift" 0 set-view-tags "$all_tags"
 
 # Borders
-riverctl border-width 1
-riverctl border-color-focused 0x56595acc
-riverctl border-color-unfocused 0x232629
-
+riverctl border-width 2
+riverctl border-color-focused 0x56595a99
+riverctl border-color-unfocused 0x40434480
 
 # Input
-riverctl keyboard-layout -options 'caps:escape' ''  # Caps Lock → Escape
+riverctl keyboard-layout -options 'caps:escape' ''
+riverctl set-cursor-warp on-output-change
+riverctl focus-follows-cursor disabled
 
-# Pipe into a subshell since dash has no process substitution
+# Pointer configuration
+riverctl xcursor-theme Bibata-Modern-Ice 24
+riverctl hide-cursor timeout 30000
 riverctl list-inputs 2>/dev/null | while IFS= read -r input; do
     case "$input" in
         *[Tt]ouchpad*)
@@ -147,8 +135,3 @@ riverctl list-inputs 2>/dev/null | while IFS= read -r input; do
             ;;
     esac
 done
-
-riverctl set-cursor-warp on-output-change
-riverctl focus-follows-cursor disabled
-riverctl xcursor-theme Bibata-Modern-Ice 24
-riverctl hide-cursor timeout 30000  # 30 seconds

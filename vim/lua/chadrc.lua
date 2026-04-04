@@ -7,11 +7,14 @@ local M = {}
 
 M.base46 = {
 	theme = "gruvchad",
-	-- transparency = true,
+	transparency = true,
 
 	hl_override = {
 		Comment = { italic = true },
 		["@comment"] = { italic = true },
+		CursorLine = {
+			bg = "black2",
+		},
 	},
 }
 

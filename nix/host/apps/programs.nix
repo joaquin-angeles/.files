@@ -1,6 +1,15 @@
 { pkgs, ... }:
 
 {
+  # File manager
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman
+    ];
+  };
+
   # River
   programs.river-classic.enable = true;
 

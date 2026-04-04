@@ -47,17 +47,16 @@
 
       # File access
       Context.filesystems = [
+        # Application access
         "/nix/store:ro"
+        "/run/current-system/sw:ro"
         "~/.local/share/icons:ro"
         "~/.local/share/applications"
-        "~/.local/share/fonts:ro"
-        "~/.cache/fontconfig:ro"
 
-        # GTK Theming and icon access
-        "~/.local/share/themes:ro"
+        # GTK configuration
         "xdg-config/gtk-3.0:ro"
         "xdg-config/gtk-4.0:ro"
-        "~/.config/dconf:ro"
+        "xdg-config/dconf:ro"
         "xdg-run/dconf"
       ];
 
@@ -71,6 +70,10 @@
       Environment = {
         "GTK_THEME" = "adw-gtk3-dark";
       };
+      Context.filesystems = [
+        "!xdg-config/gtk-3.0"
+        "!xdg-config/gtk-4.0"
+      ];
     };
 
     "com.github.tchx84.Flatseal" = {
@@ -83,14 +86,15 @@
       ];
     };
 
-    # Vesktop config
-    "dev.vencord.Vesktop" = {
-      Context.filesystems = [
-        "home:ro"
-      ];
+    "org.vinegarhq.Sober" = {
+      Environment = {
+        "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
+        "__NV_PRIME_RENDER_OFFLOAD" = "1";
+        "__VK_LAYER_NV_optimus" = "NVIDIA_only";
+      };
     };
 
-    "org.vinegarhq.Sober" = {
+    "io.mrarm.mcpelauncher" = {
       Environment = {
         "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
         "__NV_PRIME_RENDER_OFFLOAD" = "1";
