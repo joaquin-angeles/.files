@@ -11,14 +11,16 @@
   home.packages = with pkgs; [
     cliphist
     file-roller
-    hyprshot
+    grim
+    hyprlock
+    hyprpicker
     impala
     lazygit
     mako
     ripgrep
+    slurp
     sunsetr
     swayidle
-    swaylock
     waybar
     wbg
     wideriver
