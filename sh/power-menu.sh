@@ -10,7 +10,7 @@ choice="$(printf '%s\n' "$options" | rofi -dmenu -p 'power')"
 
 case "$choice" in
     "󰐥 Shutdown")
-        pkill -u $USER systemctl poweroff
+        pkill -u $USER && systemctl poweroff
         ;;
     "󰜉 Reboot")
         pkill -u $USER && systemctl reboot
