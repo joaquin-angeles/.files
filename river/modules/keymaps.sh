@@ -18,7 +18,7 @@ riverctl map normal "$mod+Shift" V spawn 'sh -c "cliphist list | rofi -dmenu -p 
 
 # Screenshots
 riverctl map normal "$mod" S spawn 'grim - | wl-copy && notify-send "Screenshot saved" "Image copied to clipboard"'
-riverctl map normal "$mod+Shift" S spawn 'sh -c "wayfreeze & sleep 0.1 && grim -g \"$(slurp)\" - | wl-copy; pkill wayfreeze; notify-send \"Screenshot saved\" \"Image copied to clipboard\""'
+riverctl map normal "$mod+Shift" S spawn 'wayfreeze --hide-cursor --after-freeze-cmd '\''grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot" "Copied to clipboard"'\'''
 
 # Toggles
 riverctl map normal "$mod" W spawn 'sh -c "pgrep waybar >/dev/null && pkill waybar || waybar &"'
