@@ -11,26 +11,18 @@
   home.packages = with pkgs; [
     cliphist
     file-roller
-    grim
-    hyprlock
+    hyprshot
     impala
     lazygit
     mako
-    poppler
     ripgrep
-    slurp
-    stow
     sunsetr
     swayidle
-    swayosd
+    swaylock
     waybar
-    wayfreeze
     wbg
     wideriver
     wlr-randr
-    wlopm
-    xfce.exo
-    xfce.tumbler
     zellij
   ];
 
