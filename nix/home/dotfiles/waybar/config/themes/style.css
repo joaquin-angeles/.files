@@ -16,6 +16,7 @@ window#waybar {
 }
 
 #bluetooth {
+  font-size: 13.5pt;
   padding: 0 3pt 0 9pt;
 }
 

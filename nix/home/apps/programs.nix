@@ -8,6 +8,7 @@
     # ./programs/lutris.nix            # Game launcher
     ./programs/rmpc.nix
     ./programs/rofi.nix # App launcher
+    ./programs/tofi.nix # App launcher
   ];
 
   programs.nh.enable = true; # Nix helper
