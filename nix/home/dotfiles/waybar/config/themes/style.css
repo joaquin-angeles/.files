@@ -1,7 +1,7 @@
 window#waybar {
   font-family: "JetBrainsMono Nerd Font Propo";
   font-size: 12pt;
-  background-color: @bg;
+  background-color: alpha(@bg, 0.8);
   /* border-bottom: 1px solid alpha(darker(@bright-bg), 0.8); */
   color: @fg;
 }
@@ -16,11 +16,11 @@ window#waybar {
 }
 
 #bluetooth {
-  padding: 0 3pt 0 6pt;
+  padding: 0 3pt 0 9pt;
 }
 
 #tray {
-  padding: 0 3pt 0 9pt;
+  padding-left: 9pt;
 }
 
 #custom-expand-icon {

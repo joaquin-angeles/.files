@@ -2,6 +2,8 @@
 
 # Lock: held by the *background* process, not the parent
 LOCKFILE=/tmp/power-saver.lock
+export WAYLAND_DISPLAY
+export XDG_RUNTIME_DIR
 
 # Re-exec ourselves in the background if we're not already daemonized
 if [[ -z "$_POWER_SAVER_DAEMON" ]]; then
@@ -46,10 +48,32 @@ apply_state() {
 
     if [[ "$state" == "discharging" ]]; then
         [[ -n "$KBD_DEVICE" ]] && brightnessctl --device="$KBD_DEVICE" set 0
-        wlr-randr --output eDP-1 --mode 1920x1080@60.001999Hz --scale 1
+
+        sleep 0.2
+        wlr-randr | awk '
+            /^[^ ]/ { output=$1; found=0 }
+            /@60/ && !found {
+                print output, $1
+                found=1
+            }
+        ' | while read -r output mode; do
+            wlr-randr --output "$output" --mode "$mode" --scale 1
+        done
+
     else
         [[ -n "$KBD_DEVICE" ]] && brightnessctl --device="$KBD_DEVICE" set 100%
-        wlr-randr --output eDP-1 --mode 1920x1080@144Hz --scale 1
+
+        sleep 0.2
+        wlr-randr | awk '
+        /^[^ ]/ { output=$1 }
+        /^[^ ]/ { output=$1; found=0 }
+        /\*/ && !found {
+            print output, $1
+            found=1
+        }
+        ' | while read -r output mode; do
+            wlr-randr --output "$output" --mode "$mode" --scale 1
+        done
     fi
 }
 
