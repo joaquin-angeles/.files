@@ -37,9 +37,8 @@ if [[ -z "$BATTERY_DEVICE" ]]; then
 fi
 
 KBD_DEVICE=$(brightnessctl --list | awk -F"'" '/kbd_backlight/{print $2; exit}')
-MONITOR=$(wlr-randr | grep -o '^[^ ]*')
 
-log "Started. Battery: $BATTERY_DEVICE | Monitor: $MONITOR | KBD: $KBD_DEVICE"
+log "Started. Battery: $BATTERY_DEVICE | KBD: $KBD_DEVICE"
 
 # Power state application
 apply_state() {
@@ -50,10 +49,13 @@ apply_state() {
         [[ -n "$KBD_DEVICE" ]] && brightnessctl --device="$KBD_DEVICE" set 0
 
         sleep 0.2
+        # FIX 2: Match on "60." Hz (wlr-randr format, not xrandr's @60)
+        # and reconstruct the full WIDTHxHEIGHT@REFRESH mode string
         wlr-randr | awk '
             /^[^ ]/ { output=$1; found=0 }
-            /@60/ && !found {
-                print output, $1
+            /60\./ && !found {
+                mode = $1 "@" $2
+                print output, mode
                 found=1
             }
         ' | while read -r output mode; do
@@ -64,13 +66,15 @@ apply_state() {
         [[ -n "$KBD_DEVICE" ]] && brightnessctl --device="$KBD_DEVICE" set 100%
 
         sleep 0.2
+        # FIX 1: Removed the duplicate /^[^ ]/ rule that was shadowing found=0
+        # FIX 2: Reconstruct the full WIDTHxHEIGHT@REFRESH mode string
         wlr-randr | awk '
-        /^[^ ]/ { output=$1 }
-        /^[^ ]/ { output=$1; found=0 }
-        /\*/ && !found {
-            print output, $1
-            found=1
-        }
+            /^[^ ]/ { output=$1; found=0 }
+            /\*/ && !found {
+                mode = $1 "@" $2
+                print output, mode
+                found=1
+            }
         ' | while read -r output mode; do
             wlr-randr --output "$output" --mode "$mode" --scale 1
         done

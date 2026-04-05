@@ -62,7 +62,7 @@ mod="Super"
 # App shortcuts
 browser='sh -c "zen || flatpak run app.zen_browser.zen"'
 filemanager='foot -e yazi'
-menu='rofi -show drun'
+menu='tofi-drun'
 term='footclient'
 riverctl map normal "$mod" Return spawn "$term"
 riverctl map normal "$mod" Space spawn "$menu"
@@ -73,14 +73,14 @@ riverctl map normal "$mod" Period spawn 'rofi -show emoji'
 riverctl map normal "$mod+Shift" V spawn 'sh -c "cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy"'
 
 # Screenshots
-riverctl map normal "$mod" S spawn 'grim - | wl-copy && notify-send "Screenshot saved" "Image copied to clipboard"'
-riverctl map normal "$mod+Shift" S spawn 'region-capture.sh && notify-send "Screenshot saved" "Image copied to clipboard"'
-riverctl map normal "$mod" P spawn 'hyprpicker -a'
+riverctl map normal "$mod+Shift" S spawn 'grim - | wl-copy && notify-send "Screenshot saved" "Image copied to clipboard"'
+riverctl map normal "$mod" S spawn 'region-capture.sh && notify-send "Screenshot saved" "Image copied to clipboard"'
+riverctl map normal "$mod" C spawn 'hyprpicker -a'
 
 # Toggles
 riverctl map normal "$mod" W spawn 'sh -c "pgrep waybar >/dev/null && pkill waybar || waybar &"'
-riverctl map normal "$mod" D spawn 'sh -c "if makoctl mode | grep -q do-not-disturb; then makoctl mode -r do-not-disturb && notify-send \"DND Off\" \"Notifications enabled\"; else notify-send \"DND On\" \"Notifications silenced\" && makoctl mode -a do-not-disturb; fi"'
-riverctl map normal Control+Alt B spawn 'sh -c "pgrep sunsetr >/dev/null && pkill sunsetr || sunsetr test 4000 100"'
+riverctl map normal "$mod+Shift" N spawn 'sh -c "if makoctl mode | grep -q do-not-disturb; then makoctl mode -r do-not-disturb && notify-send \"DND Off\" \"Notifications enabled\"; else notify-send \"DND On\" \"Notifications silenced\" && makoctl mode -a do-not-disturb; fi"'
+riverctl map normal "$mod" N spawn 'sh -c "pgrep sunsetr >/dev/null && pkill sunsetr || sunsetr test 4000 100"'
 
 # Misc
 riverctl map normal "$mod+Shift" X spawn 'power-menu.sh'
@@ -105,7 +105,7 @@ riverctl map normal None XF86MonBrightnessDown spawn 'osd.sh brightness_down'
 # Window management
 riverctl map normal "$mod" Q close
 riverctl map normal "$mod" F toggle-fullscreen
-riverctl map normal "$mod+Shift" F toggle-float
+riverctl map normal "$mod+Shift" Space toggle-float
 
 # Focus (hjkl)
 riverctl map normal "$mod" H focus-view left
