@@ -1,5 +1,3 @@
-#!/usr/bin/env dash
-
 # Mouse
 riverctl map-pointer normal "$mod" BTN_LEFT move-view
 riverctl map-pointer normal "$mod" BTN_RIGHT resize-view

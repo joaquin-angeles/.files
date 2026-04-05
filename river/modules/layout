@@ -1,5 +1,3 @@
-#!/usr/bin/env dash
-
 # Output & layout
 riverctl rule-add ssd
 riverctl default-layout wideriver

@@ -7,7 +7,7 @@ XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY
 systemctl --user import-environment \
 XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY
 
-for f in ./modules/*.sh; do
+for f in ./modules/*; do
     [ -f "$f" ] || continue
     . "$f" || { 
         echo "Error: Failed to source $f" >&2 
