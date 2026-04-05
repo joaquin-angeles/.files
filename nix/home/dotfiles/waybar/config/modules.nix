@@ -13,17 +13,17 @@
 
     "river/tags" = {
       num-tags = 9;
-      tag-labels = [
-        "󰇧"
-        ""
-        "󱆖"
-        "󰝚"
-        "󰊴"
-        "󰈙"
-        "7"
-        "8"
-        "9"
-      ];
+      # tag-labels = [
+      #   "󰇧"
+      #   ""
+      #   "󱆖"
+      #   "󰝚"
+      #   "󰊴"
+      #   "󰈙"
+      #   "7"
+      #   "8"
+      #   "9"
+      # ];
       disable-scroll = true;
       all-outputs = true;
     };

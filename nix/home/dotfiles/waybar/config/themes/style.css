@@ -1,7 +1,7 @@
 window#waybar {
   font-family: "JetBrainsMono Nerd Font Propo";
   font-size: 12pt;
-  background-color: alpha(@bg, 0.8);
+  background-color: @bg;
   /* border-bottom: 1px solid alpha(darker(@bright-bg), 0.8); */
   color: @fg;
 }
@@ -43,8 +43,8 @@ window#waybar {
 }
 
 #pulseaudio {
-  font-size: 13.5pt;
-  margin: 0.5px 5pt 0 8pt;
+  font-size: 14pt;
+  margin: 1px 4pt 0 8pt;
 }
 
 #battery {
@@ -70,43 +70,47 @@ window#waybar {
 }
 
 #tags button {
-  color: alpha(@bright-bg, 0.6);
-  padding: 0 8pt;
-  min-width: 16pt;
-  background: transparent;
-  border: none;
+  color: @bright-bg;
+  padding: 0 5pt;
+  min-width: 10pt;
+  margin: 1px;
+  background: darker(darker(@bright-bg));
+  border: 1px solid darker(@bright-bg);
+  border-radius: 0;
   box-shadow: none;
 }
 
 #tags button:hover {
   background-color: transparent;
-  color: @bright-bg;
 }
 
 #tags button.occupied {
-  color: @bright-bg;
+  color: @fg;
 }
 
 #tags button.focused {
   color: @fg;
+  background-color: darker(darker(@blue));
+  border: 1px solid darker(@blue);
 }
 
 #tags button.urgent {
   color: @red;
 }
 
-#tags button:nth-child(1),
+/* #tags button:nth-child(1),
 #tags button:nth-child(2),
 #tags button:nth-child(3) {
   font-size: 12.5pt;
 }
 #tags button:nth-child(4) {
-  font-size: 13pt;
+  font-size: 13.5pt;
 }
 #tags button:nth-child(5) {
-  font-size: 14.5pt;
-}
+  font-size: 15pt;
+} */
 
+#tags button:nth-child(6),
 #tags button:nth-child(7),
 #tags button:nth-child(8),
 #tags button:nth-child(9) {
@@ -114,6 +118,8 @@ window#waybar {
   margin: 0;
   padding: 0;
   font-size: 0;
+  border: 0;
+  border-radius: 0;
   min-width: 0;
   transition: none;
   animation: none;
@@ -121,26 +127,32 @@ window#waybar {
   text-shadow: none;
 }
 
+#tags button:nth-child(6).occupied,
 #tags button:nth-child(7).occupied,
 #tags button:nth-child(8).occupied,
 #tags button:nth-child(9).occupied {
-  color: @bright-bg;
-  font-size: 13.5pt;
-  padding: 0 8pt;
-  min-width: 16pt;
-  background: transparent;
-  border: none;
+  color: @fg;
+  font-size: 12pt;
+  padding: 0 5pt;
+  margin: 1px;
+  min-width: 10pt;
+  background-color: darker(darker(@bright-bg));
+  border: 1px solid alpha(@bright-bg, 0.8);
+  border-radius: 0;
   box-shadow: none;
 }
 
+#tags button:nth-child(6).focused,
 #tags button:nth-child(7).focused,
 #tags button:nth-child(8).focused,
 #tags button:nth-child(9).focused {
   color: @fg;
-  font-size: 13.5pt;
-  padding: 0 8pt;
-  min-width: 16pt;
-  background: transparent;
-  border: none;
+  font-size: 12pt;
+  padding: 0 5pt;
+  margin: 1px;
+  min-width: 10pt;
+  background-color: darker(darker(@blue));
+  border: 1px solid alpha(darker(@blue), 0.8);
+  border-radius: 0;
   box-shadow: none;
 }

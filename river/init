@@ -19,11 +19,18 @@ riverctl spawn 'rivertile \
 riverctl spawn 'waybar'
 riverctl spawn 'wbg ~/Pictures/Wallpapers/gruvbox/trees.png'
 riverctl spawn "$HOME/.local/bin/power-saver.sh"
-riverctl spawn 'swayosd-server'
 riverctl spawn 'mako'
 riverctl spawn 'foot --server'
-riverctl spawn 'sh -c "rm -f ~/.cache/cliphist/db && cliphist.sh"'
-riverctl spawn 'sh -c "[ -f /sys/class/backlight/*/brightness ] || brightnessctl set 50%"'
+riverctl spawn 'cliphist.sh'
+riverctl spawn '
+    swayidle -w \
+        timeout 300  '"'"'pidof hyprlock || hyprlock'"'"' \
+        timeout 330  '"'"'wlopm --off \*'"'"' \
+        resume       '"'"'wlopm --on \*'"'"' \
+        timeout 600  '"'"'systemctl suspend'"'"' \
+        resume       '"'"'notify-send -a "System" "Welcome back!" "Pick up right where you left off."'"'"' \
+        before-sleep '"'"'pidof hyprlock || hyprlock'"'"'
+'
 
 # Modifier key
 mod="Super"
@@ -52,24 +59,23 @@ riverctl map normal Control+Alt B spawn 'sh -c "pgrep sunsetr >/dev/null && pkil
 
 # Misc
 riverctl map normal "$mod+Shift" Q spawn 'power-menu.sh'
-riverctl map normal "$mod+Shift" P spawn 'hyprpicker -a'
 riverctl map normal "$mod+Shift" Space spawn 'sh -c "cheatsheet.sh | rofi -dmenu -p keybinds"'
 
 # Volume & brightness (Super+Fn)
-riverctl map normal "$mod" F9 spawn 'swayosd-client --brightness lower'
-riverctl map normal "$mod" F10 spawn 'swayosd-client --brightness raise'
-riverctl map normal "$mod" F11 spawn 'swayosd-client --output-volume lower'
-riverctl map normal "$mod" F12 spawn 'swayosd-client --output-volume raise'
-riverctl map normal "$mod+Shift" F12 spawn 'swayosd-client --output-volume mute-toggle'
+riverctl map normal "$mod" F9 spawn 'osd.sh brightness_down'
+riverctl map normal "$mod" F10 spawn 'osd.sh brightness_up'
+riverctl map normal "$mod" F11 spawn 'osd.sh volume_down'
+riverctl map normal "$mod" F12 spawn 'osd.sh volume_up'
+riverctl map normal "$mod+Shift" F12 spawn 'osd.sh volume_mute'
 
 # Media keys
-riverctl map normal None XF86AudioLowerVolume spawn 'swayosd-client --output-volume lower'
-riverctl map normal None XF86AudioRaiseVolume spawn 'swayosd-client --output-volume raise'
-riverctl map normal None XF86AudioMute spawn 'swayosd-client --output-volume mute-toggle'
+riverctl map normal None XF86AudioLowerVolume spawn 'osd.sh volume_down'
+riverctl map normal None XF86AudioRaiseVolume spawn 'osd.sh volume_up'
+riverctl map normal None XF86AudioMute spawn 'osd.sh volume_mute'
 
 # Brightness keys
-riverctl map normal None XF86MonBrightnessUp spawn 'swayosd-client --brightness raise'
-riverctl map normal None XF86MonBrightnessDown spawn 'swayosd-client --brightness lower'
+riverctl map normal None XF86MonBrightnessUp spawn 'osd.sh brightness_up'
+riverctl map normal None XF86MonBrightnessDown spawn 'osd.sh brightness_down'
 
 # Window management
 riverctl map normal "$mod" Q close
@@ -112,8 +118,8 @@ riverctl map normal "$mod+Shift" 0 set-view-tags "$all_tags"
 
 # Borders
 riverctl border-width 2
-riverctl border-color-focused 0x56595a80
-riverctl border-color-unfocused 0x56595a40
+riverctl border-color-focused 0x5e8279cc
+riverctl border-color-unfocused 0x56595acc
 
 # Input
 riverctl keyboard-layout -options 'caps:escape' ''
@@ -121,7 +127,7 @@ riverctl keyboard-layout -options 'caps:escape' ''
 # Pointer configuration
 riverctl xcursor-theme Bibata-Modern-Ice 24
 riverctl set-cursor-warp on-output-change
-riverctl focus-follows-cursor normal
+riverctl focus-follows-cursor disabled
 riverctl hide-cursor timeout 5000
 riverctl hide-cursor when-typing enabled
 riverctl list-inputs 2>/dev/null | while IFS= read -r input; do

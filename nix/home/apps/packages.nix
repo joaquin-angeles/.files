@@ -20,15 +20,16 @@
     mako
     poppler
     ripgrep
-    rivercarro
     slurp
     stow
     sunsetr
+    swayidle
     swayosd
     waybar
     wayfreeze
     wbg
     wlr-randr
+    wlopm
     xfce.exo
     xfce.tumbler
     zellij
