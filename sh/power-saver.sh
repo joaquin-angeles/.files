@@ -1,23 +1,15 @@
 #!/usr/bin/env bash
-
-# Lock: held by the *background* process, not the parent
-LOCKFILE=/tmp/power-saver.lock
-export WAYLAND_DISPLAY
-export XDG_RUNTIME_DIR
-
-# Re-exec ourselves in the background if we're not already daemonized
-if [[ -z "$_POWER_SAVER_DAEMON" ]]; then
+set -euo pipefail
+if [[ -z "${_POWER_SAVER_DAEMON:-}" ]]; then
     _POWER_SAVER_DAEMON=1 setsid "$0" "$@" &
     exit 0
 fi
 
+# Process checking
+LOCKFILE=/tmp/power-saver.lock
 exec 9>"$LOCKFILE"
-if ! flock -n 9; then
-    echo "power-saver is already running." >&2
-    exit 1
-fi
-
-echo $$ > "$LOCKFILE"
+flock -n 9 || { echo "power-saver is already running." >&2; exit 1; }
+echo $$ >"$LOCKFILE"
 PGID=$(ps -o pgid= -p $$ | tr -d ' ')
 
 # Logging
@@ -25,80 +17,89 @@ LOG=/tmp/power-saver.log
 log() { echo "[$(date '+%F %T')] $*" | tee -a "$LOG" >&2; }
 
 # Sanity checks
-if [[ -z "$WAYLAND_DISPLAY" ]]; then
-    log "No Wayland session found. Exiting."
-    exit 1
-fi
+[[ -n "${WAYLAND_DISPLAY:-}" ]] || { log "No Wayland session. Exiting."; exit 1; }
 
-BATTERY_DEVICE=$(upower -e | grep -m1 'BAT')
-if [[ -z "$BATTERY_DEVICE" ]]; then
-    log "Battery device not found. Is upower enabled?"
-    exit 1
-fi
+BATTERY=$(upower -e | grep -m1 'BAT') || { log "No battery found."; exit 1; }
+KBD=$(brightnessctl --list | awk -F"'" '/kbd_backlight/{print $2; exit}')
+MONITOR=$(wlr-randr | grep -om1 '^[^ ]*')
 
-KBD_DEVICE=$(brightnessctl --list | awk -F"'" '/kbd_backlight/{print $2; exit}')
+log "Started. Battery: $BATTERY | Monitor: $MONITOR | KBD: $KBD"
 
-log "Started. Battery: $BATTERY_DEVICE | KBD: $KBD_DEVICE"
+# Mode detection
+get_modes() {
+    wlr-randr --output "$MONITOR" 2>/dev/null |
+    sed -n '/Modes:/,$p' |
+    grep -oP '\d+x\d+ px, [\d.]+ Hz'
+}
 
-# Power state application
-apply_state() {
-    local state=$1
-    log "Applying state: $state"
+mode_60() {
+    get_modes | grep -E '60\.0{4,} Hz' | head -n1 ||
+    get_modes | grep -E ', 60\.' | head -n1
+}
 
-    if [[ "$state" == "discharging" ]]; then
-        [[ -n "$KBD_DEVICE" ]] && brightnessctl --device="$KBD_DEVICE" set 0
+mode_max() {
+    get_modes |
+    awk '
+    {
+        match($0, /([0-9]+)x([0-9]+).* ([0-9.]+) Hz/, m)
+        if (m[1] && m[2] && m[3]) {
+            pixels = m[1] * m[2]
+            print pixels, m[3], $0
+        }
+    }' |
+    sort -k1,1nr -k2,2nr |
+    head -n1 |
+    cut -d' ' -f3-
+}
 
-        sleep 0.2
-        # FIX 2: Match on "60." Hz (wlr-randr format, not xrandr's @60)
-        # and reconstruct the full WIDTHxHEIGHT@REFRESH mode string
-        wlr-randr | awk '
-            /^[^ ]/ { output=$1; found=0 }
-            /60\./ && !found {
-                mode = $1 "@" $2
-                print output, mode
-                found=1
-            }
-        ' | while read -r output mode; do
-            wlr-randr --output "$output" --mode "$mode" --scale 1
-        done
+# Mode application
+set_mode() {
+    local mode_line="$1"
+    local label="$2"
 
-    else
-        [[ -n "$KBD_DEVICE" ]] && brightnessctl --device="$KBD_DEVICE" set 100%
+    if [[ -z "$mode_line" ]]; then
+        log "Warning: no $label mode found, skipping"
+        return
+    fi
 
-        sleep 0.2
-        # FIX 1: Removed the duplicate /^[^ ]/ rule that was shadowing found=0
-        # FIX 2: Reconstruct the full WIDTHxHEIGHT@REFRESH mode string
-        wlr-randr | awk '
-            /^[^ ]/ { output=$1; found=0 }
-            /\*/ && !found {
-                mode = $1 "@" $2
-                print output, mode
-                found=1
-            }
-        ' | while read -r output mode; do
-            wlr-randr --output "$output" --mode "$mode" --scale 1
-        done
+    # Extract just the "1920x1080@144.000000" part that wlr-randr accepts
+    local mode_str
+    mode_str=$(echo "$mode_line" | sed -E 's/ px, /@/' | sed -E 's/ Hz//')
+
+    log "Setting $label: $mode_str"
+    if ! wlr-randr --output "$MONITOR" --mode "$mode_str" --scale 1; then
+        log "ERROR: Failed to set mode $mode_str"
     fi
 }
 
-# Cleanup on exit
+apply_state() {
+    local state=$1
+    log "Applying state: $state"
+    if [[ "$state" == "discharging" ]]; then
+        [[ -n "$KBD" ]] && brightnessctl --device="$KBD" set 0
+        set_mode "$(mode_60)" "60Hz"
+    else
+        [[ -n "$KBD" ]] && brightnessctl --device="$KBD" set 100%
+        set_mode "$(mode_max)" "max refresh"
+    fi
+}
+
+# Cleanup
 cleanup() {
     log "Shutting down (PGID $PGID)."
-    flock -u 9
-    rm -f "$LOCKFILE"
+    flock -u 9; rm -f "$LOCKFILE"
     kill -- -"$PGID" 2>/dev/null
 }
 trap cleanup EXIT INT TERM
 
-# Apply initial state immediately on startup
-current_state=$(upower -i "$BATTERY_DEVICE" | awk '/state:/{print $2; exit}')
+# Run script
+current_state=$(upower -i "$BATTERY" | awk '/state:/{print $2; exit}')
 apply_state "$current_state"
 
-# Monitor loop
 while read -r _; do
-    new_state=$(upower -i "$BATTERY_DEVICE" | awk '/state:/{print $2; exit}')
+    new_state=$(upower -i "$BATTERY" | awk '/state:/{print $2; exit}')
     if [[ "$new_state" != "$current_state" ]]; then
         current_state="$new_state"
         apply_state "$current_state"
     fi
-done < <(upower --monitor | grep --line-buffered "$BATTERY_DEVICE")
+done < <(upower --monitor | grep --line-buffered "$BATTERY")

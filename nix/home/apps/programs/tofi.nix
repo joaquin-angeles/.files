@@ -17,12 +17,13 @@
       outline-width = 0;
       border-width = 0;
       background-color = "#1d2021";
-      selection-color = "#7daea3";
+      selection-color = "#d4be98";
+      selection-background = "#7daea380";
       text-color = "#d4be98";
       selection-background-padding = "0, 5";
       num-results = 8;
-      min-input-width = 400;
-      result-spacing = 30;
+      min-input-width = 300;
+      result-spacing = 20;
       padding-top = 5;
       padding-bottom = 0;
       padding-left = 5;

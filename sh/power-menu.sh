@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env dash
 
 options="󰐥 Shutdown
 󰜉 Reboot
@@ -10,10 +10,10 @@ choice="$(printf '%s\n' "$options" | rofi -dmenu -p 'power')"
 
 case "$choice" in
     "󰐥 Shutdown")
-        systemctl poweroff
+        pkill -u $USER systemctl poweroff
         ;;
     "󰜉 Reboot")
-        systemctl reboot
+        pkill -u $USER && systemctl reboot
         ;;
     "󰌾 Lock")
         if command -v gtklock >/dev/null 2>&1; then
@@ -32,10 +32,6 @@ case "$choice" in
         systemctl suspend
         ;;
     "󰍃 Logout")
-        if command -v riverctl >/dev/null 2>&1; then
-            riverctl exit && pkill -u "$USER"
-        else
-            pkill -u "$USER"
-        fi
+        riverctl exit && pkill -u "$USER" || hyprctl dispatch exit || pkill -u "$USER"
         ;;
 esac

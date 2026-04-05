@@ -53,7 +53,7 @@ show_volume_notif() {
     --expire-time="$notification_timeout" \
     --hint=int:x-mako-width:225 \
     --hint=string:x-canonical-private-synchronous:osd-volume \
-    "$icon   Volume" "${bar}  ${vol}%"
+    "      $icon   Volume" "${bar}  ${vol}%"
 }
 
 show_brightness_notif() {
@@ -65,7 +65,7 @@ show_brightness_notif() {
     --urgency=low \
     --expire-time="$notification_timeout" \
     --hint=string:x-canonical-private-synchronous:osd-brightness \
-    "󰃠   Brightness" "${bar}  ${bri}%"
+    "     󰃠   Brightness" "${bar}  ${bri}%"
 }
 
 case "$1" in
