@@ -10,11 +10,9 @@
   # User packages
   home.packages = with pkgs; [
     cliphist
-    ffmpegthumbnailer
     file-roller
     grim
     hyprlock
-    hyprpicker
     impala
     lazygit
     mako
@@ -28,6 +26,7 @@
     waybar
     wayfreeze
     wbg
+    wideriver
     wlr-randr
     wlopm
     xfce.exo

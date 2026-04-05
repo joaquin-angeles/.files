@@ -7,24 +7,24 @@ window#waybar {
 }
 
 #sys-info {
-  margin-right: 6pt;
+  margin-right: 3pt;
   min-width: 12pt;
 }
 
 #clock {
-  padding: 0pt 10pt 0 10pt;
+  padding: 0pt 6pt 0 6pt;
 }
 
 #bluetooth {
-  padding: 0 5pt 0 6pt;
+  padding: 0 3pt 0 6pt;
 }
 
 #tray {
-  padding: 0 3pt 0 0;
+  padding: 0 3pt 0 9pt;
 }
 
 #custom-expand-icon {
-  padding-right: 6pt;
+  padding-right: 2pt;
 }
 
 #custom-separator {
@@ -39,7 +39,8 @@ window#waybar {
 }
 
 #network {
-  padding: 0 6pt 0 8pt;
+  font-size: 12.5pt;
+  padding: 0 12pt 0 8pt;
 }
 
 #pulseaudio {
@@ -48,7 +49,7 @@ window#waybar {
 }
 
 #battery {
-  padding: 0 10pt 0 4pt;
+  padding: 0 6pt 0 4pt;
 }
 
 #battery span.icon {
@@ -69,7 +70,11 @@ window#waybar {
   /* color: darker(@fg); */
 }
 
-#tags button {
+#tags button:nth-child(1),
+#tags button:nth-child(2),
+#tags button:nth-child(3),
+#tags button:nth-child(4),
+#tags button:nth-child(5) {
   color: @bright-bg;
   padding: 0 5pt;
   min-width: 10pt;
@@ -80,8 +85,8 @@ window#waybar {
   box-shadow: none;
 }
 
-#tags button:hover {
-  background-color: transparent;
+#tags button:hovered {
+  color: @blue;
 }
 
 #tags button.occupied {

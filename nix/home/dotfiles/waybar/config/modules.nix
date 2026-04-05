@@ -130,7 +130,7 @@
       };
       modules = [
         "custom/expand-icon"
-        "network"
+        "tray"
         "bluetooth"
         "pulseaudio"
       ];

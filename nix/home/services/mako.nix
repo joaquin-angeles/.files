@@ -1,4 +1,5 @@
 { ... }:
+
 {
   services.mako = {
     enable = true;
@@ -9,6 +10,7 @@
       margin = "6";
       width = 500;
       height = 125;
+      markup = true;
       default-timeout = 3000;
       text-color = "#d4be98";
       background-color = "#1d2021";
@@ -16,5 +18,9 @@
       border-radius = 5;
       font = "sans-serif 14";
     };
+    extraConfig = ''
+      [app-name=osd]
+      width=300
+    '';
   };
 }
