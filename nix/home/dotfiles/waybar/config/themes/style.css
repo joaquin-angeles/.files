@@ -85,7 +85,7 @@ window#waybar {
   box-shadow: none;
 }
 
-#tags button:hovered {
+#tags button:hover {
   color: @blue;
 }
 
