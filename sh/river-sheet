@@ -1,6 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env dash
 
-# Show keybinds in Rofi and copy selected line to clipboard
 cat <<EOF
 SUPER + Return        → Open terminal (Foot)
 SUPER + Space         → App launcher (Tofi)

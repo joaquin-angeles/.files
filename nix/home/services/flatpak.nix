@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 {
   services.flatpak = {
@@ -37,7 +37,7 @@
       Environment = {
         "GTK_THEME" = "Gruvbox-Dark:dark";
         "GTK_APPLICATION_PREFER_DARK_THEME" = "1";
-        "DCONF_USER_CONFIG_DIR" = ".config/dconf";
+        "DCONF_USER_CONFIG_DIR" = "${config.home.username}.config/dconf";
       };
 
       # Device access
@@ -49,9 +49,6 @@
       Context.filesystems = [
         # Application access
         "/nix/store:ro"
-        "~/.local/share/fonts:ro"
-        "~/.local/share/themes:ro"
-        "~/.local/share/icons:ro"
         "~/.local/share/applications"
 
         # GTK configuration
@@ -80,6 +77,27 @@
         "__NV_PRIME_RENDER_OFFLOAD" = "1";
         "__VK_LAYER_NV_optimus" = "NVIDIA_only";
       };
+    };
+
+    # Libadwaita themes for badly themed packages
+    "app.zen_browser.zen" = {
+      Environment = {
+        "GTK_THEME" = "adw-gtk3-dark";
+      };
+      Context.filesystems = [
+        "!xdg-config/gtk-3.0"
+        "!xdg-config/gtk-4.0"
+      ];
+    };
+
+    "com.github.tchx84.Flatseal" = {
+      Environment = {
+        "GTK_THEME" = "adw-gtk3-dark:dark";
+      };
+      Context.filesystems = [
+        "!xdg-config/gtk-3.0"
+        "!xdg-config/gtk-4.0"
+      ];
     };
   };
 }

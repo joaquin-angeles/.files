@@ -12,11 +12,11 @@
     cliphist
     file-roller
     grim
-    hyprlock
     hyprpicker
     impala
     lazygit
     mako
+    nitch
     ripgrep
     slurp
     sunsetr
@@ -27,16 +27,4 @@
     wlr-randr
     zellij
   ];
-
-  # Facebook Messenger
-  xdg.desktopEntries.messenger = {
-    name = "Messenger";
-    exec = "flatpak run org.chromium.Chromium --app=https://www.facebook.com/messages/";
-    icon = "fbmessenger";
-    terminal = false;
-    settings = {
-      X-Flatpak-Part-Of = "org.chromium.Chromium";
-      TryExec = "${config.home.homeDirectory}/.local/share/flatpak/exports/bin/org.chromium.Chromium";
-    };
-  };
 }

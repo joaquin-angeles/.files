@@ -28,7 +28,7 @@ riverctl spawn 'wideriver \
 # Startup
 riverctl spawn 'waybar'
 riverctl spawn 'wbg ~/Pictures/Wallpapers/gruvbox/trees.png'
-riverctl spawn 'wlr-power.sh'
+riverctl spawn 'wlr-power'
 riverctl spawn 'mako'
 riverctl spawn 'foot --server'
 riverctl spawn 'cliphist.sh'
@@ -41,7 +41,7 @@ riverctl set-cursor-warp on-output-change
 riverctl focus-follows-cursor disabled
 riverctl hide-cursor timeout 5000
 riverctl hide-cursor when-typing disabled
-riverctl spawn 'river-input.sh'
+riverctl spawn 'river-input'
 
 mod="Super"
 
@@ -65,8 +65,8 @@ riverctl map normal "$mod" N spawn 'sh -c "pgrep sunsetr >/dev/null && pkill sun
 riverctl map normal "$mod+Shift" N spawn 'sh -c "if makoctl mode | grep -q do-not-disturb; then makoctl mode -r do-not-disturb && notify-send \"DND Off\" \"Notifications enabled\"; else notify-send \"DND On\" \"Notifications silenced\" && makoctl mode -a do-not-disturb; fi"'
 
 # Misc
-riverctl map normal "$mod+Shift" X spawn 'power-menu.sh'
-riverctl map normal "$mod" F1 spawn 'sh -c "cheatsheet.sh | rofi -dmenu -p keybinds"'
+riverctl map normal "$mod+Shift" X spawn 'rofi-power-menu'
+riverctl map normal "$mod" F1 spawn 'sh -c "river-sheet | rofi -dmenu -p keybinds"'
 
 # Volume & brightness (Super+Fn)
 riverctl map normal "$mod" F9  spawn 'osd.sh brightness_down'

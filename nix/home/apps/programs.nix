@@ -3,7 +3,6 @@
 {
   imports = [
     ./programs/btop.nix # System monitor
-    ./programs/fastfetch.nix
     ./programs/hyprlock.nix
     ./programs/neovim.nix # Text editor
     # ./programs/lutris.nix            # Game launcher

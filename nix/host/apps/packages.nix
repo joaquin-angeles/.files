@@ -3,11 +3,11 @@
 {
   # System packages
   environment.systemPackages = with pkgs; [
-    blueman
     brightnessctl
+    dash
+    git
     gtk3
     gtk4
-    home-manager
     polkit_gnome
     qdl
     usbutils
