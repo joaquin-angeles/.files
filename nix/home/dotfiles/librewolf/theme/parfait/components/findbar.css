@@ -1,0 +1,110 @@
+/*
+  Parfait - findbar.css
+  https://github.com/reizumii/parfait
+*/
+
+/* findbar */
+.browserContainer > findbar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: var(--pf-findbar-width);
+  padding-block: 0 !important;
+  background: var(--pf-panel-bgcolor) !important;
+  border: 1px solid var(--pf-border-color) !important;
+  border-radius: var(--pf-border-radius-md);
+  box-shadow: var(--pf-shadow-md) !important;
+  transition: top var(--pf-ts-25) !important;
+  animation: findbar-show var(--pf-ts-25);
+  visibility: visible !important;
+
+  &[hidden] {
+    display: flex !important;
+    top: -100px;
+  }
+  @media -moz-pref("parfait.blur.enabled") {
+    backdrop-filter: var(--pf-acrylic-filter);
+    --pf-panel-bgcolor: var(--pf-panel-bgcolor-transparent);
+  }
+  .findbar-container {
+    flex-wrap: wrap;
+    margin-left: 0 !important;
+    min-height: 40px;
+    height: 100% !important;
+  }
+  .findbar-closebutton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    margin: 0 !important;
+    padding: 4px !important;
+  }
+  hbox[anonid="findbar-textbox-wrapper"] {
+    width: var(--pf-findbar-width) !important;
+    min-height: 40px;
+    padding: 8px 36px 8px 8px;
+    border-bottom: 1px solid var(--pf-border-color-light);
+    gap: 4px;
+
+    .findbar-textbox {
+      width: 100% !important;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+    toolbarbutton {
+      margin: 0 !important;
+      padding: 4px !important;
+    }
+  }
+  checkbox {
+    margin: 8px 2px !important;
+
+    &:hover .checkbox-label-box {
+      background-color: var(--pf-toolbar-bgcolor-hover);
+    }
+    &[checked] .checkbox-label-box {
+      background-color: color-mix(in srgb, var(--pf-accent-color), transparent 80%);
+      --pf-icon-color: var(--pf-accent-text-color);
+    }
+    .checkbox-label-box {
+      border-radius: var(--pf-border-radius-sm);
+    }
+    .checkbox-icon {
+      margin: 0 !important;
+      padding: 4px;
+      display: block !important;
+      fill: var(--pf-icon-color);
+      -moz-context-properties: fill;
+
+      .findbar-highlight & {
+        content: var(--pf-icon-search-highlight);
+      }
+      .findbar-case-sensitive & {
+        content: var(--pf-icon-search-matchcase);
+      }
+      .findbar-match-diacritics & {
+        content: var(--pf-icon-search-matchdiacritics);
+      }
+      .findbar-entire-word & {
+        content: var(--pf-icon-search-matchwholeword);
+      }
+    }
+    &.findbar-highlight {
+      margin-left: 8px !important;
+    }
+    .split-view-panel .findbar-container > &:not([hidden]) {
+      display: flex !important;
+    }
+  }
+  .checkbox-check,
+  .checkbox-label,
+  .findbar-find-status[data-l10n-id="findbar-wrapped-to-top"] {
+    display: none;
+  }
+}
+@keyframes findbar-show {
+  0% { top: -100px; }
+  100% { top: 16px; }
+}

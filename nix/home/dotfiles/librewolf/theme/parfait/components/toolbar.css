@@ -1,0 +1,304 @@
+/*
+  Parfait - toolbar.css
+  https://github.com/reizumii/parfait
+*/
+
+/* toolbar items */
+toolbar .toolbarbutton-1,
+findbar toolbarbutton {
+  border-radius: var(--pf-border-radius-sm);
+  --toolbarbutton-hover-background: var(--pf-toolbar-bgcolor-hover);
+  --toolbarbutton-active-background: var(--pf-toolbar-bgcolor-active);
+}
+toolbar .toolbarbutton-1:not(#PlacesChevron, .toolbarbutton-combined-buttons-dropmarker) {
+  min-width: var(--pf-toolbaritem-size);
+  min-height: var(--pf-toolbaritem-size);
+  max-width: var(--pf-toolbaritem-size);
+  max-height: var(--pf-toolbaritem-size);
+  padding: 0 !important;
+
+  .toolbarbutton-icon {
+    transition: var(--pf-ts-25);
+    transition-timing-function: var(--pf-fx-bounce) !important;
+    background-color: transparent !important;
+  }
+  & > .toolbarbutton-badge-stack {
+    background-color: transparent !important;
+    --border-color-card: transparent;
+  }
+  &:not([disabled]) {
+    &[checked],
+    &:hover {
+      background-color: var(--pf-toolbar-bgcolor-hover);
+    }
+    &[open],
+    &:active {
+      background-color: var(--pf-toolbar-bgcolor-active);
+    }
+    &:hover:active {
+      fill: var(--pf-icon-color-active) !important;
+    }
+    &:not(#back-button, #forward-button, #reload-button):active .toolbarbutton-icon {
+      scale: 0.95;
+    }
+  }
+}
+.private-browsing-indicator-with-label,
+#fxa-avatar-label {
+  display: none;
+}
+
+/* toolbar */
+#navigator-toolbox {
+  border-bottom: 0 !important;
+  margin-top: 0 !important;
+  z-index: unset !important;
+}
+#nav-bar {
+  min-height: var(--pf-navbar-height) !important;
+  padding-inline-start: var(--pf-separation) !important;
+  border-top: 0 !important;
+  align-items: center;
+  will-change: unset !important;
+
+  @media -moz-pref("parfait.traffic-lights.enabled") or (-moz-platform: macos) {
+    :root:not([macOSNativeFullscreen]) & { padding-inline-start: 0 !important; }
+  }
+}
+#nav-bar-customization-target {
+  align-items: center;
+  gap: var(--pf-toolbaritem-gap);
+}
+#PanelUI-menu-button {
+  margin-inline: var(--pf-toolbaritem-gap) var(--toolbar-start-end-padding) !important;
+}
+
+/* hide sidebar active state */
+#navigator-toolbox[tabs-hidden] #sidebar-button[checked]:not(:hover) {
+  background-color: transparent !important;
+}
+
+/* ti: animations */
+@media not -moz-pref("parfait.animations.enabled", false) {
+  #back-button:not([disabled]):hover:active .toolbarbutton-icon {
+    transform: translateX(-2px);
+  }
+  #forward-button:not([disabled]):hover:active .toolbarbutton-icon {
+    transform: translateX(2px);
+  }
+  #reload-button:not([disabled]) {
+    transition: all var(--pf-ts-15) var(--pf-fx-bounce);
+
+    &:hover:active .toolbarbutton-icon {
+      transform: rotate(90deg);
+    }
+  }
+  #reload-button,
+  #stop-button {
+    & > .toolbarbutton-icon {
+      fill: var(--toolbarbutton-icon-fill) !important;
+      animation: bounce var(--pf-ts-25) var(--pf-fx-bounce);
+    }
+    .toolbarbutton-animatable-box { display: none !important; }
+  }
+}
+@keyframes bounce {
+  0% { scale: 0.6; }
+  100% { scale: 1; }
+}
+
+/* ts: prevent navbar from expanding */
+:root:not([customizing]) {
+  #vertical-spacer {
+    max-width: 0 !important;
+    min-width: 0 !important;
+
+    &::before {
+      content: "";
+      width: var(--pf-sidebar-width);
+      height: var(--pf-navbar-height);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  }
+  /* keep toolbar items on top of vertical spacer */
+  #nav-bar-customization-target > :is(toolbarbutton, toolbaritem) {
+    z-index: 2;
+  }
+
+  /* menu bar */
+  #toolbar-menubar[inactive] {
+    position: fixed;
+  }
+  #toolbar-menubar:not([inactive]) {
+    position: fixed;
+    top: var(--pf-separation);
+    right: var(--pf-separation);
+    z-index: 5;
+    min-height: 34px !important;
+    border-radius: var(--pf-border-radius-sm);
+    background-color: var(--arrowpanel-background) !important;
+    border: 1px solid var(--pf-border-color) !important;
+    box-shadow: var(--pf-shadow-md);
+    padding: 4px !important;
+  }
+
+  /* bookmarks toolbar */
+  @media -moz-pref("sidebar.verticalTabs") {
+    #PersonalToolbar {
+      position: fixed;
+      bottom: calc(0px - var(--pf-bookmarks-height));
+      right: var(--pf-separation);
+      z-index: 3;
+      width: calc(100% - var(--pf-bookmarks-margin));
+      height: var(--pf-bookmarks-height);
+      padding: 4px !important;
+      background-color: var(--pf-panel-bgcolor) !important;
+      border: 1px solid var(--pf-border-color) !important;
+      border-radius: var(--pf-border-radius-md);
+      box-shadow: var(--pf-shadow-md);
+      overflow: unset !important;
+      opacity: 0;
+      transition: var(--pf-ts-25) !important;
+      transition-delay: var(--pf-ts-25) !important;
+
+      &:hover,
+      &:has(.bookmark-item[open]) {
+        opacity: 1;
+        bottom: var(--pf-separation);
+      }
+      &::before,
+      &::after {
+        content: "";
+        width: 100%;
+        height: var(--pf-browser-separation);
+        position: absolute;
+        left: 0;
+      }
+      &::before { top: calc(0px - var(--pf-browser-separation)); }
+      &::after { bottom: calc(0px - var(--pf-browser-separation)); }
+    }
+  }
+}
+toolbarbutton.bookmark-item:not(.subviewbutton) {
+  --toolbarbutton-border-radius: var(--pf-border-radius-sm);
+}
+
+/* horizontal layout */
+@media not -moz-pref("sidebar.verticalTabs") {
+  :root:not([chromehidden~="toolbar"], [taskbartab]) {
+    #navigator-toolbox {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      --toolbar-bgcolor: transparent;
+    }
+    #TabsToolbar {
+      grid-area: 1 / 2;
+    }
+    #nav-bar {
+      width: fit-content;
+      grid-area: 1 / 1;
+    }
+    #PersonalToolbar {
+      grid-row: 2;
+      grid-column: 1 / -1;
+    }
+    #TabsToolbar-customization-target {
+      align-items: center;
+      gap: var(--pf-toolbaritem-gap);
+    }
+    #tabs-newtab-button {
+      list-style-image: var(--pf-icon-plus-square) !important;
+    }
+    #urlbar-container {
+      --urlbar-container-min-width: 200px;
+    }
+    #urlbar-container + #downloads-button,
+    #urlbar-container + toolbarspring + #downloads-button {
+      margin-right: calc(var(--pf-separation) - var(--pf-toolbaritem-gap)) !important;
+    }
+    &:not([customizing]) :is(.titlebar-spacer, toolbarspring) {
+      display: none;
+    }
+    :is(toolbarbutton, toolbarpaletteitem) ~ #tabbrowser-tabs {
+      border-inline-start: 0 !important;
+      padding-inline-start: 0 !important;
+      margin-inline-start: 0 !important;
+    }
+    /* hl: toolbar item positioning */
+    @media -moz-pref("parfait.traffic-lights.enabled") or (-moz-platform: macos) {
+      #nav-bar > .titlebar-buttonbox-container {
+        display: flex !important;
+      }
+      #TabsToolbar > .titlebar-buttonbox-container {
+        display: none !important;
+      }
+    }
+    @media -moz-pref("parfait.traffic-lights.enabled") or -moz-pref("parfait.toolbar.force-hl-layout") or (not (-moz-platform: linux)) {
+      --pf-tabbar-margin: calc((var(--pf-toolbaritem-size) + var(--pf-toolbaritem-gap)) * var(--pf-navbar-items, 2) + var(--pf-separation));
+      --pf-extensions-x: calc((var(--pf-toolbaritem-size) + var(--pf-toolbaritem-gap)) * var(--pf-extensions-multi, 1) + var(--pf-separation) + var(--pf-wc-gap));
+
+      #TabsToolbar > .toolbar-items {
+        margin-right: var(--pf-tabbar-margin) !important;
+      }
+      #PanelUI-button {
+        position: fixed;
+        right: var(--pf-wc-gap);
+      }
+      &:not([customizing]) #unified-extensions-button,
+      #wrapper-unified-extensions-button {
+        position: fixed;
+        right: var(--pf-extensions-x);
+      }
+      #nav-bar-overflow-button {
+        position: fixed;
+        right: calc(var(--pf-toolbaritem-size) + var(--pf-toolbaritem-gap) + var(--pf-separation) + var(--pf-wc-gap));
+      }
+      &:has(#nav-bar:not([overflowing], [nonemptyoverflow], [customizing]) #unified-extensions-button[hidden]) {
+        --pf-navbar-items: 1;
+      }
+      &:has(#nav-bar:is([overflowing], [nonemptyoverflow], [customizing]) #unified-extensions-button:not([hidden])) {
+        --pf-navbar-items: 3;
+        --pf-extensions-multi: 2;
+      }
+    }
+    @media (-moz-platform: linux) and (not -moz-pref("parfait.toolbar.force-hl-layout")) {
+      #PanelUI-button,
+      #unified-extensions-button {
+        order: -1 !important;
+      }
+      @media not -moz-pref("parfait.traffic-lights.enabled") {
+        #PanelUI-menu-button {
+          --toolbar-start-end-padding: var(--pf-toolbaritem-gap);
+        }
+      }
+    }
+    /* hl: breakpoints */
+    @media (max-width: 600px) {
+      #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):not(#urlbar-container, #unified-extensions-button, #nav-bar-overflow-button) {
+        display: none;
+      }
+    }
+    @media (max-width: 768px) {
+      --pf-tabbar-margin: 0px;
+
+      #TabsToolbar-customization-target { visibility: collapse; }
+    }
+  }
+}
+
+/* taskbar tabs */
+:root[taskbartab] {
+  .titlebar-spacer[type="post-tabs"],
+  toolbarspring {
+    display: none;
+  }
+  #taskbar-tabs-favicon {
+    border-radius: var(--pf-favicon-radius);
+  }
+  .urlbar-background {
+    --pf-toolbar-bgcolor: transparent !important;
+  }
+}

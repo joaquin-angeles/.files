@@ -1,0 +1,199 @@
+/*
+  Parfait - player.css
+  https://github.com/reizumii/parfait
+*/
+
+@-moz-document url("chrome://global/content/pictureinpicture/player.xhtml") {
+  @media (-moz-platform: windows) {
+    :root {
+      --player-bg-color: transparent !important;
+    }
+  }
+  #controls {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    opacity: 0;
+    transition: opacity var(--pf-ts-15);
+
+    &:hover {
+      opacity: 1;
+    }
+    body:fullscreen &:not([showing], [keying], [donthide]) {
+      opacity: 0;
+    }
+  }
+  #controls-bottom {
+    --controls-bottom-distance: 12px;
+  }
+  #controls-bottom-gradient {
+    background-image: none !important;
+  }
+  .control-item {
+    font-family: system-ui, sans-serif;
+    opacity: 1 !important;
+  }
+  .controls-bottom-lower {
+    grid-template-columns: repeat(2, 1fr) !important;
+    margin: 0 12px !important;
+  }
+  .controls-bottom-upper {
+    width: auto !important;
+    margin: 0 12px !important;
+  }
+  .control-button {
+    min-width: 28px !important;
+    min-height: 24px !important;
+    max-width: 28px !important;
+    max-height: 24px !important;
+    background-size: 16px !important;
+    transition: var(--pf-ts-15) !important;
+    --border-radius-small: 999px;
+
+    &:hover:active {
+      background-size: 14px !important;
+    }
+  }
+  #close,
+  #unpip,
+  .center-controls .control-button {
+    min-width: 36px !important;
+    min-height: 36px !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    position: relative;
+    --close-btn-fill-color: #fff;
+
+    &:hover::before {
+      content: "";
+      background: rgba(255, 255, 255, 0.2);
+      position: absolute;
+      transform: scale(0.8);
+      border-radius: 999px;
+      inset: 0;
+    }
+  }
+  #playpause {
+    min-width: 48px !important;
+    min-height: 48px !important;
+  }
+  .start-controls,
+  .end-controls {
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 999px;
+    box-sizing: border-box;
+    gap: 4px !important;
+  }
+  .start-controls:has(#timestamp[hidden]) {
+    background-color: transparent;
+  }
+  .center-controls {
+    position: fixed;
+    display: flex !important;
+    align-items: center;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  #timestamp {
+    font-size: 0.825rem !important;
+    width: fit-content !important;
+    padding: 0 10px !important;
+    grid-area: unset !important;
+  }
+  /* yabai */
+  @media -moz-pref("parfait.blur.enabled") {
+    #close, #unpip,
+    .center-controls .control-button,
+    .start-controls, .end-controls {
+      backdrop-filter: var(--pf-background-filter);
+    }
+    .player-holder > #browser {
+      clip-path: inset(0 round 0.01px) !important;
+    }
+  }
+  /* scrubbers */
+  #scrubber,
+  #audio-scrubber {
+    &::-moz-range-thumb {
+      width: 4px !important;
+      height: 16px !important;
+      border: 0 !important;
+    }
+    &::-moz-range-track {
+      background-color: rgba(91, 91, 91, 0.4) !important;
+    }
+    &::-moz-range-progress {
+      border-radius: 4px 0 0 4px !important;
+    }
+  }
+  #scrubber:hover::-moz-range-track,
+  #scrubber:hover::-moz-range-progress {
+    height: 8px !important;
+  }
+  #scrubber::-moz-range-progress,
+  #scrubber::-moz-range-thumb {
+    background-color: var(--pf-accent-color) !important;
+  }
+  /* toolips */
+  .control-item:focus-visible::after,
+  .control-item:hover::after {
+    font-size: 0.75rem;
+    padding: 6px 12px !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+  }
+  .center-tooltip:focus-visible::after,
+  .center-tooltip:hover::after {
+    right: 0 !important;
+    bottom: 3.5em !important;
+  }
+  /* popup */
+  .arrow { display: none; }
+  .box {
+    font-size: 0.825rem !important;
+    padding: 0 !important;
+  }
+  .panel-legend,
+  .box label:not(.switch) {
+    font-family: system-ui, sans-serif !important;
+  }
+  input:checked + .slider {
+    background-color: var(--pf-accent-color) !important;
+  }
+  .font-size-selection-radio > input[type="radio"]:checked {
+    border-color: var(--pf-accent-color) !important;
+  }
+  /* icons */
+  #seekBackward {
+    background-image: url("../assets/icons/seek-backward.svg") !important;
+  }
+  #seekForward {
+    background-image: url("../assets/icons/seek-forward.svg") !important;
+  }
+  #controls:not(.muted) #audio {
+    background-image: url("../assets/icons/audio.svg") !important;
+  }
+  #controls.muted #audio {
+    background-image: url("../assets/icons/audio-mute.svg") !important;
+  }
+  #closed-caption {
+    background-image: url("../assets/icons/captions.svg") !important;
+  }
+  body:not(:fullscreen) #fullscreen {
+    background-image: url("../assets/icons/fullscreen.svg") !important;
+  }
+  body:fullscreen #fullscreen {
+    background-image: url("../assets/icons/fullscreen-exit.svg") !important;
+  }
+  /* breakpoints */
+  @media (width <= 300px) {
+    .end-controls { display: none !important; }
+  }
+  @media (width >= 300px) {
+    .start-controls,
+    #timestamp {
+      display: grid !important;
+    }
+  }
+}
