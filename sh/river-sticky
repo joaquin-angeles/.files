@@ -1,0 +1,12 @@
+#!/usr/bin/env dash
+
+STATE_FILE="${XDG_RUNTIME_DIR:-/tmp}/river-sticky-state"
+ALL_TAGS=$(( (1 << 32) - 1 ))
+
+if [ -f "$STATE_FILE" ]; then
+    rm "$STATE_FILE"
+    riverctl send-to-previous-tags
+else
+    touch "$STATE_FILE"
+    riverctl set-view-tags "$ALL_TAGS"
+fi

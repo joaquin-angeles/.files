@@ -3,7 +3,6 @@
 {
   imports = [
     ./packages/flatpaks.nix
-    ./packages/media.nix
     ./packages/scripts.nix
   ];
 
@@ -14,13 +13,18 @@
     grim
     hyprpicker
     impala
+    imv
     lazygit
     mako
+    mpv
     nitch
+    playerctl
     ripgrep
     slurp
     sunsetr
     swayidle
+    unstable.bluetui
+    unstable.wiremix
     waybar
     wbg
     wideriver
