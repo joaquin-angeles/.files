@@ -11,12 +11,14 @@
   };
 
   # River
-  programs.river-classic.enable = true;
+  programs.river-classic = {
+    enable = true;
+    xwayland.enable = false;
+  };
 
   # Steam
   programs.steam = {
-    enable = true;
-    package = pkgs.unstable.steam;
+    enable = false;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;

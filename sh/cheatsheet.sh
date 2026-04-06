@@ -3,19 +3,18 @@
 # Show keybinds in Rofi and copy selected line to clipboard
 cat <<EOF
 SUPER + Return        → Open terminal (Foot)
-SUPER + Space         → App launcher (Rofi)
+SUPER + Space         → App launcher (Tofi)
 SUPER + B             → Browser (Zen)
-SUPER + E             → File manager (Nautilus)
+SUPER + E             → File manager (Thunar)
 SUPER + .             → Emoji picker
-SUPER + V             → Clipboard manager (Cliphist)
-SUPER + R             → Reload WM config
-SUPER + G             → Toggle group layout
+SUPER + Shift + V     → Clipboard manager (Cliphist)
 SUPER + W             → Toggle Waybar
-SUPER + S             → Screenshot output to clipboard
-SUPER + Shift + S     → Screenshot region to clipboard
-SUPER + Shift + P     → Color picker
-SUPER + Shift + E     → Power menu
-Ctrl + Alt + B        → Toggle blue light filter
+SUPER + S             → Screenshot region to clipboard
+SUPER + Shift + S     → Screenshot output to clipboard
+SUPER + C             → Color picker
+SUPER + Shift + X     → Power menu
+SUPER + N             → Toggle blue light filter
+SUPER + SHIFT + N     → Toggle DND
 SUPER + F9            → Brightness down
 SUPER + F10           → Brightness up
 SUPER + F11           → Volume down
@@ -26,7 +25,7 @@ XF86AudioRaiseVolume  → Volume up
 XF86AudioMute         → Mute / unmute
 SUPER + F             → Toggle fullscreen
 SUPER + Q             → Kill focused window
-SUPER + Shift + F     → Toggle floating
+SUPER + Shift + SPACE → Toggle floating
 SUPER + Left Click    → Move window
 SUPER + Right Click   → Resize window
 SUPER + H             → Focus left
@@ -37,8 +36,8 @@ SUPER + Shift + H     → Move window left
 SUPER + Shift + J     → Move window down
 SUPER + Shift + K     → Move window up
 SUPER + Shift + L     → Move window right
-SUPER + 1–9           → Switch to workspace 1–9
-SUPER + Tab           → Next workspace
-SUPER + Shift + 1–9   → Move window to workspace 1–9
-SUPER + Shift + Tab   → Previous workspace
+SUPER + Alt + H       → Resize window left
+SUPER + Alt + L       → Resize window right
+SUPER + 1–9           → Switch to tag 1–9
+SUPER + Shift + 1–9   → Move window to tag 1–9
 EOF

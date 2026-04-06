@@ -1,10 +1,6 @@
 { pkgs, ... }:
-{
-  imports = [
-    ./packages/development-tools.nix
-    ./packages/fonts.nix
-  ];
 
+{
   # System packages
   environment.systemPackages = with pkgs; [
     blueman
