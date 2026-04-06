@@ -48,7 +48,7 @@ mod="Super"
 # Apps
 riverctl map normal "$mod" Return spawn 'footclient'
 riverctl map normal "$mod" Space spawn 'tofi-drun'
-riverctl map normal "$mod" B spawn 'sh -c "zen || flatpak run app.zen_browser.zen"'
+riverctl map normal "$mod" B spawn 'sh -c "librewolf || flatpak run io.gitlab.librewolf-community"'
 riverctl map normal "$mod" E spawn 'foot -e yazi'
 riverctl map normal "$mod+Shift" E spawn 'thunar'
 riverctl map normal "$mod" Period spawn 'rofi -show emoji'

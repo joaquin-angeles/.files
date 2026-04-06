@@ -13,7 +13,7 @@
   programs.zsh = {
     enable = true;
     defaultKeymap = "emacs"; # Emacs binds
-    enableCompletion = true; # Auto-completions
+    enableCompletion = false; # Auto-completions
     autosuggestion = {
       enable = true;
       strategy = [

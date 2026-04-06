@@ -2,7 +2,6 @@
 
 {
   services.flatpak.packages = [
-    "app.zen_browser.zen" # Default browser
     "com.obsproject.Studio" # Screen recording software
     "com.usebottles.bottles" # Windows applications
     "com.vysp3r.ProtonPlus" # Games compatibility tool

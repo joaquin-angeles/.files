@@ -79,17 +79,6 @@
       };
     };
 
-    # Libadwaita themes for badly themed packages
-    "app.zen_browser.zen" = {
-      Environment = {
-        "GTK_THEME" = "adw-gtk3-dark";
-      };
-      Context.filesystems = [
-        "!xdg-config/gtk-3.0"
-        "!xdg-config/gtk-4.0"
-      ];
-    };
-
     "com.github.tchx84.Flatseal" = {
       Environment = {
         "GTK_THEME" = "adw-gtk3-dark:dark";
