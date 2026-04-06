@@ -12,6 +12,8 @@
 
     # Disable network manager
     networkmanager.enable = false;
+    useDHCP = false;
+    dhcpcd.enable = false;
   };
 
   services.resolved = {

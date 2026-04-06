@@ -23,12 +23,12 @@ riverctl spawn 'wideriver \
 --inner-gaps 10 \
 --outer-gaps 10 \
 --smart-gaps \
---border-width-smart-gaps 0 &'
+--border-width-smart-gaps 0'
 
 # Startup
 riverctl spawn 'waybar'
 riverctl spawn 'wbg ~/Pictures/Wallpapers/gruvbox/trees.png'
-riverctl spawn "wlr-power.sh"
+riverctl spawn 'wlr-power.sh'
 riverctl spawn 'mako'
 riverctl spawn 'foot --server'
 riverctl spawn 'cliphist.sh'
@@ -36,8 +36,6 @@ riverctl spawn 'idle.sh'
 
 # Input
 riverctl keyboard-layout -options 'caps:escape' ''
-
-# Pointer configuration
 riverctl xcursor-theme Bibata-Modern-Ice 24
 riverctl set-cursor-warp on-output-change
 riverctl focus-follows-cursor disabled
@@ -45,18 +43,13 @@ riverctl hide-cursor timeout 5000
 riverctl hide-cursor when-typing disabled
 riverctl spawn 'river-input.sh'
 
-# Modifier key
 mod="Super"
 
-# App shortcuts
-browser='sh -c "zen || flatpak run app.zen_browser.zen"'
-filemanager='foot -e yazi'
-menu='tofi-drun'
-term='footclient'
-riverctl map normal "$mod" Return spawn "$term"
-riverctl map normal "$mod" Space spawn "$menu"
-riverctl map normal "$mod" B spawn "$browser"
-riverctl map normal "$mod" E spawn "$filemanager"
+# Apps
+riverctl map normal "$mod" Return spawn 'footclient'
+riverctl map normal "$mod" Space spawn 'tofi-drun'
+riverctl map normal "$mod" B spawn 'sh -c "zen || flatpak run app.zen_browser.zen"'
+riverctl map normal "$mod" E spawn 'foot -e yazi'
 riverctl map normal "$mod+Shift" E spawn 'thunar'
 riverctl map normal "$mod" Period spawn 'rofi -show emoji'
 riverctl map normal "$mod+Shift" V spawn 'sh -c "cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy"'
@@ -68,27 +61,25 @@ riverctl map normal "$mod" C spawn 'hyprpicker -a'
 
 # Toggles
 riverctl map normal "$mod" W spawn 'sh -c "pgrep waybar >/dev/null && pkill waybar || waybar &"'
-riverctl map normal "$mod+Shift" N spawn 'sh -c "if makoctl mode | grep -q do-not-disturb; then makoctl mode -r do-not-disturb && notify-send \"DND Off\" \"Notifications enabled\"; else notify-send \"DND On\" \"Notifications silenced\" && makoctl mode -a do-not-disturb; fi"'
 riverctl map normal "$mod" N spawn 'sh -c "pgrep sunsetr >/dev/null && pkill sunsetr || sunsetr test 4000 100"'
+riverctl map normal "$mod+Shift" N spawn 'sh -c "if makoctl mode | grep -q do-not-disturb; then makoctl mode -r do-not-disturb && notify-send \"DND Off\" \"Notifications enabled\"; else notify-send \"DND On\" \"Notifications silenced\" && makoctl mode -a do-not-disturb; fi"'
 
 # Misc
 riverctl map normal "$mod+Shift" X spawn 'power-menu.sh'
 riverctl map normal "$mod" F1 spawn 'sh -c "cheatsheet.sh | rofi -dmenu -p keybinds"'
 
 # Volume & brightness (Super+Fn)
-riverctl map normal "$mod" F9 spawn 'osd.sh brightness_down'
+riverctl map normal "$mod" F9  spawn 'osd.sh brightness_down'
 riverctl map normal "$mod" F10 spawn 'osd.sh brightness_up'
 riverctl map normal "$mod" F11 spawn 'osd.sh volume_down'
 riverctl map normal "$mod" F12 spawn 'osd.sh volume_up'
 riverctl map normal "$mod+Shift" F12 spawn 'osd.sh volume_mute'
 
 # Media keys
-riverctl map normal None XF86AudioLowerVolume spawn 'osd.sh volume_down'
-riverctl map normal None XF86AudioRaiseVolume spawn 'osd.sh volume_up'
-riverctl map normal None XF86AudioMute spawn 'osd.sh volume_mute'
-
-# Brightness keys
-riverctl map normal None XF86MonBrightnessUp spawn 'osd.sh brightness_up'
+riverctl map normal None XF86AudioLowerVolume  spawn 'osd.sh volume_down'
+riverctl map normal None XF86AudioRaiseVolume  spawn 'osd.sh volume_up'
+riverctl map normal None XF86AudioMute         spawn 'osd.sh volume_mute'
+riverctl map normal None XF86MonBrightnessUp   spawn 'osd.sh brightness_up'
 riverctl map normal None XF86MonBrightnessDown spawn 'osd.sh brightness_down'
 
 # Window management
@@ -115,7 +106,7 @@ riverctl map normal "$mod+Alt" K send-layout-cmd wideriver '--count +1'
 riverctl map normal "$mod+Alt" L send-layout-cmd wideriver '--ratio +0.05'
 
 # Mouse
-riverctl map-pointer normal "$mod" BTN_LEFT move-view
+riverctl map-pointer normal "$mod" BTN_LEFT  move-view
 riverctl map-pointer normal "$mod" BTN_RIGHT resize-view
 
 # Tags (workspaces)

@@ -22,8 +22,8 @@ Yatline.coloreds.render = function(self, c)
 end
 
 Yatline.coloreds.get.hovered_mtime = function()
-	local h, t = cx.active.current.hovered, 0
-	t = h and math.floor(h.cha.mtime or 0) or 0
+	local h = cx.active.current.hovered
+	local t = h and math.floor(h.cha.mtime or 0) or 0
 	if t == 0 then
 		return {}
 	end
@@ -51,36 +51,6 @@ Yatline.coloreds.get.hovered_path = function()
 	}
 end
 
-Yatline.coloreds.get.count = function()
-	local sel, yank = #cx.active.selected, #cx.yanked
-	if sel == 0 and yank == 0 then
-		return {}
-	end
-	local r = {}
-	if sel > 0 then
-		r[#r + 1] = { "󰒆 " .. sel .. " ", "yellow" }
-	end
-	if yank > 0 then
-		r[#r + 1] = cx.yanked.is_cut and { "󰆐 " .. yank .. " ", "red" } or { "󰆏 " .. yank .. " ", "green" }
-	end
-	return r
-end
-
-Yatline.line.get.hovered_symlink = function()
-	local h = cx.active.current.hovered
-	if not h or not h.link_to then
-		return nil
-	end
-	local path, cha = tostring(h.link_to), h.cha
-	if cha.is_orphan then
-		return ui.Line({ ui.Span("  -> "):fg("red"), ui.Span(path):fg("red") })
-	end
-	local name = path:match("[^/]+$") or ""
-	local name_span = cha.is_dir and ui.Span(name):fg("blue"):bold() or ui.Span(name):fg("grey")
-	return ui.Line({ ui.Span("  -> "):fg("brightblack"), ui.Span(path:sub(1, #path - #name)):fg("cyan"), name_span })
-end
-
--- Selected / yanked file counts
 Yatline.coloreds.get.count = function(self)
 	local selected, yanked = #cx.active.selected, #cx.yanked
 	if selected == 0 and yanked == 0 then
@@ -97,23 +67,18 @@ Yatline.coloreds.get.count = function(self)
 	return result
 end
 
--- Symlink target with colored extension
 Yatline.line.get.hovered_symlink = function(self)
 	local hovered = cx.active.current.hovered
 	if not hovered or not hovered.link_to then
 		return nil
 	end
-
 	local path, cha = tostring(hovered.link_to), hovered.cha
 	if cha.is_orphan then
 		return ui.Line({ ui.Span("  -> "):fg("red"), ui.Span(path):fg("red") })
 	end
-
 	local name = path:match("[^/]+$") or ""
-	local trail = path:sub(1, #path - #name)
 	local name_span = cha.is_dir and ui.Span(name):fg("blue"):bold() or ui.Span(name):fg("grey")
-
-	return ui.Line({ ui.Span("  -> "):fg("brightblack"), ui.Span(trail):fg("cyan"), name_span })
+	return ui.Line({ ui.Span("  -> "):fg("brightblack"), ui.Span(path:sub(1, #path - #name)):fg("cyan"), name_span })
 end
 
 yatline:setup({

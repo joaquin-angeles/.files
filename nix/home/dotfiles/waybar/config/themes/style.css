@@ -2,7 +2,6 @@ window#waybar {
   font-family: "JetBrainsMono Nerd Font Propo";
   font-size: 12pt;
   background-color: @bg;
-  /* border-bottom: 1px solid alpha(darker(@bright-bg), 0.8); */
   color: @fg;
 }
 
@@ -12,20 +11,28 @@ window#waybar {
 }
 
 #clock {
-  padding: 0pt 6pt 0 6pt;
+  padding: 0 6pt 0 2pt;
 }
 
-#bluetooth {
-  font-size: 13.5pt;
-  padding: 0 3pt 0 9pt;
+#window {
+  margin: 0 0 0 10pt;
+}
+
+#custom-expand-icon {
+  padding-right: 2pt;
 }
 
 #tray {
   padding-left: 9pt;
 }
 
-#custom-expand-icon {
-  padding-right: 2pt;
+#bluetooth,
+#custom-power {
+  font-size: 13.5pt;
+}
+
+#bluetooth {
+  padding: 0 3pt 0 9pt;
 }
 
 #custom-separator {
@@ -35,7 +42,6 @@ window#waybar {
 
 #custom-power {
   color: @red;
-  font-size: 13.5pt;
   padding: 0.5px 5pt 0 5pt;
 }
 
@@ -50,7 +56,7 @@ window#waybar {
 }
 
 #battery {
-  padding: 0 6pt 0 4pt;
+  padding: 0 12pt 0 4pt;
 }
 
 #battery span.icon {
@@ -66,11 +72,7 @@ window#waybar {
   font-weight: bold;
 }
 
-#window {
-  margin: 0 0 0 10pt;
-  /* color: darker(@fg); */
-}
-
+/* Tags: buttons 1–5 (always visible) */
 #tags button:nth-child(1),
 #tags button:nth-child(2),
 #tags button:nth-child(3),
@@ -89,9 +91,11 @@ window#waybar {
 #tags button:hover {
   color: @blue;
 }
-
 #tags button.occupied {
   color: @fg;
+}
+#tags button.urgent {
+  color: @red;
 }
 
 #tags button.focused {
@@ -100,22 +104,7 @@ window#waybar {
   border: 1px solid darker(@blue);
 }
 
-#tags button.urgent {
-  color: @red;
-}
-
-/* #tags button:nth-child(1),
-#tags button:nth-child(2),
-#tags button:nth-child(3) {
-  font-size: 12.5pt;
-}
-#tags button:nth-child(4) {
-  font-size: 13.5pt;
-}
-#tags button:nth-child(5) {
-  font-size: 15pt;
-} */
-
+/* Tags: buttons 6–9 (hidden unless occupied/focused) */
 #tags button:nth-child(6),
 #tags button:nth-child(7),
 #tags button:nth-child(8),
