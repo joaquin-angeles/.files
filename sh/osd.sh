@@ -60,12 +60,21 @@ show_brightness_notif() {
     bri=$(get_brightness)
     bar=$(make_bar "$bri")
 
+    if [ "$bri" -eq 0 ]; then
+        icon="󰃞"
+    elif [ "$bri" -lt 50 ]; then
+        icon="󰃟"
+    else
+        icon="󰃠"
+    fi
+
     notify-send \
     --app-name="osd" \
     --urgency=low \
     --expire-time="$notification_timeout" \
+    --hint=int:x-mako-width:225 \
     --hint=string:x-canonical-private-synchronous:osd-brightness \
-    "     󰃠   Brightness" "${bar}  ${bri}%"
+    "      $icon   Brightness" "${bar}  ${bri}%"
 }
 
 case "$1" in

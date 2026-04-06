@@ -3,13 +3,25 @@
 {
   networking = {
     hostName = "nixos-btw"; # Define a hostname
-    wireless.iwd.enable = true; # iwd > wpa_supplicant
 
-    # Network manager
-    networkmanager.enable = true;
-    networkmanager.wifi.backend = "iwd"; # Use iwd
+    # Network service
+    wireless.iwd = {
+      enable = true;
+      settings.General.EnableNetworkConfiguration = true;
+    };
+
+    # Disable network manager
+    networkmanager.enable = false;
+  };
+
+  services.resolved = {
+    enable = true;
+    fallbackDns = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
   };
 
   # Virtual network manager
-  services.zerotierone.enable = true;
+  # services.zerotierone.enable = true;
 }

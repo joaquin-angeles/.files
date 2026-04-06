@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Boot options
@@ -59,6 +59,10 @@
     extraLocales = [ "en_GB.UTF-8/UTF-8" ];
     extraLocaleSettings.LC_TIME = "en_GB.UTF-8";
   };
+  services.timesyncd.extraConfig = ''
+    PollIntervalMinSec=32
+    PollIntervalMaxSec=2048
+  '';
 
   # sudo-rs
   security = {
@@ -75,4 +79,5 @@
     isNormalUser = true;
     shell = pkgs.zsh;
   };
+  systemd.services."home-manager-joaquin".wantedBy = lib.mkForce [ ];
 }

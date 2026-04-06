@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+[[ -n "${_POWER_SAVER_DAEMON:-}" ]] || { _POWER_SAVER_DAEMON=1 setsid "$0" "$@" & exit 0; }
+
+LOG=/tmp/power-saver.log
+log() { printf '[%(%F %T)T] %s\n' -1 "$*" | tee -a "$LOG" >&2; }
+
+[[ -n "${WAYLAND_DISPLAY:-}" ]] || { log "No Wayland session"; exit 1; }
+
+BAT=$(upower -e | grep -m1 BAT) || { log "No battery"; exit 1; }
+KBD=$(brightnessctl --list | awk -F"'" '/kbd_backlight/{print $2; exit}')
+MON=$(wlr-randr | awk 'NR==1{print $1}')
+
+log "Started | BAT=$BAT MON=$MON KBD=${KBD:-none}"
+
+pick_mode() {
+    wlr-randr --output "$MON" |
+    awk -v want="$1" '
+        /Modes:/,0 {
+            if (match($0, /([0-9]+)x([0-9]+) px, ([0-9.]+) Hz/, m)) {
+                px = m[1]*m[2]; hz = m[3]
+                if (want == "max" || (hz >= 59 && hz < 61))
+                    print (want == "max" ? px : 0), hz, m[1]"x"m[2]"@"hz
+            }
+        }
+    ' | sort -k1,1nr -k2,2nr | awk 'NR==1{print $3}'
+}
+
+apply() {
+    log "State: $1"
+    local mode
+    if [[ "$1" == discharging ]]; then
+        [[ -n "$KBD" ]] && brightnessctl -d "$KBD" set 0
+        mode=$(pick_mode 60)
+    else
+        [[ -n "$KBD" ]] && brightnessctl -d "$KBD" set 100%
+        mode=$(pick_mode max)
+    fi
+    [[ -z "$mode" ]] && { log "No mode found"; return; }
+    log "Setting mode: $mode"
+    wlr-randr --output "$MON" --mode "$mode" --scale 1 || log "Failed: $mode"
+}
+
+state=$(upower -i "$BAT" | awk '/state:/{print $2}')
+apply "$state"
+
+upower --monitor | grep --line-buffered "$BAT" | while read -r _; do
+    new=$(upower -i "$BAT" | awk '/state:/{print $2}')
+    [[ "$new" != "$state" ]] && state="$new" && apply "$state"
+done

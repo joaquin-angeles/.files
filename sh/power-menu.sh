@@ -10,10 +10,10 @@ choice="$(printf '%s\n' "$options" | rofi -dmenu -p 'power')"
 
 case "$choice" in
     "󰐥 Shutdown")
-        pkill -u $USER && systemctl poweroff
+        systemctl poweroff
         ;;
     "󰜉 Reboot")
-        pkill -u $USER && systemctl reboot
+        systemctl reboot
         ;;
     "󰌾 Lock")
         if command -v gtklock >/dev/null 2>&1; then

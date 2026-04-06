@@ -18,7 +18,7 @@
       border-width = 0;
       background-color = "#1d2021";
       selection-color = "#d4be98";
-      selection-background = "#7daea380";
+      selection-background = "#41514E";
       text-color = "#d4be98";
       selection-background-padding = "0, 5";
       num-results = 8;
