@@ -49,7 +49,8 @@
       Context.filesystems = [
         # Application access
         "/nix/store:ro"
-        "/run/current-system/sw:ro"
+        "~/.local/share/fonts:ro"
+        "~/.local/share/themes:ro"
         "~/.local/share/icons:ro"
         "~/.local/share/applications"
 
@@ -63,27 +64,6 @@
       "Session Bus Policy" = {
         "ca.desrt.dconf" = "talk";
       };
-    };
-
-    # Libadwaita themes for badly themed packages
-    "app.zen_browser.zen" = {
-      Environment = {
-        "GTK_THEME" = "adw-gtk3-dark";
-      };
-      Context.filesystems = [
-        "!xdg-config/gtk-3.0"
-        "!xdg-config/gtk-4.0"
-      ];
-    };
-
-    "com.github.tchx84.Flatseal" = {
-      Environment = {
-        "GTK_THEME" = "adw-gtk3-dark:dark";
-      };
-      Context.filesystems = [
-        "!xdg-config/gtk-3.0"
-        "!xdg-config/gtk-4.0"
-      ];
     };
 
     "org.vinegarhq.Sober" = {

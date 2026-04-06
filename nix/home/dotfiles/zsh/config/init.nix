@@ -17,8 +17,6 @@
         if [[ -r "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh" ]]; then
           source "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh"
         fi
-
-        mkdir -p "$HOME/.cache/zsh"
       '')
 
       # Functions and integrations
@@ -31,30 +29,8 @@
         FAST_HIGHLIGHT[use_async]=1
 
         # Cursor and title configuration
-        _directory_title() {
-          printf '\e[6 q'
-          print -Pn "\e]0;%n@%m: %~\a"
-        }
-        _command_title() {
-          local cmd="$1"
-          local skip_cmds=(
-            cd ls ll la lr lt lS l dir vdir pwd z zoxide
-            cat bat less more head tail
-            grep egrep fgrep rg ag find fd locate
-            echo which where whoami hostname date uptime uname
-            clear reset exit logout
-          )
-
-          for skip in $skip_cmds; do
-            if [[ "''${cmd%% *}" == "$skip" ]]; then
-              return
-            fi
-          done
-
-          print -Pn "\e]0;$cmd\a"
-        }
-        precmd_functions+=(_directory_title)
-        preexec_functions+=(_command_title)
+        _set_cursor() { printf '\e[6 q'; }
+        precmd_functions+=(_set_cursor)
       '')
     ];
   };

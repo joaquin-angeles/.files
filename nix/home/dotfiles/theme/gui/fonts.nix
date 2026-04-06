@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, pkgs, ... }:
 
 {
   # Enable font configuration
@@ -12,4 +12,10 @@
     sansSerif = [ "Inter" ];
     serif = [ "Times New Roman" ];
   };
+
+  home.activation.flatpakFonts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "$HOME/.local/share/fonts"
+    $DRY_RUN_CMD cp -r /run/current-system/sw/share/X11/fonts/. "$HOME/.local/share/fonts/"
+    $DRY_RUN_CMD ${pkgs.fontconfig}/bin/fc-cache -f
+  '';
 }

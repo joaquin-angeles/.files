@@ -28,7 +28,7 @@ riverctl spawn 'wideriver \
 # Startup
 riverctl spawn 'waybar'
 riverctl spawn 'wbg ~/Pictures/Wallpapers/gruvbox/trees.png'
-riverctl spawn "./scripts/power-saver.sh"
+riverctl spawn "wlr-power.sh"
 riverctl spawn 'mako'
 riverctl spawn 'foot --server'
 riverctl spawn 'cliphist.sh'
@@ -43,7 +43,7 @@ riverctl set-cursor-warp on-output-change
 riverctl focus-follows-cursor disabled
 riverctl hide-cursor timeout 5000
 riverctl hide-cursor when-typing disabled
-riverctl spawn './scripts/input.sh'
+riverctl spawn 'river-input.sh'
 
 # Modifier key
 mod="Super"

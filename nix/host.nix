@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   # Boot options
@@ -80,4 +85,10 @@
     shell = pkgs.zsh;
   };
   systemd.services."home-manager-joaquin".wantedBy = lib.mkForce [ ];
+  system.activationScripts.home-manager-joaquin = {
+    text = ''
+      ${pkgs.su}/bin/su joaquin -c "${config.home-manager.users.joaquin.home.activationPackage}/activate"
+    '';
+    deps = [ ];
+  };
 }

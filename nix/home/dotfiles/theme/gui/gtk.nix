@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   # GTK theming
@@ -94,4 +94,16 @@
     "${pkgs.gruvbox-gtk-theme}/share/themes/Gruvbox-Dark/gtk-4.0/gtk.css";
   xdg.configFile."gtk-4.0/gtk-dark.css".source =
     "${pkgs.gruvbox-gtk-theme}/share/themes/Gruvbox-Dark/gtk-4.0/gtk-dark.css";
+  home.activation.flatpakThemes = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "$HOME/.local/share/themes"
+
+    for theme_dir in \
+      "${pkgs.gruvbox-gtk-theme}/share/themes/"* \
+      "${pkgs.adw-gtk3}/share/themes/"*; do
+      theme_name=$(basename "$theme_dir")
+      dest="$HOME/.local/share/themes/$theme_name"
+      $DRY_RUN_CMD rm -rf "$dest"
+      $DRY_RUN_CMD ln -s "$theme_dir" "$dest"
+    done
+  '';
 }

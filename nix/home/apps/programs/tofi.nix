@@ -9,9 +9,10 @@
       height = 30;
       horizontal = true;
       drun-launch = true;
+      terminal = "foot";
       history = false;
       hint-font = true;
-      font-size = "12pt";
+      font-size = "12";
       font = "${pkgs.nerd-fonts.jetbrains-mono}/share/fonts/truetype/NerdFonts/JetBrainsMono/JetBrainsMonoNerdFontMono-Regular.ttf";
       prompt-text = ''"> "'';
       outline-width = 0;
