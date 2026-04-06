@@ -9,7 +9,11 @@
     ./home/services.nix
   ];
 
-  home.stateVersion = "25.05";
+  home = {
+    username = "joaquin";
+    homeDirectory = "/home/joaquin";
+    stateVersion = "25.05";
+  };
 
   # System correction
   systemd = {

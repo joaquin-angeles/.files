@@ -2,13 +2,12 @@
   description = "Gruvforest: An environment of organic minimalism";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11"; # stable
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable"; # unstable
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest"; # declarative flatpaks
-
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11"; # user dotfiles/packages
-      inputs.nixpkgs.follows = "nixpkgs"; # pin to stable
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -21,56 +20,47 @@
       ...
     }@inputs:
     let
-      hostSystem = "x86_64-linux"; # this machine
-
+      hostSystem = "x86_64-linux";
       systems = [
-        # all supported systems
         "x86_64-linux"
         "aarch64-linux"
       ];
 
-      forAllSystems = nixpkgs.lib.genAttrs systems; # map over systems
-
-      unstableOverlay = system: final: prev: {
-        # pkgs.unstable.*
+      mkOverlay = system: _: prev: {
         unstable = import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
         };
       };
 
-      pkgsFor = # stable pkgs + overlays for a given system
+      pkgsFor =
         system:
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          overlays = [
-            (unstableOverlay system)
-          ];
+          overlays = [ (mkOverlay system) ];
         };
     in
     {
       nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
-        # system config
         system = hostSystem;
-        specialArgs = { inherit inputs; }; # pass flake inputs to modules
+        specialArgs = { inherit inputs; };
         modules = [
           ./host.nix
           ./host/apps.nix
           ./host/hardware.nix
           ./host/services.nix
-          /etc/nixos/hardware-configuration.nix # machine-generated
+          /etc/nixos/hardware-configuration.nix
           home-manager.nixosModules.home-manager
           {
-            nixpkgs.config.allowUnfree = true;
-            nixpkgs.overlays = [
-              (unstableOverlay hostSystem)
-            ];
-
+            nixpkgs = {
+              config.allowUnfree = true;
+              overlays = [ (mkOverlay hostSystem) ];
+            };
             home-manager = {
-              backupFileExtension = "bak"; # back up conflicting files
-              useGlobalPkgs = true; # share system pkgs
-              useUserPackages = true; # install into /etc/profiles
+              backupFileExtension = "bak";
+              useGlobalPkgs = true;
+              useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
               sharedModules = [ nix-flatpak.homeManagerModules.nix-flatpak ];
               users.joaquin = import ./home.nix;
@@ -79,8 +69,7 @@
         ];
       };
 
-      homeConfigurations = forAllSystems (
-        # standalone, non-NixOS
+      homeConfigurations = nixpkgs.lib.genAttrs systems (
         system:
         home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor system;
@@ -88,12 +77,6 @@
           modules = [
             ./home.nix
             nix-flatpak.homeManagerModules.nix-flatpak
-            {
-              home = {
-                username = "joaquin";
-                homeDirectory = "/home/joaquin";
-              };
-            }
           ];
         }
       );
