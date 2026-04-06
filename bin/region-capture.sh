@@ -4,7 +4,7 @@ trap 'pkill hyprpicker 2>/dev/null' EXIT
 
 if command -v hyprpicker >/dev/null 2>&1; then
     hyprpicker -r -z &
-    sleep 0.2
+    sleep 0.01
 fi
 
 geometry=$(slurp -d) || exit 1

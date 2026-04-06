@@ -1,6 +1,23 @@
 { pkgs, ... }:
 
 {
+  # GTK settings
+  programs.dconf.enable = true;
+
+  # River
+  programs.river-classic = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  # Steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
   # File manager
   programs.thunar = {
     enable = true;
@@ -8,20 +25,6 @@
       thunar-archive-plugin
       thunar-volman
     ];
-  };
-
-  # River
-  programs.river-classic = {
-    enable = true;
-    xwayland.enable = false;
-  };
-
-  # Steam
-  programs.steam = {
-    enable = false;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
   };
 
   programs.zsh.enable = true; # zsh

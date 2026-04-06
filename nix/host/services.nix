@@ -8,11 +8,11 @@
     ./services/polkit.nix
   ];
 
-  programs.dconf.enable = true; # GTK settings
   services = {
     dbus.enable = true;
     flatpak.enable = true;
     gvfs.enable = true;
     tumbler.enable = true;
+    xserver.enable = false;
   };
 }
