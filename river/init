@@ -15,7 +15,7 @@ riverctl rule-add ssd
 riverctl default-layout wideriver
 riverctl spawn 'wideriver \
 --border-width 2 \
---border-color-focused 0x647e7acc \
+--border-color-focused 0x6d9892cc \
 --border-color-unfocused 0x56595acc \
 --layout left \
 --stack even \
@@ -27,7 +27,7 @@ riverctl spawn 'wideriver \
 
 # Startup
 riverctl spawn 'waybar'
-riverctl spawn 'wbg ~/Pictures/Wallpapers/gruvbox/trees.png'
+riverctl spawn 'wbg ~/Pictures/Wallpapers/trees.png'
 riverctl spawn 'wlr-power'
 riverctl spawn 'mako'
 riverctl spawn 'foot --server'
