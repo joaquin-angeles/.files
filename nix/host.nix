@@ -5,46 +5,41 @@
   ...
 }:
 
+let
+  portalFileChooser = {
+    "org.freedesktop.portal.FileChooser" = [ "gtk" ];
+  };
+  portalSettings = {
+    "org.freedesktop.impl.portal.Settings" = [ "gtk" ];
+  };
+  compositorPortal = backends: { default = backends; } // portalFileChooser // portalSettings;
+in
 {
-  # Boot options
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
   };
 
-  # Display Manager
   services.displayManager.ly.enable = true;
 
-  # Enable XDG portals
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
     wlr.enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config = {
       common.default = [ "gtk" ];
-      river = {
-        default = [
-          "wlr"
-          "gtk"
-        ];
-        "org.freedesktop.portal.FileChooser" = [ "gtk" ];
-        "org.freedesktop.impl.portal.Settings" = [ "gtk" ];
-      };
-      hyprland = {
-        default = [
-          "hyprland"
-          "gtk"
-        ];
-        "org.freedesktop.portal.FileChooser" = [ "gtk" ];
-        "org.freedesktop.impl.portal.Settings" = [ "gtk" ];
-      };
+      river = compositorPortal [
+        "wlr"
+        "gtk"
+      ];
+      hyprland = compositorPortal [
+        "hyprland"
+        "gtk"
+      ];
     };
   };
 
-  # Nix package manager
   nix.settings = {
     auto-optimise-store = true;
     experimental-features = [
@@ -52,12 +47,9 @@
       "flakes"
     ];
   };
-  nixpkgs.config.allowUnfree = true;
 
-  # System version
   system.stateVersion = "25.05";
 
-  # Timezone
   time.timeZone = "Asia/Manila";
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -69,13 +61,11 @@
     PollIntervalMaxSec=2048
   '';
 
-  # sudo-rs
   security = {
     sudo.enable = false;
     sudo-rs.enable = true;
   };
 
-  # User configuration
   users.users.joaquin = {
     extraGroups = [
       "wheel"
@@ -84,6 +74,7 @@
     isNormalUser = true;
     shell = pkgs.zsh;
   };
+
   systemd.services."home-manager-joaquin".wantedBy = lib.mkForce [ ];
   system.activationScripts.home-manager-joaquin = {
     text = ''

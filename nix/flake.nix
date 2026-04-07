@@ -20,30 +20,17 @@
       ...
     }@inputs:
     let
-      hostSystem = "x86_64-linux";
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-
-      mkOverlay = system: _: prev: {
+      system = "x86_64-linux";
+      overlay = _: prev: {
         unstable = import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
         };
       };
-
-      pkgsFor =
-        system:
-        import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-          overlays = [ (mkOverlay system) ];
-        };
     in
     {
       nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
-        system = hostSystem;
+        inherit system;
         specialArgs = { inherit inputs; };
         modules = [
           ./host.nix
@@ -55,7 +42,7 @@
           {
             nixpkgs = {
               config.allowUnfree = true;
-              overlays = [ (mkOverlay hostSystem) ];
+              overlays = [ overlay ];
             };
             home-manager = {
               backupFileExtension = "bak";
@@ -68,17 +55,5 @@
           }
         ];
       };
-
-      homeConfigurations = nixpkgs.lib.genAttrs systems (
-        system:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor system;
-          extraSpecialArgs = { inherit inputs; };
-          modules = [
-            ./home.nix
-            nix-flatpak.homeManagerModules.nix-flatpak
-          ];
-        }
-      );
     };
 }

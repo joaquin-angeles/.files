@@ -6,9 +6,9 @@
     profiles.${config.home.username} = {
       settings = {
         # Override impractical defaults
+        "privacy.clearOnShutdown.cookies" = true;
         "privacy.resistFingerprinting" = false;
         "privacy.sanitize.sanitizeOnShutdown" = false;
-        "privacy.clearOnShutdown.cookies" = false;
         "places.history.enabled" = false;
 
         # Dark mode
@@ -22,6 +22,10 @@
       userChrome = ''
         .tabbrowser-tab:not([selected]) .tab-close-button {
           display: none !important;
+        }
+
+        .tabbrowser-tab:not([selected]):hover .tab-close-button {
+          display: flex !important;
         }
       '';
     };

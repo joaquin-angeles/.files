@@ -1,22 +1,25 @@
 { pkgs, ... }:
+
 {
-  # Font configurations
   fonts = {
     enableDefaultPackages = true;
-    fontconfig.enable = true;
-    fontconfig.antialias = true; # Enable antialiasing
-    fontconfig.hinting.enable = true;
-    fontconfig.hinting.style = "medium"; # Configure antialiasing
-    fontconfig.subpixel.rgba = "rgb";
-    fontconfig.subpixel.lcdfilter = "default";
-    fontDir.enable = true; # Directory correction
-
-    # Packages
+    fontDir.enable = true;
+    fontconfig = {
+      enable = true;
+      antialias = true;
+      hinting = {
+        enable = true;
+        style = "medium";
+      };
+      subpixel = {
+        rgba = "rgb";
+        lcdfilter = "default";
+      };
+    };
     packages = with pkgs; [
       corefonts
       inter
       nerd-fonts.jetbrains-mono
-      # nerd-fonts.meslo-lg
       noto-fonts-color-emoji
       noto-fonts-cjk-sans
     ];

@@ -5,7 +5,6 @@
     ./hardware/nvidia.nix
   ];
 
-  # Audio
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -24,7 +23,6 @@
     };
   };
 
-  # Hardware
   hardware = {
     bluetooth = {
       enable = true;
@@ -36,13 +34,11 @@
     };
   };
 
-  # Input
   services.libinput.enable = true;
 
-  # Zram
   zramSwap = {
-    algorithm = "zstd";
     enable = true;
+    algorithm = "zstd";
     memoryPercent = 50;
     priority = 50;
     swapDevices = 1;
