@@ -11,7 +11,6 @@
         # Disable impractical defaults
         "signon.rememberSignons" = true;
         "privacy.resistFingerprinting" = false;
-        "privacy.sanitize.sanitizeOnShutdown" = false;
       };
     };
   };
