@@ -9,7 +9,7 @@
         "privacy.resistFingerprinting" = false;
         "privacy.sanitize.sanitizeOnShutdown" = false;
         "privacy.clearOnShutdown.cookies" = false;
-        "browser.urlbar.openintab" = true;
+        "places.history.enabled" = false;
 
         # Dark mode
         "privacy.fingerprintingProtection" = true;
