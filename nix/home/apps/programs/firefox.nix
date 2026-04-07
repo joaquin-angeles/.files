@@ -1,18 +1,8 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   programs.librewolf = {
     enable = true;
-    package = pkgs.librewolf.overrideAttrs (old: {
-      postInstall = (old.postInstall or "") + ''
-        mkdir -p $out/lib/librewolf/defaults/pref
-        echo 'pref("general.config.filename", "userChrome.js");
-        pref("general.config.obscure_value", 0);' \
-          > $out/lib/librewolf/defaults/pref/autoconfig.js
-
-        cp ${./config/userChrome.js} $out/lib/librewolf/userChrome.js
-      '';
-    });
     profiles.${config.home.username} = {
       settings = {
         # Override impractical defaults
@@ -28,7 +18,33 @@
         # userChrome.css support
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
-      userChrome = "${builtins.readFile ./config/userChrome.css}";
+      userChrome = ''
+        .titlebar-buttonbox-container {
+          display: none;
+        }
+
+        .tabbrowser-tab {
+          flex-grow: 1 !important;
+        }
+
+        #back-button,
+        #forward-button,
+        #reload-button,
+        #stop-button {
+          display: none !important;
+        }
+
+        #nav-bar {
+          position: absolute !important;
+          width: 100% !important;
+          height: 100% !important;
+          top: -100% !important;
+        }
+
+        #nav-bar:focus-within {
+          top: 0% !important;
+        }
+      '';
     };
   };
 }
