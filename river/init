@@ -15,8 +15,8 @@ riverctl rule-add ssd
 riverctl default-layout wideriver
 riverctl spawn 'wideriver \
 --border-width 2 \
---border-color-focused 0x6d9892cc \
---border-color-unfocused 0x56595acc \
+--border-color-focused 0x648b82cc \
+--border-color-unfocused 0x56595a80 \
 --layout left \
 --stack even \
 --ratio-master 0.55 \

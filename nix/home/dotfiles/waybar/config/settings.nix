@@ -30,7 +30,6 @@
         "network"
         "group/sys-info"
         "battery"
-        "custom/separator"
         "clock"
       ];
     };
