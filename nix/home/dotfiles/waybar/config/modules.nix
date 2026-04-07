@@ -20,7 +20,7 @@
       format-disconnected = "󰤭";
       format-ethernet = "󰈀";
       tooltip-format = "Connected to {essid}\nNetwork speed: {signalStrength}%";
-      on-click = "foot --title='Network Manager' -e impala";
+      on-click = "foot -e impala";
     };
 
     "group/sys-info" = {
@@ -32,18 +32,13 @@
       modules = [
         "custom/expand-icon"
         "tray"
-        "bluetooth"
-        "pulseaudio"
+        "network"
       ];
     };
 
     "custom/expand-icon" = {
       format = "";
       tooltip = false;
-      "on-scroll-up" = "";
-      "on-scroll-down" = "";
-      "on-scroll-left" = "";
-      "on-scroll-right" = "";
     };
 
     tray = {
@@ -60,7 +55,7 @@
       tooltip-format = "Bluetooth: {status}";
       tooltip-format-connected = "{controller_alias}\n\n{device_enumerate}";
       tooltip-format-enumerate-connected = "  {device_alias}";
-      on-click = "foot --title='Bluetooth Manager' -e bluetui";
+      on-click = "foot -e bluetui";
     };
 
     pulseaudio = {
@@ -72,7 +67,7 @@
         "󰖀"
         "󰕾"
       ];
-      on-click = "foot --title='Volume Control' -e wiremix";
+      on-click = "foot -e wiremix";
       tooltip-format = "Device: {desc}\nVolume: {volume}%";
     };
 

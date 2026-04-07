@@ -19,11 +19,12 @@ window#waybar {
 }
 
 #custom-expand-icon {
-  padding-right: 2pt;
+  padding-right: 5pt;
 }
 
 #tray {
-  padding-left: 9pt;
+  padding-left: 5pt;
+  padding-right: 2pt;
 }
 
 #bluetooth,
@@ -47,7 +48,7 @@ window#waybar {
 
 #network {
   font-size: 12.5pt;
-  padding: 0 12pt 0 8pt;
+  padding: 0 7pt 0 8pt;
 }
 
 #pulseaudio {

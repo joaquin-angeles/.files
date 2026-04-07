@@ -16,71 +16,23 @@
       };
 
       extraCss = ''
-        /* GTK3 buttons */
         headerbar.titlebar button.titlebutton {
+          all: unset;
           opacity: 0;
-          min-width: 0;
-          min-height: 0;
-          padding: 0;
-          margin: 0;
-          border: 0;
         }
 
-        /* GTK4 buttons (different node!) */
-        windowcontrols button {
-          opacity: 0;
-          min-width: 0;
-          min-height: 0;
-          padding: 0;
-          margin: 0;
-          border: 0;
-        }
-
-        /* Kill entire button containers */
-        windowcontrols {
-          margin: 0;
-          padding: 0;
-          min-width: 0;
-          min-height: 0;
-        }
-
-        /* GTK3 container variants */
-        headerbar.titlebar .start,
-        headerbar.titlebar .end {
-          margin: 0;
-          padding: 0;
-        }
-
-        /* Remove ANY children inside headerbar */
-        headerbar.titlebar > * {
-          margin: 0;
-          padding: 0;
-        }
-
-        headerbar.titlebar {
-          min-height: 0;
-          margin: -100px 0 0 0;
-          padding: 0;
-          border: 0;
+        headerbar.titlebar.default-decoration {
           background: transparent;
+          padding: 0;
+          margin: 0 0 -30px 0;
+          border: 0;
+          min-height: 0;
+          font-size: 0;
           box-shadow: none;
         }
 
-        /* GTK4 headerbar */
-        headerbar {
-          min-height: 0;
-          margin: -100px 0 0 0;
-          padding: 0;
-          border: 0;
-          background: transparent;
-          box-shadow: none;
-        }
-
-        window.csd,
         window.csd decoration {
           box-shadow: none;
-          margin: 0;
-          padding: 0;
         }
       '';
     };

@@ -27,7 +27,6 @@
 
       # System information and clock
       modules-right = [
-        "network"
         "group/sys-info"
         "battery"
         "clock"
