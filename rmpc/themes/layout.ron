@@ -16,7 +16,7 @@
     ),
 
     highlighted_item_style: (fg: "green", modifiers: "Bold"),
-    current_item_style: (fg: "gray"),
+    current_item_style: (fg: "black", bg: "gray"),
 
     borders_style: (fg: "dark_gray"),
     highlight_border_style: (fg: "red"),
@@ -35,34 +35,6 @@
         debug: (fg: "green"),
         trace: (fg: "magenta"),
     ),
-
-    song_table_format: [
-    (
-            prop: (kind: Property(Artist), style: (fg: "dark_gray"),
-                default: (kind: Text("Unknown"), style: (fg: "dark_gray"))
-            ),
-            width: "20%",
-        ),
-    (
-            prop: (kind: Property(Title), style: (fg: "dark_gray"),
-                default: (kind: Text("Unknown"), style: (fg: "dark_gray"))
-            ),
-            width: "35%",
-        ),
-    (
-            prop: (kind: Property(Album), style: (fg: "dark_gray"),
-                default: (kind: Text("Unknown Album"), style: (fg: "dark_gray"))
-            ),
-            width: "30%",
-        ),
-    (
-            prop: (kind: Property(Duration), style: (fg: "dark_gray"),
-                default: (kind: Text("-"), style: (fg: "dark_gray"))
-            ),
-            width: "15%",
-            alignment: Right,
-        ),
-    ],
 
     layout: Split(
         direction: Vertical,

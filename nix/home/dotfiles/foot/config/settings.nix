@@ -9,6 +9,7 @@
 
     scrollback = {
       lines = 1000;
+      indicator-position = "none";
     };
   };
 }
