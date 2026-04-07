@@ -60,20 +60,6 @@
       '';
     };
   };
-  xfconf.settings = {
-    thunar = {
-      misc-terminal-emulator = "foot";
-      misc-use-csd = false;
-      misc-window-decorations = false;
-    };
-    exo = {
-      ExoHelper-1-TerminalEmulator = "foot";
-    };
-  };
-  home.file.".config/xfce4/helpers.rc".text = ''
-    [Default Applications]
-    TerminalEmulator=foot
-  '';
 
   # GTK4 dark theme
   dconf = {

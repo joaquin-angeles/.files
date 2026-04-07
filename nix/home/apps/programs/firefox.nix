@@ -1,8 +1,9 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
-  programs.librewolf = {
+  programs.firefox = {
     enable = true;
+    package = pkgs.librewolf;
     profiles.${config.home.username} = {
       settings = {
         # Override impractical defaults
@@ -16,5 +17,6 @@
         "layout.css.prefers-color-scheme.content-override" = 0;
       };
     };
+    nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
   };
 }
