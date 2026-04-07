@@ -1,16 +1,19 @@
-{ ... }:
+{ config, ... }:
 
 {
   programs.librewolf = {
     enable = true;
-    profiles.joaquin = {
+    profiles.${config.home.username} = {
       settings = {
-        # Media playback
-        "media.eme.enabled" = true;
-
-        # Disable impractical defaults
-        "signon.rememberSignons" = true;
+        # Override impractical defaults
         "privacy.resistFingerprinting" = false;
+        "privacy.sanitize.sanitizeOnShutdown" = false;
+        "privacy.clearOnShutdown.cookies" = false;
+
+        # Dark mode
+        "privacy.fingerprintingProtection" = true;
+        "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
+        "layout.css.prefers-color-scheme.content-override" = 0;
       };
     };
   };

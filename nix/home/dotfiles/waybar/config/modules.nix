@@ -97,7 +97,6 @@
       tooltip-format = "Status: Discharging\nBattery: {capacity}%";
       tooltip-format-charging = "Status: Charging\nBattery: {capacity}%";
       tooltip-format-full = "Status: Fully charged\nBattery: {capacity}%";
-      interval = 1;
       states = {
         good = 80;
         low = 30;
