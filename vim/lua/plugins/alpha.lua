@@ -64,7 +64,7 @@ return {
 				end)(),
 				(function()
 					local b = dashboard.button("th", "󱥚  Themes", function()
-						require("nvchad.themes").open()
+						require("themes").open()
 					end)
 					b.opts.hl_shortcut = "AlphaShortcut"
 					return b

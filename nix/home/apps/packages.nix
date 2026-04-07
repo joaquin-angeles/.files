@@ -1,15 +1,15 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
     ./packages/flatpaks.nix
+    ./packages/pcmanfm.nix
     ./packages/scripts.nix
   ];
 
   # User packages
   home.packages = with pkgs; [
     cliphist
-    file-roller
     grim
     hyprpicker
     impala

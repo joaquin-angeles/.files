@@ -7,6 +7,7 @@
     defaultEditor = true; # Set as default
     vimAlias = true; # Fast alias
     extraPackages = with pkgs; [
+      beautysh
       lua-language-server
       nixd
       nixfmt

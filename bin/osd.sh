@@ -1,111 +1,30 @@
 #!/usr/bin/env dash
-# osd.sh — minimal volume/brightness notifier for mako
+# osd.sh — volume/brightness notifier for mako
 
-# Config
-volume_step=5
-brightness_step=5
-max_volume=100
-notification_timeout=2000
+VS=5 BS=5 MV=100 NT=2000
 
-get_volume() {
-    wpctl get-volume @DEFAULT_AUDIO_SINK@ \
-    | awk '{printf "%d", $2 * 100}'
-}
+bar(){ awk -v v="$1" 'BEGIN{n=10;f=int(v*n/100);for(i=0;i<f;i++)b=b"▬";for(i=f;i<n;i++)d=d"▬";print b"<span foreground=\"#56595a\">"d"</span>"}';}
+osd(){ notify-send --app-name=osd --urgency=low --expire-time="$NT" --hint=int:x-mako-width:225 --hint="string:x-canonical-private-synchronous:$1" "$2" "$3";}
 
-get_mute() {
-    wpctl get-volume @DEFAULT_AUDIO_SINK@ \
-    | grep -q '\[MUTED\]' && echo yes || echo no
-}
+vol_notif(){
+    _r=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+    v=$(echo "$_r"|awk '{printf "%d",$2*100}')
+    echo "$_r"|grep -q '\[MUTED\]' && i="󰖁" || { [ "$v" -eq 0 ]&&i="󰝟"||{ [ "$v" -lt 50 ]&&i="󰖀"||i="󰕾";};};
+osd osd-volume "      $i   Volume" "$(bar "$v")  ${v}%";}
 
-get_brightness() {
-    brightnessctl -m | awk -F, '{gsub(/%/,"",$4); print $4}'
-}
-
-make_bar() {
-    _val="$1"
-    _len=10
-    _filled=$(( _val * _len / 100 ))
-    _empty=$(( _len - _filled ))
-    _bar="" _i=0
-    while [ $_i -lt $_filled ]; do _bar="${_bar}▬"; _i=$(( _i + 1 )); done
-    _dim=""
-    while [ $_i -lt $_len ]; do _dim="${_dim}▬"; _i=$(( _i + 1 )); done
-    echo "${_bar}<span foreground='#56595a'>${_dim}</span>"
-}
-
-show_volume_notif() {
-    vol=$(get_volume)
-    bar=$(make_bar "$vol")
-
-    if [ "$(get_mute)" = "yes" ]; then
-        icon="󰖁"
-    elif [ "$vol" -eq 0 ]; then
-        icon="󰝟"
-    elif [ "$vol" -lt 50 ]; then
-        icon="󰖀"
-    else
-        icon="󰕾"
-    fi
-
-    notify-send \
-    --app-name="osd" \
-    --urgency=low \
-    --expire-time="$notification_timeout" \
-    --hint=int:x-mako-width:225 \
-    --hint=string:x-canonical-private-synchronous:osd-volume \
-    "      $icon   Volume" "${bar}  ${vol}%"
-}
-
-show_brightness_notif() {
-    bri=$(get_brightness)
-    bar=$(make_bar "$bri")
-
-    if [ "$bri" -eq 0 ]; then
-        icon="󰃞"
-    elif [ "$bri" -lt 50 ]; then
-        icon="󰃟"
-    else
-        icon="󰃠"
-    fi
-
-    notify-send \
-    --app-name="osd" \
-    --urgency=low \
-    --expire-time="$notification_timeout" \
-    --hint=int:x-mako-width:225 \
-    --hint=string:x-canonical-private-synchronous:osd-brightness \
-    "      $icon   Brightness" "${bar}  ${bri}%"
-}
+bri_notif(){
+    b=$(brightnessctl -m|awk -F, '{gsub(/%/,"",$4);print $4}')
+    [ "$b" -eq 0 ]&&i="󰃞"||{ [ "$b" -lt 50 ]&&i="󰃟"||i="󰃠";}
+osd osd-brightness "      $i   Brightness" "$(bar "$b")  ${b}%";}
 
 case "$1" in
     volume_up)
-        vol=$(get_volume)
-        if [ $(( vol + volume_step )) -gt "$max_volume" ]; then
-            wpctl set-volume @DEFAULT_AUDIO_SINK@ "${max_volume}%"
-        else
-            wpctl set-volume @DEFAULT_AUDIO_SINK@ "${volume_step}%+"
-        fi
-        wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
-        show_volume_notif
-        ;;
-    volume_down)
-        wpctl set-volume @DEFAULT_AUDIO_SINK@ "${volume_step}%-"
-        show_volume_notif
-        ;;
-    volume_mute)
-        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-        show_volume_notif
-        ;;
-    brightness_up)
-        brightnessctl set "${brightness_step}%+"
-        show_brightness_notif
-        ;;
-    brightness_down)
-        brightnessctl set "${brightness_step}%-"
-        show_brightness_notif
-        ;;
-    *)
-        echo "Usage: $0 <volume_up|volume_down|volume_mute|brightness_up|brightness_down>"
-        exit 1
-        ;;
+        v=$(wpctl get-volume @DEFAULT_AUDIO_SINK@|awk '{printf "%d",$2*100}')
+        [ $((v+VS)) -gt "$MV" ]&&wpctl set-volume @DEFAULT_AUDIO_SINK@ "${MV}%"||wpctl set-volume @DEFAULT_AUDIO_SINK@ "${VS}%+"
+        wpctl set-mute @DEFAULT_AUDIO_SINK@ 0;vol_notif ;;
+    volume_down)   wpctl set-volume @DEFAULT_AUDIO_SINK@ "${VS}%-";vol_notif ;;
+    volume_mute)   wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle;vol_notif ;;
+    brightness_up)   brightnessctl set "${BS}%+";bri_notif ;;
+    brightness_down) brightnessctl set "${BS}%-";bri_notif ;;
+    *) echo "Usage: $0 <volume_up|volume_down|volume_mute|brightness_up|brightness_down>";exit 1 ;;
 esac
