@@ -15,7 +15,15 @@
         "privacy.fingerprintingProtection" = true;
         "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
         "layout.css.prefers-color-scheme.content-override" = 0;
+
+        # userChrome.css support
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
+      userChrome = ''
+        .tabbrowser-tab:not([selected]) .tab-close-button {
+          display: none !important;
+        }
+      '';
     };
   };
 }
