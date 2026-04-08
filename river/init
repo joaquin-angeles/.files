@@ -102,10 +102,12 @@ riverctl map normal "$mod+Shift" P spawn 'rofi-power-menu'
 riverctl map normal "$mod" F1 spawn 'sh -c "river-sheet | rofi -dmenu -p keybinds"'
 
 # Volume & brightness
-riverctl map normal "$mod+Shift" bracketleft  spawn 'mako-osd brightness_down'
-riverctl map normal "$mod+Shift" bracketright spawn 'mako-osd brightness_up'
-riverctl map normal "$mod" bracketleft spawn 'mako-osd volume_down'
-riverctl map normal "$mod" bracketright spawn 'mako-osd volume_up'
+riverctl map normal "$mod" Left spawn 'mako-osd brightness_down'
+riverctl map normal "$mod" Right spawn 'mako-osd brightness_up'
+riverctl map normal "$mod" Down spawn 'mako-osd volume_down'
+riverctl map normal "$mod" Up spawn 'mako-osd volume_up'
+riverctl map normal "$mod+Shift" Down spawn 'playerctl -p mpd previous'
+riverctl map normal "$mod+Shift" Up spawn 'playerctl -p mpd next'
 riverctl map normal "$mod+Shift" M spawn 'mako-osd volume_mute'
 
 # Media keys
