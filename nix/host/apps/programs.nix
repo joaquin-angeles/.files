@@ -17,6 +17,4 @@
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
   };
-
-  programs.zsh.enable = true; # zsh
 }

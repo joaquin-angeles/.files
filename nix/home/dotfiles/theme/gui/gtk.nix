@@ -24,7 +24,7 @@
         headerbar.titlebar.default-decoration {
           background: transparent;
           padding: 0;
-          margin: 0 0 -30px 0;
+          margin: 0 0 -99px 0;
           border: 0;
           min-height: 0;
           font-size: 0;

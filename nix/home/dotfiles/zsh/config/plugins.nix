@@ -1,28 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
-  programs.zsh = {
-    plugins = [
-      # History searching
-      {
-        name = "zsh-history-substring-search";
-        src = pkgs.zsh-history-substring-search;
-        file = "share/zsh-history-substring-search/zsh-history-substring-search.zsh";
-      }
+  programs.zsh.initContent = lib.mkAfter ''
+    source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+    source ${pkgs.zsh-fast-syntax-highlighting}/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-      # Colorize your shell
-      {
-        name = "zsh-syntax-highlighting";
-        src = pkgs.zsh-fast-syntax-highlighting;
-        file = "share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh";
-      }
-
-      # Prompt
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-    ];
-  };
+    source ${pkgs.zsh-defer}/share/zsh-defer/zsh-defer.plugin.zsh
+    zsh-defer source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  '';
 }

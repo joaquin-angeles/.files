@@ -19,8 +19,9 @@
         # Speed up autosuggestions
         ZSH_AUTOSUGGEST_USE_ASYNC=true
         ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+        ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-        # P10K instant prompt
+        # P10K
         if [[ -r "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh" ]]; then
           source "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh"
         fi
@@ -28,9 +29,9 @@
 
       # Functions and integrations
       (lib.mkAfter ''
-        # P10K configuration
-        [[ ! -f ${config.home.homeDirectory}/.p10k.zsh ]] || source ${config.home.homeDirectory}/.p10k.zsh
-            
+        export POWERLEVEL9K_CONFIG_FILE="$HOME/.config/zsh/.p10k.zsh"
+        [[ -f "$POWERLEVEL9K_CONFIG_FILE" ]] && source "$POWERLEVEL9K_CONFIG_FILE"
+
         # Faster syntax highlighting
         FAST_HIGHLIGHT[chroma-make]=0
         FAST_HIGHLIGHT[use_async]=1

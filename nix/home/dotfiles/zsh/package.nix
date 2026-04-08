@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   imports = [
@@ -12,14 +12,8 @@
   # Base zsh configuration
   programs.zsh = {
     enable = true;
+    dotDir = "${config.xdg.configHome}/zsh";
     defaultKeymap = "emacs"; # Emacs binds
-    enableCompletion = false; # Auto-completions
-    autosuggestion = {
-      enable = true;
-      strategy = [
-        "history"
-        "completion"
-      ];
-    };
+    historySubstringSearch.enable = true;
   };
 }

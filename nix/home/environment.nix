@@ -10,6 +10,7 @@
     MANPAGER = "bat -l man --style=plain";
     RUSTUP_HOME = "${config.home.homeDirectory}/.local/share/rustup";
     WLR_NO_HARDWARE_CURSORS = "1";
+    XDG_DATA_HOME = "${config.home.homeDirectory}/.local/share";
   };
 
   home.sessionPath = [

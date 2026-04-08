@@ -73,6 +73,7 @@ in
     ];
     isNormalUser = true;
     shell = pkgs.zsh;
+    ignoreShellProgramCheck = true;
   };
 
   systemd.services."home-manager-joaquin".wantedBy = lib.mkForce [ ];
