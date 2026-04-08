@@ -43,7 +43,7 @@ riverctl spawn 'idle.sh'
 mod="Super"
 
 # Window management
-riverctl map normal "$mod+Shift" Q close
+riverctl map normal "$mod+Shift" C close
 riverctl map normal "$mod" F toggle-fullscreen
 riverctl map normal "$mod+Shift" Space toggle-float
 
@@ -106,9 +106,11 @@ riverctl map normal "$mod" Left spawn 'mako-osd brightness_down'
 riverctl map normal "$mod" Right spawn 'mako-osd brightness_up'
 riverctl map normal "$mod" Down spawn 'mako-osd volume_down'
 riverctl map normal "$mod" Up spawn 'mako-osd volume_up'
+riverctl map normal "$mod+Shift" M spawn 'mako-osd volume_mute'
+
+# Music control
 riverctl map normal "$mod+Shift" Down spawn 'playerctl -p mpd previous'
 riverctl map normal "$mod+Shift" Up spawn 'playerctl -p mpd next'
-riverctl map normal "$mod+Shift" M spawn 'mako-osd volume_mute'
 
 # Media keys
 riverctl map normal None XF86AudioLowerVolume spawn 'mako-osd volume_down'

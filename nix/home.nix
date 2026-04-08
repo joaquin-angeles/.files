@@ -5,7 +5,7 @@
     ./home/apps.nix
     ./home/dotfiles.nix
     ./home/environment.nix
-    ./home/environment.nix
+    ./home/mimetypes.nix
     ./home/services.nix
   ];
 

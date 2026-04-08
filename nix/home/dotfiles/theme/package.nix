@@ -21,12 +21,15 @@
   # Cursor theming
   home.pointerCursor = {
     gtk.enable = true;
+
+    # Cursor theme
+    name = "Bibata-Modern-Ice";
+    package = pkgs.bibata-cursors;
+    size = 24;
+
     # XWayland cursor theming
     x11.enable = true;
     x11.defaultCursor = "Bibata-Modern-Ice";
-    package = pkgs.bibata-cursors; # Cursor package
-    name = "Bibata-Modern-Ice"; # Cursor theme
-    size = 24;
   };
 
   # Vencord theme

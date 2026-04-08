@@ -1,10 +1,11 @@
 { lib, ... }:
 
 let
-  browser = "zen.desktop";
+  browser = "librewolf.desktop";
   editor = "nvim.desktop";
-  archive = "org.gnome.FileRoller.desktop";
-  files = "nemo.desktop";
+  archive = "xarchiver.desktop";
+  files = "pcmanfm.desktop";
+  image = "swayimg.desktop";
 
   mkMime = app: types: lib.listToAttrs (map (t: lib.nameValuePair t app) types);
 in
@@ -51,6 +52,16 @@ in
       (mkMime files [
         "inode/directory"
         "x-directory/normal"
+      ])
+      (mkMime image [
+        "image/png"
+        "image/jpeg"
+        "image/jpg"
+        "image/gif"
+        "image/webp"
+        "image/bmp"
+        "image/tiff"
+        "image/svg+xml"
       ])
     ];
   };

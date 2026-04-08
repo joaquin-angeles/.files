@@ -1,5 +1,5 @@
 require("nvchad.configs.lspconfig").defaults()
-local servers = { "html", "cssls", "lua_ls", "nixd" }
+local servers = { "html", "cssls", "lua_ls", "nixd", "bash_ls" }
 
 vim.lsp.config("nixd", {
 	settings = {

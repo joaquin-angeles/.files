@@ -12,7 +12,6 @@
     cliphist
     grim
     impala
-    imv
     lazygit
     mako
     mpv
@@ -22,6 +21,7 @@
     slurp
     sunsetr
     swayidle
+    swayimg
     unstable.bluetui
     unstable.wiremix
     waybar
