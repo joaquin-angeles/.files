@@ -11,7 +11,6 @@
   home.packages = with pkgs; [
     cliphist
     grim
-    hyprpicker
     impala
     imv
     lazygit
@@ -26,6 +25,7 @@
     unstable.bluetui
     unstable.wiremix
     waybar
+    wayfreeze
     wbg
     wideriver
     wlr-randr

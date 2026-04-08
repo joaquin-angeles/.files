@@ -92,7 +92,6 @@ riverctl map normal "$mod+Shift" V spawn 'sh -c "cliphist list | rofi -dmenu -p 
 # Screenshots
 riverctl map normal "$mod+Shift" S spawn 'grim - | wl-copy && notify-send "Screenshot saved" "Image copied to clipboard"'
 riverctl map normal "$mod" S spawn 'region-capture.sh && notify-send "Screenshot saved" "Image copied to clipboard"'
-riverctl map normal "$mod+Shift" C spawn 'hyprpicker -a'
 
 # Toggles
 riverctl map normal "$mod+Shift" B spawn 'sh -c "pgrep waybar >/dev/null && pkill waybar || waybar &"'

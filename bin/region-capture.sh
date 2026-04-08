@@ -1,11 +1,6 @@
 #!/usr/bin/env dash
 
-trap 'pkill hyprpicker 2>/dev/null' EXIT
-
-if command -v hyprpicker >/dev/null 2>&1; then
-    hyprpicker -r -z &
-    sleep 0.1
-fi
-
-geometry=$(slurp -d) || exit 1
-grim -g "$geometry" - | wl-copy --type image/png
+trap 'pkill wayfreeze 2>/dev/null' EXIT
+wayfreeze &
+sleep 0.1
+grim -g "$(slurp -d)" - | wl-copy --type image/png
