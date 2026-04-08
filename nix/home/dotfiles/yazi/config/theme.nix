@@ -27,13 +27,11 @@
         name = "*";
         is = "link";
         fg = "cyan";
-        bold = true;
       })
       (lib.mkOrder 400 {
         name = "*/";
         is = "link";
         fg = "cyan";
-        bold = true;
       })
       (lib.mkOrder 500 {
         name = "*/";

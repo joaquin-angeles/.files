@@ -1,26 +1,29 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs.zsh = {
     # zcompdump
     completionInit = ''
-      autoload -Uz compinit
-      if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+      # Lazy loading
+      source ${pkgs.zsh-defer}/share/zsh-defer/zsh-defer.plugin.zsh
+
+      zsh-defer 'autoload -Uz compinit
+      if [[ -n ${config.home.homeDirectory}/.zcompdump(#qN.mh+24) ]]; then
         compinit
       else
         compinit -C
-      fi
+      fi'
     '';
 
     # .zshrc
     initContent = lib.mkMerge [
       # P10K instant prompt
       (lib.mkBefore ''
-        # Speed up autosuggestions
-        ZSH_AUTOSUGGEST_USE_ASYNC=true
-        ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-        ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-
         # P10K
         if [[ -r "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh" ]]; then
           source "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh"
@@ -31,10 +34,6 @@
       (lib.mkAfter ''
         export POWERLEVEL9K_CONFIG_FILE="$HOME/.config/zsh/.p10k.zsh"
         [[ -f "$POWERLEVEL9K_CONFIG_FILE" ]] && source "$POWERLEVEL9K_CONFIG_FILE"
-
-        # Faster syntax highlighting
-        FAST_HIGHLIGHT[chroma-make]=0
-        FAST_HIGHLIGHT[use_async]=1
 
         # Autosuggest fixes
         _autosuggest_config() {

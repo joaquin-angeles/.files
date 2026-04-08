@@ -8,8 +8,8 @@
         # Override impractical defaults
         "privacy.clearOnShutdown.cookies" = true;
         "privacy.resistFingerprinting" = false;
-        "privacy.sanitize.sanitizeOnShutdown" = false;
-        "places.history.enabled" = false;
+        "privacy.sanitize.sanitizeOnShutdown" = true;
+        "places.history.enabled" = true;
 
         # Dark mode
         "privacy.fingerprintingProtection" = true;

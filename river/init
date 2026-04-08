@@ -43,9 +43,9 @@ riverctl spawn 'idle.sh'
 mod="Super"
 
 # Window management
-riverctl map normal "$mod+Shift" Q        close
-riverctl map normal "$mod"       F        toggle-fullscreen
-riverctl map normal "$mod+Shift" Space    toggle-float
+riverctl map normal "$mod+Shift" Q close
+riverctl map normal "$mod" F toggle-fullscreen
+riverctl map normal "$mod+Shift" Space toggle-float
 
 # Focus (hjkl)
 riverctl map normal "$mod" H focus-view left
@@ -70,40 +70,48 @@ riverctl map-pointer normal "$mod" BTN_LEFT  move-view
 riverctl map-pointer normal "$mod" BTN_RIGHT resize-view
 
 # Tags (workspaces)
-riverctl map normal "$mod"        "$i" set-focused-tags "$tags"
-riverctl map normal "$mod+Shift"  "$i" set-view-tags "$tags"
+i=1
+while [ "$i" -le 9 ]; do
+    tags=$(( 1 << (i - 1) ))
+    riverctl map normal "$mod" "$i" set-focused-tags "$tags"
+    riverctl map normal "$mod+Shift" "$i" set-view-tags "$tags"
+    i=$(( i + 1 ))
+done
+all_tags=$(( (1 << 32) - 1 ))
+riverctl map normal "$mod" 0 spawn 'river-sticky'
+riverctl map normal "$mod+Shift" 0 set-view-tags "$all_tags"
 
 # Apps
-riverctl map normal "$mod"        Return spawn 'footclient'
-riverctl map normal "$mod"        D      spawn 'tofi-drun'
-riverctl map normal "$mod"        B      spawn 'sh -c "librewolf || flatpak run io.gitlab.librewolf-community"'
-riverctl map normal "$mod"        E      spawn 'pcmanfm'
-riverctl map normal "$mod+Shift"  E      spawn 'rofi -show emoji'
-riverctl map normal "$mod+Shift"  V      spawn 'sh -c "cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy"'
+riverctl map normal "$mod" Return spawn 'footclient'
+riverctl map normal "$mod" D spawn 'tofi-drun'
+riverctl map normal "$mod" B spawn 'sh -c "librewolf || flatpak run io.gitlab.librewolf-community"'
+riverctl map normal "$mod" E spawn 'pcmanfm'
+riverctl map normal "$mod+Shift" E spawn 'rofi -show emoji'
+riverctl map normal "$mod+Shift" V spawn 'sh -c "cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy"'
 
 # Screenshots
-riverctl map normal "$mod+Shift"  S spawn 'grim - | wl-copy && notify-send "Screenshot saved" "Image copied to clipboard"'
-riverctl map normal "$mod"        S spawn 'region-capture.sh && notify-send "Screenshot saved" "Image copied to clipboard"'
-riverctl map normal "$mod+Shift"  C spawn 'hyprpicker -a'
+riverctl map normal "$mod+Shift" S spawn 'grim - | wl-copy && notify-send "Screenshot saved" "Image copied to clipboard"'
+riverctl map normal "$mod" S spawn 'region-capture.sh && notify-send "Screenshot saved" "Image copied to clipboard"'
+riverctl map normal "$mod+Shift" C spawn 'hyprpicker -a'
 
 # Toggles
-riverctl map normal "$mod+Shift"  B spawn 'sh -c "pgrep waybar >/dev/null && pkill waybar || waybar &"'
-riverctl map normal "$mod+Shift"  N spawn 'sh -c "pgrep sunsetr >/dev/null && pkill sunsetr || sunsetr test 4000 100"'
+riverctl map normal "$mod+Shift" B spawn 'sh -c "pgrep waybar >/dev/null && pkill waybar || waybar &"'
+riverctl map normal "$mod+Shift" N spawn 'sh -c "pgrep sunsetr >/dev/null && pkill sunsetr || sunsetr test 4000 100"'
 
 # Misc
-riverctl map normal "$mod+Shift"  P  spawn 'rofi-power-menu'
-riverctl map normal "$mod"        F1 spawn 'sh -c "river-sheet | rofi -dmenu -p keybinds"'
+riverctl map normal "$mod+Shift" P spawn 'rofi-power-menu'
+riverctl map normal "$mod" F1 spawn 'sh -c "river-sheet | rofi -dmenu -p keybinds"'
 
 # Volume & brightness
-riverctl map normal "$mod"        Down  spawn 'osd.sh volume_down'
-riverctl map normal "$mod"        Up    spawn 'osd.sh volume_up'
-riverctl map normal "$mod"        Left  spawn 'osd.sh brightness_down'
-riverctl map normal "$mod"        Right spawn 'osd.sh brightness_up'
-riverctl map normal "$mod+Shift"  M     spawn 'osd.sh volume_mute'
+riverctl map normal "$mod+Shift" Comma  spawn 'osd.sh brightness_down'
+riverctl map normal "$mod+Shift" Period spawn 'osd.sh brightness_up'
+riverctl map normal "$mod" Comma spawn 'osd.sh volume_down'
+riverctl map normal "$mod" Period spawn 'osd.sh volume_up'
+riverctl map normal "$mod+Shift" M spawn 'osd.sh volume_mute'
 
 # Media keys
-riverctl map normal None XF86AudioLowerVolume  spawn 'osd.sh volume_down'
-riverctl map normal None XF86AudioRaiseVolume  spawn 'osd.sh volume_up'
-riverctl map normal None XF86AudioMute         spawn 'osd.sh volume_mute'
+riverctl map normal None XF86AudioLowerVolume spawn 'osd.sh volume_down'
+riverctl map normal None XF86AudioRaiseVolume spawn 'osd.sh volume_up'
+riverctl map normal None XF86AudioMute spawn 'osd.sh volume_mute'
 riverctl map normal None XF86MonBrightnessUp   spawn 'osd.sh brightness_up'
 riverctl map normal None XF86MonBrightnessDown spawn 'osd.sh brightness_down'
