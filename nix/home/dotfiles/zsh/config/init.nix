@@ -28,6 +28,12 @@
         if [[ -r "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh" ]]; then
           source "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh"
         fi
+
+        # Cursor and title configuration
+        _set_cursor() { printf '\e[6 q'; }
+
+        # Source pre-commands
+        precmd_functions+=(_autosuggest_config _set_cursor)
       '')
 
       # Functions and integrations
@@ -49,12 +55,6 @@
           )
           precmd_functions=("''${precmd_functions[@]:#_autosuggest_config}")
         }
-
-        # Cursor and title configuration
-        _set_cursor() { printf '\e[6 q'; }
-
-        # Source pre-commands
-        precmd_functions+=(_autosuggest_config _set_cursor)
       '')
     ];
   };

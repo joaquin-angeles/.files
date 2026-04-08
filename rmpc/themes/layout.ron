@@ -2,7 +2,6 @@
 #![enable(unwrap_newtypes)]
 #![enable(unwrap_variant_newtypes)]
 (
-    text_color: "dark_gray",
     background_color: None,
     header_background_color: None,
     modal_background_color: None,
@@ -15,7 +14,7 @@
         inactive_style: (fg: "gray"),
     ),
 
-    highlighted_item_style: (fg: "green", modifiers: "Bold"),
+    highlighted_item_style: (fg: "blue", modifiers: "Bold"),
     current_item_style: (fg: "black", bg: "gray"),
 
     borders_style: (fg: "dark_gray"),

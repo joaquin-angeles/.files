@@ -1,7 +1,8 @@
 window#waybar {
   font-family: "JetBrainsMono Nerd Font Propo";
   font-size: 12pt;
-  background-color: alpha(@bg, 0.85);
+  /* background-color: alpha(@bg, 0.85); */
+  background-color: @bg;
   color: @fg;
 }
 

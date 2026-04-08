@@ -15,4 +15,6 @@
     ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
     ZSH_AUTOSUGGEST_STRATEGY=(history completion)
   '';
+
+  home.file.".config/zsh/.p10k.zsh".source = ./prompt.zsh;
 }

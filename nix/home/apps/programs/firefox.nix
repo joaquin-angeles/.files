@@ -11,6 +11,10 @@
         "privacy.sanitize.sanitizeOnShutdown" = true;
         "places.history.enabled" = true;
 
+        # General settings
+        "browser.compactmode.show" = true;
+        "browser.urlbar.openintab" = true;
+
         # Dark mode
         "privacy.fingerprintingProtection" = true;
         "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
@@ -20,6 +24,10 @@
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
       userChrome = ''
+        .titlebar-buttonbox-container{
+          display:none
+        }
+
         .tabbrowser-tab:not([selected]) .tab-close-button {
           display: none !important;
         }
