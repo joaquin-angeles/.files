@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./settings.nix
+    ./config.nix
   ];
 
   programs.waybar.enable = true;

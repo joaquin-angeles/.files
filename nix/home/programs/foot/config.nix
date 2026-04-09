@@ -1,6 +1,10 @@
 { ... }:
 
 {
+  imports = [
+    ./theme.nix
+  ];
+
   programs.foot.settings = {
     # Font configuration
     main = {

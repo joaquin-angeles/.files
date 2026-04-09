@@ -2,8 +2,7 @@
 
 {
   imports = [
-    ./settings.nix
-    ./theme.nix
+    ./config.nix
   ];
 
   programs.foot = {

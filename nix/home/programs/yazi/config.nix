@@ -1,14 +1,15 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, ... }:
 
 let
   hostname = builtins.replaceStrings [ "\n" ] [ "" ] (builtins.readFile /etc/hostname);
 in
 {
+  imports = [
+    ./keymaps.nix
+    ./plugins.nix
+    ./theme.nix
+  ];
+
   programs.yazi.settings = {
     # Disable log file
     log.enabled = false;

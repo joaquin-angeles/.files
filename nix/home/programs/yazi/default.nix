@@ -2,10 +2,7 @@
 
 {
   imports = [
-    ./keymaps.nix
-    ./settings.nix
-    ./plugins.nix
-    ./theme.nix
+    ./config.nix
   ];
 
   programs.yazi = {

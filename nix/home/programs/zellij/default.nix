@@ -3,7 +3,7 @@
 {
   # Configuration
   imports = [
-    ./settings.nix
+    ./config.nix
   ];
 
   # Installation

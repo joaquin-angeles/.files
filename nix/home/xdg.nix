@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./theming/config.nix
+    ./gui/theming.nix
   ];
 
   xdg.configFile = {
