@@ -15,6 +15,12 @@ let
   compositorPortal = backends: { default = backends; } // portalFileChooser // portalSettings;
 in
 {
+  imports = [
+    ./host/apps.nix
+    ./host/hardware.nix
+    ./host/services.nix
+  ];
+
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;

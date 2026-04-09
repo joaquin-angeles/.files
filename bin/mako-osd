@@ -1,5 +1,5 @@
 #!/usr/bin/env dash
-# osd.sh — volume/brightness notifier for mako
+# mako-osd : volume/brightness notifier for mako
 
 # Config
 VOLUME_STEP=5

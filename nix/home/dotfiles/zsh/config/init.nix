@@ -9,15 +9,9 @@
   programs.zsh = {
     # zcompdump
     completionInit = ''
-      # Lazy loading
       source ${pkgs.zsh-defer}/share/zsh-defer/zsh-defer.plugin.zsh
-
-      zsh-defer 'autoload -Uz compinit
-      if [[ -n ${config.home.homeDirectory}/.zcompdump(#qN.mh+24) ]]; then
-        compinit
-      else
-        compinit -C
-      fi'
+      autoload -Uz compinit
+      zsh-defer compinit -
     '';
 
     # .zshrc
@@ -31,30 +25,43 @@
 
         # Cursor and title configuration
         _set_cursor() { printf '\e[6 q'; }
-
-        # Source pre-commands
-        precmd_functions+=(_autosuggest_config _set_cursor)
+        precmd_functions+=(_set_cursor)
       '')
 
-      # Functions and integrations
+      # Integrations and plugins
       (lib.mkAfter ''
-        export POWERLEVEL9K_CONFIG_FILE="$HOME/.config/zsh/.p10k.zsh"
+        source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+        # Autosuggestions
+        zsh-defer source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+        ZSH_AUTOSUGGEST_USE_ASYNC=true
+        ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+        ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+        ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=(
+          zle-\*
+          beep
+          set-local-history
+          which-command
+          yank
+          yank-pop
+          zle-isearch-exit
+          zle-isearch-update
+        )
+
+        # Syntax highlighting
+        source ${pkgs.zsh-fast-syntax-highlighting}/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+        FAST_HIGHLIGHT[chroma-make]=0
+        FAST_HIGHLIGHT[use_async]=1
+
+        # Custom prompt
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+        export POWERLEVEL9K_CONFIG_FILE="${config.xdg.configHome}/zsh/.p10k.zsh"
         [[ -f "$POWERLEVEL9K_CONFIG_FILE" ]] && source "$POWERLEVEL9K_CONFIG_FILE"
 
-        # Autosuggest fixes
-        _autosuggest_config() {
-          ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=(
-            zle-\*
-            beep
-            set-local-history
-            which-command
-            yank
-            yank-pop
-            zle-isearch-exit
-            zle-isearch-update
-          )
-          precmd_functions=("''${precmd_functions[@]:#_autosuggest_config}")
-        }
+         # Defer integrations
+        zsh-defer eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
+        zsh-defer source <(${pkgs.fzf}/bin/fzf --zsh)
+        zsh-defer source <(${pkgs.nix-your-shell}/bin/nix-your-shell --nom zsh)
       '')
     ];
   };

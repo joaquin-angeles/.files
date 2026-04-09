@@ -6,7 +6,6 @@
     ./config/init.nix # Extra shell config
     ./config/integrations.nix # Shell integrations
     ./config/history.nix # History config
-    ./config/plugins.nix # Plugin config
   ];
 
   # Base zsh configuration
@@ -14,6 +13,5 @@
     enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
     defaultKeymap = "emacs"; # Emacs binds
-    historySubstringSearch.enable = true;
   };
 }
