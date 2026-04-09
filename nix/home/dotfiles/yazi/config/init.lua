@@ -44,7 +44,7 @@ Yatline.coloreds.get.hovered_path = function()
 	local child_str = child ~= "" and (parent ~= "/" and "/" or "") .. child .. "/" or ""
 	return {
 		{ (ya.user_name() or "unknown") .. "@" .. (ya.host_name() or "unknown"), "green" },
-		{ ": ", "white" },
+		{ ":", "white" },
 		{ parent .. (parent == "~" and child == "" and hovered ~= "" and "/" or ""), "blue" },
 		{ child_str, "blue" },
 		{ hovered, "grey" },
