@@ -1,6 +1,10 @@
 { config, ... }:
 
 {
+  imports = [
+    ./theming/config.nix
+  ];
+
   xdg.configFile = {
     "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/vim"; # Text editor
     "river".source = "${config.home.homeDirectory}/.files/river"; # Window manager
