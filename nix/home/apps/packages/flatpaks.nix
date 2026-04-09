@@ -29,7 +29,18 @@
     terminal = false;
     settings = {
       X-Flatpak-Part-Of = "org.chromium.Chromium";
-      TryExec = "${config.home.homeDirectory}/.local/share/flatpak/exports/bin/org.chromium.Chromium";
+      TryExec = "${config.xdg.dataHome}/flatpak/exports/bin/org.chromium.Chromium";
+    };
+  };
+
+  # Claude LLM
+  xdg.desktopEntries.claude = {
+    name = "Claude AI";
+    exec = "flatpak run org.chromium.Chromium --app=https://claude.ai";
+    terminal = false;
+    settings = {
+      X-Flatpak-Part-Of = "org.chromium.Chromium";
+      TryExec = "${config.xdg.dataHome}/flatpak/exports/bin/org.chromium.Chromium";
     };
   };
 }

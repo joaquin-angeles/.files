@@ -49,7 +49,7 @@
       Context.filesystems = [
         # Application access
         "/nix/store:ro"
-        "~/.local/share/applications"
+        "${config.xdg.dataHome}"
 
         # GTK configuration
         "xdg-config/gtk-3.0:ro"

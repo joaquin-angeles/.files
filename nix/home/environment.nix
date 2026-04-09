@@ -8,13 +8,13 @@
     GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules";
     NIXOS_OZONE_WL = "1";
     MANPAGER = "bat -l man --style=plain";
-    RUSTUP_HOME = "${config.home.homeDirectory}/.local/share/rustup";
+    RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
     WLR_NO_HARDWARE_CURSORS = "1";
-    XDG_DATA_HOME = "${config.home.homeDirectory}/.local/share";
+    XDG_DATA_HOME = "${config.xdg.dataHome}";
   };
 
   home.sessionPath = [
-    "${config.home.homeDirectory}/.local/bin"
+    "${config.xdg.dataHome}/bin"
     "${config.home.homeDirectory}/.cargo/bin"
     "${pkgs.stdenv.cc}/bin"
   ];

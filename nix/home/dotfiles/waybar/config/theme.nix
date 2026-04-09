@@ -2,7 +2,7 @@
 
 {
   programs.waybar.style = ''
-    ${builtins.readFile ./themes/colors.css}
-    ${builtins.readFile ./themes/style.css}
+    ${builtins.readFile ./theme/colors.css}
+    ${builtins.readFile ./theme/style.css}
   '';
 }
