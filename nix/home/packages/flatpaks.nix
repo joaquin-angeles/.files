@@ -6,7 +6,6 @@
     "com.usebottles.bottles" # Windows applications
     "com.vysp3r.ProtonPlus" # Games compatibility tool
     "dev.vencord.Vesktop" # Discord
-    "com.modrinth.ModrinthApp"
     # "net.lutris.Lutris"               # Game launcher
     "org.chromium.Chromium" # Progressive web apps
     # "org.libreoffice.LibreOffice"     # Office suite

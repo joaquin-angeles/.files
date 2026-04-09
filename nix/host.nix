@@ -16,8 +16,9 @@ let
 in
 {
   imports = [
-    ./host/apps.nix
     ./host/hardware.nix
+    ./host/packages.nix
+    ./host/programs.nix
     ./host/services.nix
   ];
 
