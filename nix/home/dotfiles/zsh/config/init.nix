@@ -57,11 +57,6 @@
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         export POWERLEVEL9K_CONFIG_FILE="${config.xdg.configHome}/zsh/.p10k.zsh"
         [[ -f "$POWERLEVEL9K_CONFIG_FILE" ]] && source "$POWERLEVEL9K_CONFIG_FILE"
-
-         # Defer integrations
-        zsh-defer eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
-        zsh-defer source <(${pkgs.fzf}/bin/fzf --zsh)
-        zsh-defer source <(${pkgs.nix-your-shell}/bin/nix-your-shell --nom zsh)
       '')
     ];
   };

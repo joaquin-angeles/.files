@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   hostname = builtins.replaceStrings [ "\n" ] [ "" ] (builtins.readFile /etc/hostname);
@@ -7,26 +12,6 @@ in
   programs.yazi.settings = {
     # Disable log file
     log.enabled = false;
-
-    # Opener configuration
-    opener = {
-      image = [
-        {
-          run = "${pkgs.swayimg}/bin/swayimg %s";
-          orphan = true;
-          desc = "View image";
-        }
-      ];
-    };
-
-    open = {
-      rules = [
-        {
-          mime = "image/*";
-          use = [ "image" ];
-        }
-      ];
-    };
 
     # Manager configuration
     mgr = {

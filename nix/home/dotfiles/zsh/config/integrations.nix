@@ -10,7 +10,7 @@
   # Better cd
   programs.zoxide = {
     enable = true;
-    enableZshIntegration = false;
+    enableZshIntegration = true;
   };
 
   # eza
@@ -35,7 +35,7 @@
   # fzf integration
   programs.fzf = {
     enable = true;
-    enableZshIntegration = false;
+    enableZshIntegration = true;
   };
 
   # Grep
@@ -51,7 +51,7 @@
   # Nix output monitor
   programs.nix-your-shell = {
     enable = true;
-    enableZshIntegration = false;
+    enableZshIntegration = true;
     nix-output-monitor.enable = true;
   };
 

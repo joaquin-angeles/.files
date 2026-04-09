@@ -14,7 +14,7 @@
   };
 
   home.sessionPath = [
-    "${config.xdg.dataHome}/bin"
+    "$HOME/.local/bin"
     "${config.home.homeDirectory}/.cargo/bin"
     "${pkgs.stdenv.cc}/bin"
   ];
