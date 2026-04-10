@@ -24,10 +24,6 @@
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
       userChrome = ''
-        .titlebar-buttonbox-container{
-          display:none
-        }
-
         .tabbrowser-tab:not([selected]) .tab-close-button {
           display: none !important;
         }
