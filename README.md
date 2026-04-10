@@ -1,6 +1,6 @@
 # Gruvforest: An environment of organic minimalism
 
-> Press `Super + Shift + Space` to open the cheatsheet.
+> Press `Super + F1` to open the cheatsheet.
 
 A modern, extensible **Wayland** configuration for Linux (NixOS) powered by the **Nix** package manager and the **Gruvbox** colorscheme. Fully declarative, reproducible, and easy to customize.
 
