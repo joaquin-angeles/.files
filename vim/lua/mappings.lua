@@ -26,3 +26,6 @@ map("n", "<leader>ff", "<cmd>FzfLua files<CR>", { desc = "fzf find files" })
 map("n", "<leader>fa", function()
 	require("fzf-lua").files({ fd_opts = "--no-ignore --hidden --follow" })
 end, { desc = "fzf find all files" })
+
+-- File management
+map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

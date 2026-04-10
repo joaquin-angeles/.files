@@ -6,17 +6,22 @@
     timeouts = [
       {
         timeout = 300;
-        command = "${pkgs.swaylock-effects}/bin/swaylock -f";
+        command = "${pkgs.gtklock}/bin/gtklock";
       }
       {
         timeout = 600;
+        command = "${pkgs.wlopm}/bin/wlopm --off \"*\"";
+        resumeCommand = "${pkgs.wlopm}/bin/wlopm --on \"*\"";
+      }
+      {
+        timeout = 900;
         command = "${pkgs.systemd}/bin/systemctl suspend";
       }
     ];
     events = [
       {
         event = "before-sleep";
-        command = "${pkgs.hyprlock}/bin/hyprlock";
+        command = "${pkgs.gtklock}/bin/gtklock";
       }
     ];
   };
