@@ -24,11 +24,11 @@
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
       userChrome = ''
-        .tabbrowser-tab:not([selected]) .tab-close-button {
+        .tabbrowser-tab .tab-close-button {
           display: none !important;
         }
 
-        .tabbrowser-tab:not([selected]):hover .tab-close-button {
+        .tabbrowser-tab:hover .tab-close-button {
           display: flex !important;
         }
       '';
