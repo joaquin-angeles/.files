@@ -52,7 +52,7 @@ Extending or overriding modules is straightforward thanks to Nix's declarative n
 
 | Tiled Layout | Layout |
 |---|---|
-| ![Resource usage](./img/stats.png) | ![Background](./img/background.png) |
+| ![Resource usage](./img/stats.png) | ![Tiled layout](./img/tiled.png) |
 
 | Background Wallpaper | GUI Applications |
 |---|---|
