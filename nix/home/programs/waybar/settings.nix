@@ -3,7 +3,7 @@
 {
   imports = [
     ./modules.nix
-    ./theme.nix
+    ./style.nix
   ];
 
   programs.waybar.settings = {

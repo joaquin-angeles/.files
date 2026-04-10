@@ -7,10 +7,10 @@
   # Font configurations
   fonts.fontconfig.defaultFonts = {
     emoji = [ "Noto Color Emoji" ];
-    monospace = [ "JetBrainsMono Nerd Font Mono" ];
+    monospace = [ "BlexMono Nerd Font Mono" ];
     # monospace = [ "MesloLGM Nerd Font Mono" ];
     sansSerif = [ "Inter" ];
-    serif = [ "Times New Roman" ];
+    serif = [ "Source Serif 4" ];
   };
 
   home.activation.flatpakFonts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

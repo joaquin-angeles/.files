@@ -19,9 +19,10 @@
     packages = with pkgs; [
       corefonts
       inter
-      nerd-fonts.jetbrains-mono
+      nerd-fonts.blex-mono
       noto-fonts-color-emoji
       noto-fonts-cjk-sans
+      source-serif
     ];
   };
 }
