@@ -1,14 +1,17 @@
-{ config, ... }:
+{ ... }:
 
 {
   programs.librewolf = {
     enable = true;
-    profiles.${config.home.username} = {
+    profiles.default = {
       settings = {
         # Override impractical defaults
-        "privacy.clearOnShutdown.cookies" = true;
+        "privacy.fingerprintingProtection" = true; # FFP over RFP for dark themes
         "privacy.resistFingerprinting" = false;
+
+        # Balanced privacy
         "privacy.sanitize.sanitizeOnShutdown" = true;
+        "privacy.clearOnShutdown.cookies" = true;
         "places.history.enabled" = true;
 
         # General settings
@@ -16,20 +19,24 @@
         "browser.urlbar.openintab" = true;
 
         # Dark mode
-        "privacy.fingerprintingProtection" = true;
         "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
         "layout.css.prefers-color-scheme.content-override" = 0;
 
         # userChrome.css support
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
+
+      # UI overrides
       userChrome = ''
         .tabbrowser-tab .tab-close-button {
-          display: none !important;
+          opacity: 0;
+          transition: opacity 0.15s ease;
+          pointer-events: none;
         }
 
         .tabbrowser-tab:hover .tab-close-button {
-          display: flex !important;
+          opacity: 1;
+          pointer-events: auto;
         }
       '';
     };
