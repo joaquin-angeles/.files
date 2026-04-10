@@ -1,4 +1,4 @@
-# Joaquin's NixOS Dotfiles
+# Gruvforest: An environment of organic minimalism
 
 > Press `Super + Shift + Space` to open the cheatsheet.
 
