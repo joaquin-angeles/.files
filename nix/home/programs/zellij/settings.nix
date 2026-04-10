@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./binds.nix
+    ./keybinds.nix
   ];
 
   programs.zellij.settings = {
