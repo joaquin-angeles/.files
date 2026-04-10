@@ -9,10 +9,10 @@
     ./programs/neovim # Text editor
     ./programs/rmpc # Music player
     ./programs/rofi # Run launcher
+    ./programs/tmux # Terminal multiplexer
     ./programs/tofi # App launcher
     ./programs/yazi # Terminal file manager
     ./programs/waybar # Status bar
-    ./programs/zellij # Terminal multiplexer
     ./programs/zsh # Interactive shell
   ];
 
