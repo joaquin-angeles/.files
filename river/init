@@ -55,8 +55,8 @@ riverctl map normal "$mod" H send-layout-cmd wideriver '--ratio -0.05'
 riverctl map normal "$mod" L send-layout-cmd wideriver '--ratio +0.05'
 
 # Swap (Shift+hjkl)
-riverctl map normal "$mod+Shift" J swap previous
-riverctl map normal "$mod+Shift" K swap next
+riverctl map normal "$mod+Shift" J swap next
+riverctl map normal "$mod+Shift" K swap previous
 
 # Tags (workspaces)
 i=1

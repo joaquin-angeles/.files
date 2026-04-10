@@ -10,7 +10,7 @@
       history = false;
       height = 30;
       horizontal = true;
-      font = "${pkgs.nerd-fonts.jetbrains-mono}/share/fonts/truetype/NerdFonts/JetBrainsMono/JetBrainsMonoNerdFontMono-Regular.ttf";
+      font = "sans-serif";
       font-size = 12;
       prompt-text = ''" > "'';
       text-color = "#d4be98";

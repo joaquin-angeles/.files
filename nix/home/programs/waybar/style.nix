@@ -19,9 +19,13 @@
     @define-color bright-magenta         #ffacc2;
     @define-color bright-cyan            #9cd9cc;
 
-    window#waybar {
-      font-family: "BlexMono Nerd Font Propo";
+    * {
+      font-family: sans-serif, "MonaspiceNe Nerd Font Propo";
       font-size: 12pt;
+      font-feature-settings: "tnum";
+    }
+
+    window#waybar {
       /* background-color: alpha(@bg, 0.85); */
       background-color: @bg;
       color: @fg;

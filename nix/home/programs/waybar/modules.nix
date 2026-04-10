@@ -3,7 +3,7 @@
 {
   programs.waybar.settings.mainBar = {
     "river/tags" = {
-      num-tags = 9;
+      num-tags = 6;
       disable-scroll = true;
       all-outputs = true;
     };
@@ -72,7 +72,7 @@
     };
 
     battery = {
-      format = "{icon} {capacity}%";
+      format = "{icon}  {capacity}%";
       format-icons = [
         "󰂎"
         "󰁺"
@@ -86,9 +86,9 @@
         "󰂂"
         "󰁹"
       ];
-      format-full = "󱟢 {capacity}%";
-      format-charging = "󰂄 {capacity}%";
-      format-warning = "󰂃 {capacity}%";
+      format-full = "󱟢  {capacity}%";
+      format-charging = "󰂄  {capacity}%";
+      format-warning = "󰂃  {capacity}%";
       tooltip-format = "Status: Discharging\nBattery: {capacity}%";
       tooltip-format-charging = "Status: Charging\nBattery: {capacity}%";
       tooltip-format-full = "Status: Fully charged\nBattery: {capacity}%";
