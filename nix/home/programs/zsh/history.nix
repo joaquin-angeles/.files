@@ -10,7 +10,11 @@
     ignoreSpace = true;
     extended = true;
     ignorePatterns = [
+      "la *"
+      "ll *"
+      "lla *"
       "ls *"
+      "lt *"
       "cd *"
       "pwd *"
     ];

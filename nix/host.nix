@@ -90,4 +90,7 @@ in
     '';
     deps = [ ];
   };
+
+  # Lockscreen support
+  security.pam.services.gtklock = { };
 }
