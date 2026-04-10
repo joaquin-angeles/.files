@@ -3,7 +3,6 @@
 {
   programs.tmux = {
     enable = true;
-    enableZshIntegration = true;
 
     prefix = "C-Space";
     sensibleOnTop = true;
