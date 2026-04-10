@@ -12,9 +12,13 @@ M.base46 = {
 	hl_override = {
 		Comment = { italic = true },
 		["@comment"] = { italic = true },
-		CursorLine = {
-			bg = "black2",
-		},
+		TbFill = { bg = "black2" },
+		TbBufOff = { bg = "black2" },
+		TbBufOffClose = { fg = "black2", bg = "black2" },
+		TbBufOffModified = { fg = "black2", bg = "black2" },
+		TbBufOnClose = { bg = "none" },
+		TbBufOnModified = { bg = "none" },
+		Tabline = { bg = "none" },
 		NormalFloat = { bg = "black" },
 		FloatBorder = { bg = "black" },
 		CmpDoc = { bg = "black" },
