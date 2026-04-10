@@ -6,6 +6,12 @@
 }:
 
 {
+  imports = [
+    ./aliases.nix
+    ./history.nix
+    ./integrations.nix
+  ];
+
   programs.zsh = {
     # zcompdump
     completionInit = ''

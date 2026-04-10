@@ -2,10 +2,7 @@
 
 {
   imports = [
-    ./aliases.nix # Shell aliases
-    ./init.nix # Extra shell config
-    ./integrations.nix # Shell integrations
-    ./history.nix # History config
+    ./init.nix
   ];
 
   # Base zsh configuration

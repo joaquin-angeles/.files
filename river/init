@@ -26,7 +26,7 @@ riverctl spawn 'wideriver \
 riverctl keyboard-layout -options 'caps:escape' ''
 riverctl xcursor-theme Bibata-Modern-Ice 24
 riverctl set-cursor-warp on-output-change
-riverctl focus-follows-cursor disabled
+riverctl focus-follows-cursor enabled
 riverctl hide-cursor timeout 5000
 riverctl hide-cursor when-typing disabled
 riverctl spawn 'river-input'
@@ -36,7 +36,6 @@ riverctl spawn 'waybar'
 riverctl spawn 'wbg ~/Pictures/Wallpapers/trees.png'
 riverctl spawn 'wlr-power'
 riverctl spawn 'mako'
-riverctl spawn 'foot --server'
 riverctl spawn 'cliphist.sh'
 riverctl spawn 'idle.sh'
 
@@ -47,27 +46,17 @@ riverctl map normal "$mod+Shift" C close
 riverctl map normal "$mod" F toggle-fullscreen
 riverctl map normal "$mod+Shift" Space toggle-float
 
-# Focus (hjkl)
-riverctl map normal "$mod" H focus-view left
-riverctl map normal "$mod" J focus-view down
-riverctl map normal "$mod" K focus-view up
-riverctl map normal "$mod" L focus-view right
+# Focus (jk)
+riverctl map normal "$mod" J focus-view next
+riverctl map normal "$mod" K focus-view previous
+
+# Resize (hl)
+riverctl map normal "$mod" H send-layout-cmd wideriver '--ratio -0.05'
+riverctl map normal "$mod" L send-layout-cmd wideriver '--ratio +0.05'
 
 # Swap (Shift+hjkl)
-riverctl map normal "$mod+Shift" H swap left
-riverctl map normal "$mod+Shift" J swap down
-riverctl map normal "$mod+Shift" K swap up
-riverctl map normal "$mod+Shift" L swap right
-
-# Resize (Alt+hjkl)
-riverctl map normal "$mod+Alt" H send-layout-cmd wideriver '--ratio -0.05'
-riverctl map normal "$mod+Alt" J send-layout-cmd wideriver '--count -1'
-riverctl map normal "$mod+Alt" K send-layout-cmd wideriver '--count +1'
-riverctl map normal "$mod+Alt" L send-layout-cmd wideriver '--ratio +0.05'
-
-# Mouse
-riverctl map-pointer normal "$mod" BTN_LEFT  move-view
-riverctl map-pointer normal "$mod" BTN_RIGHT resize-view
+riverctl map normal "$mod+Shift" J swap previous
+riverctl map normal "$mod+Shift" K swap next
 
 # Tags (workspaces)
 i=1
@@ -82,7 +71,7 @@ riverctl map normal "$mod" 0 spawn 'river-sticky'
 riverctl map normal "$mod+Shift" 0 set-view-tags "$all_tags"
 
 # Apps
-riverctl map normal "$mod" Return spawn 'footclient'
+riverctl map normal "$mod" Return spawn 'foot'
 riverctl map normal "$mod" D spawn 'tofi-drun'
 riverctl map normal "$mod" B spawn 'sh -c "librewolf || flatpak run io.gitlab.librewolf-community"'
 riverctl map normal "$mod" E spawn 'pcmanfm'

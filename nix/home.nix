@@ -2,12 +2,12 @@
 
 {
   imports = [
-    ./home/configs.nix
     ./home/environment.nix
     ./home/mimetypes.nix
     ./home/packages.nix
     ./home/programs.nix
     ./home/services.nix
+    ./home/xdg.nix
   ];
 
   home = {

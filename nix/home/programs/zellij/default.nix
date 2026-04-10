@@ -3,9 +3,12 @@
 {
   # Configuration
   imports = [
-    ./config.nix
+    ./settings.nix
   ];
 
   # Installation
-  programs.zellij.enable = true;
+  programs.zellij = {
+    enable = true;
+    # enableZshIntegration = true;
+  };
 }
