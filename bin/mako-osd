@@ -35,39 +35,24 @@ osd() {
 
 # Volume notification
 vol_notif() {
-    local vol_raw vol icon
+    local vol_raw vol
 
     vol_raw=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
     vol=$(echo "$vol_raw" | awk '{printf "%d", $2 * 100}')
 
     if echo "$vol_raw" | grep -q '\[MUTED\]'; then
-        icon="󰖁"
-    elif [ "$vol" -eq 0 ]; then
-        icon="󰝟"
-    elif [ "$vol" -lt 50 ]; then
-        icon="󰖀"
-    else
-        icon="󰕾"
+        indicator="(muted)"
     fi
 
-    osd osd-volume "      $icon   Volume" "$(bar "$vol")  ${vol}%"
+    osd osd-volume "Volume $indicator" "$(bar "$vol")  ${vol}%"
 }
 
 # Brightness notification
 bri_notif() {
-    local bri icon
+    local bri
 
     bri=$(brightnessctl -m | awk -F, '{gsub(/%/,"",$4); print $4}')
-
-    if [ "$bri" -eq 0 ]; then
-        icon="󰃞"
-    elif [ "$bri" -lt 50 ]; then
-        icon="󰃟"
-    else
-        icon="󰃠"
-    fi
-
-    osd osd-brightness "      $icon   Brightness" "$(bar "$bri")  ${bri}%"
+    osd osd-brightness "Brightness" "$(bar "$bri")  ${bri}%"
 }
 
 # Commands
