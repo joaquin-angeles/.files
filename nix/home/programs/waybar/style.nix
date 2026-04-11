@@ -132,17 +132,17 @@
       border: 1px solid darker(@blue);
     }
 
+    /* Tags: buttons 6–9 (hidden unless occupied/focused) */
     #tags button:nth-child(7),
     #tags button:nth-child(8),
     #tags button:nth-child(9) {
       color: transparent;
-      margin: 0 -99px;
+      margin: 0 -99;
       padding: 0;
       font-size: 0;
       border: 0;
       border-radius: 0;
       min-width: 0;
-      max-width: 0;
       transition: none;
       animation: none;
       box-shadow: none;
