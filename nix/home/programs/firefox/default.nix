@@ -29,14 +29,11 @@
       # UI overrides
       userChrome = ''
         .tabbrowser-tab .tab-close-button {
-          opacity: 0;
-          transition: opacity 0.15s ease;
-          pointer-events: none;
+          display: none;
         }
 
         .tabbrowser-tab:hover .tab-close-button {
-          opacity: 1;
-          pointer-events: auto;
+          display: block;
         }
       '';
     };
