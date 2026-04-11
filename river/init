@@ -38,6 +38,15 @@ riverctl spawn 'wlr-power'
 riverctl spawn 'mako'
 riverctl spawn 'cliphist.sh'
 
+# Idling system
+riverctl spawn 'swayidle -w \
+    timeout 300 "gtklock" \
+    timeout 600 "wlopm --off \"*\"" \
+    resume "wlopm --on \"*\"" \
+    timeout 900 "systemctl suspend" \
+    before-sleep "gtklock" \
+    after-resume "wlopm --on \"*\""'
+
 mod="Super"
 
 # Window management
@@ -109,12 +118,3 @@ riverctl map normal None XF86AudioRaiseVolume spawn 'mako-osd volume_up'
 riverctl map normal None XF86AudioMute spawn 'mako-osd volume_mute'
 riverctl map normal None XF86MonBrightnessUp   spawn 'mako-osd brightness_up'
 riverctl map normal None XF86MonBrightnessDown spawn 'mako-osd brightness_down'
-
-# Idling system
-riverctl spawn 'swayidle -w \
-    timeout 300 "gtklock" \
-    timeout 600 "wlopm --off \"*\"" \
-    resume "wlopm --on \"*\"" \
-    timeout 900 "systemctl suspend" \
-    before-sleep "gtklock" \
-    after-resume "wlopm --on \"*\""'
