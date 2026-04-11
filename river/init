@@ -26,9 +26,9 @@ riverctl spawn 'wideriver \
 riverctl keyboard-layout -options 'caps:escape' ''
 riverctl xcursor-theme Bibata-Modern-Ice 24
 riverctl set-cursor-warp on-output-change
-riverctl focus-follows-cursor enabled
+riverctl focus-follows-cursor normal
 riverctl hide-cursor timeout 5000
-riverctl hide-cursor when-typing disabled
+riverctl hide-cursor when-typing enabled
 riverctl spawn 'river-input'
 
 # Startup

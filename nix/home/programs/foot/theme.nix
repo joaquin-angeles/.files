@@ -7,12 +7,11 @@
       gamma-correct-blending = false;
     };
 
-    colors = {
-      alpha = 0.8;
-    };
-
     # Colorscheme
     colors = {
+      # Alpha transparency
+      alpha = 0.8;
+
       background = "1d2021";
       foreground = "d4be98";
 
@@ -35,9 +34,7 @@
       bright7 = "d4be98"; # white
     };
 
-    # FZF Colorscheme
-    environment = {
-      FZF_DEFAULT_OPTS = "--color=spinner:#89b482,hl:#7daea3 --color=fg:#d4be98,header:#7daea3,info:#d8a657,pointer:#d3869b --color=marker:#a9b665,fg+:#d4be98,prompt:#d8a657,hl+:#9cd9cb --color=border:#56595a,label:#d4be98,query:#d4be98";
-    };
+    # TERM correction
+    environment.TERM = "xterm-256color";
   };
 }

@@ -12,6 +12,7 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		---@module "fzf-lua"
 		---@diagnostic disable: missing-fields
+		---
 		opts = {
 			winopts = {
 				title_pos = "center",
