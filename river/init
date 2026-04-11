@@ -54,10 +54,12 @@ riverctl map normal "$mod" K focus-view previous
 # Resize (hl)
 riverctl map normal "$mod" H send-layout-cmd wideriver '--ratio -0.05'
 riverctl map normal "$mod" L send-layout-cmd wideriver '--ratio +0.05'
+riverctl map-pointer normal "$mod" BTN_RIGHT resize-view
 
 # Swap (Shift+hjkl)
 riverctl map normal "$mod+Shift" J swap next
 riverctl map normal "$mod+Shift" K swap previous
+riverctl map-pointer normal "$mod" BTN_LEFT move-view
 
 # Tags (workspaces)
 i=1
