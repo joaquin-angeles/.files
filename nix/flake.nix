@@ -19,18 +19,9 @@
       nix-flatpak,
       ...
     }@inputs:
-    let
-      system = "x86_64-linux";
-      overlay = _: prev: {
-        unstable = import nixpkgs-unstable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-      };
-    in
     {
       nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
-        inherit system;
+        system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
           ./host.nix
@@ -39,7 +30,14 @@
           {
             nixpkgs = {
               config.allowUnfree = true;
-              overlays = [ overlay ];
+              overlays = [
+                (_: prev: {
+                  unstable = import nixpkgs-unstable {
+                    system = "x86_64-linux";
+                    config.allowUnfree = true;
+                  };
+                })
+              ];
             };
             home-manager = {
               backupFileExtension = "bak";
