@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ./init.nix
     ./keymaps.nix
     ./plugins.nix
     ./theme.nix

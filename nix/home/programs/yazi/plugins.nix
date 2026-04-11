@@ -13,7 +13,5 @@
         yatline
         ;
     };
-
-    initLua = ./init.lua; # Plugin configuration
   };
 }
