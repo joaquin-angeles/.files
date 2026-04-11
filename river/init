@@ -6,14 +6,13 @@ dbus-update-activation-environment --systemd \
     XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY
 systemctl --user import-environment \
     XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY
-systemctl --user start graphical-session.target
 
 # Output & layout
 riverctl rule-add ssd
 riverctl default-layout wideriver
 riverctl spawn 'wideriver \
 --border-width 2 \
---border-color-focused 0x648b82cc \
+--border-color-focused 0x869966cc \
 --border-color-unfocused 0x56595a80 \
 --layout left \
 --stack even \
@@ -110,3 +109,12 @@ riverctl map normal None XF86AudioRaiseVolume spawn 'mako-osd volume_up'
 riverctl map normal None XF86AudioMute spawn 'mako-osd volume_mute'
 riverctl map normal None XF86MonBrightnessUp   spawn 'mako-osd brightness_up'
 riverctl map normal None XF86MonBrightnessDown spawn 'mako-osd brightness_down'
+
+# Idling system
+riverctl spawn 'swayidle -w \
+    timeout 300 "gtklock" \
+    timeout 600 "wlopm --off \"*\"" \
+    resume "wlopm --on \"*\"" \
+    timeout 900 "systemctl suspend" \
+    before-sleep "gtklock" \
+    after-resume "wlopm --on \"*\""'

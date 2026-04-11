@@ -30,12 +30,4 @@
       outer-margin=5
     '';
   };
-
-  # Require active Wayland session
-  systemd.user.services.mako = {
-    Unit = {
-      After = [ "graphical-session.target" ];
-      PartOf = [ "graphical-session.target" ];
-    };
-  };
 }

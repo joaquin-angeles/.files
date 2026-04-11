@@ -11,6 +11,7 @@
   home.packages = with pkgs; [
     cliphist
     grim
+    gtklock
     impala
     lazygit
     mako
@@ -28,6 +29,7 @@
     wayfreeze
     wbg
     wideriver
+    wlopm
     wlr-randr
     zellij
   ];
