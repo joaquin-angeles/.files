@@ -33,23 +33,13 @@
   services.flatpak.overrides = {
     # Global options
     global = {
-      # Environmental variables
-      Environment = {
-        "GTK_THEME" = "Gruvbox-Dark:dark";
-        "GTK_APPLICATION_PREFER_DARK_THEME" = "1";
-        "DCONF_USER_CONFIG_DIR" = "${config.home.username}.config/dconf";
-      };
-
-      # Device access
-      Context = {
-        devices = [ "dri" ]; # GPU access
-      };
-
       # File access
       Context.filesystems = [
         # Application access
         "/nix/store:ro"
-        "${config.xdg.dataHome}"
+        "${config.xdg.dataHome}/applications"
+        "${config.xdg.dataHome}/fonts:ro"
+        "${config.xdg.dataHome}/themes:ro"
 
         # GTK configuration
         "xdg-config/gtk-3.0:ro"
@@ -58,8 +48,20 @@
         "xdg-run/dconf"
       ];
 
+      # Device access
+      Context = {
+        devices = [ "dri" ]; # GPU access
+      };
+
       "Session Bus Policy" = {
         "ca.desrt.dconf" = "talk";
+      };
+
+      # Environmental variables
+      Environment = {
+        "GTK_THEME" = "Gruvbox-Dark:dark";
+        "GTK_APPLICATION_PREFER_DARK_THEME" = "1";
+        "DCONF_USER_CONFIG_DIR" = "${config.home.username}.config/dconf";
       };
     };
 
