@@ -45,6 +45,7 @@ mod="Super"
 riverctl map normal "$mod+Shift" C close
 riverctl map normal "$mod" F toggle-fullscreen
 riverctl map normal "$mod+Shift" Space toggle-float
+riverctl map normal "$mod+Shift" Return zoom
 
 # Focus (jk)
 riverctl map normal "$mod" J focus-view next
@@ -87,7 +88,7 @@ riverctl map normal "$mod" W spawn 'sh -c "pgrep waybar >/dev/null && pkill wayb
 riverctl map normal "$mod+Shift" N spawn 'sh -c "pgrep sunsetr >/dev/null && pkill sunsetr || sunsetr test 4000 100"'
 
 # Misc
-riverctl map normal "$mod+Shift" P spawn 'rofi-power-menu'
+riverctl map normal "$mod+Shift" P spawn 'tofi-power-menu'
 riverctl map normal "$mod" F1 spawn 'sh -c "river-sheet | rofi -dmenu -p keybinds"'
 
 # Volume & brightness

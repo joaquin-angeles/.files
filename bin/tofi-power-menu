@@ -3,10 +3,10 @@
 options="󰐥 Shutdown
 󰜉 Reboot
 󰌾 Lock
-󰒲 Suspend
+󰤄 Suspend
 󰍃 Logout"
 
-choice="$(printf '%s\n' "$options" | rofi -dmenu -p 'power')"
+choice="$(printf '%s\n' "$options" | tofi )"
 
 case "$choice" in
     "󰐥 Shutdown")
@@ -28,7 +28,7 @@ case "$choice" in
             notify-send "No lock utility found."
         fi
         ;;
-    "󰒲 Suspend")
+    "󰤄 Suspend")
         systemctl suspend
         ;;
     "󰍃 Logout")

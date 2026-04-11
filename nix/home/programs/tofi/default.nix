@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   programs.tofi = {
@@ -10,9 +10,9 @@
       history = false;
       height = 30;
       horizontal = true;
-      font = "sans-serif";
+      font = "monospace";
       font-size = 12;
-      prompt-text = ''" > "'';
+      prompt-text = ''" ❯ "'';
       text-color = "#d4be98";
       selection-color = "#7daea3";
       placeholder-text = "Type to search…";
@@ -21,11 +21,11 @@
       border-width = 0;
       background-color = "#1d2021";
       min-input-width = 300;
-      result-spacing = 20;
+      result-spacing = 25;
       padding-top = 5;
       padding-bottom = 0;
       padding-left = 0;
-      padding-right = 0;
+      padding-right = 2;
     };
   };
 }

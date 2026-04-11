@@ -3,7 +3,7 @@
 {
   programs.waybar.settings.mainBar = {
     "river/tags" = {
-      num-tags = 6;
+      num-tags = 9;
       disable-scroll = true;
       all-outputs = true;
     };
