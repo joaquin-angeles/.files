@@ -38,7 +38,6 @@ riverctl spawn 'wbg ~/Pictures/Wallpapers/trees.png'
 riverctl spawn 'wlr-power'
 riverctl spawn 'mako'
 riverctl spawn 'cliphist.sh'
-riverctl spawn 'idle.sh'
 
 mod="Super"
 
