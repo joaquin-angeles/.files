@@ -4,7 +4,6 @@
   services.mako = {
     # Installation
     enable = true;
-    systemdTarget = "graphical-session.target"; # Require graphical interface
 
     # Configuration
     settings = {
@@ -30,5 +29,13 @@
       anchor=bottom-center
       outer-margin=5
     '';
+  };
+
+  # Require active Wayland session
+  systemd.user.services.mako = {
+    Unit = {
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
   };
 }
