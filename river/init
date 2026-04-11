@@ -6,6 +6,7 @@ dbus-update-activation-environment --systemd \
     XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY
 systemctl --user import-environment \
     XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY
+systemctl --user start graphical-session.target
 
 # Output & layout
 riverctl rule-add ssd

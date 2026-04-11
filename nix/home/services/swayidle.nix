@@ -2,7 +2,12 @@
 
 {
   services.swayidle = {
+    # Installation
     enable = true;
+    systemdTarget = "graphical-session.target"; # Require graphical interface
+
+    # Configuration
+    extraArgs = [ "-w" ];
     timeouts = [
       {
         timeout = 300;
@@ -22,6 +27,10 @@
       {
         event = "before-sleep";
         command = "${pkgs.gtklock}/bin/gtklock";
+      }
+      {
+        event = "after-resume";
+        command = "${pkgs.wlopm}/bin/wlopm --on \"*\"";
       }
     ];
   };

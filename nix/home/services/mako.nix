@@ -2,7 +2,11 @@
 
 {
   services.mako = {
+    # Installation
     enable = true;
+    systemdTarget = "graphical-session.target"; # Require graphical interface
+
+    # Configuration
     settings = {
       anchor = "top-right";
       layer = "overlay";
@@ -18,6 +22,8 @@
       border-radius = 5;
       font = "sans-serif 14";
     };
+
+    # On-screen display setup
     extraConfig = ''
       [app-name=osd]
       width=260
