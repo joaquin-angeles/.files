@@ -15,7 +15,7 @@
       "--style=minimal"
       "--gutter=' '"
       "--color=bg:-1,fg:7,bg+:5,fg+:0,gutter:-1"
-      "--color=hl:4,hl+:4"
+      "--color=hl:4,hl+:0"
       "--color=info:3,prompt:3"
       "--color=pointer:5,marker:2"
       "--color=spinner:6,header:4"

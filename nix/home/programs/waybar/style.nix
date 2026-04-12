@@ -166,7 +166,7 @@
     #tags button:nth-child(7).focused,
     #tags button:nth-child(8).focused,
     #tags button:nth-child(9).focused {
-      color: @fg;
+      color: @blue;
       font-size: 12pt;
       padding: 0 5pt;
       margin: 1px;
