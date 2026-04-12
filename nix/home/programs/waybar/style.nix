@@ -20,7 +20,7 @@
     @define-color bright-cyan            #9cd9cc;
 
     * {
-      font-family: sans-serif, "MonaspiceNe Nerd Font Propo";
+      font-family: "MonaspiceNe Nerd Font Propo";
       font-size: 12pt;
       font-feature-settings: "tnum";
     }
@@ -110,8 +110,8 @@
       padding: 0 5pt;
       min-width: 10pt;
       margin: 1px;
-      background: darker(darker(@bright-bg));
-      border: 1px solid darker(@bright-bg);
+      /* background: darker(darker(@bright-bg));
+      border: 1px solid darker(@bright-bg); */
       border-radius: 0;
       box-shadow: none;
     }
@@ -127,9 +127,9 @@
     }
 
     #tags button.focused {
-      color: @fg;
-      background-color: darker(darker(@blue));
-      border: 1px solid darker(@blue);
+      color: @blue;
+      /* background-color: darker(darker(@blue));
+      border: 1px solid darker(@blue); */
     }
 
     /* Tags: buttons 6–9 (hidden unless occupied/focused) */
@@ -157,8 +157,8 @@
       padding: 0 5pt;
       margin: 1px;
       min-width: 10pt;
-      background-color: darker(darker(@bright-bg));
-      border: 1px solid alpha(@bright-bg, 0.8);
+      /* background-color: darker(darker(@bright-bg));
+      border: 1px solid alpha(@bright-bg, 0.8); */
       border-radius: 0;
       box-shadow: none;
     }
@@ -171,8 +171,8 @@
       padding: 0 5pt;
       margin: 1px;
       min-width: 10pt;
-      background-color: darker(darker(@blue));
-      border: 1px solid alpha(darker(@blue), 0.8);
+      /* background-color: darker(darker(@blue));
+      border: 1px solid alpha(darker(@blue), 0.8); */
       border-radius: 0;
       box-shadow: none;
     }

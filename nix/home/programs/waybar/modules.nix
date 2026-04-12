@@ -72,7 +72,7 @@
     };
 
     battery = {
-      format = "{icon}  {capacity}%";
+      format = "{icon} {capacity}%";
       format-icons = [
         "󰂎"
         "󰁺"
@@ -86,7 +86,7 @@
         "󰂂"
         "󰁹"
       ];
-      format-full = "󱟢  {capacity}%";
+      format-full = "󱟢 {capacity}%";
       format-charging = "󰂄  {capacity}%";
       format-warning = "󰂃  {capacity}%";
       tooltip-format = "Status: Discharging\nBattery: {capacity}%";
