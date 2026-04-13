@@ -7,8 +7,10 @@ dbus-update-activation-environment --systemd \
 systemctl --user import-environment \
     XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY
 
-# Output & layout
+# Window rules
 riverctl rule-add ssd
+
+# Layout
 riverctl default-layout wideriver
 riverctl spawn 'wideriver \
     --border-width 2 \
@@ -21,6 +23,8 @@ riverctl spawn 'wideriver \
     --outer-gaps 10 \
     --smart-gaps \
     --border-width-smart-gaps 0'
+riverctl map normal "$mod" T send-layout-cmd wideriver '--layout left'
+riverctl map normal "$mod" M send-layout-cmd wideriver '--layout monocle'
 
 # Input
 riverctl keyboard-layout -options 'caps:escape' ''
@@ -62,6 +66,8 @@ riverctl map normal "$mod" K focus-view previous
 # Resize (hl)
 riverctl map normal "$mod" H send-layout-cmd wideriver '--ratio -0.05'
 riverctl map normal "$mod" L send-layout-cmd wideriver '--ratio +0.05'
+riverctl map normal "$mod" I send-layout-cmd wideriver '--ratio +0.05'
+riverctl map normal "$mod" D send-layout-cmd wideriver '--ratio -0.05'
 riverctl map-pointer normal "$mod" BTN_RIGHT resize-view
 
 # Swap (Shift+hjkl)
@@ -78,13 +84,13 @@ while [ "$i" -le 9 ]; do
     i=$(( i + 1 ))
 done
 all_tags=$(( (1 << 32) - 1 ))
-riverctl map normal "$mod" 0 spawn 'river-sticky'
-riverctl map normal "$mod+Shift" 0 set-view-tags "$all_tags"
+riverctl map normal "$mod" 0 set-view-tags "$all_tags"
+riverctl map normal "$mod+Shift" 0 spawn 'river-sticky'
 
 # Apps
 riverctl map normal "$mod" Return spawn 'foot'
-riverctl map normal "$mod" D spawn 'tofi-drun'
-riverctl map normal "$mod" B spawn 'sh -c "librewolf || flatpak run io.gitlab.librewolf-community"'
+riverctl map normal "$mod" P spawn 'tofi-drun'
+riverctl map normal "$mod" W spawn 'sh -c "librewolf || flatpak run io.gitlab.librewolf-community"'
 riverctl map normal "$mod" E spawn 'pcmanfm'
 riverctl map normal "$mod" Period spawn 'rofi -show emoji'
 riverctl map normal "$mod+Shift" V spawn 'sh -c "cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy"'
@@ -94,11 +100,11 @@ riverctl map normal "$mod+Shift" S spawn 'grim - | wl-copy && notify-send "Scree
 riverctl map normal "$mod" S spawn 'region-capture.sh && notify-send "Screenshot saved" "Image copied to clipboard"'
 
 # Toggles
-riverctl map normal "$mod" W spawn 'sh -c "pgrep waybar >/dev/null && pkill waybar || waybar &"'
+riverctl map normal "$mod+Shift" B spawn 'sh -c "pgrep waybar >/dev/null && pkill waybar || waybar &"'
 riverctl map normal "$mod+Shift" N spawn 'sh -c "pgrep sunsetr >/dev/null && pkill sunsetr || sunsetr test 4000 100"'
 
 # Misc
-riverctl map normal "$mod+Shift" P spawn 'tofi-power-menu'
+riverctl map normal "$mod+Shift" Q spawn 'tofi-power-menu'
 riverctl map normal "$mod" F1 spawn 'sh -c "river-sheet | rofi -dmenu -p keybinds"'
 
 # Volume & brightness
