@@ -33,11 +33,12 @@
         "custom/expand-icon"
         "tray"
         "network"
+        "pulseaudio"
       ];
     };
 
     "custom/expand-icon" = {
-      format = "";
+      format = "❮";
       tooltip = false;
     };
 

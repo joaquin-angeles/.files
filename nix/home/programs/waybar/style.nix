@@ -45,7 +45,8 @@
     }
 
     #custom-expand-icon {
-      padding-right: 5pt;
+      font-family: "MonaspiceNe Nerd Font Propo";
+      padding-right: 2pt;
     }
 
     #tray {
@@ -79,11 +80,11 @@
 
     #pulseaudio {
       font-size: 14pt;
-      margin: 1px 4pt 0 8pt;
+      margin: 1px 8pt 0 4pt;
     }
 
     #battery {
-      padding: 0 12pt 0 4pt;
+      padding: 0 12pt 0 2pt;
     }
 
     #battery span.icon {

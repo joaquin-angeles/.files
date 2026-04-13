@@ -19,7 +19,7 @@
         "browser.urlbar.openintab" = true;
 
         # Dark mode
-        "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
+        "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme,-TimezoneOffset";
         "layout.css.prefers-color-scheme.content-override" = 0;
 
         # userChrome.css support
