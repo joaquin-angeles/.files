@@ -9,8 +9,8 @@
   programs.waybar.settings = {
     mainBar = {
       layer = "top";
-      position = "bottom";
-      height = 30;
+      position = "top";
+      height = 26;
       spacing = 0;
       # margin-top = 12;
       # margin-left = 12;
@@ -30,6 +30,7 @@
         "group/sys-info"
         "battery"
         "clock"
+        "river/layout"
       ];
     };
   };

@@ -100,7 +100,12 @@
       font-weight: bold;
     }
 
-    /* Tags: buttons 1–5 (always visible) */
+    #layout {
+        background-color: alpha(darker(@bg), 0.8);
+        padding: 0 4px 0 4px;
+        margin-left: 6pt;
+    }
+
     #tags button:nth-child(1),
     #tags button:nth-child(2),
     #tags button:nth-child(3),
@@ -133,7 +138,6 @@
       border: 1px solid darker(@blue); */
     }
 
-    /* Tags: buttons 6–9 (hidden unless occupied/focused) */
     #tags button:nth-child(7),
     #tags button:nth-child(8),
     #tags button:nth-child(9) {

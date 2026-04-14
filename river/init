@@ -23,8 +23,6 @@ riverctl spawn 'wideriver \
     --outer-gaps 10 \
     --smart-gaps \
     --border-width-smart-gaps 0'
-riverctl map normal "$mod" T send-layout-cmd wideriver '--layout left'
-riverctl map normal "$mod" M send-layout-cmd wideriver '--layout monocle'
 
 # Input
 riverctl keyboard-layout -options 'caps:escape' ''
@@ -55,9 +53,13 @@ mod="Super"
 
 # Window management
 riverctl map normal "$mod+Shift" C close
-riverctl map normal "$mod" F toggle-fullscreen
+riverctl map normal "$mod+Shift" F toggle-fullscreen
 riverctl map normal "$mod+Shift" Space toggle-float
 riverctl map normal "$mod+Shift" Return zoom
+
+# Layout switching
+riverctl map normal "$mod" T send-layout-cmd wideriver '--layout left'
+riverctl map normal "$mod" M send-layout-cmd wideriver '--layout monocle'
 
 # Focus (jk)
 riverctl map normal "$mod" J focus-view next
@@ -66,8 +68,8 @@ riverctl map normal "$mod" K focus-view previous
 # Resize (hl)
 riverctl map normal "$mod" H send-layout-cmd wideriver '--ratio -0.05'
 riverctl map normal "$mod" L send-layout-cmd wideriver '--ratio +0.05'
-riverctl map normal "$mod" I send-layout-cmd wideriver '--ratio +0.05'
-riverctl map normal "$mod" D send-layout-cmd wideriver '--ratio -0.05'
+riverctl map normal "$mod" I send-layout-cmd wideriver '--count +1'
+riverctl map normal "$mod" D send-layout-cmd wideriver '--count -1'
 riverctl map-pointer normal "$mod" BTN_RIGHT resize-view
 
 # Swap (Shift+hjkl)
@@ -100,7 +102,7 @@ riverctl map normal "$mod+Shift" S spawn 'grim - | wl-copy && notify-send "Scree
 riverctl map normal "$mod" S spawn 'region-capture.sh && notify-send "Screenshot saved" "Image copied to clipboard"'
 
 # Toggles
-riverctl map normal "$mod+Shift" B spawn 'sh -c "pgrep waybar >/dev/null && pkill waybar || waybar &"'
+riverctl map normal "$mod" B spawn 'sh -c "pgrep waybar >/dev/null && pkill waybar || waybar &"'
 riverctl map normal "$mod+Shift" N spawn 'sh -c "pgrep sunsetr >/dev/null && pkill sunsetr || sunsetr test 4000 100"'
 
 # Misc
