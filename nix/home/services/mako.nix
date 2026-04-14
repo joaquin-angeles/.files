@@ -27,7 +27,7 @@
       [app-name=osd]
       width=260
       anchor=bottom-center
-      outer-margin=32
+      outer-margin=20
     '';
   };
 }
