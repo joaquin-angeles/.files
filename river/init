@@ -58,6 +58,7 @@ riverctl map normal "$mod+Shift" Space toggle-float
 riverctl map normal "$mod+Shift" Return zoom
 
 # Layout switching
+riverctl map normal "$mod" Space send-layout-cmd wideriver "--layout-toggle"
 riverctl map normal "$mod" T send-layout-cmd wideriver '--layout left'
 riverctl map normal "$mod" M send-layout-cmd wideriver '--layout monocle'
 
