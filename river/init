@@ -53,7 +53,7 @@ mod="Super"
 
 # Window management
 riverctl map normal "$mod+Shift" C close
-riverctl map normal "$mod+Shift" F toggle-fullscreen
+riverctl map normal "$mod" F toggle-fullscreen
 riverctl map normal "$mod+Shift" Space toggle-float
 riverctl map normal "$mod+Shift" Return zoom
 
@@ -86,6 +86,8 @@ while [ "$i" -le 9 ]; do
     riverctl map normal "$mod+Shift" "$i" set-view-tags "$tags"
     i=$(( i + 1 ))
 done
+
+# View/set for all tags
 all_tags=$(( (1 << 32) - 1 ))
 riverctl map normal "$mod" 0 set-focused-tags "$all_tags"
 riverctl map normal "$mod+Shift" 0 spawn 'river-sticky'
@@ -96,7 +98,7 @@ riverctl map normal "$mod" P spawn 'tofi-drun'
 riverctl map normal "$mod" W spawn 'sh -c "librewolf || flatpak run io.gitlab.librewolf-community"'
 riverctl map normal "$mod" E spawn 'pcmanfm'
 riverctl map normal "$mod" Period spawn 'rofi -show emoji'
-riverctl map normal "$mod+Shift" V spawn 'sh -c "cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy"'
+riverctl map normal "$mod" V spawn 'sh -c "cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy"'
 
 # Screenshots
 riverctl map normal "$mod+Shift" S spawn 'grim - | wl-copy && notify-send "Screenshot saved" "Image copied to clipboard"'
