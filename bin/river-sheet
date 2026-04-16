@@ -1,16 +1,16 @@
 #!/usr/bin/env dash
 
 cat <<EOF
-SUPER + Return        → Open terminal (Foot)
-SUPER + D             → App launcher (Tofi)
+SUPER + Return        → Open terminal (foot)
+SUPER + P             → App launcher (tofi)
 SUPER + B             → Browser (LibreWolf)
 SUPER + E             → File manager (PCManFM)
 SUPER + .             → Emoji picker (rofi)
-SUPER + Shift + V     → Clipboard manager (Cliphist)
+SUPER + V             → Clipboard manager (rofi)
 SUPER + W             → Toggle Waybar
 SUPER + S             → Screenshot region to clipboard
 SUPER + Shift + S     → Screenshot output to clipboard
-SUPER + Shift + P     → Power menu
+SUPER + Shift + Q     → Power menu
 SUPER + + Shift + N   → Toggle blue light filter
 SUPER + Left          → Brightness down
 SUPER + Right         → Brightness up
@@ -26,11 +26,11 @@ SUPER + Shift + SPACE → Toggle floating
 SUPER + Left Click    → Move window
 SUPER + Right Click   → Resize window
 SUPER + H             → Resize left
-SUPER + J             → Focus down
-SUPER + K             → Focus up
+SUPER + J             → Focus next
+SUPER + K             → Focus previous
 SUPER + L             → Resize right
 SUPER + Shift + J     → Move window down
 SUPER + Shift + K     → Move window up
-SUPER + 1–9           → Switch to tag 1–9
+SUPER + 1–9           → View tag 1–9
 SUPER + Shift + 1–9   → Move window to tag 1–9
 EOF
