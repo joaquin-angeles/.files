@@ -3,7 +3,7 @@
 {
   # Base zsh configuration
   programs.zsh.history = {
-    path = "${config.xdg.cacheHome}/zsh/history";
+    path = "${config.xdg.cacheHome}/zsh_history";
     size = 50000;
     save = 50000;
     share = true;

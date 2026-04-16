@@ -11,6 +11,7 @@
       layer = "overlay";
       padding = "8";
       margin = "5";
+      outer-margin = "5";
       width = 500;
       height = 125;
       markup = true;
@@ -26,8 +27,6 @@
     extraConfig = ''
       [app-name=osd]
       width=260
-      anchor=bottom-center
-      outer-margin=20
     '';
   };
 }

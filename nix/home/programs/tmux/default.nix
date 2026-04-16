@@ -5,11 +5,16 @@
     enable = true;
 
     prefix = "C-Space";
-    sensibleOnTop = true;
+    mouse = true;
+    historyLimit = 50000;
+    keyMode = "vi";
+    baseIndex = 1;
 
+    # tmux-sensible
     plugins = with pkgs.tmuxPlugins; [
       sensible
     ];
+    sensibleOnTop = true;
 
     extraConfig = ''
       # Keybinds
@@ -33,9 +38,7 @@
       set -g window-status-current-format '#I:#W'
       set -g window-status-format '#I:#W'
 
-      # Start from 1 instead of 0
-      set -g base-index 1
-      set -g pane-base-index 1
+      # pane-base-index follows baseIndex automatically in home-manager
 
       # Status line customization
       set -g status-position top

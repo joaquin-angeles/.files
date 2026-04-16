@@ -8,11 +8,26 @@
         # Override impractical defaults
         "privacy.fingerprintingProtection" = true; # FFP over RFP for dark themes
         "privacy.resistFingerprinting" = false;
+        "datareporting.healthreport.uploadEnabled" = false;
+        "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
 
-        # Balanced privacy
+        # Privacy options
         "privacy.sanitize.sanitizeOnShutdown" = true;
         "privacy.clearOnShutdown.cookies" = true;
-        "places.history.enabled" = true;
+        "privacy.clearOnShutdown.cache" = false;
+        "network.cookie.lifetimePolicy" = 2;
+        "dom.security.https_only_mode" = true;
+        "dom.security.https_only_mode_ever_enabled" = true;
+        "network.dns.disablePrefetch" = true;
+        "network.prefetch-next" = false;
+
+        # Preferences
+        "places.history.enabled" = false;
+        "browser.aboutConfig.showWarning" = false;
+        "browser.tabs.loadInBackground" = true;
+        "browser.backspace_action" = 0;
+        "browser.download.useDownloadDir" = false;
+        "signon.rememberSignons" = false;
 
         # General settings
         "browser.compactmode.show" = true;
