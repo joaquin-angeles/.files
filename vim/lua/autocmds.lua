@@ -19,35 +19,20 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 })
 
 -- Treesitter fixes
-local ts_group = vim.api.nvim_create_augroup("TreesitterAttach", { clear = true })
-
+local ts = vim.treesitter
+local aug = vim.api.nvim_create_augroup("treesitter_attach", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
-	group = ts_group,
-	callback = function()
-		local ft = vim.bo.filetype
+	group = aug,
+	callback = function(args)
+		local ft = vim.bo[args.buf].filetype
 		if ft == "" then
 			return
 		end
-		local lang = vim.treesitter.language.get_lang(ft) or ft
-		local ok, _ = pcall(vim.treesitter.get_parser, 0, lang)
-		if ok then
-			vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-			pcall(vim.treesitter.start)
+		local lang = ts.language.get_lang(ft) or ft
+		if not pcall(ts.get_parser, args.buf, lang) then
+			return
 		end
+		vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+		pcall(ts.start, args.buf, lang)
 	end,
 })
-
--- vim.schedule(function()
--- 	local function set_transparent(groups)
--- 		for _, group in ipairs(groups) do
--- 			vim.api.nvim_set_hl(0, group, {})
--- 		end
--- 	end
---
--- 	set_transparent({
--- 		"Normal",
--- 		"NormalNC",
--- 		"StatusLine",
--- 		"StatusLineNC",
--- 	})
--- end)
