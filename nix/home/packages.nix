@@ -3,7 +3,7 @@
 {
   imports = [
     ./packages/flatpaks.nix
-    ./packages/pcmanfm.nix
+    ./packages/file-manager.nix
     ./packages/scripts.nix
   ];
 
