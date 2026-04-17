@@ -40,6 +40,7 @@ vol_notif() {
     vol_raw=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
     vol=$(echo "$vol_raw" | awk '{printf "%d", $2 * 100}')
 
+    indicator=""
     if echo "$vol_raw" | grep -q '\[MUTED\]'; then
         indicator="(muted)"
     fi

@@ -7,6 +7,7 @@
     defaultEditor = true; # Set as default
     vimAlias = true; # Fast alias
     extraPackages = with pkgs; [
+      bash-language-server
       beautysh
       lua-language-server
       nixd
@@ -14,7 +15,6 @@
       prettier
       stylua
       tree-sitter
-      treefmt
       vscode-langservers-extracted
     ];
   };
