@@ -36,3 +36,18 @@ vim.api.nvim_create_autocmd("FileType", {
 		end
 	end,
 })
+
+-- vim.schedule(function()
+-- 	local function set_transparent(groups)
+-- 		for _, group in ipairs(groups) do
+-- 			vim.api.nvim_set_hl(0, group, {})
+-- 		end
+-- 	end
+--
+-- 	set_transparent({
+-- 		"Normal",
+-- 		"NormalNC",
+-- 		"StatusLine",
+-- 		"StatusLineNC",
+-- 	})
+-- end)

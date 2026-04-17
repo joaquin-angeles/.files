@@ -66,6 +66,13 @@
     };
 
     "org.vinegarhq.Sober" = {
+      Context = {
+        sockets = [
+          "!wayland"
+          "x11"
+          "!fallback-x11"
+        ];
+      };
       Environment = {
         "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
         "__NV_PRIME_RENDER_OFFLOAD" = "1";
@@ -74,6 +81,13 @@
     };
 
     "io.mrarm.mcpelauncher" = {
+      Context = {
+        sockets = [
+          "!wayland"
+          "x11"
+          "!fallback-x11"
+        ];
+      };
       Environment = {
         "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
         "__NV_PRIME_RENDER_OFFLOAD" = "1";
