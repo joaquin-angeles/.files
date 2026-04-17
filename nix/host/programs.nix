@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   # GTK settings
@@ -8,6 +8,15 @@
   programs.river-classic = {
     enable = true;
     xwayland.enable = true;
+  };
+
+  # Thunar
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs; [
+      xfce.thunar-archive-plugin
+      xfce.thunar-volman
+    ];
   };
 
   # Steam

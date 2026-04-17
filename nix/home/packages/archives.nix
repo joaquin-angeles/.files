@@ -2,12 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    # Thunar file manager
-    xfce.thunar
-    xfce.thunar-archive-plugin
-    xfce.thunar-volman
-
-    # Archive management
     xarchiver
     gnutar
     gzip
