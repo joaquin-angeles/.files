@@ -5,6 +5,7 @@
     ./programs/btop # System monitor
     ./programs/foot # Terminal emulator
     ./programs/firefox # Web browser
+    ./programs/lutris # Game launcher
     ./programs/neovim # Text editor
     ./programs/rmpc # Music player
     ./programs/rofi # Run launcher
