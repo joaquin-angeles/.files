@@ -7,7 +7,7 @@
   # Font configurations
   fonts.fontconfig.defaultFonts = {
     emoji = [ "Noto Color Emoji" ];
-    monospace = [ "GeistMono Nerd Font Mono" ];
+    monospace = [ "MonaspiceNe Nerd Font Mono" ];
     sansSerif = [ "Inter" ];
     serif = [ "Source Serif 4" ];
   };

@@ -20,7 +20,7 @@
     @define-color bright-cyan            #9cd9cc;
 
     * {
-      font-family: sans-serif, "CommitMono Nerd Font Propo";
+      font-family: sans-serif, "MonaspiceNe Nerd Font Propo";
       font-size: 12pt;
       font-feature-settings: "tnum";
     }

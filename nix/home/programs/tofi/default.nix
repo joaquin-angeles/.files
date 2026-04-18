@@ -22,7 +22,7 @@
       background-color = "#1d2021";
       min-input-width = 300;
       result-spacing = 25;
-      padding-top = 2;
+      padding-top = 3;
       padding-bottom = 0;
       padding-left = 0;
       padding-right = 2;

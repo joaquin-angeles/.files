@@ -19,7 +19,7 @@
     packages = with pkgs; [
       corefonts
       inter
-      nerd-fonts.geist-mono
+      nerd-fonts.monaspace
       noto-fonts-color-emoji
       noto-fonts-cjk-sans
       source-serif
