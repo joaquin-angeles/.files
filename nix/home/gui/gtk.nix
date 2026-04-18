@@ -16,12 +16,9 @@
       };
 
       extraCss = ''
-        headerbar.titlebar button.titlebutton {
-          all: unset;
-          opacity: 0;
-        }
-
         headerbar.titlebar.default-decoration {
+          display: none;
+          opacity: 0;
           background: transparent;
           padding: 0;
           margin: 0 0 -99px 0;
@@ -29,6 +26,12 @@
           min-height: 0;
           font-size: 0;
           box-shadow: none;
+        }
+
+        headerbar.titlebar button.titlebutton {
+          opacity: 0;
+          background: transparent;
+          pointer-events: none;
         }
 
         window.csd decoration {
