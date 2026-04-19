@@ -3,6 +3,7 @@
 {
   imports = [
     ./home/environment.nix
+    ./home/gui.nix
     ./home/mimetypes.nix
     ./home/packages.nix
     ./home/programs.nix
