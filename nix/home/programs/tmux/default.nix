@@ -45,7 +45,7 @@
       set -g status-style fg=white,bg=default
       set -g window-status-current-style fg=blue,bg=default
       set -g status-right ""
-      set -g status-justify centre
+      set -g status-justify left
     '';
   };
 }

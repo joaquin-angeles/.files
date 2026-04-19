@@ -21,13 +21,12 @@
 
     * {
       font-family: sans-serif, "MonaspiceNe Nerd Font Propo";
-      font-size: 12pt;
       font-feature-settings: "tnum";
     }
 
     window#waybar {
-      /* background-color: alpha(@bg, 0.85); */
       background-color: @bg;
+      font-size: 12pt;
       color: @fg;
     }
 
@@ -45,7 +44,6 @@
     }
 
     #custom-expand-icon {
-      font-family: "MonaspiceNe Nerd Font Propo";
       padding-right: 2pt;
     }
 
@@ -101,25 +99,25 @@
     }
 
     #layout {
-        background-color: alpha(darker(@bg), 0.8);
-        padding: 0 4px 0 4px;
-        margin-left: 6pt;
+      background-color: alpha(darker(@bg), 0.8);
+      padding: 0 4px 0 4px;
+      margin-left: 6pt;
     }
 
-    #tags button:nth-child(1),
-    #tags button:nth-child(2),
-    #tags button:nth-child(3),
-    #tags button:nth-child(4),
-    #tags button:nth-child(5),
-    #tags button:nth-child(6) {
+    #tags button {
       color: @bright-bg;
-      padding: 0 5pt;
-      min-width: 10pt;
-      margin: 1px;
-      /* background: darker(darker(@bright-bg));
-      border: 1px solid darker(@bright-bg); */
+      padding: 0 8pt;
+      min-width: 16pt;
       border-radius: 0;
       box-shadow: none;
+    }
+
+    #tags button:nth-child(1) {
+      font-size: 14pt;
+    }
+
+    #tags button:nth-child(6) {
+      font-size: 11.5pt;
     }
 
     #tags button:hover {
@@ -133,53 +131,43 @@
     }
 
     #tags button.focused {
-      color: @blue;
-      /* background-color: darker(darker(@blue));
-      border: 1px solid darker(@blue); */
+      padding-top: 2px;
+      /* background-color: alpha(darker(@bright-bg), 0.8); */
+      border-bottom: 2px solid @blue;
+      margin-bottom: 0;
+      transition: none;
     }
 
     #tags button:nth-child(7),
     #tags button:nth-child(8),
     #tags button:nth-child(9) {
       color: transparent;
+      transition: none;
       margin: 0 -99;
       padding: 0;
-      font-size: 0;
-      border: 0;
+    }
+
+    #tags button:nth-child(7).focused,
+    #tags button:nth-child(8).focused,
+    #tags button:nth-child(9).focused {
+      color: @fg;
+      padding: 0 7pt;
+      min-width: 14pt;
+      margin: 0;
+      padding-top: 2px;
+      border-bottom: 2px solid @blue;
       border-radius: 0;
-      min-width: 0;
-      transition: none;
-      animation: none;
       box-shadow: none;
-      text-shadow: none;
+      transition: none;
     }
 
     #tags button:nth-child(7).occupied,
     #tags button:nth-child(8).occupied,
     #tags button:nth-child(9).occupied {
       color: @fg;
-      font-size: 12pt;
-      padding: 0 5pt;
-      margin: 1px;
-      min-width: 10pt;
-      /* background-color: darker(darker(@bright-bg));
-      border: 1px solid alpha(@bright-bg, 0.8); */
-      border-radius: 0;
-      box-shadow: none;
-    }
-
-    #tags button:nth-child(7).focused,
-    #tags button:nth-child(8).focused,
-    #tags button:nth-child(9).focused {
-      color: @blue;
-      font-size: 12pt;
-      padding: 0 5pt;
-      margin: 1px;
-      min-width: 10pt;
-      /* background-color: darker(darker(@blue));
-      border: 1px solid alpha(darker(@blue), 0.8); */
-      border-radius: 0;
-      box-shadow: none;
+      padding: 0 7pt;
+      min-width: 14pt;
+      margin: 0;
     }
   '';
 }

@@ -6,6 +6,17 @@
       num-tags = 9;
       disable-scroll = true;
       all-outputs = true;
+      tag-labels = [
+        ""
+        ""
+        ""
+        ""
+        ""
+        ""
+        "7"
+        "8"
+        "9"
+      ];
     };
 
     network = {

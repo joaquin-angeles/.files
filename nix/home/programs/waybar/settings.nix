@@ -9,8 +9,8 @@
   programs.waybar.settings = {
     mainBar = {
       layer = "top";
-      position = "top";
-      height = 26;
+      position = "bottom";
+      height = 30;
       spacing = 0;
       # margin-top = 12;
       # margin-left = 12;

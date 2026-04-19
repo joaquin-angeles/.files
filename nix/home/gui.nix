@@ -1,10 +1,12 @@
 { config, pkgs, ... }:
+
 {
   imports = [
-    ./fonts.nix
-    ./icons.nix
-    ./gtk.nix
-    ./qt.nix
+    ./gui/discord.nix
+    ./gui/fonts.nix
+    ./gui/icons.nix
+    ./gui/gtk.nix
+    ./gui/qt.nix
   ];
 
   # Theme packages
@@ -30,12 +32,6 @@
     # XWayland cursor theming
     x11.enable = true;
     x11.defaultCursor = "Bibata-Modern-Ice";
-  };
-
-  # Vencord theme
-  home.file = {
-    # ".config/vesktop/themes/midnight-gruvbox.css".source "./discord.css";
-    ".var/app/dev.vencord.Vesktop/config/vesktop/themes/midnight-gruvbox.css".source = ./discord.css;
   };
 
   # Wallpapers

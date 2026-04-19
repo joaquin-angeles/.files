@@ -8,7 +8,7 @@
   programs.foot.settings = {
     # Font configuration
     main = {
-      font = "monospace:size=14";
+      font = "monospace:size=13";
       term = "xterm-256color";
     };
 
