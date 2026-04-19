@@ -106,18 +106,29 @@
 
     #tags button {
       color: @bright-bg;
-      padding: 0 8pt;
-      min-width: 16pt;
+      padding: 0 7pt;
+      margin: 1px;
+      margin-bottom: 0;
+      min-width: 14pt;
       border-radius: 0;
       box-shadow: none;
     }
 
     #tags button:nth-child(1) {
+      font-size: 12.5pt;
+    }
+
+    #tags button:nth-child(3),
+    #tags button:nth-child(4) {
+      font-size: 13pt;
+    }
+
+    #tags button:nth-child(5) {
       font-size: 14pt;
     }
 
     #tags button:nth-child(6) {
-      font-size: 11.5pt;
+      font-size: 12.5pt;
     }
 
     #tags button:hover {
