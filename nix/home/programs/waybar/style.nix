@@ -26,6 +26,8 @@
 
     window#waybar {
       background-color: @bg;
+      padding-bottom: 1px;
+      border-bottom: 1px solid darker(@bright-bg);
       font-size: 12pt;
       color: @fg;
     }
@@ -100,6 +102,7 @@
 
     #layout {
       background-color: alpha(darker(@bg), 0.8);
+      border-left: 1px solid darker(@bright-bg);
       padding: 0 4px 0 4px;
       margin-left: 6pt;
     }
@@ -124,11 +127,7 @@
     }
 
     #tags button:nth-child(5) {
-      font-size: 14pt;
-    }
-
-    #tags button:nth-child(6) {
-      font-size: 12.5pt;
+      font-size: 14.5pt;
     }
 
     #tags button:hover {
@@ -142,10 +141,11 @@
     }
 
     #tags button.focused {
-      padding-top: 2px;
-      /* background-color: alpha(darker(@bright-bg), 0.8); */
-      border-bottom: 2px solid @blue;
-      margin-bottom: 0;
+      color: @blue;
+      padding: 0 7pt;
+      min-width: 14pt;
+      border-radius: 0;
+      box-shadow: none;
       transition: none;
     }
 
@@ -161,12 +161,10 @@
     #tags button:nth-child(7).focused,
     #tags button:nth-child(8).focused,
     #tags button:nth-child(9).focused {
-      color: @fg;
+      color: @blue;
       padding: 0 7pt;
       min-width: 14pt;
       margin: 0;
-      padding-top: 2px;
-      border-bottom: 2px solid @blue;
       border-radius: 0;
       box-shadow: none;
       transition: none;

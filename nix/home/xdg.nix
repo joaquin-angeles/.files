@@ -3,8 +3,9 @@
 {
   xdg.configFile = {
     "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/vim"; # Text editor
-    "river".source = "${config.home.homeDirectory}/.files/river"; # Window manager
-    "rmpc".source = "${config.home.homeDirectory}/.files/rmpc"; # Music player
+    "river".source = "~/.files/river"; # Window manager
+    "rmpc".source = "~/.files/rmpc"; # Music player
+    "rofi".source = "~/.files/rofi"; # Launcher
 
     # Image viewer
     "swayimg/config".text = ''
