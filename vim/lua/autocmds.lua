@@ -37,9 +37,9 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.schedule(function()
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-	vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
-	vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none" })
-end)
+-- vim.schedule(function()
+-- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- 	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+-- 	vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
+-- 	vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none" })
+-- end)

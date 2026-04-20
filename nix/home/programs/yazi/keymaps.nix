@@ -30,18 +30,13 @@
         desc = "Scroll preview up";
       }
       {
-        on = [ "e" ];
-        run = ''shell '$EDITOR "$@"' --confirm'';
-        desc = "Edit in $EDITOR";
-      }
-      {
         on = [ "l" ];
         run = "plugin smart-enter";
         desc = "Enter dir or open file (smart)";
       }
       {
         on = [ "L" ];
-        run = ''shell 'if [ -f "$1" ]; then alacritty -e "$EDITOR" "$@" & disown; fi' --confirm'';
+        run = ''shell 'if [ -f "$1" ]; then foot -e "$EDITOR" "$@" & disown; fi' --confirm'';
         desc = "Open file in new terminal ($EDITOR)";
       }
     ];

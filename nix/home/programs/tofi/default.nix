@@ -14,7 +14,7 @@
       font-size = 12;
       prompt-text = ''" ❯ "'';
       text-color = "#d4be98";
-      selection-color = "#89b482";
+      selection-color = "#a9b665";
       placeholder-text = "Type to search…";
       placeholder-color = "#56595a";
       outline-width = 0;

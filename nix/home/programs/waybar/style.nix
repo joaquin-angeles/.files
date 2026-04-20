@@ -95,23 +95,38 @@
 
     #layout {
       background-color: alpha(darker(@bg), 0.8);
-      border-left: 1px solid darker(@bright-bg);
+      border-left: 1px solid #32332f;
       padding: 0 4px 0 4px;
       margin-left: 6pt;
     }
 
     #tags button {
       color: @bright-bg;
-      padding: 0 4pt;
-      margin: 0 6pt;
-      min-width: 8pt;
+      font-size: 12.5pt;
+      padding: 0 5pt;
+      margin: 0 5pt;
+      min-width: 10pt;
       border-radius: 0;
       transition: none;
     }
 
-    #tags button:nth-child(1),
-    #tags button:nth-child(4),
-    #tags button:nth-child(6) {
+    #tags button.focused {
+      padding-top: 4px;
+      border-bottom: 2px solid @cyan;
+      margin-bottom: 2px;
+    }
+
+    #tags button:nth-child(2) {
+      margin-top: -1px;
+      padding-top: 1px;
+      font-size: 15pt;
+    }
+
+    #tags button:nth-child(2).focused {
+      padding-top: 4px;
+    }
+
+    #tags button:nth-child(4) {
       font-size: 14pt;
     }
 
@@ -119,19 +134,16 @@
       color: @cyan;
       background: transparent;
     }
+
     #tags button.occupied {
       color: @fg;
     }
+
     #tags button.urgent {
       color: @red;
     }
 
-    #tags button.focused {
-      padding-top: 4px;
-      border-bottom: 2px solid alpha(@cyan, 0.8);
-      margin-bottom: 2px;
-    }
-
+    #tags button:nth-child(6),
     #tags button:nth-child(7),
     #tags button:nth-child(8),
     #tags button:nth-child(9) {
@@ -141,9 +153,11 @@
       padding: 0;
     }
 
+    #tags button:nth-child(6).focused,
     #tags button:nth-child(7).focused,
     #tags button:nth-child(8).focused,
     #tags button:nth-child(9).focused,
+    #tags button:nth-child(6).occupied,
     #tags button:nth-child(7).occupied,
     #tags button:nth-child(8).occupied,
     #tags button:nth-child(9).occupied {
@@ -155,6 +169,7 @@
       transition: none;
     }
 
+    #tags button:nth-child(6).focused,
     #tags button:nth-child(7).focused,
     #tags button:nth-child(8).focused,
     #tags button:nth-child(9).focused {

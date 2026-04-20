@@ -3,9 +3,13 @@ export XDG_CURRENT_DESKTOP=river
 
 # Portal fixes
 dbus-update-activation-environment --systemd \
-    XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY
+    XDG_CURRENT_DESKTOP \
+    XDG_SESSION_TYPE \
+    WAYLAND_DISPLAY
 systemctl --user import-environment \
-    XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY
+    XDG_CURRENT_DESKTOP \
+    XDG_SESSION_TYPE \
+    WAYLAND_DISPLAY
 
 # Window rules
 riverctl rule-add ssd
@@ -15,7 +19,7 @@ riverctl default-layout wideriver
 riverctl spawn 'wideriver \
     --border-width 2 \
     --border-color-focused 0x879251cc \
-    --border-color-unfocused 0x56595a80 \
+    --border-color-unfocused 0x56595acc \
     --layout left \
     --stack even \
     --ratio-master 0.55 \
@@ -42,12 +46,12 @@ riverctl spawn 'cliphist.sh'
 
 # Idling system
 riverctl spawn 'swayidle -w \
-    timeout 300 "gtklock --daemonize" \
-    timeout 600 "wlopm --off \"*\"" \
-    resume "wlopm --on \"*\"" \
-    timeout 900 "systemctl suspend" \
-    before-sleep "gtklock --daemonize" \
-    after-resume "wlopm --on \"*\""'
+timeout 300 "gtklock --daemonize" \
+timeout 600 "wlopm --off \"*\"" \
+resume "wlopm --on \"*\"" \
+timeout 900 "systemctl suspend" \
+before-sleep "gtklock --daemonize" \
+after-resume "wlopm --on \"*\""'
 
 mod="Super"
 

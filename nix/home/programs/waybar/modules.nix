@@ -7,12 +7,12 @@
       disable-scroll = true;
       all-outputs = true;
       tag-labels = [
+        ""
         ""
-        ""
-        ""
+        ""
         "󰝚"
         ""
-        "󰊫"
+        "6"
         "7"
         "8"
         "9"
@@ -101,9 +101,7 @@
       format-full = "󱟢  {capacity}%";
       format-charging = "󰂄  {capacity}%";
       format-warning = "󰂃  {capacity}%";
-      tooltip-format = "Status: Discharging\nBattery: {capacity}%";
-      tooltip-format-charging = "Status: Charging\nBattery: {capacity}%";
-      tooltip-format-full = "Status: Fully charged\nBattery: {capacity}%";
+      tooltop = false;
       states = {
         good = 80;
         low = 30;

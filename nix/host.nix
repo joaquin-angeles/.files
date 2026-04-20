@@ -40,10 +40,6 @@ in
         "wlr"
         "gtk"
       ];
-      hyprland = compositorPortal [
-        "hyprland"
-        "gtk"
-      ];
     };
   };
 
@@ -55,9 +51,15 @@ in
     ];
   };
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
   system.stateVersion = "25.05";
 
-  time.timeZone = "Asia/Manila";
+  time.timeZone = "Hongkong";
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocales = [ "en_GB.UTF-8/UTF-8" ];
@@ -83,6 +85,7 @@ in
     ignoreShellProgramCheck = true;
   };
 
+  # Disable Home Manager service
   systemd.services."home-manager-joaquin".wantedBy = lib.mkForce [ ];
   system.activationScripts.home-manager-joaquin = {
     text = ''

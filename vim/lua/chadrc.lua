@@ -13,11 +13,11 @@ M.base46 = {
 	},
 }
 
-M.ui = {
-	statusline = {
-		theme = "minimal",
-		separator_style = "round",
-	},
-}
+-- M.ui = {
+-- 	statusline = {
+-- 		theme = "minimal",
+-- 		separator_style = "round",
+-- 	},
+-- }
 
 return M
