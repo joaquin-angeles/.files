@@ -98,7 +98,7 @@ riverctl map normal "$mod" P spawn 'tofi-drun'
 riverctl map normal "$mod" W spawn 'sh -c "librewolf || flatpak run io.gitlab.librewolf-community"'
 riverctl map normal "$mod" E spawn 'thunar'
 riverctl map normal "$mod" Period spawn 'rofi -show emoji'
-riverctl map normal "$mod" V spawn 'sh -c "cliphist list | rofi -dmenu -p " Clipboard" | cliphist decode | wl-copy"'
+riverctl map normal "$mod" V spawn 'sh -c "cliphist list | rofi -dmenu -p ' Clipboard' | cliphist decode | wl-copy"'
 
 # Screenshots
 riverctl map normal "$mod+Shift" S spawn 'grim - | wl-copy && notify-send "Screenshot saved" "Image copied to clipboard"'

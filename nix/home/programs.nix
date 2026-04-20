@@ -8,7 +8,7 @@
     # ./programs/lutris # Game launcher
     ./programs/neovim # Text editor
     ./programs/rmpc # Music player
-    # ./programs/rofi # Run launcher
+    ./programs/rofi # Run launcher
     ./programs/tmux # Terminal multiplexer
     ./programs/tofi # App launcher
     ./programs/yazi # Terminal file manager
