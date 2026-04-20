@@ -8,13 +8,13 @@
       anchor = "top";
       width = "100%";
       history = false;
-      height = 29;
+      height = 31;
       horizontal = true;
       font = "monospace";
       font-size = 12;
       prompt-text = ''" ❯ "'';
       text-color = "#d4be98";
-      selection-color = "#7daea3";
+      selection-color = "#89b482";
       placeholder-text = "Type to search…";
       placeholder-color = "#56595a";
       outline-width = 0;

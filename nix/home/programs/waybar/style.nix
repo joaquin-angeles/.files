@@ -3,6 +3,7 @@
 {
   programs.waybar.style = ''
     @define-color bg                     #1d2021;
+    @define-color bright-bg              #56595a;
     @define-color fg                     #d4be98;
     @define-color red                    #ea6962;
     @define-color green                  #a9b665;
@@ -10,14 +11,6 @@
     @define-color blue                   #7daea3;
     @define-color magenta                #d3869b;
     @define-color cyan                   #89b482;
-    @define-color bright-bg              #56595a;
-    @define-color bright-fg              #fff0be;
-    @define-color bright-red             #ff847b;
-    @define-color bright-green           #d3e17e;
-    @define-color bright-yellow          #ffcf6d;
-    @define-color bright-blue            #acdfff;
-    @define-color bright-magenta         #ffacc2;
-    @define-color bright-cyan            #9cd9cc;
 
     * {
       font-family: sans-serif, "MonaspiceNe Nerd Font Propo";
@@ -27,7 +20,7 @@
     window#waybar {
       background-color: @bg;
       padding-bottom: 1px;
-      border-bottom: 1px solid darker(@bright-bg);
+      border-bottom: 1px solid #32332f;
       font-size: 12pt;
       color: @fg;
     }
@@ -123,7 +116,8 @@
     }
 
     #tags button:hover {
-      color: @blue;
+      color: @cyan;
+      background: transparent;
     }
     #tags button.occupied {
       color: @fg;
@@ -133,8 +127,8 @@
     }
 
     #tags button.focused {
-      padding-top: 3px;
-      border-bottom: 2px solid alpha(@blue, 0.8);
+      padding-top: 4px;
+      border-bottom: 2px solid alpha(@cyan, 0.8);
       margin-bottom: 2px;
     }
 
@@ -164,7 +158,7 @@
     #tags button:nth-child(7).focused,
     #tags button:nth-child(8).focused,
     #tags button:nth-child(9).focused {
-      padding-top: 3px;
+      padding-top: 4px;
       margin-bottom: 2px;
     }
   '';
