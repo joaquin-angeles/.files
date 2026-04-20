@@ -9,7 +9,7 @@
   programs.waybar.settings = {
     mainBar = {
       layer = "top";
-      position = "top";
+      position = "bottom";
       height = 30;
       spacing = 0;
       # margin-top = 12;

@@ -27,7 +27,7 @@
     window#waybar {
       background-color: @bg;
       padding-bottom: 1px;
-      border-bottom: 1px solid darker(@bright-bg);
+      border-top: 1px solid darker(@bright-bg);
       font-size: 12pt;
       color: @fg;
     }
@@ -118,16 +118,15 @@
     }
 
     #tags button:nth-child(1) {
-      font-size: 12.5pt;
+      font-size: 14pt;
     }
 
-    #tags button:nth-child(3),
     #tags button:nth-child(4) {
-      font-size: 13pt;
+      font-size: 13.5pt;
     }
 
-    #tags button:nth-child(5) {
-      font-size: 14.5pt;
+    #tags button:nth-child(6) {
+      font-size: 11pt;
     }
 
     #tags button:hover {
@@ -141,8 +140,11 @@
     }
 
     #tags button.focused {
-      color: @blue;
-      padding: 0 7pt;
+      background-color: alpha(darker(@bright-bg), 0.5);
+      border-bottom: 2px solid alpha(@blue, 0.8);
+      padding-top: 2px;
+      padding-left: 7pt;
+      padding-right: 7pt;
       min-width: 14pt;
       border-radius: 0;
       box-shadow: none;
@@ -154,17 +156,20 @@
     #tags button:nth-child(9) {
       color: transparent;
       transition: none;
-      margin: 0 -99;
+      margin: 0 -99px;
       padding: 0;
     }
 
     #tags button:nth-child(7).focused,
     #tags button:nth-child(8).focused,
     #tags button:nth-child(9).focused {
-      color: @blue;
-      padding: 0 7pt;
+      color: @fg;
+      background-color: alpha(darker(@bright-bg), 0.5);
+      border-bottom: 2px solid alpha(@blue, 0.8);
+      padding-top: 2px;
+      padding-left: 7pt;
+      padding-right: 7pt;
       min-width: 14pt;
-      margin: 0;
       border-radius: 0;
       box-shadow: none;
       transition: none;
@@ -176,7 +181,6 @@
       color: @fg;
       padding: 0 7pt;
       min-width: 14pt;
-      margin: 0;
     }
   '';
 }

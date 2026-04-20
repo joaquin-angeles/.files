@@ -7,12 +7,12 @@
       disable-scroll = true;
       all-outputs = true;
       tag-labels = [
-        "󰇧"
+        ""
         ""
-        "󱆖"
+        ""
         "󰝚"
-        "󰊴"
-        "󰈔"
+        ""
+        ""
         "7"
         "8"
         "9"

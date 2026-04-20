@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       drun-launch = true;
-      anchor = "top";
+      anchor = "bottom";
       width = "100%";
       history = false;
       height = 29;
@@ -22,7 +22,7 @@
       background-color = "#1d2021";
       min-input-width = 300;
       result-spacing = 25;
-      padding-top = 4;
+      padding-top = 5;
       padding-bottom = 0;
       padding-left = 0;
       padding-right = 2;
