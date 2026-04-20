@@ -27,7 +27,7 @@
     window#waybar {
       background-color: @bg;
       padding-bottom: 1px;
-      border-top: 1px solid darker(@bright-bg);
+      border-bottom: 1px solid darker(@bright-bg);
       font-size: 12pt;
       color: @fg;
     }
@@ -109,24 +109,17 @@
 
     #tags button {
       color: @bright-bg;
-      padding: 0 7pt;
-      margin: 1px;
-      margin-bottom: 0;
-      min-width: 14pt;
+      padding: 0 4pt;
+      margin: 0 6pt;
+      min-width: 8pt;
       border-radius: 0;
-      box-shadow: none;
+      transition: none;
     }
 
-    #tags button:nth-child(1) {
-      font-size: 14pt;
-    }
-
-    #tags button:nth-child(4) {
-      font-size: 13.5pt;
-    }
-
+    #tags button:nth-child(1),
+    #tags button:nth-child(4),
     #tags button:nth-child(6) {
-      font-size: 11pt;
+      font-size: 14pt;
     }
 
     #tags button:hover {
@@ -140,15 +133,9 @@
     }
 
     #tags button.focused {
-      background-color: alpha(darker(@bright-bg), 0.5);
+      padding-top: 3px;
       border-bottom: 2px solid alpha(@blue, 0.8);
-      padding-top: 2px;
-      padding-left: 7pt;
-      padding-right: 7pt;
-      min-width: 14pt;
-      border-radius: 0;
-      box-shadow: none;
-      transition: none;
+      margin-bottom: 2px;
     }
 
     #tags button:nth-child(7),
@@ -162,25 +149,23 @@
 
     #tags button:nth-child(7).focused,
     #tags button:nth-child(8).focused,
-    #tags button:nth-child(9).focused {
-      color: @fg;
-      background-color: alpha(darker(@bright-bg), 0.5);
-      border-bottom: 2px solid alpha(@blue, 0.8);
-      padding-top: 2px;
-      padding-left: 7pt;
-      padding-right: 7pt;
-      min-width: 14pt;
-      border-radius: 0;
-      box-shadow: none;
-      transition: none;
-    }
-
+    #tags button:nth-child(9).focused,
     #tags button:nth-child(7).occupied,
     #tags button:nth-child(8).occupied,
     #tags button:nth-child(9).occupied {
       color: @fg;
-      padding: 0 7pt;
-      min-width: 14pt;
+      padding: 0 4pt;
+      margin: 0 6pt;
+      min-width: 8pt;
+      border-radius: 0;
+      transition: none;
+    }
+
+    #tags button:nth-child(7).focused,
+    #tags button:nth-child(8).focused,
+    #tags button:nth-child(9).focused {
+      padding-top: 3px;
+      margin-bottom: 2px;
     }
   '';
 }

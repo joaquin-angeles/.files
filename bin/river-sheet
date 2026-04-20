@@ -3,11 +3,11 @@
 cat <<EOF
 SUPER + Return        → Open terminal (foot)
 SUPER + P             → App launcher (tofi)
-SUPER + B             → Browser (LibreWolf)
+SUPER + W             → Browser (LibreWolf)
 SUPER + E             → File manager (PCManFM)
 SUPER + .             → Emoji picker (rofi)
 SUPER + V             → Clipboard manager (rofi)
-SUPER + W             → Toggle Waybar
+SUPER + B             → Toggle Waybar
 SUPER + S             → Screenshot region to clipboard
 SUPER + Shift + S     → Screenshot output to clipboard
 SUPER + Shift + Q     → Power menu

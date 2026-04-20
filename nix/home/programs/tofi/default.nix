@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       drun-launch = true;
-      anchor = "bottom";
+      anchor = "top";
       width = "100%";
       history = false;
       height = 29;

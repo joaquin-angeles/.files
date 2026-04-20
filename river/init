@@ -110,7 +110,7 @@ riverctl map normal "$mod+Shift" N spawn 'sh -c "pgrep sunsetr >/dev/null && pki
 
 # Misc
 riverctl map normal "$mod+Shift" Q spawn 'tofi-power-menu'
-riverctl map normal "$mod" F1 spawn 'sh -c "river-sheet | rofi -dmenu -p keybinds"'
+riverctl map normal "$mod" F1 spawn 'sh -c "river-sheet | rofi -dmenu -p '"'"' 󱊫 Keybinds '"'"'"'
 
 # Volume & brightness
 riverctl map normal "$mod" Left spawn 'mako-osd brightness_down'
