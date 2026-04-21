@@ -6,7 +6,7 @@ options="󰐥 Shutdown
 󰤄 Suspend
 󰍃 Logout"
 
-choice="$(printf '%s\n' "$options" | tofi )"
+choice="$(printf '%s\n' "$options" | rofi -dmenu -p "power" )"
 
 case "$choice" in
     "󰐥 Shutdown")

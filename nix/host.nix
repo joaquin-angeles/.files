@@ -4,15 +4,6 @@
   lib,
   ...
 }:
-let
-  portalFileChooser = {
-    "org.freedesktop.portal.FileChooser" = [ "gtk" ];
-  };
-  portalSettings = {
-    "org.freedesktop.impl.portal.Settings" = [ "gtk" ];
-  };
-  compositorPortal = backends: { default = backends; } // portalFileChooser // portalSettings;
-in
 {
   imports = [
     ./host/hardware.nix
@@ -32,7 +23,7 @@ in
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config = {
       common.default = [ "gtk" ];
-      river = compositorPortal [
+      river.default = [
         "wlr"
         "gtk"
       ];

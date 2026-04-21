@@ -115,7 +115,7 @@
     }
 
     #tags button:nth-child(1),
-    #tags button:nth-child(4) {
+    #tags button:nth-child(3) {
       margin-top: -1px;
       padding-top: 1px;
     }
@@ -124,7 +124,7 @@
     #tags button:nth-child(1) {
       font-size: 15pt;
     }
-    #tags button:nth-child(4) {
+    #tags button:nth-child(3) {
       font-size: 14pt;
     }
 
@@ -132,7 +132,7 @@
     #tags button:nth-child(1).focused {
       padding-top: 4px;
     }
-    #tags button:nth-child(4).focused {
+    #tags button:nth-child(3).focused {
       padding-top: 5px;
     }
 
