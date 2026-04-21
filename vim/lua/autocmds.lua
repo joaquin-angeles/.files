@@ -1,8 +1,11 @@
 require("nvchad.autocmds")
 
--- Absolute line numbers on Insert mode
+-- Variables
 local number_group = vim.api.nvim_create_augroup("NumberToggle", { clear = true })
+local ts = vim.treesitter
+local aug = vim.api.nvim_create_augroup("treesitter_attach", { clear = true })
 
+-- Absolute line numbers on Insert mode
 vim.api.nvim_create_autocmd("InsertEnter", {
 	group = number_group,
 	callback = function()
@@ -19,8 +22,6 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 })
 
 -- Treesitter fixes
-local ts = vim.treesitter
-local aug = vim.api.nvim_create_augroup("treesitter_attach", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	group = aug,
 	callback = function(args)
@@ -36,10 +37,3 @@ vim.api.nvim_create_autocmd("FileType", {
 		pcall(ts.start, args.buf, lang)
 	end,
 })
-
--- vim.schedule(function()
--- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- 	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
--- 	vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
--- 	vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none" })
--- end)
