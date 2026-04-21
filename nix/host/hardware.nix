@@ -4,7 +4,6 @@
     ./hardware/laptop.nix
     ./hardware/nvidia.nix
   ];
-
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -22,7 +21,6 @@
       };
     };
   };
-
   hardware = {
     bluetooth = {
       enable = true;
@@ -33,9 +31,7 @@
       enable32Bit = true;
     };
   };
-
   services.libinput.enable = true;
-
   zramSwap = {
     enable = true;
     algorithm = "zstd";

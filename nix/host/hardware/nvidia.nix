@@ -1,18 +1,13 @@
 { config, ... }:
 {
-  boot.blacklistedKernelModules = [ "nouveau" ]; # ❌ nouveau
-
-  services.xserver.videoDrivers = [ "nvidia" ]; # Load Nvidia drivers for WL and X11
-
-  # NVidia configuration
+  boot.blacklistedKernelModules = [ "nouveau" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.finegrained = true;
     open = false;
     package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
-
-  # Offloading
   hardware.nvidia.prime = {
     offload = {
       enable = true;

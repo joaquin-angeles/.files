@@ -1,12 +1,11 @@
 { pkgs, ... }:
-
 {
   environment.systemPackages = with pkgs; [
     autoconf
     automake
     binutils
     bison
-    elfutils # debugedit
+    elfutils
     fakeroot
     flex
     gcc

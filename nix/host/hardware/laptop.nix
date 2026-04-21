@@ -1,7 +1,6 @@
 { ... }:
 
 {
-  # Auto CPU frequency
   services.auto-cpufreq = {
     enable = true;
     settings = {
@@ -15,7 +14,6 @@
       };
     };
   };
-
-  services.power-profiles-daemon.enable = false; # Disable PPD
-  services.upower.enable = true; # Upower
+  services.power-profiles-daemon.enable = false;
+  services.upower.enable = true;
 }

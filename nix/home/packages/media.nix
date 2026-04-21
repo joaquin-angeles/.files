@@ -2,10 +2,11 @@
 
 {
   home.packages = with pkgs; [
-    unstable.bluetui
     mpv
+    obs-studio
     playerctl
     swayimg
+    unstable.bluetui
     wiremix
   ];
 }

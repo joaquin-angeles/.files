@@ -1,5 +1,4 @@
 { ... }:
-
 {
   imports = [
     ./services/f2b.nix
@@ -7,7 +6,6 @@
     ./services/nftables.nix
     ./services/polkit.nix
   ];
-
   services = {
     dbus.enable = true;
     flatpak.enable = true;

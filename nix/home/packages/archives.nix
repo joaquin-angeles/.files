@@ -2,7 +2,11 @@
 
 {
   home.packages = with pkgs; [
-    file-roller
+    # File manager
+    pcmanfm
+
+    # Archive manager
+    xarchiver
     gnutar
     gzip
     xz

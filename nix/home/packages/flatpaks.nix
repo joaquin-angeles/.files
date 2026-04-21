@@ -2,7 +2,6 @@
 
 {
   services.flatpak.packages = [
-    "com.obsproject.Studio" # Screen recording software
     "com.usebottles.bottles" # Windows applications
     "dev.vencord.Vesktop" # Discord
     "org.chromium.Chromium" # Progressive web apps

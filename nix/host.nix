@@ -4,7 +4,6 @@
   lib,
   ...
 }:
-
 let
   portalFileChooser = {
     "org.freedesktop.portal.FileChooser" = [ "gtk" ];
@@ -21,14 +20,11 @@ in
     ./host/programs.nix
     ./host/services.nix
   ];
-
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
   };
-
   services.displayManager.ly.enable = true;
-
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
@@ -42,7 +38,6 @@ in
       ];
     };
   };
-
   nix.settings = {
     auto-optimise-store = true;
     experimental-features = [
@@ -50,15 +45,12 @@ in
       "flakes"
     ];
   };
-
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
-
   system.stateVersion = "25.05";
-
   time.timeZone = "Hongkong";
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -69,12 +61,10 @@ in
     PollIntervalMinSec=32
     PollIntervalMaxSec=2048
   '';
-
   security = {
     sudo.enable = false;
     sudo-rs.enable = true;
   };
-
   users.users.joaquin = {
     extraGroups = [
       "wheel"
@@ -84,8 +74,6 @@ in
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
   };
-
-  # Disable Home Manager service
   systemd.services."home-manager-joaquin".wantedBy = lib.mkForce [ ];
   system.activationScripts.home-manager-joaquin = {
     text = ''
@@ -93,7 +81,5 @@ in
     '';
     deps = [ ];
   };
-
-  # Lockscreen support
   security.pam.services.gtklock = { };
 }
