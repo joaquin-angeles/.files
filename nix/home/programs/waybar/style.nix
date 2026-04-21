@@ -12,12 +12,9 @@
     @define-color magenta                #d3869b;
     @define-color cyan                   #89b482;
 
-    * {
+    window#waybar {
       font-family: sans-serif, "MonaspiceNe Nerd Font Propo";
       font-feature-settings: "tnum";
-    }
-
-    window#waybar {
       background-color: @bg;
       padding-bottom: 1px;
       border-bottom: 1px solid #32332f;
@@ -101,6 +98,7 @@
     }
 
     #tags button {
+      font-family: "MonaspiceNe Nerd Font Propo";
       color: @bright-bg;
       font-size: 12.5pt;
       padding: 0 5pt;
@@ -116,18 +114,26 @@
       margin-bottom: 2px;
     }
 
-    #tags button:nth-child(2) {
+    #tags button:nth-child(1),
+    #tags button:nth-child(4) {
       margin-top: -1px;
       padding-top: 1px;
+    }
+
+    /* Per-tag size adjustments */
+    #tags button:nth-child(1) {
       font-size: 15pt;
     }
-
-    #tags button:nth-child(2).focused {
-      padding-top: 4px;
-    }
-
     #tags button:nth-child(4) {
       font-size: 14pt;
+    }
+
+    /* Per-tag padding fixes */
+    #tags button:nth-child(1).focused {
+      padding-top: 4px;
+    }
+    #tags button:nth-child(4).focused {
+      padding-top: 5px;
     }
 
     #tags button:hover {

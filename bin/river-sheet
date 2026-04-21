@@ -4,7 +4,7 @@ cat <<EOF
 SUPER + Return        → Open terminal (foot)
 SUPER + P             → App launcher (tofi)
 SUPER + W             → Browser (LibreWolf)
-SUPER + E             → File manager (PCManFM)
+SUPER + E             → File manager (Thunar)
 SUPER + .             → Emoji picker (rofi)
 SUPER + V             → Clipboard manager (rofi)
 SUPER + B             → Toggle Waybar

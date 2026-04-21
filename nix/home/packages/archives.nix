@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    xarchiver
+    file-roller
     gnutar
     gzip
     xz

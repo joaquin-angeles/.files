@@ -11,6 +11,9 @@ systemctl --user import-environment \
     XDG_SESSION_TYPE \
     WAYLAND_DISPLAY
 
+# Status bar
+riverctl spawn 'waybar'
+
 # Window rules
 riverctl rule-add ssd
 
@@ -38,7 +41,6 @@ riverctl hide-cursor when-typing enabled
 riverctl spawn 'river-input'
 
 # Startup
-riverctl spawn 'waybar'
 riverctl spawn 'wbg ~/Pictures/Wallpapers/trees.png'
 riverctl spawn 'wlr-power'
 riverctl spawn 'mako'
@@ -102,7 +104,7 @@ riverctl map normal "$mod" P spawn 'tofi-drun'
 riverctl map normal "$mod" W spawn 'sh -c "librewolf || flatpak run io.gitlab.librewolf-community"'
 riverctl map normal "$mod" E spawn 'thunar'
 riverctl map normal "$mod" Period spawn 'rofi -show emoji'
-riverctl map normal "$mod" V spawn 'sh -c "cliphist list | rofi -dmenu -p '"'"'  Clipboard '"'"' | cliphist decode | wl-copy"'
+riverctl map normal "$mod" V spawn 'sh -c "cliphist list | rofi -dmenu -p "clipboard" | cliphist decode | wl-copy"'
 
 # Screenshots
 riverctl map normal "$mod+Shift" S spawn 'grim - | wl-copy && notify-send "Screenshot saved" "Image copied to clipboard"'
