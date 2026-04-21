@@ -9,10 +9,10 @@
     wbg
     wlr-randr
     mako
+    gammastep
     gtklock
     wayfreeze
     wideriver
     wlopm
-    sunsetr
   ];
 }
