@@ -9,7 +9,7 @@ riverctl spawn 'wideriver \
     --layout left \
     --stack even \
     --ratio-master 0.55 \
-    --inner-gaps 10 \
-    --outer-gaps 10 \
+    --inner-gaps 12 \
+    --outer-gaps 12 \
     --smart-gaps \
     --border-width-smart-gaps 0'
