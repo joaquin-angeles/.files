@@ -3,11 +3,11 @@
 {
   imports = [
     ./home/environment.nix
-    ./home/gui.nix
     ./home/mimetypes.nix
     ./home/packages.nix
     ./home/programs.nix
     ./home/services.nix
+    ./home/themes.nix
     ./home/xdg.nix
   ];
 
