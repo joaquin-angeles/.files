@@ -1,5 +1,7 @@
 #!/usr/bin/env dash
 
+mod="Super"
+
 i=1
 while [ "$i" -le 9 ]; do
     tags=$(( 1 << (i - 1) ))
