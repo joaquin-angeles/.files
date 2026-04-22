@@ -1,96 +1,65 @@
 #!/usr/bin/env dash
 # wlr-power : power-saver for wlroots compositors
-
 set -eu
 
-# Self-daemonise
-[ -n "${_PWR:-}" ] || { _PWR=1 setsid "$0" "$@" </dev/null >>/tmp/power-saver.log 2>&1 & exit 0; }
+[ -n "${_PWR:-}" ] || { _PWR=1 setsid "$0" "$@" </dev/null >>/tmp/wlr-power.log 2>&1 & exit 0; }
 
-# Logging
-LOG=/tmp/power-saver.log
-log()  { printf '[%s] %s\n' "$(date '+%F %T')" "$*" >> "$LOG"; }
-warn() { printf '[%s] WARN: %s\n' "$(date '+%F %T')" "$*" >> "$LOG"; }
-die()  { printf '[%s] FATAL: %s\n' "$(date '+%F %T')" "$*" >> "$LOG"; exit 1; }
+LOG=/tmp/wlr-power.log
+log()  { printf '[%s] %s\n'       "$(date '+%F %T')" "$*" >> "$LOG"; }
+warn() { printf '[%s] WARN  %s\n' "$(date '+%F %T')" "$*" >> "$LOG"; }
+die()  { printf '[%s] FATAL %s\n' "$(date '+%F %T')" "$*" >> "$LOG"; exit 1; }
 
-# Sanity checks
-[ -n "${WAYLAND_DISPLAY:-}" ] || die "No Wayland display – exiting"
-
-command -v upower >/dev/null || die "upower not found"
-command -v wlr-randr >/dev/null || die "wlr-randr not found"
+[ -n "${WAYLAND_DISPLAY:-}" ]  || die "No Wayland display"
+command -v upower        >/dev/null || die "upower not found"
+command -v wlr-randr     >/dev/null || die "wlr-randr not found"
 command -v brightnessctl >/dev/null || warn "brightnessctl not found – kbd backlight disabled"
 
-BAT=$(upower -e 2>/dev/null | grep -m1 'BAT') || die "No battery device found"
+BAT=$(upower -e 2>/dev/null | grep -m1 'BAT')        || die "No battery device found"
+MON=$(wlr-randr 2>/dev/null | awk 'NR==1{ print $1 }') || die "wlr-randr returned no output"
+KBD=$(command -v brightnessctl >/dev/null \
+    && brightnessctl --list 2>/dev/null | awk -F"'" '/kbd_backlight/{ print $2; exit }' \
+    || true)
 
-KBD=""
-command -v brightnessctl >/dev/null && \
-KBD=$(brightnessctl --list 2>/dev/null | awk -F"'" '/kbd_backlight/{print $2; exit}')
+log "Started  bat=$BAT  mon=$MON  kbd=${KBD:-none}"
 
-MON=$(wlr-randr 2>/dev/null | awk 'NR==1{print $1}') || die "wlr-randr returned no output"
-
-log "Started BAT=$BAT MON=$MON KBD=${KBD:-none}"
-
-# Mode selection
-# pick_mode max -> highest resolution at highest refresh rate
-# pick_mode 60 -> highest resolution at ~60 Hz (within +-1 Hz)
 pick_mode() {
     wlr-randr --output "$MON" 2>/dev/null | awk -v want="$1" '
         /Modes:/,0 {
-            if (match($0, /([0-9]+)x([0-9]+) px, ([0-9.]+) Hz/, m)) {
-                px = m[1] * m[2]
-                hz = m[3] + 0
-                if (want == "max") {
-                    print px, hz, m[1]"x"m[2]"@"hz
-                } else {
-                    target = want + 0
-                    if (hz >= target - 1 && hz <= target + 1)
-                        print px, hz, m[1]"x"m[2]"@"hz
-                }
+            if (!match($0, /([0-9]+)x([0-9]+) px, ([0-9.]+) Hz/, m)) next
+            px = m[1] * m[2]; hz = m[3] + 0; c = m[1] "x" m[2] "@" hz
+            if (want == "max") {
+                if (px > bpx || (px == bpx && hz > bhz)) { bpx=px; bhz=hz; best=c }
+            } else {
+                t = want + 0
+                if (hz >= t-1 && hz <= t+1 && (px > bpx || (px == bpx && hz > bhz)))
+                    { bpx=px; bhz=hz; best=c }
             }
-        }' | sort -k1,1nr -k2,2nr | awk 'NR==1{print $3}'
+        }
+        END { if (best != "") print best }
+'
 }
 
-# State application
+get_state() { upower -i "$BAT" 2>/dev/null | awk '/state:/{ print $2 }'; }
+
 apply() {
-    local new_state="$1"
-    log "Applying state: $new_state"
-
-    case "$new_state" in
-        discharging)
-            [ -n "$KBD" ] && brightnessctl -d "$KBD" set 0 -q 2>/dev/null || true
-            mode=$(pick_mode 60)
-            ;;
-        charging|fully-charged|*)
-            [ -n "$KBD" ] && brightnessctl -d "$KBD" set 100% -q 2>/dev/null || true
-            mode=$(pick_mode max)
-            ;;
+    log "State → $1"
+    case "$1" in
+        discharging) kbd_val=0;    mode=$(pick_mode 60)  ;;
+        *)           kbd_val=100%; mode=$(pick_mode max) ;;
     esac
-
-    if [ -z "$mode" ]; then
-        warn "No suitable mode found for state '$new_state' – keeping current"
-        return
-    fi
-
-    log "Setting mode: $mode"
-    if ! wlr-randr --output "$MON" --mode "$mode" --scale 1; then
-        warn "wlr-randr failed to set mode '$mode'"
-    fi
-}
-
-# Main
-get_state() {
-    upower -i "$BAT" 2>/dev/null | awk '/state:/{print $2}'
+    [ -n "$KBD" ] && brightnessctl -d "$KBD" set "$kbd_val" -q 2>/dev/null || true
+    [ -n "$mode" ] || { warn "No mode for '$1' – keeping current"; return; }
+    log "Mode   → $mode"
+    wlr-randr --output "$MON" --mode "$mode" --scale 1 2>/dev/null \
+        || warn "wlr-randr failed to set '$mode'"
 }
 
 state=$(get_state)
 [ -n "$state" ] || die "Could not read battery state"
 apply "$state"
 
-# State monitor
-upower --monitor 2>/dev/null | grep --line-buffered "$BAT" | while IFS= read -r _; do
-    new_state=$(get_state)
-    [ -z "$new_state" ] && continue
-    if [ "$new_state" != "$state" ]; then
-        state="$new_state"
-        apply "$state"
-    fi
+upower --monitor 2>/dev/null | while IFS= read -r _; do
+    new=$(get_state)
+    [ -z "$new" ] || [ "$new" = "$state" ] && continue
+    state=$new; apply "$state"
 done

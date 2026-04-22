@@ -7,8 +7,8 @@
       disable-scroll = true;
       all-outputs = true;
       tag-labels = [
-        ""
         ""
+        "󰈹"
         ""
         ""
         ""

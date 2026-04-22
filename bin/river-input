@@ -1,5 +1,6 @@
 #!/usr/bin/env dash
 
+debounce_pid=
 LOG=/tmp/input-config.log
 log() { printf '[%s] %s\n' "$(date '+%F %T')" "$*" | tee -a "$LOG" >&2; }
 
@@ -19,6 +20,18 @@ apply() {
 
 log "Started" && apply
 
-udevadm monitor --udev --subsystem-match=usb 2>/dev/null |
-grep --line-buffered "add\|remove" |
-while IFS= read -r _; do sleep 0.5 && apply; done
+fifo=$(mktemp -u /tmp/udev-events.XXXXXX)
+mkfifo "$fifo"
+trap 'rm -f "$fifo"' EXIT INT TERM
+
+udevadm monitor --udev --subsystem-match=usb 2>/dev/null > "$fifo" &
+
+while IFS= read -r line; do
+    case "$line" in
+        *add*|*remove*)
+            kill "$debounce_pid" 2>/dev/null
+            { sleep 0.5 && apply; } &
+            debounce_pid=$!
+            ;;
+    esac
+done < "$fifo"

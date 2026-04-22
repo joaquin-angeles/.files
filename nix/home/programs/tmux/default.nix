@@ -38,14 +38,12 @@
       set -g window-status-current-format '#I:#W'
       set -g window-status-format '#I:#W'
 
-      # pane-base-index follows baseIndex automatically in home-manager
-
       # Status line customization
       set -g status-position top
       set -g status-style fg=white,bg=default
       set -g window-status-current-style fg=cyan,bg=default
       set -g status-right ""
-      set -g status-justify left
+      set -g status-justify centre
     '';
   };
 }

@@ -99,8 +99,8 @@
 
     #tags button {
       font-family: "MonaspiceNe Nerd Font Propo";
-      color: @bright-bg;
       font-size: 12.5pt;
+      color: @bright-bg;
       padding: 0 5pt;
       margin: 0 5pt;
       min-width: 10pt;
@@ -114,22 +114,25 @@
       margin-bottom: 2px;
     }
 
-    #tags button:nth-child(1),
+    #tags button:nth-child(2),
     #tags button:nth-child(3) {
       margin-top: -1px;
       padding-top: 1px;
     }
 
     /* Per-tag size adjustments */
-    #tags button:nth-child(1) {
-      font-size: 15pt;
+    #tags button:nth-child(2) {
+      font-size: 13.5pt;
     }
     #tags button:nth-child(3) {
       font-size: 14pt;
     }
+    #tags button:nth-child(4) {
+      font-size: 12pt;
+    }
 
     /* Per-tag padding fixes */
-    #tags button:nth-child(1).focused {
+    #tags button:nth-child(2).focused {
       padding-top: 4px;
     }
     #tags button:nth-child(3).focused {
@@ -170,9 +173,9 @@
     #tags button:nth-child(8).occupied,
     #tags button:nth-child(9).occupied {
       color: @fg;
-      padding: 0 5pt;
-      margin: 0 5pt;
-      min-width: 10pt;
+      padding: 0 4pt;
+      margin: 0 4pt;
+      min-width: 8pt;
       border-radius: 0;
       transition: none;
     }
