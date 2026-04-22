@@ -6,4 +6,4 @@ dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_SESSION_TYP
 systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY DISPLAY
 
 riverctl spawn 'waybar'
-for f in ~/.config/river/conf.d/*.sh; do . "$f"; done
+for f in ~/.config/river/conf.d/*.sh; do riverctl spawn "$f"; done

@@ -1,3 +1,5 @@
+#!/usr/bin/env dash
+
 i=1
 while [ "$i" -le 9 ]; do
     tags=$(( 1 << (i - 1) ))

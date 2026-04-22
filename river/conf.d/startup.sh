@@ -1,3 +1,5 @@
+#!/usr/bin/env dash
+
 riverctl spawn 'wbg ~/Pictures/Wallpapers/trees.png'
 riverctl spawn 'wlr-power'
 riverctl spawn 'mako'

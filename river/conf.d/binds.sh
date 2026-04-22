@@ -1,3 +1,5 @@
+#!/usr/bin/env dash
+
 mod="Super"
 
 # Window management

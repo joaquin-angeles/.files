@@ -1,3 +1,5 @@
+#!/usr/bin/env dash
+
 riverctl rule-add ssd
 riverctl default-layout wideriver
 riverctl spawn 'wideriver \
