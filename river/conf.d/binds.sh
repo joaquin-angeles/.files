@@ -36,6 +36,9 @@ riverctl map normal "$mod" W spawn 'sh -c "librewolf || flatpak run io.gitlab.li
 riverctl map normal "$mod" E spawn 'pcmanfm'
 riverctl map normal "$mod" Period spawn 'rofi -show emoji'
 riverctl map normal "$mod" V spawn 'sh -c "cliphist list | rofi -dmenu -p "clipboard" | cliphist decode | wl-copy"'
+
+# App toggles
+riverctl map normal "$mod" B spawn 'sh -c "pgrep waybar >/dev/null && pkill waybar || waybar"'
 riverctl map normal "$mod+Shift" N spawn 'sh -c "pgrep gammastep >/dev/null && pkill gammastep || gammastep -O 4000"'
 
 # Screenshots
