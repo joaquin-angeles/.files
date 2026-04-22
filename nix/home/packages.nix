@@ -7,6 +7,7 @@
     ./packages/flatpaks.nix
     ./packages/media.nix
     ./packages/scripts.nix
+    ./packages/themes.nix
     ./packages/wayland.nix
   ];
 }

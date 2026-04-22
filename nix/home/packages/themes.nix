@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ./gui/discord.nix
-    ./gui/fonts.nix
-    ./gui/icons.nix
-    ./gui/gtk.nix
-    ./gui/qt.nix
+    ./themes/discord.nix
+    ./themes/fonts.nix
+    ./themes/icons.nix
+    ./themes/gtk.nix
+    ./themes/qt.nix
   ];
 
   # Theme packages
