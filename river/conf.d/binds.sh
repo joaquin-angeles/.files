@@ -27,20 +27,6 @@ riverctl map normal "$mod+Shift" J swap next
 riverctl map normal "$mod+Shift" K swap previous
 riverctl map-pointer normal "$mod" BTN_LEFT move-view
 
-# Tags (workspaces)
-i=1
-while [ "$i" -le 9 ]; do
-    tags=$(( 1 << (i - 1) ))
-    riverctl map normal "$mod" "$i" set-focused-tags "$tags"
-    riverctl map normal "$mod+Shift" "$i" set-view-tags "$tags"
-    i=$(( i + 1 ))
-done
-
-# View/set for all tags
-all_tags=$(( (1 << 32) - 1 ))
-riverctl map normal "$mod" 0 set-focused-tags "$all_tags"
-riverctl map normal "$mod+Shift" 0 spawn 'river-sticky'
-
 # Apps
 riverctl map normal "$mod" Return spawn 'foot'
 riverctl map normal "$mod" P spawn 'tofi-drun'
