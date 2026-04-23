@@ -5,8 +5,10 @@ export XDG_CURRENT_DESKTOP=river
 dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY DISPLAY
 systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY DISPLAY
 
+# Status bar
 riverctl spawn 'waybar'
 
+# Layout generator
 riverctl rule-add ssd
 riverctl default-layout wideriver
 riverctl spawn 'wideriver \
