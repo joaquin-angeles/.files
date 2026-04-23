@@ -19,21 +19,6 @@
       ];
     };
 
-    network = {
-      interface = "wlan0";
-      format = "{icon}";
-      format-icons = [
-        "󰤟"
-        "󰤢"
-        "󰤥"
-        "󰤨"
-      ];
-      format-disconnected = "󰤭";
-      format-ethernet = "󰈀";
-      tooltip-format = "Connected to {essid}\nNetwork speed: {signalStrength}%";
-      on-click = "foot -e impala";
-    };
-
     "group/sys-info" = {
       orientation = "inherit";
       drawer = {
@@ -59,15 +44,19 @@
       reverse-direction = true;
     };
 
-    bluetooth = {
-      format = "󰂯";
-      format-disabled = "󰂳";
-      format-off = "󰂲";
-      format-connected = "󰂱";
-      tooltip-format = "Bluetooth: {status}";
-      tooltip-format-connected = "{controller_alias}\n\n{device_enumerate}";
-      tooltip-format-enumerate-connected = "  {device_alias}";
-      on-click = "foot -e bluetui";
+    network = {
+      interface = "wlan0";
+      format = "{icon}";
+      format-icons = [
+        "󰤟"
+        "󰤢"
+        "󰤥"
+        "󰤨"
+      ];
+      format-disconnected = "󰤭";
+      format-ethernet = "󰈀";
+      tooltip-format = "Connected to {essid}\nNetwork speed: {signalStrength}%";
+      on-click = "foot -e impala";
     };
 
     pulseaudio = {

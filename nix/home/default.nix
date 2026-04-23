@@ -2,11 +2,15 @@
 
 {
   imports = [
-    ./home/environment.nix
-    ./home/packages.nix
-    ./home/programs.nix
-    ./home/services.nix
-    ./home/xdg.nix
+    # Environment
+    ./environment.nix
+    ./xdg.nix
+
+    # Lists and configurations
+    ./packages
+    ./programs
+    ./services
+    ./theming
   ];
 
   home = {

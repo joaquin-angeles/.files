@@ -35,7 +35,7 @@
         desc = "Enter dir or open file (smart)";
       }
       {
-        on = [ "return" ];
+        on = [ "enter" ];
         run = "plugin smart-enter";
         desc = "Enter dir or open file (smart)";
       }

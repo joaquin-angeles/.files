@@ -22,7 +22,7 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./host.nix
+          ./host
           /etc/nixos/hardware-configuration.nix
           home-manager.nixosModules.home-manager
           {
@@ -43,7 +43,7 @@
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
               sharedModules = [ nix-flatpak.homeManagerModules.nix-flatpak ];
-              users.joaquin = import ./home.nix;
+              users.joaquin = import ./home;
             };
           }
         ];

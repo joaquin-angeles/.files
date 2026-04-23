@@ -6,10 +6,9 @@
 }:
 {
   imports = [
-    ./host/hardware.nix
-    ./host/packages.nix
-    ./host/programs.nix
-    ./host/services.nix
+    ./packages
+    ./services
+    ./hardware
   ];
   boot.loader = {
     efi.canTouchEfiVariables = true;

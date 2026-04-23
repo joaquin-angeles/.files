@@ -1,8 +1,9 @@
 { pkgs, ... }:
 {
   imports = [
-    ./packages/dev-tools.nix
-    ./packages/fonts.nix
+    ./dev-tools.nix
+    ./fonts.nix
+    ./programs.nix
   ];
 
   environment.systemPackages = with pkgs; [
