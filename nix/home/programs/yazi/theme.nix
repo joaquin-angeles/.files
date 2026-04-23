@@ -4,14 +4,6 @@
   programs.yazi.theme = {
     mgr.border_style.fg = "brightblack";
 
-    icon = {
-      globs = [ ];
-      dirs = [ ];
-      files = [ ];
-      exts = [ ];
-      conds = [ ];
-    };
-
     filetype.rules = [
       (lib.mkOrder 100 {
         name = "*";
@@ -25,15 +17,21 @@
       })
       (lib.mkOrder 300 {
         name = "*";
-        is = "link";
-        fg = "cyan";
+        is = "exec";
+        fg = "green";
+        bold = true;
       })
       (lib.mkOrder 400 {
-        name = "*/";
+        name = "*";
         is = "link";
         fg = "cyan";
       })
       (lib.mkOrder 500 {
+        name = "*/";
+        is = "link";
+        fg = "cyan";
+      })
+      (lib.mkOrder 600 {
         name = "*/";
         bold = true;
         fg = "blue";

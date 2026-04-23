@@ -5,10 +5,6 @@
     # GUI File manager
     pcmanfm
 
-    # Termminal file manager
-    lf
-    chafa # Image previews
-
     # Archive manager
     xarchiver
 

@@ -18,6 +18,7 @@
     enable = true;
     enableZshIntegration = true;
     extraOptions = [
+      "--icons=always"
       "--git"
       "--git-ignore"
       "--group-directories-first"

@@ -11,7 +11,7 @@
     ./programs/rofi # Run launcher
     ./programs/tmux # Terminal multiplexer
     ./programs/tofi # App launcher
-    # ./programs/yazi # Terminal file manager
+    ./programs/yazi # Terminal file manager
     ./programs/waybar # Status bar
     ./programs/zsh # Interactive shell
   ];
