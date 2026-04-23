@@ -7,6 +7,7 @@
 {
   imports = [
     ./packages
+    ./programs
     ./services
     ./hardware
   ];
