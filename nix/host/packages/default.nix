@@ -3,7 +3,6 @@
   imports = [
     ./dev-tools.nix
     ./fonts.nix
-    ./programs.nix
   ];
 
   environment.systemPackages = with pkgs; [

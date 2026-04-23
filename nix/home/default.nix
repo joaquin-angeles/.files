@@ -7,10 +7,10 @@
     ./xdg.nix
 
     # Lists and configurations
+    ./gui
     ./packages
     ./programs
     ./services
-    ./theming
   ];
 
   home = {

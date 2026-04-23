@@ -1,10 +1,10 @@
 { ... }:
 {
   imports = [
-    ./services/f2b.nix
-    ./services/networking.nix
-    ./services/nftables.nix
-    ./services/polkit.nix
+    ./f2b.nix
+    ./networking.nix
+    ./nftables.nix
+    ./polkit.nix
   ];
   services = {
     dbus.enable = true;
