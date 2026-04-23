@@ -1,8 +1,5 @@
-{ config, ... }:
+{ ... }:
 
-let
-  hostname = builtins.replaceStrings [ "\n" ] [ "" ] (builtins.readFile /etc/hostname);
-in
 {
   imports = [
     ./init.nix
@@ -24,7 +21,6 @@ in
         2
         3
       ];
-      title_format = "${config.home.username}@${hostname}: {cwd}";
       show_symlink = false;
     };
 

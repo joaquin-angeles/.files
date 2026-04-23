@@ -35,9 +35,9 @@
         desc = "Enter dir or open file (smart)";
       }
       {
-        on = [ "L" ];
-        run = ''shell 'if [ -f "$1" ]; then foot -e "$EDITOR" "$@" & disown; fi' --confirm'';
-        desc = "Open file in new terminal ($EDITOR)";
+        on = [ "return" ];
+        run = "plugin smart-enter";
+        desc = "Enter dir or open file (smart)";
       }
     ];
   };

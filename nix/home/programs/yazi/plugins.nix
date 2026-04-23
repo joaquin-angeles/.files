@@ -10,7 +10,6 @@
         git
         lazygit
         smart-enter
-        yatline
         ;
     };
   };
