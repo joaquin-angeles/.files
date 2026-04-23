@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./packages/archives.nix
     ./packages/cli.nix
+    ./packages/file-manager.nix
     ./packages/flatpaks.nix
     ./packages/media.nix
     ./packages/scripts.nix

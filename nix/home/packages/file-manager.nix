@@ -2,11 +2,17 @@
 
 {
   home.packages = with pkgs; [
-    # File manager
+    # GUI File manager
     pcmanfm
+
+    # Termminal file manager
+    lf
+    chafa # Image previews
 
     # Archive manager
     xarchiver
+
+    # CLI tools
     gnutar
     gzip
     xz
