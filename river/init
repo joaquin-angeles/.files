@@ -6,4 +6,19 @@ dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP XDG_SESSION_TYP
 systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_TYPE WAYLAND_DISPLAY DISPLAY
 
 riverctl spawn 'waybar'
+
+riverctl rule-add ssd
+riverctl default-layout wideriver
+riverctl spawn 'wideriver \
+    --border-width 2 \
+    --border-color-focused 0x879251cc \
+    --border-color-unfocused 0x56595acc \
+    --layout left \
+    --stack even \
+    --ratio-master 0.55 \
+    --inner-gaps 12 \
+    --outer-gaps 12 \
+    --smart-gaps \
+    --border-width-smart-gaps 0'
+
 for f in ~/.config/river/conf.d/*.sh; do riverctl spawn "$f"; done
