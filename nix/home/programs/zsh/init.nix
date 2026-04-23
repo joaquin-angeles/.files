@@ -63,6 +63,11 @@
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         export POWERLEVEL9K_CONFIG_FILE="${config.xdg.configHome}/zsh/.p10k.zsh"
         [[ -f "$POWERLEVEL9K_CONFIG_FILE" ]] && source "$POWERLEVEL9K_CONFIG_FILE"
+
+        # Functions
+        lfcd() {
+            builtin cd "$(command lf -print-last-dir "$@")"
+        }
       '')
     ];
   };

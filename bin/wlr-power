@@ -14,16 +14,22 @@ command -v upower        >/dev/null || die "upower not found"
 command -v wlr-randr     >/dev/null || die "wlr-randr not found"
 command -v brightnessctl >/dev/null || warn "brightnessctl not found – kbd backlight disabled"
 
-BAT=$(upower -e 2>/dev/null | grep -m1 'BAT')        || die "No battery device found"
-MON=$(wlr-randr 2>/dev/null | awk 'NR==1{ print $1 }') || die "wlr-randr returned no output"
+BAT=$(upower -e 2>/dev/null | grep -m1 'BAT') || die "No battery device found"
+
+# Detect all connected monitors
+MONS=$(wlr-randr 2>/dev/null | awk '/^[^ ]/ && !/^(Modes|Transform|Position|Scale)/ { print $1 }') \
+    || die "wlr-randr returned no output"
+[ -n "$MONS" ] || die "No monitors found"
+
 KBD=$(command -v brightnessctl >/dev/null \
     && brightnessctl --list 2>/dev/null | awk -F"'" '/kbd_backlight/{ print $2; exit }' \
     || true)
 
-log "Started  bat=$BAT  mon=$MON  kbd=${KBD:-none}"
+log "Started  bat=$BAT  monitors=$(echo "$MONS" | tr '\n' ' ')  kbd=${KBD:-none}"
 
 pick_mode() {
-    wlr-randr --output "$MON" 2>/dev/null | awk -v want="$1" '
+    mon=$1 want=$2
+    wlr-randr --output "$mon" 2>/dev/null | awk -v want="$want" '
         /Modes:/,0 {
             if (!match($0, /([0-9]+)x([0-9]+) px, ([0-9.]+) Hz/, m)) next
             px = m[1] * m[2]; hz = m[3] + 0; c = m[1] "x" m[2] "@" hz
@@ -36,7 +42,7 @@ pick_mode() {
             }
         }
         END { if (best != "") print best }
-'
+    '
 }
 
 get_state() { upower -i "$BAT" 2>/dev/null | awk '/state:/{ print $2 }'; }
@@ -44,22 +50,39 @@ get_state() { upower -i "$BAT" 2>/dev/null | awk '/state:/{ print $2 }'; }
 apply() {
     log "State → $1"
     case "$1" in
-        discharging) kbd_val=0;    mode=$(pick_mode 60)  ;;
-        *)           kbd_val=100%; mode=$(pick_mode max) ;;
+        discharging) kbd_val=0;    mode_want=60  ;;
+        *)           kbd_val=100%; mode_want=max ;;
     esac
+
     [ -n "$KBD" ] && brightnessctl -d "$KBD" set "$kbd_val" -q 2>/dev/null || true
-    [ -n "$mode" ] || { warn "No mode for '$1' – keeping current"; return; }
-    log "Mode   → $mode"
-    wlr-randr --output "$MON" --mode "$mode" --scale 1 2>/dev/null \
-        || warn "wlr-randr failed to set '$mode'"
+
+    echo "$MONS" | while IFS= read -r mon; do
+        [ -n "$mon" ] || continue
+        mode=$(pick_mode "$mon" "$mode_want")
+        if [ -z "$mode" ]; then
+            warn "No mode for '$1' on $mon – keeping current"
+            continue
+        fi
+        log "Mode $mon → $mode"
+        wlr-randr --output "$mon" --mode "$mode" --scale 1 2>/dev/null \
+            || warn "wlr-randr failed to set '$mode' on $mon"
+    done
+}
+
+monitor_upower() {
+    while true; do
+        upower --monitor 2>/dev/null | while IFS= read -r _; do
+            new=$(get_state)
+            [ -z "$new" ] || [ "$new" = "$state" ] && continue
+            state=$new; apply "$state"
+        done
+        warn "upower --monitor exited, restarting in 5s"
+        sleep 5
+    done
 }
 
 state=$(get_state)
 [ -n "$state" ] || die "Could not read battery state"
 apply "$state"
 
-upower --monitor 2>/dev/null | while IFS= read -r _; do
-    new=$(get_state)
-    [ -z "$new" ] || [ "$new" = "$state" ] && continue
-    state=$new; apply "$state"
-done
+monitor_upower

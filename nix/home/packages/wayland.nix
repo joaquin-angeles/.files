@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     grim
+    ristate
     slurp
     swayidle
     waybar

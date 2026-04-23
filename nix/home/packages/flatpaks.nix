@@ -4,7 +4,7 @@
   services.flatpak.packages = [
     "com.usebottles.bottles" # Windows applications
     "dev.vencord.Vesktop" # Discord
-    "io.github.ungoogled_software.ungoogled_chromium" # Progressive web apps
+    "org.chromium.Chromium" # Progressive web apps
     # "org.libreoffice.LibreOffice"     # Office suite
     "org.onlyoffice.desktopeditors" # Office suite
     "org.gimp.GIMP" # Photo editing software
@@ -20,23 +20,35 @@
   # Facebook Messenger
   xdg.desktopEntries.messenger = {
     name = "Messenger";
-    exec = "flatpak run io.github.ungoogled_software.ungoogled_chromium --app=https://www.facebook.com/messages/";
+    exec = "flatpak run org.chromium.Chromium --app=https://www.facebook.com/messages/";
     icon = "fbmessenger";
     terminal = false;
     settings = {
-      X-Flatpak-Part-Of = "io.github.ungoogled_software.ungoogled_chromium";
-      TryExec = "${config.xdg.dataHome}/flatpak/exports/bin/io.github.ungoogled_software.ungoogled_chromium";
+      X-Flatpak-Part-Of = "org.chromium.Chromium";
+      TryExec = "${config.xdg.dataHome}/flatpak/exports/bin/org.chromium.Chromium";
     };
   };
 
   # Claude LLM
   xdg.desktopEntries.claude = {
     name = "Claude AI";
-    exec = "flatpak run io.github.ungoogled_software.ungoogled_chromium --app=https://claude.ai";
+    exec = "flatpak run org.chromium.Chromium --app=https://claude.ai";
     terminal = false;
     settings = {
-      X-Flatpak-Part-Of = "io.github.ungoogled_software.ungoogled_chromium";
-      TryExec = "${config.xdg.dataHome}/flatpak/exports/bin/io.github.ungoogled_software.ungoogled_chromium";
+      X-Flatpak-Part-Of = "org.chromium.Chromium";
+      TryExec = "${config.xdg.dataHome}/flatpak/exports/bin/org.chromium.Chromium";
+    };
+  };
+
+  # Apple Music
+  xdg.desktopEntries.itunes = {
+    name = "Apple Music";
+    exec = "flatpak run org.chromium.Chromium --app=https://music.apple.com";
+    icon = "itunes";
+    terminal = false;
+    settings = {
+      X-Flatpak-Part-Of = "org.chromium.Chromium";
+      TryExec = "${config.xdg.dataHome}/flatpak/exports/bin/org.chromium.Chromium";
     };
   };
 }

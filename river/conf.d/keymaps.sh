@@ -33,7 +33,7 @@ riverctl map-pointer normal "$mod" BTN_LEFT move-view
 riverctl map normal "$mod" Return spawn 'foot'
 riverctl map normal "$mod" P spawn 'tofi-drun'
 riverctl map normal "$mod" W spawn 'sh -c "librewolf || flatpak run io.gitlab.librewolf-community"'
-riverctl map normal "$mod" E spawn 'foot -e yazi'
+riverctl map normal "$mod" E spawn 'foot -e lf'
 riverctl map normal "$mod" Period spawn 'rofi -show emoji'
 riverctl map normal "$mod" V spawn 'sh -c "cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy"'
 
@@ -55,10 +55,6 @@ riverctl map normal "$mod" Right spawn 'mako-osd brightness_up'
 riverctl map normal "$mod" Down spawn 'mako-osd volume_down'
 riverctl map normal "$mod" Up spawn 'mako-osd volume_up'
 riverctl map normal "$mod+Shift" M spawn 'mako-osd volume_mute'
-
-# Music control
-riverctl map normal "$mod+Shift" Down spawn 'playerctl -p mpd previous'
-riverctl map normal "$mod+Shift" Up spawn 'playerctl -p mpd next'
 
 # Media keys
 riverctl map normal None XF86AudioLowerVolume spawn 'mako-osd volume_down'

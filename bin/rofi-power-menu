@@ -1,21 +1,35 @@
 #!/usr/bin/env dash
 
+confirm() {
+    confirmed=$(printf 'Yes\nNo' | rofi -dmenu \
+            -p "$(printf '󰐥 %s?' "$1")" \
+            -lines 2 \
+            -selected-row 1 \
+        -no-custom)
+
+    [ $? -ne 0 ] && return 1
+    [ "$confirmed" = "Yes" ] && return 0 || return 1
+}
+
 options="󰐥 Shutdown
 󰜉 Reboot
 󰌾 Lock
 󰤄 Suspend
 󰍃 Logout"
 
-choice="$(printf '%s\n' "$options" | rofi -dmenu -p "power" )"
+choice="$(printf '%s\n' "$options" | rofi -dmenu -p "power")"
+
+[ $? -ne 0 ] && exit 0
 
 case "$choice" in
     "󰐥 Shutdown")
-        systemctl poweroff
+        confirm "Shutdown" && systemctl poweroff
         ;;
     "󰜉 Reboot")
-        systemctl reboot
+        confirm "Reboot" && systemctl reboot
         ;;
     "󰌾 Lock")
+        # Lock doesn't need confirmation — it's reversible
         if command -v gtklock >/dev/null 2>&1; then
             gtklock
         elif command -v hyprlock >/dev/null 2>&1; then
@@ -29,9 +43,13 @@ case "$choice" in
         fi
         ;;
     "󰤄 Suspend")
-        systemctl suspend
+        confirm "Suspend" && systemctl suspend
         ;;
     "󰍃 Logout")
-        riverctl exit && pkill -u "$USER" || hyprctl dispatch exit || pkill -u "$USER"
+        confirm "Logout" && {
+            riverctl exit 2>/dev/null ||
+            hyprctl dispatch exit 2>/dev/null ||
+            pkill -u "$USER"
+        }
         ;;
 esac

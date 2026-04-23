@@ -12,9 +12,10 @@ in
   xdg = {
     enable = true;
     configFile = {
+      "lf".source = "${config.home.homeDirectory}/.files/lf"; # Music player
       "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/vim"; # Text editor
       "river".source = "${config.home.homeDirectory}/.files/river"; # Window manager
-      "rmpc".source = "${config.home.homeDirectory}/.files/rmpc"; # Music player
+      # "rmpc".source = "${config.home.homeDirectory}/.files/rmpc"; # Music player
 
       # Image viewer
       "swayimg/config".text = ''

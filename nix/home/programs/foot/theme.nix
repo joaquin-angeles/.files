@@ -3,7 +3,7 @@
 {
   programs.foot.settings = {
     main = {
-      pad = "10x10 center";
+      pad = "6x6 center";
       gamma-correct-blending = false;
     };
 
