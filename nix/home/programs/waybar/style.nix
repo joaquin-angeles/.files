@@ -124,11 +124,11 @@
 
     #pulseaudio {
       font-size: 14pt;
-      margin: 1px 8pt 0 4pt;
+      margin: 0px 8pt 0 4pt;
     }
 
     #battery {
-      padding: 0 12pt 0 2pt;
+      padding: 0 8pt 0 4pt;
     }
 
     #battery span.icon {
@@ -145,14 +145,13 @@
     }
 
     #clock {
-      padding: 0 6pt 0 2pt;
+      padding: 0 10pt 0 5pt;
     }
 
     #layout {
-      background-color: alpha(darker(@black), 0.8);
+      background-color: darker(@black);
       border-left: 1px solid #32332f;
       padding: 0 4px 0 4px;
-      margin-left: 6pt;
     }
   '';
 }

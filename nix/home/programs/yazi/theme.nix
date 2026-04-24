@@ -4,6 +4,18 @@
   programs.yazi.theme = {
     mgr.border_style.fg = "brightblack";
 
+    tab = {
+      active = {
+        fg = "black";
+        bg = "blue";
+        bold = true;
+      };
+      inactive = {
+        fg = "brightblack";
+        bg = "black";
+      };
+      width = 1;
+    };
     mode = {
       normal_main = {
         fg = "black";
