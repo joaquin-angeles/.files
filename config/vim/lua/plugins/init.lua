@@ -23,7 +23,6 @@ return {
 				"nix",
 				"lua",
 				"bash",
-				"hyprlang",
 				"toml",
 				"css",
 				"json",

@@ -32,8 +32,8 @@ riverctl map-pointer normal "$mod" BTN_LEFT move-view
 # Apps
 riverctl map normal "$mod" Return spawn 'foot'
 riverctl map normal "$mod" P spawn 'tofi-drun'
-riverctl map normal "$mod" W spawn 'sh -c "librewolf || flatpak run io.gitlab.librewolf-community"'
-riverctl map normal "$mod" E spawn 'foot -e yazi'
+riverctl map normal "$mod" W spawn 'librewolf'
+riverctl map normal "$mod" E spawn 'pcmanfm'
 riverctl map normal "$mod" Period spawn 'rofi -show emoji'
 riverctl map normal "$mod" V spawn 'sh -c "cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy"'
 

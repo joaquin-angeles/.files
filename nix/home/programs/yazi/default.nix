@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./init.nix
     ./keymaps.nix
     ./plugins.nix
     ./settings.nix

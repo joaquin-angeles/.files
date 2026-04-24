@@ -10,14 +10,12 @@ NOTIFICATION_TIME=2000
 # Draw a simple bar
 bar() {
     awk -v v="$1" '
-    BEGIN {
-    n = 10
-    filled = int(v * n / 100)
-
-    for (i = 0; i < filled; i++) filled_bar = filled_bar "▬"
-    for (i = filled; i < n; i++) empty_bar = empty_bar "▬"
-
-    print filled_bar "<span foreground=\"#56595a\">" empty_bar "</span>"
+        BEGIN {
+        n = 10
+        filled = int(v * n / 100)
+        for (i = 0; i < filled; i++) filled_bar = filled_bar "▬"
+        for (i = filled; i < n; i++) empty_bar = empty_bar "▬"
+        print filled_bar "<span foreground=\"#56595a\">" empty_bar "</span>"
     }'
 }
 
