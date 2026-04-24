@@ -1,0 +1,52 @@
+# Preview and cleaner
+set preview true
+set previewer ~/.config/lf/preview
+set cleaner ~/.config/lf/cleaner
+
+# Options
+set sixel true
+set drawbox true
+set icons true
+
+# Custom functions
+cmd open ${{
+  if (command -v bat >/dev/null 2>&1 && bat "$f" > /dev/null 2>&1) || cat "$f" > /dev/null 2>&1; then
+    nvim "$f"
+  else
+  case $(file --mime-type "$f" -bL) in
+    application/x-executable) "$f" ;;
+    *) xdg-open "$f" ;;
+    esac
+      fi
+}}
+
+cmd fzf_jump ${{
+    res="$(fzf --walker=file,dir,follow,hidden --walker-skip=.git,node_modules,.Trash)"
+    if [ -n "$res" ]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+
+map zf fzf_jump
+
+# Keymaps and options
+map . set hidden!
+map <esc> quit
+map D delete
+map p paste
+map x cut
+map y copy
+map n push %touch<space>
+map N push %mkdir<space>
+map <enter> open
+map r rename
+map H top
+map L bottom
+map R reload
+map U clear
+map u unselect

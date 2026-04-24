@@ -13,7 +13,7 @@
     ./tmux # Terminal multiplexer
     ./tofi # App launcher
     ./waybar # (Wayland) status bar
-    ./yazi # Terminal file manager
+    # ./yazi # Terminal file manager
     ./zsh # Interactive shell
   ];
 }
