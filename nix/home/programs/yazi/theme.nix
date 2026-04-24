@@ -17,11 +17,11 @@
 
       select_main = {
         fg = "black";
-        bg = "yellow";
+        bg = "red";
         bold = true;
       };
       select_alt = {
-        fg = "yellow";
+        fg = "red";
         bg = "black";
       };
 
@@ -31,43 +31,43 @@
         bold = true;
       };
       unset_alt = {
-        fg = "red";
-        bg = "black";
+        fg = "yellow";
+        bg = "red";
       };
     };
 
     filetype.rules = [
-      (lib.mkOrder 100 {
+      (lib.mkOrder 1 {
         name = "*";
         is = "orphan";
         fg = "red";
       })
-      (lib.mkOrder 200 {
+      (lib.mkOrder 2 {
         name = "*/";
         is = "orphan";
         fg = "red";
       })
-      (lib.mkOrder 300 {
+      (lib.mkOrder 3 {
         name = "*";
         is = "link";
         fg = "cyan";
       })
-      (lib.mkOrder 400 {
+      (lib.mkOrder 4 {
         name = "*/";
         is = "link";
         fg = "cyan";
       })
-      (lib.mkOrder 500 {
+      (lib.mkOrder 5 {
         name = "*";
         is = "exec";
         fg = "green";
         bold = true;
       })
-      (lib.mkOrder 600 {
+      (lib.mkOrder 6 {
         mime = "image/*";
         fg = "magenta";
       })
-      (lib.mkOrder 700 {
+      (lib.mkOrder 7 {
         name = "*/";
         bold = true;
         fg = "blue";

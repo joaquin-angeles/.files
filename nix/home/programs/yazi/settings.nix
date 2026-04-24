@@ -1,13 +1,6 @@
 { ... }:
 
 {
-  imports = [
-    ./init.nix
-    ./keymaps.nix
-    ./plugins.nix
-    ./theme.nix
-  ];
-
   programs.yazi.settings = {
     log.enabled = false;
 
