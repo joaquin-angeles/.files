@@ -12,7 +12,8 @@ in
   xdg = {
     enable = true;
     configFile = {
-      "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/config/vim"; # Text editor
+      "nvim".source =
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/config/vim"; # Text editor
       "river".source = "${config.home.homeDirectory}/.files/config/river"; # Window manager
       # "rmpc".source = "${config.home.homeDirectory}/.files/config/rmpc"; # Music player
 

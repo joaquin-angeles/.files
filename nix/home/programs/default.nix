@@ -6,6 +6,7 @@
     ./btop # System monitor
     ./firefox # Web browser
     ./foot # (Wayland) terminal emulator
+    ./lf # Terminal file manager
     # ./lutris # Game launcher
     ./neovim
     # ./rmpc # Local music player

@@ -5,6 +5,7 @@
     cat = "bat";
     cd = "z";
     ff = "fzf --preview 'bat --color=always --style=plain {}' --bind 'enter:execute(nvim -- {})'";
+    lf = "lfcd";
     ls = "eza";
     yazi = "yy";
     zlj = "zellij";

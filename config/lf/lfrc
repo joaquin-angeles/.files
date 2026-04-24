@@ -13,11 +13,12 @@ cmd open ${{
   if (command -v bat >/dev/null 2>&1 && bat "$f" > /dev/null 2>&1) || cat "$f" > /dev/null 2>&1; then
     nvim "$f"
   else
-  case $(file --mime-type "$f" -bL) in
-    application/x-executable) "$f" ;;
-    *) xdg-open "$f" ;;
+    case $(file --mime-type "$f" -bL) in
+      image/*) swayimg "$f" ;;
+      application/x-executable) "$f" ;;
+      *) xdg-open "$f" ;;
     esac
-      fi
+  fi
 }}
 
 cmd fzf_jump ${{
@@ -36,7 +37,6 @@ map zf fzf_jump
 
 # Keymaps and options
 map . set hidden!
-map <esc> quit
 map D delete
 map p paste
 map x cut
@@ -46,6 +46,8 @@ map N push %mkdir<space>
 map <enter> open
 map r rename
 map H top
+map J scroll-preview-down
+map K scroll-preview-up
 map L bottom
 map R reload
 map U clear

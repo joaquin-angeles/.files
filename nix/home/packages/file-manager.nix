@@ -5,10 +5,6 @@
     # GUI File manager
     pcmanfm
 
-    # Terminal file manager
-    lf
-    chafa
-
     # Archive manager
     xarchiver
 
