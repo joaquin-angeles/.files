@@ -11,8 +11,14 @@
     RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
     WLR_NO_HARDWARE_CURSORS = "1";
     XDG_DATA_HOME = "${config.xdg.dataHome}";
+
+    # fzf configuration
     FZF_DEFAULT_OPTS = builtins.concatStringsSep " " [
+      # Layout
       "--style=minimal"
+      "--layout=reverse"
+
+      # Theming
       "--gutter=' '"
       "--color=bg:-1,fg:7,bg+:5,fg+:0,gutter:-1"
       "--color=hl:4,hl+:0"
