@@ -22,22 +22,25 @@
       {
         on = [ "J" ];
         run = "seek 5";
-        desc = "Scroll preview down";
       }
       {
         on = [ "K" ];
         run = "seek -5";
-        desc = "Scroll preview up";
       }
       {
         on = [ "l" ];
         run = "plugin smart-enter";
-        desc = "Enter dir or open file (smart)";
       }
       {
         on = [ "enter" ];
         run = "plugin smart-enter";
-        desc = "Enter dir or open file (smart)";
+      }
+      {
+        on = [
+          "g"
+          "l"
+        ];
+        run = "plugin lazygit";
       }
     ];
   };

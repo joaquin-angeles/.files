@@ -10,16 +10,16 @@
 
     -- Show symlink path in status bar
     function Status:name()
-      local h = cx.active.current.hovered
-      if not h then
-        return ui.Span("")
-      end
-
-      local linked = ""
-      if h.link_to ~= nil then
-        linked = " -> " .. tostring (h.link_to)
-      end
-      return ui.Span(" " .. h.name .. linked)
-     end
+    	local h = cx.active.current.hovered
+    	if not h then
+    		return ui.Line({})
+    	end
+    	local spans = { ui.Span(" " .. h.name) }
+    	if h.link_to ~= nil then
+    		table.insert(spans, ui.Span(" -> "):fg("brightblack"))
+    		table.insert(spans, ui.Span(tostring(h.link_to)):fg("cyan"))
+    	end
+    	return ui.Line(spans)
+    end
   '';
 }

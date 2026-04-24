@@ -9,10 +9,8 @@
   ];
 
   programs.yazi.settings = {
-    # Disable log file
     log.enabled = false;
 
-    # Manager configuration
     mgr = {
       show_hidden = false;
       sort_dir_first = true;
