@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    gimp
     mpv
     obs-studio
     swayimg
