@@ -2,6 +2,19 @@
 
 mod="Super"
 
+# Tag management
+for i in $(seq 1 9); do
+    tags=$((1 << (i - 1)))
+    riverctl map normal $mod "$i" set-focused-tags $tags
+    riverctl map normal $mod+Shift "$i" set-view-tags $tags
+    riverctl map normal $mod+Control "$i" toggle-focused-tags $tags
+done
+
+# View/set windows for all tags
+all_tags=$(( (1 << 32) - 1 ))
+riverctl map normal $mod 0 set-focused-tags "$all_tags"
+riverctl map normal $mod 0 spawn 'river-sticky'
+
 # Window management
 riverctl map normal $mod+Shift C close
 riverctl map normal $mod F toggle-fullscreen
