@@ -10,7 +10,6 @@
     gtklock
     wayfreeze
     wideriver
-    wlopm
 
     # Shell scripts for Wayland
     (import ./scripts/grimshot.nix { inherit pkgs; })
