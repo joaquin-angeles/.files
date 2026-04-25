@@ -11,7 +11,7 @@
     # ./rmpc # Local music player
     ./rofi # Menu
     ./tmux # Terminal multiplexer
-    ./tofi # App launcher
+    # ./tofi # App launcher
     ./waybar # (Wayland) status bar
     ./yazi # Terminal file manager
     ./zsh # Interactive shell
