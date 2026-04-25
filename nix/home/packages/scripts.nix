@@ -1,11 +1,10 @@
-{ config, lib, ... }:
+{ config, ... }:
 
-let
-  scriptsDir = "${config.home.homeDirectory}/.files/bin";
-  scriptEntries = lib.mapAttrs' (
-    name: _: lib.nameValuePair ".local/bin/${name}" { source = "${scriptsDir}/${name}"; }
-  ) (builtins.readDir scriptsDir);
-in
 {
-  home.file = scriptEntries;
+  home.file = {
+    ".local/bin/river-input".source = "${config.home.homeDirectory}/.files/bin/river-input";
+    ".local/bin/river-sheet".source = "${config.home.homeDirectory}/.files/bin/river-sheet";
+    ".local/bin/river-sticky".source = "${config.home.homeDirectory}/.files/bin/river-sticky";
+    ".local/bin/rofi-power-menu".source = "${config.home.homeDirectory}/.files/bin/rofi-power-menu";
+  };
 }

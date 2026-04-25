@@ -35,19 +35,19 @@ riverctl map normal "$mod" P spawn 'tofi-drun'
 riverctl map normal "$mod" W spawn 'librewolf'
 riverctl map normal "$mod" E spawn 'pcmanfm'
 riverctl map normal "$mod" Period spawn 'rofi -show emoji'
-riverctl map normal "$mod" V spawn 'sh -c "cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy"'
+riverctl map normal "$mod" V spawn 'cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy'
 
 # App toggles
-riverctl map normal "$mod" B spawn 'sh -c "pgrep waybar >/dev/null && pkill waybar || waybar"'
-riverctl map normal "$mod+Shift" N spawn 'sh -c "pgrep gammastep >/dev/null && pkill gammastep || gammastep -O 4000"'
+riverctl map normal "$mod" B spawn 'pgrep waybar >/dev/null && pkill waybar || waybar'
+riverctl map normal "$mod+Shift" N spawn 'pgrep gammastep >/dev/null && pkill gammastep || gammastep -O 4000'
 
 # Screenshots
-riverctl map normal "$mod+Shift" S spawn 'grim - | wl-copy && notify-send "Screenshot saved" "Image copied to clipboard"'
-riverctl map normal "$mod" S spawn 'region-capture.sh && notify-send "Screenshot saved" "Image copied to clipboard"'
+riverctl map normal "$mod" S spawn 'grimshot --region'
+riverctl map normal "$mod+Shift" S spawn 'grimshot --output'
 
 # Misc
 riverctl map normal "$mod+Shift" Q spawn 'rofi-power-menu'
-riverctl map normal "$mod" F1 spawn 'sh -c "river-sheet | rofi -dmenu -p '"'"'󱊫 Keybinds'"'"'"'
+riverctl map normal "$mod" F1 spawn 'river-sheet | rofi -dmenu -p "󱊫 Keybinds"'
 
 # Volume & brightness
 riverctl map normal "$mod" Left spawn 'mako-osd brightness_down'

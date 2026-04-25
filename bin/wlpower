@@ -1,5 +1,5 @@
 #!/usr/bin/env dash
-# wlr-power : power-saver for wlroots compositors
+# wlpower : power-saver for wlroots compositors
 set -eu
 
 [ -n "${_PWR:-}" ] || { _PWR=1 setsid "$0" "$@" </dev/null >>/tmp/wlr-power.log 2>&1 & exit 0; }

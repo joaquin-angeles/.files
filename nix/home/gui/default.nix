@@ -15,7 +15,6 @@
     adw-gtk3
     kdePackages.qt6ct
     kdePackages.qtstyleplugin-kvantum
-    libnotify
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
     nwg-look

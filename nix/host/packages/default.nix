@@ -6,7 +6,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    brightnessctl
     dash
     git
     gtk3
