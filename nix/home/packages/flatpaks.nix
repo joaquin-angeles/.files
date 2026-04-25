@@ -9,9 +9,13 @@
       "org.onlyoffice.desktopeditors" # Office suite
 
       # Gaming
-      "com.usebottles.Bottles" # Launcher / Wine prefix manager
-      "com.vysp3r.ProtonPlus" # Wine version installer
+      "com.usebottles.bottles" # Launcher / Wine prefix manager
       "org.vinegarhq.Sober" # Roblox
+      {
+        # Wine version installer
+        appId = "com.vysp3r.ProtonPlus";
+        origin = "flathub-beta";
+      }
       {
         # Minecraft Bedrock
         appId = "io.mrarm.mcpelauncher";
