@@ -1,10 +1,9 @@
 { ... }:
 {
   imports = [
-    ./modules/f2b.nix
-    ./modules/networking.nix
-    ./modules/nftables.nix
+    ./modules
   ];
+
   services = {
     dbus.enable = true;
     flatpak.enable = true;
