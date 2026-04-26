@@ -1,9 +1,9 @@
 { ... }:
 {
   imports = [
-    ./modules/f2b.nix
-    ./modules/networking.nix
-    ./modules/nftables.nix
+    ./f2b.nix
+    ./networking.nix
+    ./nftables.nix
   ];
   services = {
     dbus.enable = true;

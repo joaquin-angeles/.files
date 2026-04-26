@@ -3,11 +3,11 @@
 {
   imports = [
     # GUI theming
-    ./modules/discord.nix
-    ./modules/fonts.nix
-    ./modules/gtk.nix
-    ./modules/icons.nix
-    ./modules/qt.nix
+    ./discord.nix
+    ./fonts.nix
+    ./gtk.nix
+    ./icons.nix
+    ./qt.nix
   ];
 
   # Theme packages

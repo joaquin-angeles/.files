@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./modules/flatpak.nix
-    ./modules/mako.nix
+    ./flatpak.nix
+    ./mako.nix
   ];
 
   # Polkit daemon for Wayland
