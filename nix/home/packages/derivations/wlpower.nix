@@ -36,16 +36,12 @@ pkgs.writeTextFile {
         ${pkgs.wlr-randr}/bin/wlr-randr --output "$mon" 2>/dev/null | ${pkgs.gawk}/bin/awk -v want="$want" '
             /Modes:/,0 {
                 if (!match($0, /([0-9]+)x([0-9]+) px, ([0-9.]+) Hz/, m)) next
-                px = m[1] * m[2]; hz = m[3] + 0; c = m[1] "x" m[2] "@" hz
-                if (want == "max") {
-                    if (px > bpx || (px == bpx && hz > bhz)) { bpx=px; bhz=hz; best=c }
-                } else {
-                    t = want + 0
-                    if (hz >= t-1 && hz <= t+1 && (px > bpx || (px == bpx && hz > bhz)))
-                        { bpx=px; bhz=hz; best=c }
-                }
+                if (m[1]+0 > 1920 || m[2]+0 > 1200) next
+                px = m[1]*m[2]; hz = m[3]+0; c = m[1]"x"m[2]"@"hz
+                if (want == "max" && (px > bpx || (px == bpx && hz > bhz))) { bpx=px; bhz=hz; best=c }
+                if (want != "max" && hz >= want-1 && hz <= want+1 && px >= bpx)  { bpx=px; best=c }
             }
-            END { if (best != "") print best }
+            END { print best }
         '
     }
 

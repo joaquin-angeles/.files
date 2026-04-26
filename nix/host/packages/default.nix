@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
   imports = [
-    ./dev-tools.nix
-    ./fonts.nix
+    ./modules/dev-tools.nix
+    ./modules/fonts.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -10,7 +10,6 @@
     git
     gtk3
     gtk4
-    polkit_gnome
     qdl
     usbutils
     wl-clipboard

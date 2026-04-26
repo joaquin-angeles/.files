@@ -16,7 +16,6 @@ let
   };
 
   gamingApps = [
-    "com.usebottles.Bottles"
     "org.vinegarhq.Sober"
     "io.mrarm.mcpelauncher"
   ];
@@ -39,7 +38,7 @@ in
     uninstallUnmanaged = true;
 
     update = {
-      onActivation = true;
+      onActivation = false;
       auto = {
         enable = true;
         onCalendar = "weekly";
@@ -55,7 +54,7 @@ in
             "xdg-data/themes:ro"
             "xdg-config/gtk-3.0:ro"
             "xdg-config/gtk-4.0:ro"
-            "xdg-config/dconf:ro"
+            "xdg-config/dconf"
             "xdg-run/dconf"
           ];
           devices = [ "dri" ];

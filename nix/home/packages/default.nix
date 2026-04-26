@@ -3,11 +3,14 @@
 {
   imports = [
     # Packages
-    ./cli.nix
-    ./file-manager.nix
-    ./flatpaks.nix
-    ./media.nix
-    ./scripts.nix
-    ./wayland.nix
+    ./modules/cli.nix
+    ./modules/file-manager.nix
+    ./modules/flatpaks.nix
+    ./modules/media.nix
+    ./modules/scripts.nix
+    ./modules/wayland.nix
+
+    # Custom packages
+    ./derivations
   ];
 }
