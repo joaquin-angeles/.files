@@ -1,8 +1,12 @@
 { config, ... }:
 
 {
+
   imports = [
+    ./aliases.nix
+    ./history.nix
     ./init.nix
+    ./integrations.nix
   ];
 
   # Base zsh configuration
