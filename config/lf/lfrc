@@ -6,7 +6,6 @@ set cleaner ~/.config/lf/cleaner
 # Options
 set sixel true
 set drawbox true
-set icons true
 
 # Custom functions
 cmd open ${{
@@ -21,7 +20,7 @@ cmd open ${{
 }}
 
 cmd fzf_jump ${{
-    res="$(fzf --walker=file,dir,follow,hidden --walker-skip=.git,node_modules,.Trash)"
+    res="$(fzf --walker=dir,follow,hidden --walker-skip=.git,node_modules,.Trash)"
     if [ -n "$res" ]; then
         if [ -d "$res" ]; then
             cmd="cd"

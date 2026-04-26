@@ -7,7 +7,6 @@
     bison
     elfutils
     fakeroot
-    file
     flex
     gcc
     gettext

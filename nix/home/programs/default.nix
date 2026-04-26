@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -8,10 +8,9 @@
     # ./lutris # Game launcher
     ./neovim
     # ./rmpc # Local music player
-    ./rofi # Menu
     ./tmux # Terminal multiplexer
     ./waybar # (Wayland) status bar
-    # ./yazi # Terminal file manager
+    ./yazi # Terminal file manager
     ./zsh # Interactive shell
   ];
 
@@ -20,6 +19,12 @@
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
+  };
+
+  # App launcher
+  programs.rofi = {
+    enable = true;
+    plugins = [ pkgs.rofi-emoji ];
   };
 
   # System monitor

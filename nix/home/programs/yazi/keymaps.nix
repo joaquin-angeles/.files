@@ -12,14 +12,6 @@
         desc = "Go home";
       }
       {
-        on = [
-          "g"
-          "r"
-        ];
-        run = "cd /";
-        desc = "Go root";
-      }
-      {
         on = [ "J" ];
         run = "seek 5";
       }
@@ -28,19 +20,19 @@
         run = "seek -5";
       }
       {
+        on = [
+          "g"
+          "l"
+        ];
+        run = "plugin lazygit";
+      }
+      {
         on = [ "l" ];
         run = "plugin smart-enter";
       }
       {
         on = [ "enter" ];
         run = "plugin smart-enter";
-      }
-      {
-        on = [
-          "g"
-          "l"
-        ];
-        run = "plugin lazygit";
       }
     ];
   };

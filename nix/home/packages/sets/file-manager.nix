@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     # File managers
     pcmanfm
-    lf
+    # lf
     xarchiver
 
     # CLI tools
