@@ -4,7 +4,6 @@
     ./modules/f2b.nix
     ./modules/networking.nix
     ./modules/nftables.nix
-    ./modules/polkit.nix
   ];
   services = {
     dbus.enable = true;
