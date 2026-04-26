@@ -2,10 +2,9 @@
 
 {
   home.packages = with pkgs; [
-    # GUI File manager
+    # File managers
     pcmanfm
-
-    # Archive manager
+    lf
     xarchiver
 
     # CLI tools

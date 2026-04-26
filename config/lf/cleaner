@@ -1,0 +1,12 @@
+#!/usr/bin/env dash
+
+clean_dir() {
+    echo "Cleaning directory: $1"
+    find "$1" -type f -name "*.log" -exec rm -f {} \;
+    find "$1" -type f -name "*.bak" -exec rm -f {} \;
+    find "$1" -type f -name "*.tmp" -exec rm -f {} \;
+}
+
+clean_dir "$HOME/.cache"
+clean_dir "$HOME/.local/share/gnome-shell"
+clean_dir "/tmp"

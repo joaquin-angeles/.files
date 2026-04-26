@@ -11,7 +11,7 @@
     ./rofi # Menu
     ./tmux # Terminal multiplexer
     ./waybar # (Wayland) status bar
-    ./yazi # Terminal file manager
+    # ./yazi # Terminal file manager
     ./zsh # Interactive shell
   ];
 

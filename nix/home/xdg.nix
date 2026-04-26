@@ -14,6 +14,7 @@ in
     configFile = {
       "nvim".source =
         config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/config/nvim"; # Text editor
+      "lf".source = "${config.home.homeDirectory}/.files/config/lf"; # Terminal file manager
       "river".source = "${config.home.homeDirectory}/.files/config/river"; # Window manager
       # "rmpc".source = "${config.home.homeDirectory}/.files/config/rmpc"; # Music player
 
