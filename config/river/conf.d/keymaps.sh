@@ -47,7 +47,7 @@ riverctl map normal $mod Return spawn 'foot'
 riverctl map normal $mod P spawn 'rofi -show drun'
 riverctl map normal $mod W spawn 'librewolf'
 riverctl map normal $mod E spawn 'pcmanfm'
-riverctl map normal $mod Period spawn 'rofi -show emoji'
+riverctl map normal $mod Period spawn 'rofi -no-show-icons -show emoji'
 riverctl map normal $mod V spawn 'cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy'
 
 # App toggles
