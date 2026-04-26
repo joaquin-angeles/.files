@@ -1,4 +1,0 @@
-{ ... }:
-{
-  programs.dconf.enable = true;
-}
