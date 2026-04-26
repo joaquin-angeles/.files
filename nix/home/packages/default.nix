@@ -3,7 +3,7 @@
 {
   imports = [
     # Package lists
-    ./modules
+    ./sets
 
     # Custom packages
     ./derivations
