@@ -1,7 +1,8 @@
 { ... }:
 {
   imports = [
-    ./modules
+    ./modules/laptop.nix
+    ./modules/nvidia.nix
   ];
   security.rtkit.enable = true;
   services.pipewire = {

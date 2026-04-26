@@ -1,7 +1,8 @@
 { pkgs, ... }:
 {
   imports = [
-    ./modules
+    ./modules/dev-tools.nix
+    ./modules/fonts.nix
   ];
 
   environment.systemPackages = with pkgs; [
