@@ -13,7 +13,7 @@ in
     enable = true;
     configFile = {
       "nvim".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/config/vim"; # Text editor
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.files/config/nvim"; # Text editor
       "river".source = "${config.home.homeDirectory}/.files/config/river"; # Window manager
       # "rmpc".source = "${config.home.homeDirectory}/.files/config/rmpc"; # Music player
 

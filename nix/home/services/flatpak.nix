@@ -52,6 +52,7 @@ in
             "/nix/store:ro"
             "xdg-data/fonts:ro"
             "xdg-data/themes:ro"
+            "xdg-data/icons:ro"
             "xdg-config/gtk-3.0:ro"
             "xdg-config/gtk-4.0:ro"
             "xdg-config/dconf"
