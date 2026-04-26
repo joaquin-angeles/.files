@@ -2,9 +2,7 @@
 
 {
   imports = [
-    # systemd user services
-    ./modules/flatpak.nix
-    ./modules/mako.nix
+    ./modules
   ];
 
   # Polkit daemon for Wayland
