@@ -11,24 +11,24 @@ confirm() {
     [ "$confirmed" = "Yes" ] && return 0 || return 1
 }
 
-options="󰐥 Shutdown
-󰜉 Reboot
-󰌾 Lock
-󰤄 Suspend
-󰍃 Logout"
+options=" 󰐥  Shutdown
+ 󰜉  Reboot
+ 󰌾  Lock
+ 󰤄  Suspend
+ 󰍃  Logout"
 
 choice="$(printf '%s\n' "$options" | rofi -dmenu -p "power")"
 
 [ $? -ne 0 ] && exit 0
 
 case "$choice" in
-    "󰐥 Shutdown")
+    " 󰐥  Shutdown")
         confirm "Shutdown" && systemctl poweroff
         ;;
-    "󰜉 Reboot")
+    " 󰜉  Reboot")
         confirm "Reboot" && systemctl reboot
         ;;
-    "󰌾 Lock")
+    " 󰌾  Lock")
         # Lock doesn't need confirmation — it's reversible
         if command -v gtklock >/dev/null 2>&1; then
             gtklock
@@ -42,10 +42,10 @@ case "$choice" in
             notify-send "No lock utility found."
         fi
         ;;
-    "󰤄 Suspend")
+    " 󰤄  Suspend")
         confirm "Suspend" && systemctl suspend
         ;;
-    "󰍃 Logout")
+    " 󰍃  Logout")
         confirm "Logout" && {
             riverctl exit 2>/dev/null ||
             hyprctl dispatch exit 2>/dev/null ||

@@ -40,6 +40,7 @@
   xdg.desktopEntries.claude = {
     name = "Claude AI";
     exec = "flatpak run org.chromium.Chromium --app=https://claude.ai";
+    icon = "android-messages-desktop";
     terminal = false;
     settings = {
       X-Flatpak-Part-Of = "org.chromium.Chromium";
@@ -51,7 +52,7 @@
   xdg.desktopEntries.itunes = {
     name = "Apple Music";
     exec = "flatpak run org.chromium.Chromium --app=https://music.apple.com";
-    icon = "itunes";
+    icon = "apple-music";
     terminal = false;
     settings = {
       X-Flatpak-Part-Of = "org.chromium.Chromium";
