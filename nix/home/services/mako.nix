@@ -11,7 +11,7 @@
       layer = "overlay";
       padding = 6;
       margin = 6;
-      width = 500;
+      width = 250;
       height = 125;
       markup = true;
       default-timeout = 3000;

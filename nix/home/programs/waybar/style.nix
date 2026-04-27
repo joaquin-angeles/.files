@@ -13,6 +13,7 @@
     @define-color magenta #d3869b;
     @define-color cyan    #89b482;
 
+    /* Global settings */
     * {
       font-family: sans-serif, "MonaspiceNe Nerd Font Propo";
       font-feature-settings: "tnum";
@@ -26,8 +27,9 @@
       color: @white;
     }
 
+    /* Tag button settings */
     #tags button {
-      font-size: 13pt;
+      font-size: 12.5pt;
       color: @gray;
       padding: 0 5pt;
       margin: 0 5pt;
@@ -36,7 +38,6 @@
       border-radius: 0;
     }
 
-    /* Tag settings */
     #tags button.focused {
       padding-top: 4px;
       border-bottom: 2px solid @cyan;
@@ -56,15 +57,23 @@
       color: @red;
     }
 
-
     /* Per-tag size adjustments */
-    #tags button:nth-child(4) {
-      font-size: 12.5pt;
+    #tags button:nth-child(1) {
+      font-size: 14pt;
+      padding-bottom: 1px;
     }
-    #tags button:nth-child(5) {
+
+    #tags button:nth-child(2) {
+      font-size: 15pt;
+      margin-top: -1px;
+      padding-top: 1px;
+    }
+
+    #tags button:nth-child(4) {
       font-size: 14pt;
     }
 
+    #tags button:nth-child(6),
     #tags button:nth-child(7),
     #tags button:nth-child(8),
     #tags button:nth-child(9) {
@@ -74,9 +83,19 @@
       padding: 0;
     }
 
+    #tags button:nth-child(1).focused {
+      padding-top: 3px;
+    }
+
+    #tags button:nth-child(2).focused {
+      padding-top: 4px;
+    }
+
+    #tags button:nth-child(6).focused,
     #tags button:nth-child(7).focused,
     #tags button:nth-child(8).focused,
     #tags button:nth-child(9).focused,
+    #tags button:nth-child(6).occupied,
     #tags button:nth-child(7).occupied,
     #tags button:nth-child(8).occupied,
     #tags button:nth-child(9).occupied {
@@ -86,13 +105,13 @@
       min-width: 8pt;
     }
 
+    #tags button:nth-child(6).focused,
     #tags button:nth-child(7).focused,
     #tags button:nth-child(8).focused,
     #tags button:nth-child(9).focused {
       padding-top: 4px;
       margin-bottom: 2px;
     }
-
 
     /* Per-module styling */
     #sys-info {
