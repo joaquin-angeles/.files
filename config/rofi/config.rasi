@@ -1,12 +1,7 @@
 configuration {
     modi: "drun,emoji";
     show-icons: true;
-    matching: "fuzzy";
-    sort: true;
-    sorting-method: "fzf";
     disable-history: true;
-    display-drun: "󰍉";
-    display-emoji: "󰞅";
 }
 
 @import "themes/gruvforest"
