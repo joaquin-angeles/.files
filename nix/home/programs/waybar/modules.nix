@@ -5,7 +5,7 @@
     "river/tags" = {
       num-tags = 9;
       disable-scroll = true;
-      all-outputs = true;
+      all-outputs = false;
       tag-labels = [
         ""
         ""
@@ -90,7 +90,6 @@
       format-full = "󱟢  {capacity}%";
       format-charging = "󰂄  {capacity}%";
       format-warning = "󰂃  {capacity}%";
-      tooltop = false;
       states = {
         good = 80;
         low = 30;
