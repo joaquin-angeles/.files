@@ -11,5 +11,6 @@
     wayfreeze
     wideriver
     wl-clipboard
+    wlopm
   ];
 }

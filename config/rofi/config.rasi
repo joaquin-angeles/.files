@@ -1,6 +1,8 @@
 configuration {
     modi: "drun,emoji";
     show-icons: true;
+    case-smart: true;
+    case-sensitive: false;
     disable-history: true;
 }
 

@@ -3,8 +3,8 @@
 let
   browser = "librewolf.desktop";
   editor = "nvim.desktop";
-  archive = "xarchiver.desktop";
-  files = "pcmanfm.desktop";
+  archive = "org.gnome.FileRoller.desktop";
+  files = "thunar.desktop";
   image = "swayimg.desktop";
   mkMime = app: types: lib.listToAttrs (map (t: lib.nameValuePair t app) types);
 in

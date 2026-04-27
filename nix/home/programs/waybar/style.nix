@@ -58,15 +58,8 @@
     }
 
     /* Per-tag size adjustments */
-    #tags button:nth-child(1) {
-      font-size: 14pt;
-      padding-bottom: 1px;
-    }
-
     #tags button:nth-child(2) {
-      font-size: 15pt;
-      margin-top: -1px;
-      padding-top: 1px;
+      font-size: 13pt;
     }
 
     #tags button:nth-child(4) {
@@ -81,14 +74,6 @@
       color: transparent;
       margin: 0 -99px;
       padding: 0;
-    }
-
-    #tags button:nth-child(1).focused {
-      padding-top: 3px;
-    }
-
-    #tags button:nth-child(2).focused {
-      padding-top: 4px;
     }
 
     #tags button:nth-child(6).focused,
@@ -119,10 +104,6 @@
       min-width: 12pt;
     }
 
-    #custom-expand-icon {
-      padding-right: 2pt;
-    }
-
     #tray {
       padding-left: 5pt;
       padding-right: 2pt;
@@ -134,16 +115,20 @@
     }
 
     #pulseaudio {
-      font-size: 14pt;
-      margin: 0 8pt 0 4pt;
+      font-size: 14.5pt;
+      margin: 0 5pt 0 4pt;
     }
 
     #battery {
-      padding: 0 8pt 0 4pt;
+      padding: 0 10pt 0 4pt;
     }
 
-    #battery span.icon {
-      font-size: 13.5pt;
+    #battery.full {
+      color: @cyan;
+    }
+
+    #battery.charging {
+      color: @green;
     }
 
     #battery.low {
@@ -156,7 +141,7 @@
     }
 
     #clock {
-      padding: 0 10pt 0 5pt;
+      padding: 0 10pt 0 2pt;
     }
 
     #layout {
