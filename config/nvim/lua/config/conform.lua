@@ -1,9 +1,7 @@
 local options = {
 	formatters_by_ft = {
 		bash = { "beautysh" },
-		css = { "prettier" },
 		dash = { "beautysh" },
-		html = { "prettier" },
 		lua = { "stylua" },
 		nix = { "nixfmt" },
 		sh = { "beautysh" },

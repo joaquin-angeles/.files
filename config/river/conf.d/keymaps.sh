@@ -48,7 +48,7 @@ riverctl map normal $mod P spawn 'rofi -show drun'
 riverctl map normal $mod W spawn 'librewolf'
 riverctl map normal $mod E spawn 'pcmanfm'
 riverctl map normal $mod Period spawn 'rofi -no-show-icons -show emoji'
-riverctl map normal $mod V spawn 'cliphist list | rofi -dmenu -p clipboard | cliphist decode | wl-copy'
+riverctl map normal $mod V spawn 'cliphist list | rofi -dmenu -no-show-icons -p 󱘞 | cliphist decode | wl-copy'
 
 # App toggles
 riverctl map normal $mod B spawn 'pgrep waybar >/dev/null && pkill waybar || waybar'

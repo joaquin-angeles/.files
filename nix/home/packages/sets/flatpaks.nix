@@ -5,7 +5,9 @@
     packages = [
       # Applications
       "dev.vencord.Vesktop" # Discord
+      "io.github.celluloid_player.Celluloid"
       "org.chromium.Chromium" # Progressive web apps
+      "org.gimp.GIMP"
       "org.onlyoffice.desktopeditors" # Office suite
 
       # Gaming
@@ -49,7 +51,7 @@
   };
 
   # Apple Music
-  xdg.desktopEntries.itunes = {
+  xdg.desktopEntries.apple-music = {
     name = "Apple Music";
     exec = "flatpak run org.chromium.Chromium --app=https://music.apple.com";
     icon = "apple-music";

@@ -25,10 +25,14 @@ let
           shift 2
           if [ -d "$dest/.git" ]; then
               log "Updating $(${pkgs.coreutils}/bin/basename "$dest")..."
-              ${pkgs.git}/bin/git -C "$dest" pull --ff-only || die "Failed to update $dest"
+              ${pkgs.git}/bin/git -C "$dest" fetch --depth=1 origin \
+                  || die "Failed to fetch $dest"
+              ${pkgs.git}/bin/git -C "$dest" reset --hard origin/HEAD \
+                  || die "Failed to reset $dest"
           else
               log "Cloning $(${pkgs.coreutils}/bin/basename "$dest")..."
-              ${pkgs.git}/bin/git clone "$@" "$url" "$dest" || die "Failed to clone $url"
+              ${pkgs.git}/bin/git clone "$@" "$url" "$dest" \
+                  || die "Failed to clone $url"
           fi
       }
 
@@ -37,19 +41,11 @@ let
           "$GRUVBOX_REPO" \
           --depth=1
 
-      THEME_DEST="''${KVANTUM_DIR}/''${THEME_NAME}"
-      if [ ! -L "$THEME_DEST" ] || [ ! -e "$THEME_DEST" ]; then
-          log "Linking ''${THEME_NAME}..."
-          ${pkgs.coreutils}/bin/ln -sfn "''${GRUVBOX_REPO}/''${THEME_NAME}" "$KVANTUM_DIR/"
-      else
-          log "Symlink already exists for ''${THEME_NAME}, skipping..."
-      fi
+      log "Linking ''${THEME_NAME}..."
+      ${pkgs.coreutils}/bin/ln -sfn "''${GRUVBOX_REPO}/''${THEME_NAME}" "$KVANTUM_DIR/"
 
       log "Applying ''${THEME_NAME}..."
-      cat > "''${KVANTUM_DIR}/kvantum.kvconfig" <<EOF
-      [General]
-      theme=''${THEME_NAME}
-      EOF
+      printf '[General]\ntheme=%s\n' "''${THEME_NAME}" > "''${KVANTUM_DIR}/kvantum.kvconfig"
 
       log "Gruvbox-Dark-Blue Kvantum theme setup complete!"
     '';
@@ -66,6 +62,7 @@ in
     Unit = {
       Description = "Install and configure Gruvbox Kvantum theme";
       After = [ "network-online.target" ];
+      Wants = [ "network-online.target" ];
     };
 
     Service = {

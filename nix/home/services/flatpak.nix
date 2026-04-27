@@ -1,25 +1,5 @@
 { config, lib, ... }:
 
-let
-  # Gaming focused variables
-  forceX11Nvidia = {
-    Context.sockets = [
-      "!wayland"
-      "x11"
-      "!fallback-x11"
-    ];
-    Environment = {
-      "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
-      "__NV_PRIME_RENDER_OFFLOAD" = "1";
-      "__VK_LAYER_NV_optimus" = "NVIDIA_only";
-    };
-  };
-
-  gamingApps = [
-    "org.vinegarhq.Sober"
-    "io.mrarm.mcpelauncher"
-  ];
-in
 {
   services.flatpak = {
     enable = true;
@@ -67,6 +47,25 @@ in
         };
       };
     }
-    // lib.genAttrs gamingApps (_: forceX11Nvidia);
+    //
+      lib.genAttrs
+        # Games
+        [
+          "org.vinegarhq.Sober"
+          "io.mrarm.mcpelauncher"
+        ]
+        (_: {
+          # Gaming focused variables
+          Context.sockets = [
+            "!wayland"
+            "x11"
+            "!fallback-x11"
+          ];
+          Environment = {
+            "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
+            "__NV_PRIME_RENDER_OFFLOAD" = "1";
+            "__VK_LAYER_NV_optimus" = "NVIDIA_only";
+          };
+        });
   };
 }

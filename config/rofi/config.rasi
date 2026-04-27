@@ -1,76 +1,12 @@
-* {
-    font: "Inter, MonaspiceNe Nerd Font Propo 13";
-    black: #1d2021ff;
-    grey: #56595aff;
-    white: #d4be98ff;
-    green: #a9b665cc;
-    cyan: #89b482ff;
-    bg: #1d2021cc;
-    spacing: 8px;
-    padding: 5px;
-}
-
 configuration {
     modi: "drun,emoji";
     show-icons: true;
+    matching: "fuzzy";
+    sort: true;
+    sorting-method: "fzf";
     disable-history: true;
     display-drun: "󰍉";
     display-emoji: "󰞅";
 }
 
-window {
-    transparency: "real";
-    width: 800px;
-    background-color: @black;
-    border: 1px solid;
-    border-color: #32353780;
-    margin: 0;
-}
-
-mainbox {
-    spacing: @spacing;
-    padding: @padding;
-    children: ["inputbar", "listview", "message"];
-}
-
-inputbar {
-    children: ["entry"];
-}
-
-listview {
-    columns: 1;
-    lines: 10;
-    fixed-height: true;
-    fixed-columns: true;
-    cycle: false;
-    scrollbar: false;
-    spacing: 2px;
-    margin: 6px;
-    border: 0px solid;
-}
-
-entry {
-    background-color: #32353780;
-    placeholder: "󰍉 Type to search…";
-    padding: 12px;
-    text-color: @white;
-    placeholder-color: @grey;
-}
-
-element alternate.normal,
-element normal.normal {
-    padding: @padding;
-    background-color: transparent;
-    text-color: @white;
-}
-
-element selected.normal {
-    text-color: @white;
-    background-color: #32353780;
-    border: 0 0 0 2px;
-    border-color: @cyan;
-}
-
-message {
-    border: 0px solid;
-}
+@import "themes/gruvforest"

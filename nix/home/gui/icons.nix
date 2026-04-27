@@ -25,10 +25,14 @@ let
           shift 2
           if [ -d "$dest/.git" ]; then
               log "Updating $(${pkgs.coreutils}/bin/basename "$dest")..."
-              ${pkgs.git}/bin/git -C "$dest" pull --ff-only || die "Failed to update $dest"
+              ${pkgs.git}/bin/git -C "$dest" fetch --depth=1 origin \
+                  || die "Failed to fetch $dest"
+              ${pkgs.git}/bin/git -C "$dest" reset --hard origin/HEAD \
+                  || die "Failed to reset $dest"
           else
               log "Cloning $(${pkgs.coreutils}/bin/basename "$dest")..."
-              ${pkgs.git}/bin/git clone "$@" "$url" "$dest" || die "Failed to clone $url"
+              ${pkgs.git}/bin/git clone "$@" "$url" "$dest" \
+                  || die "Failed to clone $url"
           fi
       }
 
@@ -41,15 +45,11 @@ let
           "https://github.com/xelser/gruvbox-papirus-folders.git" \
           "$GRUVBOX_REPO"
 
-      log "Checking Papirus icon theme symlinks..."
+      log "Linking Papirus icon themes..."
       for src in "''${PAPIRUS_REPO}"/Papirus*/; do
           dest="''${ICONS_DIR}/$(${pkgs.coreutils}/bin/basename "$src")"
-          if [ ! -L "$dest" ]; then
-              log "Linking $(${pkgs.coreutils}/bin/basename "$src")..."
-              ${pkgs.coreutils}/bin/ln -sfn "$src" "$dest"
-          else
-              log "Symlink already exists for $(${pkgs.coreutils}/bin/basename "$src"), skipping..."
-          fi
+          log "Linking $(${pkgs.coreutils}/bin/basename "$src")..."
+          ${pkgs.coreutils}/bin/ln -sfn "$src" "$dest"
       done
 
       log "Installing Gruvbox folder icons..."
@@ -67,6 +67,7 @@ in
     Unit = {
       Description = "Install and configure Gruvbox Papirus icon theme";
       After = [ "network-online.target" ];
+      Wants = [ "network-online.target" ];
     };
 
     Service = {
