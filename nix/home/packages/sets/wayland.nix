@@ -10,5 +10,6 @@
     gtklock
     wayfreeze
     wideriver
+    wl-clipboard
   ];
 }

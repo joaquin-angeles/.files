@@ -1,10 +1,18 @@
 local options = {
 	formatters_by_ft = {
+		-- Shell formatters
+		sh = { "beautysh" },
 		bash = { "beautysh" },
 		dash = { "beautysh" },
+
+		-- Prettier formatters
+		css = { "prettier" },
+		markdown = { "prettier" },
+		yaml = { "prettier" },
+
+		-- Per-filetype formatters
 		lua = { "stylua" },
 		nix = { "nixfmt" },
-		sh = { "beautysh" },
 	},
 
 	format_on_save = {

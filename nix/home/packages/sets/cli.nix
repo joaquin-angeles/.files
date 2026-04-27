@@ -7,6 +7,5 @@
     lazygit
     nitch
     unstable.impala
-    wl-clipboard
   ];
 }
