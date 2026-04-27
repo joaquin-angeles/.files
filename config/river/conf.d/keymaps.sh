@@ -13,7 +13,7 @@ done
 # View/set windows for all tags
 all_tags=$(( (1 << 32) - 1 ))
 riverctl map normal $mod 0 set-focused-tags "$all_tags"
-riverctl map normal $mod 0 spawn 'river-sticky'
+riverctl map normal $mod+Shift 0 spawn 'river-sticky'
 
 # Window management
 riverctl map normal $mod+Shift C close
