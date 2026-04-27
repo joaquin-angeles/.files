@@ -2,15 +2,15 @@
 
 {
   programs.waybar.style = ''
-    @define-color black       #1d2021;
-    @define-color brightblack #56595a;
-    @define-color white       #d4be98;
-    @define-color red         #ea6962;
-    @define-color green       #a9b665;
-    @define-color yellow      #d8a657;
-    @define-color blue        #7daea3;
-    @define-color magenta     #d3869b;
-    @define-color cyan        #89b482;
+    @define-color black   #1d2021;
+    @define-color gray    #56595a;
+    @define-color white   #d4be98;
+    @define-color red     #ea6962;
+    @define-color green   #a9b665;
+    @define-color yellow  #d8a657;
+    @define-color blue    #7daea3;
+    @define-color magenta #d3869b;
+    @define-color cyan    #89b482;
 
     window#waybar {
       font-family: sans-serif, "MonaspiceNe Nerd Font Propo";
@@ -25,7 +25,7 @@
     #tags button {
       font-family: "MonaspiceNe Nerd Font Propo";
       font-size: 12.5pt;
-      color: @brightblack;
+      color: @gray;
       padding: 0 5pt;
       margin: 0 5pt;
       min-width: 10pt;
@@ -53,6 +53,7 @@
       color: @red;
     }
 
+
     /* Per-tag size adjustments */
     #tags button:nth-child(1) {
       margin-top: -1px;
@@ -63,11 +64,14 @@
       padding-top: 4px;
     }
 
-    #tags button:nth-child(4) {
+    #tags button:nth-child(3) {
+      font-size: 13pt;
+    }
+
+    #tags button:nth-child(5) {
       font-size: 14pt;
     }
 
-    #tags button:nth-child(6),
     #tags button:nth-child(7),
     #tags button:nth-child(8),
     #tags button:nth-child(9) {
@@ -79,11 +83,9 @@
       padding: 0;
     }
 
-    #tags button:nth-child(6).focused,
     #tags button:nth-child(7).focused,
     #tags button:nth-child(8).focused,
     #tags button:nth-child(9).focused,
-    #tags button:nth-child(6).occupied,
     #tags button:nth-child(7).occupied,
     #tags button:nth-child(8).occupied,
     #tags button:nth-child(9).occupied {
@@ -95,7 +97,6 @@
       transition: none;
     }
 
-    #tags button:nth-child(6).focused,
     #tags button:nth-child(7).focused,
     #tags button:nth-child(8).focused,
     #tags button:nth-child(9).focused {
@@ -103,6 +104,8 @@
       margin-bottom: 2px;
     }
 
+
+    /* Per-module styling */
     #sys-info {
       margin-right: 3pt;
       min-width: 12pt;

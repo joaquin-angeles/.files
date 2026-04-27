@@ -2,7 +2,23 @@
 
 {
   programs.yazi.theme = {
-    mgr.border_style.fg = "brightblack";
+    mgr = {
+      border_style.fg = "brightblack";
+
+      # Selection count
+      count_copied = {
+        fg = "black";
+        bg = "green";
+      };
+      count_cut = {
+        fg = "black";
+        bg = "red";
+      };
+      count_selected = {
+        fg = "black";
+        bg = "yellow";
+      };
+    };
 
     tab = {
       active = {

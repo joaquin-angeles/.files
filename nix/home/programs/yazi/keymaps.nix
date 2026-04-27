@@ -34,6 +34,17 @@
         on = [ "enter" ];
         run = "plugin smart-enter";
       }
+      {
+        on = [ "u" ];
+        run = "unyank";
+      }
+      {
+        on = [ "U" ];
+        run = [
+          "unyank"
+          "escape --select"
+        ];
+      }
     ];
   };
 }
