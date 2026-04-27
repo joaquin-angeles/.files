@@ -9,24 +9,25 @@
     settings = {
       anchor = "top-right";
       layer = "overlay";
-      padding = "8";
-      margin = "5";
-      outer-margin = "5";
+      padding = 6;
+      margin = 6;
       width = 500;
       height = 125;
       markup = true;
       default-timeout = 3000;
       text-color = "#d4be98";
       background-color = "#1d2021";
-      border-color = "#3C3E3E";
+      border-color = "#323537";
+      border-size = 1;
       border-radius = 5;
-      font = "sans-serif 14";
+      font = "Inter, MonaspiceNe Nerd Font Propo 14";
     };
 
     # On-screen display setup
     extraConfig = ''
       [app-name=osd]
-      width=260
+      width=200
+      text-alignment=center
     '';
   };
 }

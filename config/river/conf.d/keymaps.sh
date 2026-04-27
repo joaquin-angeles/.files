@@ -65,8 +65,8 @@ riverctl map normal $mod F1 spawn 'river-sheet | rofi -dmenu -p "󱊫 Keybinds"'
 # Volume & brightness
 riverctl map normal $mod Minus spawn 'mako-osd --volume-down 5'
 riverctl map normal $mod Equal spawn 'mako-osd --volume-up 5'
-riverctl map normal $mod Bracketleft spawn 'mako-osd --brightness-down 5'
-riverctl map normal $mod Bracketright spawn 'mako-osd --brightness-up 5'
+riverctl map normal $mod BracketLeft spawn 'mako-osd --brightness-down 5'
+riverctl map normal $mod BracketRight spawn 'mako-osd --brightness-up 5'
 riverctl map normal $mod+Shift M spawn 'mako-osd --volume-mute'
 
 # Media keys

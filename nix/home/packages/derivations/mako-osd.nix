@@ -26,7 +26,6 @@ pkgs.writeTextFile {
         ${pkgs.libnotify}/bin/notify-send \
             --app-name=osd --urgency=low \
             --expire-time="$NOTIFICATION_TIME" \
-            --hint=int:x-mako-width:225 \
             --hint="string:x-canonical-private-synchronous:$1" \
             "$2" "$3"
     }
@@ -35,16 +34,21 @@ pkgs.writeTextFile {
         vol_raw=$(${pkgs.wireplumber}/bin/wpctl get-volume @DEFAULT_AUDIO_SINK@)
         vol=$(echo "$vol_raw" | ${pkgs.gawk}/bin/awk '{printf "%d", $2 * 100}')
         case "$vol_raw" in
-            *'[MUTED]'*) label="Volume (muted)" ;;
-            *)            label="Volume" ;;
+            *'[MUTED]'*) icon="󰝟" ;;
+            *)
+                if   [ "$vol" -ge 70 ]; then icon="󰕾"
+                elif [ "$vol" -ge 50 ]; then icon="󰖀"
+                elif [ "$vol" -ge 25 ]; then icon="󰕿"
+                else                         icon="󰝟"
+                fi ;;
         esac
-        osd osd-volume "$label" "$(bar "$vol")  $vol%"
+        osd osd-volume "$icon  $vol%" "$(bar "$vol")"
     }
 
     bri_notif() {
         bri=$(${pkgs.brightnessctl}/bin/brightnessctl -m \
             | ${pkgs.gawk}/bin/awk -F, '{gsub(/%/,"",$4); print $4}')
-        osd osd-brightness "Brightness" "$(bar "$bri")  $bri%"
+        osd osd-brightness "󰃠  $bri%" "$(bar "$bri")"
     }
 
     validate_step() {
