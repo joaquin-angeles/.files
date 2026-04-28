@@ -13,10 +13,10 @@ dbus-update-activation-environment --systemd \
     DISPLAY
 
 riverctl spawn 'waybar' # Status bar
-riverctl rule-add -app-id "*" ssd # Global window decorations
 
-# Layout generator
-riverctl default-layout wideriver
+# Window behavior
+riverctl rule-add -app-id "*" ssd # Global window decorations
+riverctl default-layout wideriver # Layout generator
 
 for f in ~/.config/river/conf.d/*.sh; do
     [ -x "$f" ] && riverctl spawn "$f"
