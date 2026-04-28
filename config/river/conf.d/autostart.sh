@@ -1,12 +1,12 @@
 #!/usr/bin/env dash
 
-wbg ~/Pictures/Wallpapers/trees.png &
-wlpower &
-mako &
+wlpower & # Refresh rate switching on battery states
+wbg ~/Pictures/Wallpapers/trees.png & # Wallpaper daemon
+mako & # Notification daemon
 
 # Clipboard history daemon
-nohup wl-paste --type text --watch cliphist store >/dev/null 2>&1 &
-nohup wl-paste --type image --watch cliphist store >/dev/null 2>&1 &
+wl-paste --type text --watch cliphist store >/dev/null 2>&1 &
+wl-paste --type image --watch cliphist store >/dev/null 2>&1 &
 
 swayidle -w \
     timeout 300 'gtklock --daemonize' \
@@ -29,5 +29,3 @@ exec wideriver \
     --outer-gaps 12 \
     --smart-gaps \
     --border-width-smart-gaps 0 \
-    --log-threshold info \
-    >> /tmp/wideriver.log 2>&1
