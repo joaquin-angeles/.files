@@ -12,12 +12,8 @@
 
       # Gaming
       "com.usebottles.bottles" # Launcher / Wine prefix manager
+      "com.vysp3r.ProtonPlus" # Compatibility tool installer
       "org.vinegarhq.Sober" # Roblox
-      {
-        # Wine version installer
-        appId = "com.vysp3r.ProtonPlus";
-        origin = "flathub-beta";
-      }
       {
         # Minecraft Bedrock
         appId = "io.mrarm.mcpelauncher";

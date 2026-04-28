@@ -52,6 +52,13 @@ let
   };
 in
 {
+  home.packages = with pkgs; [
+    kdePackages.qt6ct
+    kdePackages.qtstyleplugin-kvantum
+    libsForQt5.qtstyleplugin-kvantum
+    libsForQt5.qt5ct
+  ];
+
   qt = {
     enable = true;
     platformTheme.name = "qtct";

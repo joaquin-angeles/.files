@@ -34,7 +34,7 @@ return {
 			},
 			highlight = { enable = true },
 			indent = { enable = true },
-			auto_install = false,
+			auto_install = true,
 			sync_install = false,
 		},
 	},
@@ -70,7 +70,10 @@ return {
 	{ "nvim-tree/nvim-tree.lua", enabled = false },
 	{
 		"stevearc/oil.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+		lazy = false,
 	},
 
 	-- Markdown file highlighter

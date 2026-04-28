@@ -7,7 +7,9 @@
     defaultEditor = true; # Set as default
     vimAlias = true; # Fast alias
     extraPackages = with pkgs; [
-      tree-sitter # Highlighter CLI for nvim-treesitter
+      # Requirements / Compilers
+      gnumake
+      tree-sitter
 
       # Language servers
       bash-language-server

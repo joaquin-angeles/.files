@@ -1,11 +1,5 @@
 #!/usr/bin/env dash
 
-# Toolkit backends
-export GDK_BACKEND="wayland,x11,*"
-export QT_QPA_PLATFORM="wayland;xcb"
-export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-export SDL_VIDEODRIVER=wayland
-
 # Portal fixes
 export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=river
@@ -18,9 +12,8 @@ dbus-update-activation-environment --systemd \
     WAYLAND_DISPLAY \
     DISPLAY
 
-# Status bar
-riverctl spawn 'waybar'
-riverctl rule-add -app-id "*" ssd
+riverctl spawn 'waybar' # Status bar
+riverctl rule-add -app-id "*" ssd # Global window decorations
 
 # Layout generator
 riverctl default-layout wideriver

@@ -20,7 +20,7 @@ window {
     width: 800px;
     background-color: @black;
     border: 1px solid;
-    border-color: #32353780;
+    border-color: #32332f;
     border-radius: 7px;
 }
 
@@ -33,7 +33,7 @@ mainbox {
 inputbar {
     children: ["prompt", "entry"];
     border-radius: 5px;
-    background-color: #32353780;
+    background-color: #32332f80;
     padding: 5px;
 }
 
@@ -68,7 +68,7 @@ element normal.normal {
 
 element selected.normal {
     text-color: @white;
-    background-color: #32353780;
+    background-color: #32332f80;
     border: 0 0 0 2px;
     border-color: @cyan;
 }

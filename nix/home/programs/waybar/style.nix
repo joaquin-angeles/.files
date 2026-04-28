@@ -20,20 +20,20 @@
     }
 
     window#waybar {
-      background-color: @black;
+      font-size: 12.5pt;
+      background-color: alpha(darker(@black), 0.8);
       padding-bottom: 1px;
       border-bottom: 1px solid @border;
-      font-size: 12pt;
       color: @white;
     }
 
     /* Tag button settings */
     #tags button {
-      font-size: 12.5pt;
       color: @gray;
-      padding: 0 5pt;
-      margin: 0 5pt;
-      min-width: 10pt;
+      padding: 0 6px;
+      margin: 0 6px;
+      min-width: 12px;
+      min-height: 0;
       transition: none;
       border-radius: 0;
     }
@@ -52,48 +52,51 @@
     #tags button.occupied {
       color: @white;
     }
-
     #tags button.urgent {
       color: @red;
     }
 
     /* Per-tag size adjustments */
-    #tags button:nth-child(2) {
+    #tags button:nth-child(1) {
+      font-size: 15pt;
+      margin-top: -1px;
+      padding-top: 1px;
+    }
+
+    #tags button:nth-child(3) {
       font-size: 13pt;
+      padding-top: 1px;
     }
 
     #tags button:nth-child(4) {
       font-size: 14pt;
     }
 
-    #tags button:nth-child(6),
-    #tags button:nth-child(7),
-    #tags button:nth-child(8),
-    #tags button:nth-child(9) {
+    #tags button:nth-child(1).focused {
+      padding-top: 4px;
+    }
+
+    #tags button:nth-child(3).focused {
+      padding-top: 5px;
+    }
+
+    #tags button:nth-child(n + 6):nth-child(-n + 9) {
       font-size: 12pt;
       color: transparent;
       margin: 0 -99px;
       padding: 0;
     }
 
-    #tags button:nth-child(6).focused,
-    #tags button:nth-child(7).focused,
-    #tags button:nth-child(8).focused,
-    #tags button:nth-child(9).focused,
-    #tags button:nth-child(6).occupied,
-    #tags button:nth-child(7).occupied,
-    #tags button:nth-child(8).occupied,
-    #tags button:nth-child(9).occupied {
+    #tags button:nth-child(n + 6):nth-child(-n + 9).focused,
+    #tags button:nth-child(n + 6):nth-child(-n + 9).occupied {
       color: @white;
-      padding: 0 4pt;
-      margin: 0 4pt;
-      min-width: 8pt;
+      padding: 0 5px;
+      margin: 0 5px;
+      min-width: 10px;
+      min-height: 0;
     }
 
-    #tags button:nth-child(6).focused,
-    #tags button:nth-child(7).focused,
-    #tags button:nth-child(8).focused,
-    #tags button:nth-child(9).focused {
+    #tags button:nth-child(n + 6):nth-child(-n + 9).focused {
       padding-top: 4px;
       margin-bottom: 2px;
     }
@@ -105,8 +108,7 @@
     }
 
     #tray {
-      padding-left: 5pt;
-      padding-right: 2pt;
+      padding: 0 2pt 0 5pt;
     }
 
     #network {
@@ -126,11 +128,9 @@
     #battery.full {
       color: @cyan;
     }
-
     #battery.charging {
       color: @green;
     }
-
     #battery.low {
       color: @yellow;
     }
@@ -146,7 +146,7 @@
 
     #layout {
       font-family: monospace;
-      background-color: darker(@black);
+      background-color: darker(darker(@black));
       color: @gray;
       border-left: 1px solid @border;
       padding: 0 4px;

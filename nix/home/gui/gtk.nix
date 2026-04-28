@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+  # Theme manager
+  home.packages = with pkgs; [
+    nwg-look
+  ];
+
   # GTK theming
   gtk = {
     enable = true;

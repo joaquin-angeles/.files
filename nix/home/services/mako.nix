@@ -9,8 +9,8 @@
     settings = {
       anchor = "top-right";
       layer = "overlay";
-      padding = 6;
-      margin = 6;
+      padding = 10;
+      margin = 5;
       width = 300;
       height = 150;
       markup = true;

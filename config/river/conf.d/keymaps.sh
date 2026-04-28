@@ -46,7 +46,7 @@ riverctl map-pointer normal $mod BTN_LEFT move-view
 riverctl map normal $mod Return spawn 'foot'
 riverctl map normal $mod P spawn 'rofi -show drun'
 riverctl map normal $mod W spawn 'librewolf'
-riverctl map normal $mod E spawn 'thunar'
+riverctl map normal $mod E spawn 'foot -e yazi'
 riverctl map normal $mod Period spawn 'rofi -no-show-icons -show emoji'
 riverctl map normal $mod V spawn 'cliphist list | rofi -dmenu -no-show-icons -p 󱘞 | cliphist decode | wl-copy'
 
