@@ -60,7 +60,7 @@ riverctl map normal $mod+Shift S spawn 'grimshot --output'
 
 # Misc
 riverctl map normal $mod+Shift Q spawn 'rofi-power-menu'
-riverctl map normal $mod F1 spawn 'river-sheet | rofi -dmenu -p "󱊫 Keybinds"'
+riverctl map normal $mod F1 spawn 'river-sheet'
 
 # Volume & brightness
 riverctl map normal $mod Minus spawn 'mako-osd --volume-down 5'
