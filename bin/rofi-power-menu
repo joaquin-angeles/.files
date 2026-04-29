@@ -31,25 +31,13 @@ case "$choice" in
         confirm "Reboot" "$icon" && systemctl reboot
         ;;
     "󰌾  Lock")
-        if command -v gtklock >/dev/null 2>&1; then
-            gtklock
-        elif command -v hyprlock >/dev/null 2>&1; then
-            hyprlock
-        elif command -v i3lock >/dev/null 2>&1; then
-            i3lock
-        elif command -v betterlockscreen >/dev/null 2>&1; then
-            betterlockscreen -l
-        else
-            notify-send "No lock utility found."
-        fi
+        loginctl lock-session
         ;;
     "󰤄  Suspend")
         confirm "Suspend" "$icon" && systemctl suspend
         ;;
     "󰍃  Logout")
         confirm "Logout" "$icon" && {
-            riverctl exit 2>/dev/null ||
-            hyprctl dispatch exit 2>/dev/null ||
             pkill -u "$USER"
         }
         ;;
