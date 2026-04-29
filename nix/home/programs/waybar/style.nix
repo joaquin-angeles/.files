@@ -113,7 +113,7 @@
     }
 
     #tray {
-      padding: 0 0 0 10pt;
+      padding-left: 8pt;
     }
 
     #network {
@@ -151,7 +151,7 @@
 
     #layout {
       font-family: monospace;
-      background-color: darker(darker(@black));
+      background-color: darker(@black);
       color: @gray;
       border-left: 1px solid @border;
       padding: 0 4px;
