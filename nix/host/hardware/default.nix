@@ -18,16 +18,18 @@
       };
     };
   };
+
   hardware = {
+    # Bluetooth
     bluetooth = {
       enable = true;
       powerOnBoot = false;
     };
-    graphics = {
-      enable = true;
-      # enable32Bit = true;
-    };
+
+    graphics.enable = true; # Hardware acceleration
   };
+
+  # RAM swap
   zramSwap = {
     enable = true;
     algorithm = "zstd";

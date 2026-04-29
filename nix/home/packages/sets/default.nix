@@ -18,7 +18,8 @@
     swayimg
     wiremix
 
-    # Archive tools
+    # File management tools
+    pcmanfm
     xarchiver
     p7zip
     unrar
