@@ -21,7 +21,7 @@
 
     window#waybar {
       font-size: 12.5pt;
-      background-color: @black;
+      background-color: alpha(darker(@black), 0.8);
       padding-bottom: 1px;
       border-bottom: 1px solid @border;
       color: @white;
@@ -102,23 +102,28 @@
     }
 
     /* Per-module styling */
+    #custom-expand-icon {
+      font-family: "MonaspiceNe Nerd Font Propo";
+      font-size: 14pt;
+    }
+
     #sys-info {
       margin-right: 3pt;
       min-width: 12pt;
     }
 
     #tray {
-      padding: 0 2pt 0 5pt;
+      padding: 0 0 0 10pt;
     }
 
     #network {
       font-size: 12.5pt;
-      padding: 0 7pt 0 8pt;
+      padding: 0 7pt 0 10pt;
     }
 
     #pulseaudio {
       font-size: 14.5pt;
-      margin: 0 5pt 0 4pt;
+      margin: 0 4pt;
     }
 
     #battery {
@@ -146,7 +151,7 @@
 
     #layout {
       font-family: monospace;
-      background-color: darker(@black);
+      background-color: darker(darker(@black));
       color: @gray;
       border-left: 1px solid @border;
       padding: 0 4px;

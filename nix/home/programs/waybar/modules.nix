@@ -34,7 +34,7 @@
     };
 
     "custom/expand-icon" = {
-      format = "";
+      format = "◀";
       tooltip = false;
     };
 

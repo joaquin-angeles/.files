@@ -1,19 +1,11 @@
 #!/usr/bin/env dash
 
 # Portal fixes
-export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=river
-export XDG_SESSION_DESKTOP=river
-dbus-update-activation-environment --systemd \
-    PATH \
-    XDG_SESSION_TYPE \
-    XDG_CURRENT_DESKTOP \
-    XDG_SESSION_DESKTOP \
-    WAYLAND_DISPLAY \
-    DISPLAY
+dbus-update-activation-environment --systemd --all
 
 # Window behavior
-riverctl rule-add -app-id "*" ssd # Global window decorations
+riverctl rule-add ssd # Global window decorations
 riverctl default-layout wideriver # Layout generator
 
 # Window layout generator
@@ -29,4 +21,4 @@ exec wideriver \
     --inner-gaps 12 \
     --outer-gaps 12 \
     --smart-gaps \
-    --border-width-smart-gaps 0 \
+    --border-width-smart-gaps 0
