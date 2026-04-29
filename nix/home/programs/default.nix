@@ -3,6 +3,7 @@
 {
   imports = [
     # Program configurations
+    ./fastfetch
     ./firefox # Web browser
     ./foot # (Wayland) terminal emulator
     # ./lutris # Game launcher

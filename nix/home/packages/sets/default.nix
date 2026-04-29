@@ -10,7 +10,6 @@
     # CLI / TUI
     cliphist
     lazygit
-    nitch
     unstable.bluetui
     unstable.impala
 
