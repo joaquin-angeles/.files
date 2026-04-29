@@ -4,7 +4,6 @@
   imports = [
     ./flatpaks.nix
     ./scripts.nix
-    ./wayland.nix
   ];
 
   home.packages = with pkgs; [
@@ -12,14 +11,23 @@
     cliphist
     lazygit
     nitch
+    unstable.bluetui
     unstable.impala
 
     # Media tools
     swayimg
-    unstable.bluetui
-    # unstable.obs-studio
     wiremix
 
-    file-roller # Archive manager
+    # Archive tools
+    xarchiver
+    p7zip
+    unrar
+    unzip
+    zip
+
+    # Wayland tools
+    gammastep # Blue light filter
+    gtklock # Screen locker
+    wl-clipboard
   ];
 }

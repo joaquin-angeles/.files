@@ -13,8 +13,8 @@
     enable = true;
     enableZshIntegration = true; # Shell integration
 
-    # Previewers
     extraPackages = with pkgs; [
+      # Previewers
       ffmpegthumbnailer
       file
       poppler

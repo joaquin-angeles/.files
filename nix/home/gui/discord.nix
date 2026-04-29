@@ -5,7 +5,7 @@
     @import url("https://refact0r.github.io/midnight-discord/build/midnight.css");
 
     body {
-      --font: "Inter";
+      --font: "Inter", "MonaspiceNe Nerd Font Propo";
       --gap: 12px;
       --divider-thickness: 4px;
       --border-thickness: 1px;

@@ -21,25 +21,16 @@
       };
 
       extraCss = ''
-        headerbar.titlebar.default-decoration {
-          display: none;
-          opacity: 0;
-          background: transparent;
-          padding: 0;
-          margin: 0 0 -99px 0;
-          border: 0;
-          min-height: 0;
-          font-size: 0;
-          box-shadow: none;
+        /* No title bar on wayland */
+        headerbar.default-decoration {
+          margin-bottom: 50px;
+          margin-top: -100px;
         }
 
-        headerbar.titlebar button.titlebutton {
-          opacity: 0;
-          background: transparent;
-          pointer-events: none;
-        }
-
+        /* rm -rf window shadows */
+        window.csd, /* gtk4? */
         window.csd decoration {
+          /* gtk3 */
           box-shadow: none;
         }
       '';
@@ -50,6 +41,21 @@
         gtk-application-prefer-dark-theme = true;
         gtk-decoration-layout = ":";
       };
+
+      extraCss = ''
+        /* No title bar on wayland */
+        headerbar.default-decoration {
+          margin-bottom: 50px;
+          margin-top: -100px;
+        }
+
+        /* rm -rf window shadows */
+        window.csd, /* gtk4? */
+        window.csd decoration {
+          /* gtk3 */
+          box-shadow: none;
+        }
+      '';
     };
   };
 
