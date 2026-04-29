@@ -50,12 +50,11 @@ entry {
 listview {
     columns: 1;
     lines: 10;
-    fixed-height: false;
+    fixed-height: true;
     fixed-columns: true;
     cycle: false;
     scrollbar: false;
     spacing: @padding;
-    margin: 5px;
     border: 0px solid;
 }
 

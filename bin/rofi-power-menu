@@ -2,7 +2,7 @@
 
 confirm() {
     confirmed=$(printf 'Yes\nNo' | rofi -no-show-icons -dmenu \
-            -p "$(printf '󰐥  %s? ' "$1")" \
+            -p "$(printf '%s  %s?' "$2" "$1")" \
             -lines 2 \
             -selected-row 1 \
         -no-custom)
@@ -17,19 +17,20 @@ options="󰐥  Shutdown
 󰤄  Suspend
 󰍃  Logout"
 
-choice="$(printf '%s\n' "$options" | rofi -no-show-icons -dmenu -p "󰐥")"
+choice="$(printf '%s\n' "$options" | rofi -no-show-icons -dmenu -p "󰍜")"
 
 [ $? -ne 0 ] && exit 0
 
+icon="${choice%% *}"
+
 case "$choice" in
     "󰐥  Shutdown")
-        confirm "Shutdown" && systemctl poweroff
+        confirm "Shutdown" "$icon" && systemctl poweroff
         ;;
     "󰜉  Reboot")
-        confirm "Reboot" && systemctl reboot
+        confirm "Reboot" "$icon" && systemctl reboot
         ;;
     "󰌾  Lock")
-        # Lock doesn't need confirmation — it's reversible
         if command -v gtklock >/dev/null 2>&1; then
             gtklock
         elif command -v hyprlock >/dev/null 2>&1; then
@@ -43,10 +44,10 @@ case "$choice" in
         fi
         ;;
     "󰤄  Suspend")
-        confirm "Suspend" && systemctl suspend
+        confirm "Suspend" "$icon" && systemctl suspend
         ;;
     "󰍃  Logout")
-        confirm "Logout" && {
+        confirm "Logout" "$icon" && {
             riverctl exit 2>/dev/null ||
             hyprctl dispatch exit 2>/dev/null ||
             pkill -u "$USER"
