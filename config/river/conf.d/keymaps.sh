@@ -15,59 +15,59 @@ all_tags=$(( (1 << 32) - 1 ))
 riverctl map normal $mod 0 set-focused-tags "$all_tags"
 riverctl map normal $mod+Shift 0 spawn 'river-sticky'
 
-# Window management
-riverctl map normal $mod+Shift C close
-riverctl map normal $mod F toggle-fullscreen
-riverctl map normal $mod+Shift Space toggle-float
-riverctl map normal $mod+Shift Return zoom
-
 # Layout switching
-riverctl map normal $mod Space send-layout-cmd wideriver "--layout-toggle"
-riverctl map normal $mod T send-layout-cmd wideriver '--layout left'
-riverctl map normal $mod M send-layout-cmd wideriver '--layout monocle'
+riverctl map normal $mod space send-layout-cmd wideriver "--layout-toggle"
+riverctl map normal $mod t send-layout-cmd wideriver '--layout left'
+riverctl map normal $mod m send-layout-cmd wideriver '--layout monocle'
+
+# Window management
+riverctl map normal $mod+Shift c close
+riverctl map normal $mod f toggle-fullscreen
+riverctl map normal $mod+Shift space toggle-float
+riverctl map normal $mod+Shift return zoom
 
 # Focus (jk)
-riverctl map normal $mod J focus-view next
-riverctl map normal $mod K focus-view previous
+riverctl map normal $mod j focus-view next
+riverctl map normal $mod k focus-view previous
 
 # Resize (hl)
-riverctl map normal $mod H send-layout-cmd wideriver '--ratio -0.05'
-riverctl map normal $mod L send-layout-cmd wideriver '--ratio +0.05'
-riverctl map normal $mod I send-layout-cmd wideriver '--count +1'
-riverctl map normal $mod D send-layout-cmd wideriver '--count -1'
+riverctl map normal $mod h send-layout-cmd wideriver '--ratio -0.05'
+riverctl map normal $mod l send-layout-cmd wideriver '--ratio +0.05'
+riverctl map normal $mod i send-layout-cmd wideriver '--count +1'
+riverctl map normal $mod d send-layout-cmd wideriver '--count -1'
 riverctl map-pointer normal $mod BTN_RIGHT resize-view
 
 # Swap (Shift+hjkl)
-riverctl map normal $mod+Shift J swap next
-riverctl map normal $mod+Shift K swap previous
+riverctl map normal $mod+Shift j swap next
+riverctl map normal $mod+Shift j swap previous
 riverctl map-pointer normal $mod BTN_LEFT move-view
 
 # Apps
-riverctl map normal $mod Return spawn 'foot'
-riverctl map normal $mod P spawn 'rofi -show drun'
-riverctl map normal $mod W spawn 'librewolf'
-riverctl map normal $mod E spawn 'foot -e yazi'
-riverctl map normal $mod Period spawn 'rofi -no-show-icons -show emoji'
-riverctl map normal $mod V spawn 'cliphist list | rofi -dmenu -no-show-icons -p 󱘞 | cliphist decode | wl-copy'
+riverctl map normal $mod return spawn 'foot'
+riverctl map normal $mod p spawn 'rofi -show drun'
+riverctl map normal $mod w spawn 'librewolf'
+riverctl map normal $mod e spawn 'pcmanfm'
+riverctl map normal $mod period spawn 'rofi -no-show-icons -show emoji'
+riverctl map normal $mod v spawn 'cliphist list | rofi -dmenu -no-show-icons -p 󱘞 | cliphist decode | wl-copy'
 
 # App toggles
-riverctl map normal $mod B spawn 'pgrep waybar >/dev/null && pkill waybar || waybar'
-riverctl map normal $mod+Shift N spawn 'pgrep gammastep >/dev/null && pkill gammastep || gammastep -O 4000'
+riverctl map normal $mod b spawn 'pgrep waybar >/dev/null && pkill waybar || waybar'
+riverctl map normal $mod+Shift n spawn 'pgrep gammastep >/dev/null && pkill gammastep || gammastep -O 4000'
 
 # Screenshots
-riverctl map normal $mod S spawn 'grimshot --region'
-riverctl map normal $mod+Shift S spawn 'grimshot --output'
+riverctl map normal $mod s spawn 'grimshot --region'
+riverctl map normal $mod+Shift s spawn 'grimshot --output'
 
 # Misc
-riverctl map normal $mod+Shift Q spawn 'rofi-power-menu'
-riverctl map normal $mod F1 spawn 'river-sheet'
+riverctl map normal $mod+Shift q spawn 'rofi-power-menu'
+riverctl map normal $mod f1 spawn 'river-sheet'
 
 # Volume & brightness
-riverctl map normal $mod Minus spawn 'mako-osd --volume-down 5'
-riverctl map normal $mod Equal spawn 'mako-osd --volume-up 5'
-riverctl map normal $mod BracketLeft spawn 'mako-osd --brightness-down 5'
-riverctl map normal $mod BracketRight spawn 'mako-osd --brightness-up 5'
-riverctl map normal $mod+Shift M spawn 'mako-osd --volume-mute'
+riverctl map normal $mod minus spawn 'mako-osd --volume-down 5'
+riverctl map normal $mod equal spawn 'mako-osd --volume-up 5'
+riverctl map normal $mod bracketleft spawn 'mako-osd --brightness-down 5'
+riverctl map normal $mod bracketright spawn 'mako-osd --brightness-up 5'
+riverctl map normal $mod+Shift m spawn 'mako-osd --volume-mute'
 
 # Media keys
 riverctl map normal None XF86AudioLowerVolume spawn 'mako-osd --volume-down 5'

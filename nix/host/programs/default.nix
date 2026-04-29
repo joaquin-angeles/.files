@@ -4,13 +4,12 @@
 
   programs.river-classic = {
     enable = true;
-    xwayland.enable = false;
+    xwayland.enable = true;
     extraPackages = with pkgs; [
       swayidle
       wbg
       wideriver
       wlopm
-      xwayland-satellite
     ];
   };
 

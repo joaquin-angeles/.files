@@ -16,9 +16,6 @@ swayidle -w \
     before-sleep 'gtklock --daemonize' \
     after-resume 'wlopm --on "*"' &
 
-xwayland-satellite &
-export DISPLAY=:0
-
 exec wideriver \
     --border-width 2 \
     --border-color-focused 0x879251cc \
