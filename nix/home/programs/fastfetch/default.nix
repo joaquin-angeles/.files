@@ -29,53 +29,52 @@
         }
         {
           type = "os";
-          key = "os    ";
+          key = "";
         }
         {
           type = "kernel";
-          key = "kernel";
+          key = "";
           format = "{2}";
         }
         {
           type = "packages";
-          key = "pkgs  ";
-          format = "{9} (core), {10} (home)";
+          key = "󰏖";
+          combined = true;
         }
         {
           type = "shell";
-          key = "sh    ";
+          key = "";
           format = "{3} {4}";
         }
         {
           type = "de";
-          key = "de    ";
+          key = "";
           format = "{2}";
         }
         {
           type = "wm";
-          key = "wm    ";
-          format = "{2} {5} ({3})";
+          key = "";
         }
         {
           type = "uptime";
-          key = "uptime";
+          key = "󰋚";
         }
         {
           type = "disk";
-          key = "disk  ";
+          key = "";
           format = "{1} / {2} ({3})";
         }
         {
           type = "memory";
-          key = "memory";
+          key = "󰍛";
         }
         {
           type = "swap";
-          key = "swap  ";
+          key = "󰾴";
         }
         {
           type = "custom";
-          format = "{#37}*{#} {#37}*{#} {#36}*{#} {#35}*{#} {#34}*{#} {#33}*{#} {#32}*{#} {#31}*{#}";
+          format = "{#30}●{#} {#31}●{#} {#32}●{#} {#33}●{#} {#34}●{#} {#35}●{#} {#36}●{#} {#37}●{#}";
         }
       ];
     };

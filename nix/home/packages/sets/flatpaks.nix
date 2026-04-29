@@ -11,14 +11,14 @@
       "org.onlyoffice.desktopeditors" # Office suite
 
       # Gaming
-      "com.usebottles.bottles" # Launcher / Wine prefix manager
-      "com.vysp3r.ProtonPlus" # Compatibility tool installer
-      "org.vinegarhq.Sober" # Roblox
-      {
-        # Minecraft Bedrock
-        appId = "io.mrarm.mcpelauncher";
-        origin = "flathub-beta";
-      }
+      # "com.usebottles.bottles" # Launcher / Wine prefix manager
+      # "com.vysp3r.ProtonPlus" # Compatibility tool installer
+      # "org.vinegarhq.Sober" # Roblox
+      # {
+      #   # Minecraft Bedrock
+      #   appId = "io.mrarm.mcpelauncher";
+      #   origin = "flathub-beta";
+      # }
     ];
   };
 

@@ -16,14 +16,7 @@
     ];
 
     uninstallUnmanaged = true;
-
-    update = {
-      onActivation = false;
-      auto = {
-        enable = true;
-        onCalendar = "weekly";
-      };
-    };
+    update.onActivation = true;
 
     overrides = {
       global = {
