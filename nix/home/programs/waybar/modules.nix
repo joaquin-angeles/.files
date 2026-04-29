@@ -95,11 +95,13 @@
         low = 30;
         critical = 19;
       };
+      interval = 1;
     };
 
     clock = {
       format = "{:%H:%M}";
       tooltip-format = "{:%d - %A}";
+      interval = 60;
     };
   };
 }
