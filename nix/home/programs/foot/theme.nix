@@ -9,11 +9,9 @@
 
     # Colorscheme
     colors = {
-      # Alpha transparency
-      # alpha = 0.8;
-
-      background = "1d2021";
-      foreground = "d4be98";
+      alpha = 0.8; # Translucency
+      background = "1d2021"; # bg
+      foreground = "d4be98"; # fg
 
       regular0 = "1d2021"; # black
       regular1 = "ea6962"; # red
@@ -33,8 +31,5 @@
       bright6 = "89b482"; # cyan
       bright7 = "d4be98"; # white
     };
-
-    # TERM correction
-    environment.TERM = "xterm-256color";
   };
 }

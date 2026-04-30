@@ -8,10 +8,10 @@ dbus-update-activation-environment --systemd --all
 riverctl rule-add ssd # Global window decorations
 riverctl default-layout wideriver # Layout generator
 
-# Window layout generator
+# Layout configuration
 exec wideriver \
     --border-width 2 \
-    --border-color-focused 0x879251cc \
+    --border-color-focused 0xa9b665cc \
     --border-color-unfocused 0x56595acc \
     --layout left \
     --layout-alt monocle \

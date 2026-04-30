@@ -14,7 +14,7 @@
       indicator-position = "none";
     };
 
-    # Cursor style
-    cursor.style = "beam";
+    cursor.style = "beam"; # Cursor style
+    environment.TERM = "xterm-256color"; # TERM correction
   };
 }

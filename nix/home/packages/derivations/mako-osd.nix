@@ -51,7 +51,7 @@ pkgs.writeShellApplication {
         icon="󰝟"
       elif (( vol >= 70 )); then icon="󰕾"
       elif (( vol >= 50 )); then icon="󰖀"
-      elif (( vol >= 25 )); then icon="󰕿"
+      elif (( vol >= 25 )); then icon="󰖀"
       else                       icon="󰝟"
       fi
 

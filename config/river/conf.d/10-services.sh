@@ -7,6 +7,7 @@ wbg ~/Pictures/Wallpapers/trees.png & # Wallpaper daemon
 mako & # Notification daemon
 
 # Clipboard history daemon
+rm -f "$XDG_CACHE_HOME"/cliphist/db # Reset clipboard history on boot
 wl-paste --type text --watch cliphist store >/dev/null 2>&1 &
 wl-paste --type image --watch cliphist store >/dev/null 2>&1 &
 
