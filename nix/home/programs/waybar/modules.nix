@@ -22,7 +22,7 @@
     "group/sys-info" = {
       orientation = "inherit";
       drawer = {
-        transition-duration = 600;
+        transition-duration = 300;
         children-class = "tray-group-item";
       };
       modules = [

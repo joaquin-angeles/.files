@@ -108,7 +108,7 @@
     }
 
     #sys-info {
-      margin-right: 3pt;
+      margin-right: 6pt;
       min-width: 12pt;
     }
 
@@ -118,7 +118,7 @@
 
     #network {
       font-size: 12.5pt;
-      padding: 0 7pt 0 10pt;
+      padding: 0 9pt 0 10pt;
     }
 
     #pulseaudio {
