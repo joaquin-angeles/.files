@@ -9,6 +9,11 @@
       "org.chromium.Chromium" # Progressive web apps
       "org.gimp.GIMP"
       "org.onlyoffice.desktopeditors" # Office suite
+
+      # Games
+      "com.usebottles.Bottles"
+      "org.vinegarhq.Sober" # Roblox
+      "io.mrarm.mcpelauncher" # Minecraft Bedrock
     ];
   };
 
