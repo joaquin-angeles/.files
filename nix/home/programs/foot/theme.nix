@@ -10,7 +10,7 @@
     # Colorscheme
     colors = {
       # Alpha transparency
-      alpha = 0.8;
+      # alpha = 0.8;
 
       background = "1d2021";
       foreground = "d4be98";
