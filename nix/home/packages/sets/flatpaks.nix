@@ -9,16 +9,6 @@
       "org.chromium.Chromium" # Progressive web apps
       "org.gimp.GIMP"
       "org.onlyoffice.desktopeditors" # Office suite
-
-      # Gaming
-      # "com.usebottles.bottles" # Launcher / Wine prefix manager
-      # "com.vysp3r.ProtonPlus" # Compatibility tool installer
-      # "org.vinegarhq.Sober" # Roblox
-      # {
-      #   # Minecraft Bedrock
-      #   appId = "io.mrarm.mcpelauncher";
-      #   origin = "flathub-beta";
-      # }
     ];
   };
 
@@ -27,18 +17,6 @@
     name = "Messenger";
     exec = "flatpak run org.chromium.Chromium --app=https://www.facebook.com/messages/";
     icon = "fbmessenger";
-    terminal = false;
-    settings = {
-      X-Flatpak-Part-Of = "org.chromium.Chromium";
-      TryExec = "${config.xdg.dataHome}/flatpak/exports/bin/org.chromium.Chromium";
-    };
-  };
-
-  # Claude LLM
-  xdg.desktopEntries.claude = {
-    name = "Claude AI";
-    exec = "flatpak run org.chromium.Chromium --app=https://claude.ai";
-    icon = "gnome-robots";
     terminal = false;
     settings = {
       X-Flatpak-Part-Of = "org.chromium.Chromium";

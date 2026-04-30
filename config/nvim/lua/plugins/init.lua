@@ -1,16 +1,15 @@
 return {
+	-- Modules
+	{ import = "nvchad.blink.lazyspec" }, -- Better completions
+
+	-- Formatter configuration
 	{
 		"stevearc/conform.nvim",
 		event = "BufWritePre", -- uncomment for format on save
 		opts = require("config.conform"),
 	},
 
-	{
-		"williamboman/mason.nvim",
-		enabled = false,
-	},
-
-	-- These are some examples, uncomment them if you want to see them work!
+	-- Language server configuration
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
@@ -18,7 +17,11 @@ return {
 		end,
 	},
 
-	{ import = "nvchad.blink.lazyspec" }, -- test new blink
+	-- Disable LSP installer in place for Nix manual LSP config
+	{
+		"williamboman/mason.nvim",
+		enabled = false,
+	},
 
 	-- Treesitter parsers
 	{
