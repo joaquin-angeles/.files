@@ -9,7 +9,8 @@
     dbus.enable = true;
     flatpak.enable = true;
     gvfs.enable = true;
-    polkit.enable = true;
     xserver.enable = false;
   };
+
+  security.polkit.enable = true;
 }
