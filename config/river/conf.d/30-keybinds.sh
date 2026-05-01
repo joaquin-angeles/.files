@@ -48,7 +48,7 @@ bindm $mod BTN_LEFT move-view
 bind $mod return spawn 'footclient'
 bind $mod p spawn 'rofi -show drun'
 bind $mod w spawn 'librewolf'
-bind $mod e spawn 'pcmanfm'
+bind $mod e spawn 'footclient -e yazi'
 bind $mod period spawn 'rofi -no-show-icons -show emoji'
 bind $mod v spawn 'cliphist list | rofi -dmenu -no-show-icons -p 󱘞 | cliphist decode | wl-copy'
 
