@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -15,7 +10,6 @@
   # Wayland compositor
   programs.river-classic = {
     enable = true;
-    xwayland.enable = true;
     extraPackages = with pkgs; [
       dash
       swayidle

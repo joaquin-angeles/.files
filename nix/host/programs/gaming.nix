@@ -4,6 +4,8 @@ with lib;
 
 {
   config = mkIf config.features.gaming.enable {
+    programs.river-classic.xwayland = mkForce true;
+
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;
