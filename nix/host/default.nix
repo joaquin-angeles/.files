@@ -12,7 +12,7 @@
     ./hardware
 
     ../modules/gaming.nix
-    ../modules/pwa.nix
+    ../modules/webapps.nix
   ];
 
   # Optional packages -- disable when not needed
