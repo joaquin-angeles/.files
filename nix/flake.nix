@@ -24,6 +24,7 @@
         modules = [
           ./host
           /etc/nixos/hardware-configuration.nix
+          ./features.nix
           home-manager.nixosModules.home-manager
 
           (
@@ -48,7 +49,7 @@
 
                 extraSpecialArgs = {
                   inherit inputs;
-                  inherit (config.features) gaming;
+                  features = config.features;
                 };
 
                 sharedModules = [ nix-flatpak.homeManagerModules.nix-flatpak ];

@@ -12,13 +12,6 @@
     ./hardware
   ];
 
-  # Optional packages -- disable when not needed
-  # Disable by setting true to false
-  features = {
-    gaming.enable = true;
-    webapps.enable = true;
-  };
-
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
