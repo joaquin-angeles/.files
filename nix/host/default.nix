@@ -19,7 +19,7 @@
   # Disable by setting true to false
   features = {
     gaming.enable = true;
-    pwa.enable = true;
+    webapps.enable = true;
   };
 
   boot.loader = {
