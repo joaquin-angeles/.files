@@ -2,7 +2,7 @@
 
 with lib;
 
-mkIf features.pwa.enable {
+mkIf features.webapps.enable {
   xdg.desktopEntries = {
     messenger = {
       name = "Messenger";
