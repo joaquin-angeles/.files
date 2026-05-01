@@ -1,4 +1,12 @@
-local utils = require("utils")
+local M = {}
+
+M.base = (os.getenv("YAZI_CONFIG_HOME") or (os.getenv("HOME") .. "/.config/yazi")) .. "/lua/"
+
+function M.load(path)
+	return dofile(M.base .. path)
+end
+
+local utils = M.load("utils.lua")
 
 Yatline.line.get.hovered_symlink = function()
 	local h = utils.hovered()
