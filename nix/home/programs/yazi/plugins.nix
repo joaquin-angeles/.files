@@ -16,20 +16,18 @@
 
     # Plugin loading
     initLua = ''
-      local config = ya.conf_dir()
+      local M = {}
 
-      package.path = table.concat({
-        package.path,
-        config .. "/config/?.lua",
-        config .. "/config/?/init.lua",
-      }, ";")
+      M.base = (os.getenv("YAZI_CONFIG_HOME") or (os.getenv("HOME") .. "/.config/yazi")) .. "/lua/"
 
-      require("config.plugins")
-      require("config.yatline")
-      require("config.yatline.coloreds")
-      require("config.yatline.lines")
+      function M.load(path)
+      	return dofile(M.base .. path)
+      end
+
+      M.load("plugins.lua")
+      M.load("yatline/init.lua")
     '';
   };
 
-  xdg.configFile."yazi/config".source = ./config;
+  xdg.configFile."yazi/lua".source = ./lua;
 }

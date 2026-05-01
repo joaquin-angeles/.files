@@ -1,7 +1,15 @@
 local yatline = require("yatline")
 
-require("config.yatline.coloreds")
-require("config.yatline.lines")
+local M = {}
+
+M.base = (os.getenv("YAZI_CONFIG_HOME") or (os.getenv("HOME") .. "/.config/yazi")) .. "/lua/"
+
+function M.load(path)
+	return dofile(M.base .. path)
+end
+
+M.load("yatline/coloreds.lua")
+M.load("yatline/lines.lua")
 
 local empty = { section_a = {}, section_b = {}, section_c = {} }
 yatline:setup({
