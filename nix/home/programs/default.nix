@@ -9,9 +9,9 @@
     # ./lutris # Game launcher
     ./neovim
     # ./rmpc # Local music player
-    ./tmux # Terminal multiplexer
     ./waybar # (Wayland) status bar
     ./yazi # Terminal file manager
+    ./zellij # Terminal multiplexer
     ./zsh # Interactive shell
   ];
 
