@@ -14,6 +14,8 @@ Gruvforest is designed to work out-of-the-box on NixOS without requiring prior k
 
 The system is fully declarative under the hood, but users are not expected to modify it directly to get a complete experience. Most tools are configured close to their upstream defaults, making them familiar and predictable.
 
+> Features are enabled and disabled inside `./nix/features.nix`.
+
 A small set of sensible applications (including PWAs via nix-flatpak) are preinstalled to provide a complete out-of-the-box experience. This includes optional support for common workflows such as gaming.
 
 For deeper customization, understanding Nix is recommended—but not required to use the system as-is.
