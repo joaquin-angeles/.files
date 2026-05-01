@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./gaming.nix
+  ];
+
   programs.dconf.enable = true; # GTK settings compatibility
 
   # Wayland compositor

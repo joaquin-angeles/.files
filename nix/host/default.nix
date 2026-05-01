@@ -10,9 +10,6 @@
     ./programs
     ./services
     ./hardware
-
-    ../modules/gaming.nix
-    ../modules/webapps.nix
   ];
 
   # Optional packages -- disable when not needed
