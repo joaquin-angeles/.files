@@ -11,6 +11,4 @@
     gvfs.enable = true;
     xserver.enable = false;
   };
-
-  security.polkit.enable = true;
 }

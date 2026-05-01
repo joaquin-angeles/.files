@@ -82,10 +82,11 @@
     PollIntervalMaxSec=2048
   '';
 
-  # Security configuration (replace sudo with sudo-rs)
+  # Security configuration
   security = {
     sudo.enable = false;
-    sudo-rs.enable = true;
+    sudo-rs.enable = true; # Use sudo-rs instead of sudo
+    security.polkit.enable = true; # Enable policykit
   };
 
   # User configuration
