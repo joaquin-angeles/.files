@@ -5,10 +5,12 @@
     packages = [
       # Applications
       "dev.vencord.Vesktop" # Discord
-      "io.github.celluloid_player.Celluloid"
       "org.chromium.Chromium" # Progressive web apps
-      "org.gimp.GIMP"
       "org.onlyoffice.desktopeditors" # Office suite
+
+      # Media
+      "io.github.celluloid_player.Celluloid" # Video player
+      "org.gimp.GIMP" # Image editor
     ];
   };
 }
