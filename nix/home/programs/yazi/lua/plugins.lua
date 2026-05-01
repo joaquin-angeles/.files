@@ -1,0 +1,5 @@
+require("chmod")
+require("git"):setup()
+require("smart-enter")
+require("full-border"):setup({ type = ui.Border.PLAIN })
+require("session"):setup({ sync_yanked = true })
