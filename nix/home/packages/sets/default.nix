@@ -3,8 +3,8 @@
 {
   imports = [
     ./flatpaks.nix
-    ./pwa.nix
     ./scripts.nix
+    ./webapps.nix
   ];
 
   home.packages = with pkgs; [
