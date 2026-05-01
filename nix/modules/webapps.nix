@@ -5,6 +5,8 @@ with lib;
 {
   config = mkIf features.webapps.enable {
     xdg.desktopEntries = {
+
+      # Facebook Messenger
       messenger = {
         name = "Messenger";
         exec = "flatpak run org.chromium.Chromium --app=https://www.facebook.com/messages/";
@@ -13,6 +15,7 @@ with lib;
         settings.X-Flatpak-Part-Of = "org.chromium.Chromium";
       };
 
+      # Music streaming (Apple Music)
       apple-music = {
         name = "Apple Music";
         exec = "flatpak run org.chromium.Chromium --app=https://music.apple.com";

@@ -3,11 +3,6 @@
 with lib;
 
 {
-  imports = [
-    ./modules/gaming.nix
-    ./modules/webapps.nix
-  ];
-
   options.features = {
     gaming.enable = mkEnableOption "Gaming support";
     webapps.enable = mkEnableOption "Web applications";

@@ -1,13 +1,17 @@
 {
   description = "Gruvforest: An environment of organic minimalism";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    # Nix package repositories
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11"; # Stable
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable"; # Rolling release
+
+    # User configuration
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest"; # Declarative flatpaks (user-level only)
   };
   outputs =
     {
@@ -22,14 +26,21 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
+
+          # System modules
           ./host
           /etc/nixos/hardware-configuration.nix
+
+          # Optional features
           ./features.nix
-          home-manager.nixosModules.home-manager
+          ./modules/gaming.nix
+
+          home-manager.nixosModules.home-manager # Load home-manager
 
           (
             { config, ... }:
             {
+              # Nix package configuration
               nixpkgs = {
                 config.allowUnfree = true;
                 overlays = [
@@ -42,18 +53,26 @@
                 ];
               };
 
+              # Home manager configuration
               home-manager = {
                 backupFileExtension = "bak";
                 useGlobalPkgs = true;
                 useUserPackages = true;
 
+                # Features and flags
                 extraSpecialArgs = {
                   inherit inputs;
                   features = config.features;
                 };
 
+                # User modules
                 sharedModules = [ nix-flatpak.homeManagerModules.nix-flatpak ];
-                users.joaquin = import ./home;
+                users.joaquin = {
+                  imports = [
+                    ./home
+                    ./modules/webapps.nix # Progressive web applications
+                  ];
+                };
               };
             }
           )
