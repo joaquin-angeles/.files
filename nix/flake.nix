@@ -70,7 +70,8 @@
                 users.joaquin = {
                   imports = [
                     ./home
-                    ./modules/webapps.nix # Progressive web applications
+                    ./modules/flatpaks/games.nix # Flatpak gaming
+                    ./modules/flatpaks/webapps.nix # Progressive web applications
                   ];
                 };
               };
