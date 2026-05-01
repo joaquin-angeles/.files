@@ -1,7 +1,8 @@
-require("yatline.coloreds")
-require("yatline.lines")
-
 local yatline = require("yatline")
+
+require("config.yatline.coloreds")
+require("config.yatline.lines")
+
 local empty = { section_a = {}, section_b = {}, section_c = {} }
 yatline:setup({
 	section_separator = { open = "", close = "" },
