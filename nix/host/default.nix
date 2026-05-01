@@ -10,7 +10,18 @@
     ./programs
     ./services
     ./hardware
+
+    ../modules/gaming.nix
+    ../modules/pwa.nix
   ];
+
+  # Optional packages -- disable when not needed
+  # Disable by setting true to false
+  features = {
+    gaming.enable = true;
+    pwa.enable = true;
+  };
+
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;

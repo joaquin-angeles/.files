@@ -2,17 +2,31 @@
 
 > Press `Super + F1` to open the cheatsheet.
 
-A modern, extensible **Wayland** configuration for Linux (NixOS) powered by the **Nix** package manager and the **Gruvbox** colorscheme. Fully declarative, reproducible, and easy to customize.
+A fast, minimal, and fully reproducible Linux desktop built with Nix.
+Designed for developers who want performance, clarity, and zero configuration drift.
+Powered by Wayland and styled with Gruvbox Material Dark.
+
+---
+
+## Approach
+
+Gruvforest is designed to work out-of-the-box on NixOS without requiring prior knowledge of the Nix language.
+
+The system is fully declarative under the hood, but users are not expected to modify it directly to get a complete experience. Most tools are configured close to their upstream defaults, making them familiar and predictable.
+
+A small set of sensible applications (including PWAs via nix-flatpak) are preinstalled to provide a complete out-of-the-box experience. This includes optional support for common workflows such as gaming.
+
+For deeper customization, understanding Nix is recommended—but not required to use the system as-is.
 
 ---
 
 ## Features
 
-**Lightweight & Performant** — River is tuned for near-maximum efficiency, staying out of the way of demanding workloads.
+**Lightweight & Performant** — Uses a lightweight Wayland compositor instead of a full desktop environment, keeping resource usage low and responsiveness high.
 
-**Near-Complete Daily Driver** — Everything you need for a functional desktop without the bloat: a minimal yet powerful Waybar panel, a fast app launcher (tofi), essential utilities, and sensible app defaults.
+**Daily Driver Ready** — Everything you need for a functional desktop without the bloat: a minimal yet powerful status bar, a fast app launcher (Super + P), essential utilities, sensible app defaults, and a small set of preconfigured applications for common workflows (including gaming).
 
-**Outstanding Developer Experience** — A fully configured dev environment via Home Manager, including Neovim with NvChad, a batteries-included Zsh setup, and the tmux terminal multiplexer.
+**Outstanding Developer Experience** — A fully configured dev environment via Home Manager, featuring Neovim with a minimal, IDE-like configuration (NvChad-based) and a batteries-included terminal setup.
 
 **Coherent & Declarative** — Almost everything is managed in pure Nix via Home Manager. No scattered config files.
 
@@ -20,13 +34,30 @@ A modern, extensible **Wayland** configuration for Linux (NixOS) powered by the 
 
 ## Installation
 
-> Requires NixOS with flakes enabled.
+### Enable flakes
+
+Add the following to your NixOS configuration:
+
+```nix
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
+```
+
+Then rebuild your system:
+
+```bash
+sudo nixos-rebuild switch
+```
+
+### Install Gruvforest
 
 ```bash
 git clone https://github.com/joaquin-angeles/.files.git
 cd .files
 sudo nixos-rebuild switch --flake --impure ./nix#nixos-btw
 ```
+
+- `nixos-btw` is the default host configuration included in this repository
+- `--impure` is required for hardware-specific configuration
 
 ---
 
@@ -45,6 +76,8 @@ Extending or overriding modules is straightforward thanks to Nix's declarative n
 ---
 
 ## Preview
+
+A clean, low-resource setup with a cohesive Gruvbox Material aesthetic.
 
 | Resource usage                                 | Tiled layout                                 |
 | ---------------------------------------------- | -------------------------------------------- |

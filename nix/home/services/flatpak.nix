@@ -1,5 +1,31 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  features,
+  ...
+}:
 
+with lib;
+
+let
+  gamingApps = [
+    "org.vinegarhq.Sober"
+    "io.mrarm.mcpelauncher"
+  ];
+
+  gamingOverrides = lib.genAttrs gamingApps (_: {
+    Context.sockets = [
+      "!wayland"
+      "x11"
+      "!fallback-x11"
+    ];
+    Environment = {
+      "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
+      "__NV_PRIME_RENDER_OFFLOAD" = "1";
+      "__VK_LAYER_NV_optimus" = "NVIDIA_only";
+    };
+  });
+in
 {
   services.flatpak = {
     enable = true;
@@ -18,6 +44,7 @@
     uninstallUnmanaged = true;
     update.onActivation = true;
 
+    # Base overrides (always applied)
     overrides = {
       global = {
         Context = {
@@ -40,25 +67,11 @@
         };
       };
     }
-    //
-      lib.genAttrs
-        # Games
-        [
-          "org.vinegarhq.Sober"
-          "io.mrarm.mcpelauncher"
-        ]
-        (_: {
-          # Gaming focused variables
-          Context.sockets = [
-            "!wayland"
-            "x11"
-            "!fallback-x11"
-          ];
-          Environment = {
-            "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
-            "__NV_PRIME_RENDER_OFFLOAD" = "1";
-            "__VK_LAYER_NV_optimus" = "NVIDIA_only";
-          };
-        });
+
+    # Conditionally merge gaming overrides
+    // mkIf features.gaming.enable gamingOverrides;
+
+    # Conditionally install gaming apps
+    packages = optionals features.gaming.enable gamingApps;
   };
 }

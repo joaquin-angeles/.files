@@ -25,27 +25,37 @@
           ./host
           /etc/nixos/hardware-configuration.nix
           home-manager.nixosModules.home-manager
-          {
-            nixpkgs = {
-              config.allowUnfree = true;
-              overlays = [
-                (_: prev: {
-                  unstable = import nixpkgs-unstable {
-                    system = "x86_64-linux";
-                    config.allowUnfree = true;
-                  };
-                })
-              ];
-            };
-            home-manager = {
-              backupFileExtension = "bak";
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs; };
-              sharedModules = [ nix-flatpak.homeManagerModules.nix-flatpak ];
-              users.joaquin = import ./home;
-            };
-          }
+
+          (
+            { config, ... }:
+            {
+              nixpkgs = {
+                config.allowUnfree = true;
+                overlays = [
+                  (_: prev: {
+                    unstable = import nixpkgs-unstable {
+                      system = "x86_64-linux";
+                      config.allowUnfree = true;
+                    };
+                  })
+                ];
+              };
+
+              home-manager = {
+                backupFileExtension = "bak";
+                useGlobalPkgs = true;
+                useUserPackages = true;
+
+                extraSpecialArgs = {
+                  inherit inputs;
+                  inherit (config.features) gaming;
+                };
+
+                sharedModules = [ nix-flatpak.homeManagerModules.nix-flatpak ];
+                users.joaquin = import ./home;
+              };
+            }
+          )
         ];
       };
     };

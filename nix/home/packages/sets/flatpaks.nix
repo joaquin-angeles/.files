@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 
 {
   services.flatpak = {
@@ -9,35 +9,6 @@
       "org.chromium.Chromium" # Progressive web apps
       "org.gimp.GIMP"
       "org.onlyoffice.desktopeditors" # Office suite
-
-      # Games
-      "com.usebottles.Bottles"
-      "org.vinegarhq.Sober" # Roblox
-      "io.mrarm.mcpelauncher" # Minecraft Bedrock
     ];
-  };
-
-  # Facebook Messenger
-  xdg.desktopEntries.messenger = {
-    name = "Messenger";
-    exec = "flatpak run org.chromium.Chromium --app=https://www.facebook.com/messages/";
-    icon = "fbmessenger";
-    terminal = false;
-    settings = {
-      X-Flatpak-Part-Of = "org.chromium.Chromium";
-      TryExec = "${config.xdg.dataHome}/flatpak/exports/bin/org.chromium.Chromium";
-    };
-  };
-
-  # Apple Music
-  xdg.desktopEntries.apple-music = {
-    name = "Apple Music";
-    exec = "flatpak run org.chromium.Chromium --app=https://music.apple.com";
-    icon = "apple-music";
-    terminal = false;
-    settings = {
-      X-Flatpak-Part-Of = "org.chromium.Chromium";
-      TryExec = "${config.xdg.dataHome}/flatpak/exports/bin/org.chromium.Chromium";
-    };
   };
 }

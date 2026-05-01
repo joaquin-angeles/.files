@@ -3,6 +3,7 @@
 {
   imports = [
     ./flatpaks.nix
+    ./pwa.nix
     ./scripts.nix
   ];
 

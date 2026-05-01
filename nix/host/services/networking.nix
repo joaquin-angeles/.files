@@ -1,7 +1,7 @@
 { ... }:
 {
   networking = {
-    hostName = "nixos-btw";
+    hostName = "gruvforest";
     wireless.iwd = {
       enable = true;
       settings.General.EnableNetworkConfiguration = true;
