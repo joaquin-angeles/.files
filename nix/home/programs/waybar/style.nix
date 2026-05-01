@@ -21,7 +21,7 @@
 
     window#waybar {
       font-size: 12.5pt;
-      background-color: alpha(darker(@black), 0.8);
+      background-color: @black;
       padding-bottom: 1px;
       border-bottom: 1px solid @border;
       color: @white;

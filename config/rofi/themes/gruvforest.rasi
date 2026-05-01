@@ -20,7 +20,7 @@ window {
     width: 800px;
     background-color: @black;
     border: 1px solid;
-    border-color: #252829;
+    border-color: #32332f;
     border-radius: 7px;
 }
 
