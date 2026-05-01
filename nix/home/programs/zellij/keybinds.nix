@@ -7,18 +7,14 @@
         bind "Ctrl Space" { SwitchToMode "normal"; }
       }
       pane {
-        bind "Left" { MoveFocus "left"; }
-        bind "Down" { MoveFocus "down"; }
-        bind "Up" { MoveFocus "up"; }
-        bind "Right" { MoveFocus "right"; }
         bind "c" { SwitchToMode "renamepane"; PaneNameInput 0; }
         bind "d" { NewPane "down"; SwitchToMode "locked"; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "locked"; }
         bind "f" { ToggleFocusFullscreen; SwitchToMode "locked"; }
-        bind "h" { MoveFocus "left"; }
-        bind "j" { MoveFocus "down"; }
-        bind "k" { MoveFocus "up"; }
-        bind "l" { MoveFocus "right"; }
+        bind "h" { Resize "Left"; }
+        bind "j" { FocusNextPane; }
+        bind "k" { FocusPreviousPane; }
+        bind "l" { Resize "Right"; }
         bind "n" { NewPane; SwitchToMode "locked"; }
         bind "p" { SwitchToMode "normal"; }
         bind "r" { NewPane "right"; SwitchToMode "locked"; }
@@ -93,12 +89,12 @@
         bind "Alt Down" { MoveFocus "down"; SwitchToMode "locked"; }
         bind "Alt Up" { MoveFocus "up"; SwitchToMode "locked"; }
         bind "Alt Right" { MoveFocusOrTab "right"; SwitchToMode "locked"; }
-        bind "e" { EditScrollback; SwitchToMode "locked"; }
-        bind "f" { SwitchToMode "entersearch"; SearchInput 0; }
         bind "Alt h" { MoveFocusOrTab "left"; SwitchToMode "locked"; }
         bind "Alt j" { MoveFocus "down"; SwitchToMode "locked"; }
         bind "Alt k" { MoveFocus "up"; SwitchToMode "locked"; }
         bind "Alt l" { MoveFocusOrTab "right"; SwitchToMode "locked"; }
+        bind "e" { EditScrollback; SwitchToMode "locked"; }
+        bind "f" { SwitchToMode "entersearch"; SearchInput 0; }
         bind "s" { SwitchToMode "normal"; }
       }
       search {
@@ -141,11 +137,11 @@
         bind "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt =" { Resize "Increase"; }
-        bind "Alt h" { MoveFocusOrTab "left"; }
+        bind "Alt h" { Resize "Left"; }
+        bind "Alt j" { FocusNextPane; }
+        bind "Alt k" { FocusPreviousPane; }
+        bind "Alt l" { Resize "Right"; }
         bind "Alt i" { MoveTab "left"; }
-        bind "Alt j" { MoveFocus "down"; }
-        bind "Alt k" { MoveFocus "up"; }
-        bind "Alt l" { MoveFocusOrTab "right"; }
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
       }

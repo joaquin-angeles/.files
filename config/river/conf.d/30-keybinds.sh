@@ -45,7 +45,7 @@ bind $mod+Shift k swap previous
 bindm $mod BTN_LEFT move-view
 
 # Apps
-bind $mod return spawn 'foot'
+bind $mod return spawn 'footclient'
 bind $mod p spawn 'rofi -show drun'
 bind $mod w spawn 'librewolf'
 bind $mod e spawn 'pcmanfm'

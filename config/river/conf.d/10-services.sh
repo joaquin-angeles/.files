@@ -20,3 +20,5 @@ swayidle -w \
     timeout 900 'systemctl suspend' \
     before-sleep 'gtklock --daemonize' \
     after-resume 'wlopm --on "*"' &
+
+foot -s & # Terminal daemon
