@@ -21,6 +21,7 @@ A modern, extensible **Wayland** configuration for Linux (NixOS) powered by the 
 ## Installation
 
 > Requires NixOS with flakes enabled.
+
 ```bash
 git clone https://github.com/joaquin-angeles/.files.git
 cd .files
@@ -33,11 +34,11 @@ sudo nixos-rebuild switch --flake --impure ./nix#nixos-btw
 
 All configuration lives under three entrypoints:
 
-| Path | Purpose |
-|---|---|
-| `nixos/flake.nix` | Flake inputs, outputs, and top-level wiring |
-| `nixos/host/` | System-level config (hardware, services, apps) |
-| `nixos/home/` | User environment via Home Manager |
+| Path              | Purpose                                        |
+| ----------------- | ---------------------------------------------- |
+| `nixos/flake.nix` | Flake inputs, outputs, and top-level wiring    |
+| `nixos/host/`     | System-level config (hardware, services, apps) |
+| `nixos/home/`     | User environment via Home Manager              |
 
 Extending or overriding modules is straightforward thanks to Nix's declarative nature.
 
@@ -45,10 +46,10 @@ Extending or overriding modules is straightforward thanks to Nix's declarative n
 
 ## Preview
 
-| Resource usage | Tiled layout |
-|---|---|
-| ![Resource usage](./img/stats.png) | ![Tiled layout](./img/tiled.png) |
+| Resource usage                                 | Tiled layout                                 |
+| ---------------------------------------------- | -------------------------------------------- |
+| ![Resource usage](./assets/previews/stats.png) | ![Tiled layout](./assets/previews/tiled.png) |
 
-| Background Wallpaper | GUI Applications |
-|---|---|
-| ![Background / Wallpaper](./img/bg.png) | ![GUI](./img/gui.png) |
+| Background Wallpaper                                | GUI Applications                  |
+| --------------------------------------------------- | --------------------------------- |
+| ![Background / Wallpaper](./assets/previews/bg.png) | ![GUI](./assets/previews/gui.png) |
