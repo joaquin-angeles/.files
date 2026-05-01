@@ -18,7 +18,7 @@
       ...
     }@inputs:
     {
-      nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.gruvforest = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
