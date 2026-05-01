@@ -3,10 +3,10 @@
 with lib;
 
 let
-  cfg = config.features.pwas;
+  cfg = config.features.pwa;
 in
 {
-  options.features.pwas.enable = mkEnableOption "PWA applications";
+  options.features.pwa.enable = mkEnableOption "PWA applications";
 
   config = mkIf cfg.enable {
     xdg.desktopEntries.messenger = {
