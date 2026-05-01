@@ -1,9 +1,5 @@
 #!/usr/bin/env dash
 
-# Portal fixes
-export XDG_CURRENT_DESKTOP=river
-dbus-update-activation-environment --systemd --all
-
 # Window behavior
 riverctl rule-add ssd # Global window decorations
 riverctl default-layout wideriver # Layout generator

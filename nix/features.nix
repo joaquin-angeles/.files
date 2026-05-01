@@ -4,13 +4,14 @@ with lib;
 
 {
   options.features = {
-    gaming.enable = mkEnableOption "gaming support";
-    webapps.enable = mkEnableOption "web applications";
+    gaming.enable = mkEnableOption "Gaming support";
+    webapps.enable = mkEnableOption "Web applications";
   };
 
   # Enable or disable gaming / webapps
+  # Change true -> false, vice versa
   config.features = {
-    gaming.enable = mkDefault false;
-    webapps.enable = mkDefault true;
+    gaming.enable = true;
+    webapps.enable = true;
   };
 }

@@ -10,9 +10,7 @@ with lib;
         exec = "flatpak run org.chromium.Chromium --app=https://www.facebook.com/messages/";
         icon = "fbmessenger";
         terminal = false;
-        settings = {
-          X-Flatpak-Part-Of = "org.chromium.Chromium";
-        };
+        settings.X-Flatpak-Part-Of = "org.chromium.Chromium";
       };
 
       apple-music = {
@@ -20,9 +18,7 @@ with lib;
         exec = "flatpak run org.chromium.Chromium --app=https://music.apple.com";
         icon = "apple-music";
         terminal = false;
-        settings = {
-          X-Flatpak-Part-Of = "org.chromium.Chromium";
-        };
+        settings.X-Flatpak-Part-Of = "org.chromium.Chromium";
       };
     };
   };

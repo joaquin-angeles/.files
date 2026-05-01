@@ -1,5 +1,11 @@
 #!/usr/bin/env dash
 
+# Portal fixes
+dbus-update-activation-environment --systemd \
+    WAYLAND_DISPLAY \
+    XDG_CURRENT_DESKTOP=river \
+    XDG_SESSION_TYPE=wayland
+
 for f in ~/.config/river/conf.d/*.sh; do
     [ -x "$f" ] && riverctl spawn "$f"
 done
