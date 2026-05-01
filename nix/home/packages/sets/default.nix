@@ -4,7 +4,6 @@
   imports = [
     ./flatpaks.nix
     ./scripts.nix
-    ./webapps.nix
   ];
 
   home.packages = with pkgs; [
