@@ -40,6 +40,6 @@
           "DCONF_USER_CONFIG_DIR" = "${config.xdg.configHome}/dconf";
         };
       };
-    }
+    };
   };
 }
