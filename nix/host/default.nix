@@ -43,10 +43,23 @@
     extraLocaleSettings.LC_TIME = "en_GB.UTF-8";
   };
 
+  # Installed system packages
   environment.systemPackages = with pkgs; [
     git
     usbutils
   ];
+
+  fonts = {
+    fontDir.enable = true;
+    packages = with pkgs; [
+      corefonts
+      inter
+      nerd-fonts.monaspace
+      noto-fonts-color-emoji
+      noto-fonts-cjk-sans
+      source-serif
+    ];
+  };
 
   # System-wide security
   security = {

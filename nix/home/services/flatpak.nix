@@ -23,10 +23,15 @@
       global = {
         Context = {
           filesystems = [
+            # Font package access
             "/nix/store:ro"
-            "xdg-data/fonts:ro"
+            "/run/current-system/sw/share/X11/fonts:ro"
+
+            # Theming configurations
             "xdg-data/themes:ro"
             "xdg-data/icons:ro"
+
+            # GTK settings
             "xdg-config/gtk-3.0:ro"
             "xdg-config/gtk-4.0:ro"
             "xdg-config/dconf"

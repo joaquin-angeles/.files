@@ -12,7 +12,7 @@ with lib;
   # Change from true -> false to disable and vice versa
   config = {
     features = {
-      gaming.enable = false;
+      gaming.enable = true;
       webapps.enable = true;
     };
   };

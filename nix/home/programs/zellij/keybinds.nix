@@ -19,7 +19,7 @@
         bind "p" { SwitchToMode "normal"; }
         bind "r" { NewPane "right"; SwitchToMode "locked"; }
         bind "w" { ToggleFloatingPanes; SwitchToMode "locked"; }
-        bind "x" { CloseFocus; SwitchToMode "locked"; }
+        bind "q" { CloseFocus; SwitchToMode "locked"; }
         bind "z" { TogglePaneFrames; SwitchToMode "locked"; }
         bind "Tab" { SwitchFocus; }
       }
@@ -48,7 +48,7 @@
         bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
         bind "s" { ToggleActiveSyncTab; SwitchToMode "locked"; }
         bind "t" { SwitchToMode "normal"; }
-        bind "x" { CloseTab; SwitchToMode "locked"; }
+        bind "q" { CloseTab; SwitchToMode "locked"; }
         bind "Tab" { ToggleTab; }
         bind "Ctrl t" { NewTab; SwitchToMode "locked"; }
       }

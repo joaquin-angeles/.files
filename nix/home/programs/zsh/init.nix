@@ -23,7 +23,7 @@
           source "${config.xdg.cacheHome}/p10k-instant-prompt-${config.home.username}.zsh"
         fi
 
-        # Cursor and title configuration
+        # Cursor configuration
         _set_cursor() { printf '\e[6 q'; }
         precmd_functions+=(_set_cursor)
       '')
@@ -57,10 +57,6 @@
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         export POWERLEVEL9K_CONFIG_FILE="${config.xdg.configHome}/zsh/.p10k.zsh"
         [[ -f "$POWERLEVEL9K_CONFIG_FILE" ]] && source "$POWERLEVEL9K_CONFIG_FILE"
-
-        # lfcd () {
-        #    cd "$(command lf -print-last-dir "$@")"
-        # }
       '')
     ];
   };

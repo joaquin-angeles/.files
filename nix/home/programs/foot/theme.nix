@@ -9,7 +9,7 @@
 
     # Colorscheme
     colors = {
-      alpha = 0.8; # Translucency
+      alpha = ".8"; # Translucency / default = 1.0
       background = "1d2021"; # bg
       foreground = "d4be98"; # fg
 

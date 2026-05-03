@@ -4,7 +4,10 @@
   # Better cat
   programs.bat = {
     enable = true;
-    config.theme = "ansi";
+    config = {
+      theme = "base16";
+      style = "numbers";
+    };
   };
 
   # Better cd

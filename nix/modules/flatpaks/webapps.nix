@@ -4,8 +4,10 @@ with lib;
 
 {
   config = mkIf features.webapps.enable {
-    xdg.desktopEntries = {
+    # Webapp backend
+    services.flatpak.packages = [ "org.chromium.Chromium" ];
 
+    xdg.desktopEntries = {
       # Facebook Messenger
       messenger = {
         name = "Messenger";
